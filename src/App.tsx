@@ -189,9 +189,9 @@ export default function App() {
                 <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
               </div>
             </div>
-            <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider text-slate-400">
-              <a href="#jak-to-funguje" className="hover:text-white transition-colors">Funkce</a>
-              <a href="#data" className="hover:text-white transition-colors">Věda</a>
+            <div className="hidden md:flex items-center gap-8 text-sm font-300 uppercase tracking-wider text-slate-400">
+              <a href="#jak-to-funguje" className="hover:text-white transition-colors">O nás</a>
+              <a href="#data" className="hover:text-white transition-colors">Statistiky</a>
               <a href="#vibe" className="hover:text-white transition-colors">Etika</a>
               <a href={appUrl} target="_blank" rel="noreferrer" className="bg-trtkat-gradient text-white px-6 py-2.5 rounded-xl font-black hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95">
                 Vyzkoušet zdarma
@@ -232,20 +232,10 @@ export default function App() {
                   Ušetři čas. <br />
                   <span className="text-gradient">Užij si noc.</span>
                 </h1>
-                <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-8 leading-relaxed font-medium max-w-2xl">
-                  <span className="md:hidden">
-                    Ne každý teď chce vztah. Trtkat nabízí jasnou domluvu bez nekonečného chatu - diskrétně a zdarma.
-                  </span>
-                  <span className="hidden md:inline">
-                  Ne každý teď chce vztah. A to je v pořádku.
-                  Trtkat nabízí jasnou domluvu bez nekonečného chatu,
-                  diskrétně, jednoduše a zdarma.
-                  </span>
+                <p className="font-book text-base sm:text-lg md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
+                  Ne každý chce vztah. Trtkat pomáhá najít někoho na příjemný večer a poznání, jednoduše a bez zdlouhavého psaní.
                 </p>
-                <p className="text-sm sm:text-base text-trtkat-blue font-bold mb-6">
-                  ÚPLNĚ ZDARMA
-                </p>
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-12 mt-12">
                   <a href={appUrl} target="_blank" rel="noreferrer" className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
                     <Play className="w-6 h-6 md:w-7 md:h-7" />
                     Vyzkoušet zdarma
@@ -453,10 +443,6 @@ export default function App() {
                 <span className="md:hidden">
                   Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.
                 </span>
-                <span className="hidden md:inline">
-                Někdy nehledáš lásku na celý život. Někdy chceš jen jasnou shodu, chemii a večer bez zbytečných her.
-                Bez přetvářky, bez tlaku a s respektem k hranicím.
-                </span>
               </p>
             </div>
 
@@ -470,16 +456,16 @@ export default function App() {
                     <benefit.icon className="w-8 h-8" />
                   </div>
                   <h3 className="text-xl md:text-2xl font-black text-white mb-4">
-                    {idx === 0 ? 'Bez her' : idx === 1 ? 'Bez tlaku' : idx === 2 ? 'Bez přetvářky' : 'Bez zbytečných očekávání'}
+                    {idx === 0 ? 'Bez her' : idx === 1 ? 'Bez tlaku' : idx === 2 ? 'Opravdově' : 'Bez očekávání'}
                   </h3>
                   <p className="text-slate-400 font-medium leading-relaxed">
                     {idx === 0
-                      ? 'Jasná domluva místo dlouhého balancování mezi signály.'
+                      ? '	Bez obcházení a falešných náznaků.'
                       : idx === 1
-                      ? 'Všechno stojí na dobrovolnosti, souhlasu a respektu.'
+                      ? 'Všechno stojí vzájemném souhlasu a respektu.'
                       : idx === 2
-                      ? 'Nikdo si nemusí na nic hrát. Všichni vědí, na čem jsou.'
-                      : 'Minimum chaosu, minimum očekávání, maximum srozumitelnosti.'}
+                      ? 'Každý profil patří reálnému člověku.'
+                      : 'Bez bolestných zklamání a trápení.'}
                   </p>
                 </div>
               ))}
