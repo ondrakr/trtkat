@@ -64,22 +64,8 @@ const mentalHealthBenefits = [
   }
 ];
 
-const Logo = ({ className }: { className?: string }) => (
-  <div className={className}>
-    <svg viewBox="0 0 400 120" className="w-full h-auto fill-current">
-      <defs>
-        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stopColor="#4fb3f0" />
-          <stop offset="100%" stopColor="#f062a1" />
-        </linearGradient>
-      </defs>
-      <text x="20" y="90" fontFamily="Quicksand, sans-serif" fontSize="90" fontWeight="900" letterSpacing="-2">
-        <tspan fill="url(#logoGradient)">Trtkat</tspan>
-      </text>
-      <circle cx="360" cy="40" r="12" fill="#f062a1" className="animate-pulse" />
-    </svg>
-  </div>
-);
+const logoSrc = '/logo/logo%20trtkat.svg';
+const vibeImageSrc = '/images/IMG_3760.jpeg';
 
 export default function App() {
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -92,7 +78,7 @@ export default function App() {
           <div className="flex justify-between h-16 md:h-20 items-center">
             <div className="flex items-center gap-2">
               <div className="w-24 md:w-28">
-                <Logo />
+                <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
               </div>
             </div>
             <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-wider text-slate-400">
@@ -100,11 +86,11 @@ export default function App() {
               <a href="#data" className="hover:text-white transition-colors">Věda</a>
               <a href="#vibe" className="hover:text-white transition-colors">Etika</a>
               <button className="bg-trtkat-gradient text-white px-6 py-2.5 rounded-xl font-black hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95">
-                Chci se cítit líp
+                Otevřít aplikaci
               </button>
             </div>
             <button className="md:hidden bg-trtkat-gradient text-white px-3 py-2 rounded-xl font-black text-xs">
-              Stáhnout
+              Otevřít aplikaci
             </button>
           </div>
           <div className="md:hidden pb-3 flex items-center gap-4 overflow-x-auto text-xs font-bold uppercase tracking-wider text-slate-300">
@@ -141,12 +127,15 @@ export default function App() {
                 <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-10 md:mb-12 leading-relaxed font-medium max-w-2xl">
                   Průměrný člověk stráví na seznamkách 10 hodin týdně psaním zpráv, které nikam nevedou. 
                   Trtkat chat úplně zrušil. Když je tam shoda, jdete rovnou na věc. 
-                  Jednoduše, diskrétně a hned.
+                  Jednoduše, diskrétně, hned a zdarma.
+                </p>
+                <p className="text-sm sm:text-base text-trtkat-blue font-bold mb-6">
+                  Bez paywallu. Bez skrytých poplatků. Základní používání je zdarma pro každého.
                 </p>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6">
                   <button className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
                     <Download className="w-6 h-6 md:w-7 md:h-7" />
-                    Chci se cítit líp
+                    Otevřít aplikaci
                   </button>
                   <a href="#data" className="text-slate-400 hover:text-white font-bold text-base md:text-lg transition-colors flex items-center justify-center gap-2">
                     Ukaž mi data <ArrowRight className="w-5 h-5" />
@@ -238,6 +227,10 @@ export default function App() {
                     <div className="text-slate-300 font-bold text-lg">lidí potvrzuje, že sex jim okamžitě zlepší náladu</div>
                     <p className="text-slate-500 mt-2">Fyzický kontakt je biologická nutnost, ne luxus.</p>
                   </div>
+                  <div className="p-6 md:p-8 bg-trtkat-blue/10 rounded-3xl border border-trtkat-blue/30">
+                    <div className="text-2xl font-black text-trtkat-blue mb-2">Vše zdarma</div>
+                    <p className="text-slate-300 font-medium">Žádné předplatné pro základní používání. Otevřeš a používáš zdarma.</p>
+                  </div>
                 </div>
               </motion.div>
 
@@ -315,10 +308,9 @@ export default function App() {
               <div className="relative">
                 <div className="aspect-square rounded-[2rem] md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img 
-                    src="https://picsum.photos/seed/intimacy/800/800" 
+                    src={vibeImageSrc}
                     alt="Intimacy" 
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
-                    referrerPolicy="no-referrer"
                   />
                 </div>
                 <div className="mt-6 md:mt-0 md:absolute md:-bottom-10 md:-right-10 p-6 md:p-10 bg-slate-950 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl max-w-xs">
@@ -387,16 +379,16 @@ export default function App() {
               <p className="text-lg md:text-3xl text-slate-400 mb-10 md:mb-12 font-medium max-w-3xl mx-auto">
                 Tvoje tělo nečeká na schválení od společnosti. 
                 Přestaň hledat vztah tam, kde chceš jen uvolnění. 
-                Trtkat je zkratka, kterou jsi hledal/a.
+                Trtkat je zkratka, kterou jsi hledal/a. A začít můžeš zdarma.
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <button className="bg-white text-slate-950 px-8 md:px-14 py-4 md:py-7 rounded-2xl md:rounded-3xl font-black text-xl md:text-3xl hover:scale-[1.02] transition-all shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex items-center gap-3 md:gap-4">
                   <Download className="w-7 h-7 md:w-9 md:h-9" />
-                  Stáhnout teď
+                  Otevřít aplikaci
                 </button>
               </div>
               <p className="mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-xs md:text-sm">
-                Žádné závazky. Žádné lži. Jen ty.
+                Žádné závazky. Žádné lži. Jen ty. A všechno zdarma.
               </p>
             </motion.div>
           </div>
@@ -408,7 +400,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
             <div className="w-32">
-              <Logo />
+              <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
             </div>
             <div className="flex flex-wrap justify-center gap-5 md:gap-10 text-slate-400 font-bold uppercase tracking-wide md:tracking-widest text-xs md:text-sm">
               <a href="#" className="hover:text-white transition-colors">Podmínky</a>
