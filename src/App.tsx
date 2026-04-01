@@ -12,7 +12,6 @@ import {
   ArrowRight,
   MessageCircle,
   Lock,
-  Smartphone,
   Sparkles,
   Smile,
   Moon
@@ -597,18 +596,13 @@ export default function App() {
             <div className="w-32">
               <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
             </div>
-            <div className="flex flex-wrap justify-center gap-5 md:gap-10 text-slate-400 font-bold uppercase tracking-wide md:tracking-widest text-xs md:text-sm">
-              <a href="#" className="hover:text-white transition-colors">Podmínky</a>
-              <a href="#" className="hover:text-white transition-colors">Soukromí</a>
-              <a href="#" className="hover:text-white transition-colors">Kontakt</a>
-              <a href="#" className="hover:text-white transition-colors">Blog</a>
-            </div>
-            <div className="flex gap-6">
-              <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-slate-400 hover:text-white transition-colors cursor-pointer border border-white/5">
-                <Smartphone className="w-6 h-6" />
-              </div>
-              <div className="w-12 h-12 bg-white/5 rounded-2xl flex items-center justify-center text-slate-400 hover:text-white transition-colors cursor-pointer border border-white/5">
-                <MessageCircle className="w-6 h-6" />
+            <div className="text-center md:text-right">
+              <h4 className="text-white font-black uppercase tracking-[0.18em] text-xs mb-3">Nabídka</h4>
+              <div className="flex flex-wrap justify-center md:justify-end gap-5 md:gap-8 text-slate-400 font-bold uppercase tracking-wide text-xs md:text-sm">
+                <a href="#jak-to-funguje" className="hover:text-white transition-colors">Jak to funguje</a>
+                <a href="#data" className="hover:text-white transition-colors">Statistiky</a>
+                <a href="#vibe" className="hover:text-white transition-colors">Bezpečí</a>
+                <a href={appUrl} target="_blank" rel="noreferrer" className="hover:text-white transition-colors">Aplikace</a>
               </div>
             </div>
           </div>
