@@ -232,9 +232,14 @@ export default function App() {
                   <span className="text-gradient">Užij si noc.</span>
                 </h1>
                 <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-10 md:mb-12 leading-relaxed font-medium max-w-2xl">
+                  <span className="md:hidden">
+                    Ne každý teď chce vztah. Trtkat nabízí jasnou domluvu bez nekonečného chatu - diskrétně a zdarma.
+                  </span>
+                  <span className="hidden md:inline">
                   Ne každý teď chce vztah. A to je v pořádku.
                   Trtkat nabízí jasnou domluvu bez nekonečného chatu,
                   diskrétně, jednoduše a zdarma.
+                  </span>
                 </p>
                 <p className="text-sm sm:text-base text-trtkat-blue font-bold mb-6">
                   ÚPLNĚ ZDARMA
@@ -271,8 +276,11 @@ export default function App() {
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-trtkat-blue rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">1</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Match bez keců</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
+                  <span className="md:hidden">Padli jste si do oka? Jdete rovnou na další krok.</span>
+                  <span className="hidden md:inline">
                   Padli jste si do oka? Super. Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku.
                   Bez trapných otevíráků a bez zbytečného čekání.
+                  </span>
                 </p>
               </motion.div>
 
@@ -283,8 +291,11 @@ export default function App() {
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-trtkat-pink rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">2</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Místo na půl cesty</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
+                  <span className="md:hidden">Aplikace navrhne neutrální místo na půl cesty.</span>
+                  <span className="hidden md:inline">
                   Aplikace nabídne neutrální místo na půl cesty mezi vámi.
                   Rychlé, jednoduché a bez zbytečného domlouvání.
+                  </span>
                 </p>
               </motion.div>
 
@@ -295,8 +306,11 @@ export default function App() {
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">3</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Jasná očekávání</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
+                  <span className="md:hidden">Jasná pravidla a respekt k hranicím od začátku.</span>
+                  <span className="hidden md:inline">
                   Každý ví, proč tu je. Bez falešných slibů, bez matení signálů a bez hraní rolí.
                   Respekt k hranicím je základ.
+                  </span>
                 </p>
               </motion.div>
             </div>
@@ -309,12 +323,17 @@ export default function App() {
             <div className="mb-10 md:mb-14">
               <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight">Sexualita v Česku v číslech</h2>
               <p className="text-lg md:text-xl text-slate-400 max-w-4xl">
+                <span className="md:hidden">
+                  Interaktivní přehled českých dat o seznamování, vztazích, online sexualitě a bezpečí.
+                </span>
+                <span className="hidden md:inline">
                 Bez mýtů a bez moralizování. Interaktivní přehled vychází z českých reprezentativních dat a ukazuje,
                 jak se dnes lidé seznamují, co hledají online a kde jsou jejich hranice.
+                </span>
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-3 mb-8 md:mb-10">
+            <div className="hidden md:flex flex-wrap gap-3 mb-8 md:mb-10">
               {statCategories.map((category) => (
                 <button
                   key={category.key}
@@ -330,7 +349,35 @@ export default function App() {
               ))}
             </div>
 
-            <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+            <div className="md:hidden space-y-3 mb-8">
+              {statCategories.map((category) => (
+                <details key={category.key} className="bg-white/5 border border-white/10 rounded-2xl p-4">
+                  <summary className="cursor-pointer font-bold text-white">{category.label}</summary>
+                  <div className="mt-3 space-y-2">
+                    {category.stats.map((stat) => (
+                      <div key={`${category.key}-${stat.title}`} className="text-sm text-slate-300">
+                        <span className="text-trtkat-pink font-black mr-2">{stat.value}</span>
+                        {stat.title}
+                      </div>
+                    ))}
+                  </div>
+                </details>
+              ))}
+              <details className="bg-white/5 border border-white/10 rounded-2xl p-4">
+                <summary className="cursor-pointer font-bold text-white">Timeline / historický kontext</summary>
+                <div className="mt-3 space-y-3">
+                  {timelineData.map((item) => (
+                    <div key={`mobile-${item.label}`} className="text-sm text-slate-300">
+                      <div className="text-trtkat-blue font-bold">{item.period}</div>
+                      <div>{item.label}</div>
+                      <div className="text-slate-400">{item.value}</div>
+                    </div>
+                  ))}
+                </div>
+              </details>
+            </div>
+
+            <div className="hidden md:grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -406,8 +453,13 @@ export default function App() {
             <div className="text-center max-w-3xl mx-auto mb-14 md:mb-24">
               <h2 className="text-4xl md:text-7xl font-black text-white mb-6 md:mb-8">Ne každý teď chce vztah. <br /><span className="text-gradient">A to je v pořádku.</span></h2>
               <p className="text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
+                <span className="md:hidden">
+                  Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.
+                </span>
+                <span className="hidden md:inline">
                 Někdy nehledáš lásku na celý život. Někdy chceš jen jasnou shodu, chemii a večer bez zbytečných her.
                 Bez přetvářky, bez tlaku a s respektem k hranicím.
+                </span>
               </p>
             </div>
 
@@ -474,7 +526,10 @@ export default function App() {
                     </div>
                     <div>
                       <h4 className="text-lg md:text-xl font-black text-white mb-2">Soukromí bez zbytečného sdílení</h4>
-                      <p className="text-slate-400 font-medium">To, co řešíš v aplikaci, má zůstat soukromé. Minimum zbytečností, maximum kontroly nad tím, co sdílíš a s kým.</p>
+                      <p className="text-slate-400 font-medium">
+                        <span className="md:hidden">Co řešíš v appce, zůstává soukromé.</span>
+                        <span className="hidden md:inline">To, co řešíš v aplikaci, má zůstat soukromé. Minimum zbytečností, maximum kontroly nad tím, co sdílíš a s kým.</span>
+                      </p>
                     </div>
                   </div>
                   <div className="flex gap-4 md:gap-6">
@@ -483,7 +538,10 @@ export default function App() {
                     </div>
                     <div>
                       <h4 className="text-lg md:text-xl font-black text-white mb-2">Jasná pravidla od začátku</h4>
-                      <p className="text-slate-400 font-medium">Každý ví, proč tu je. Bez trapných her, bez vodění za nos a bez nejasných signálů.</p>
+                      <p className="text-slate-400 font-medium">
+                        <span className="md:hidden">Každý ví, proč tu je. Bez her a nejasných signálů.</span>
+                        <span className="hidden md:inline">Každý ví, proč tu je. Bez trapných her, bez vodění za nos a bez nejasných signálů.</span>
+                      </p>
                     </div>
                   </div>
                   <div className="flex gap-4 md:gap-6">
@@ -492,7 +550,10 @@ export default function App() {
                     </div>
                     <div>
                       <h4 className="text-lg md:text-xl font-black text-white mb-2">Respekt na prvním místě</h4>
-                      <p className="text-slate-400 font-medium">Nezávazně neznamená bez respektu. Naše komunita stojí na souhlasu a lidskosti.</p>
+                      <p className="text-slate-400 font-medium">
+                        <span className="md:hidden">Souhlas, slušnost a lidskost jsou základ.</span>
+                        <span className="hidden md:inline">Nezávazně neznamená bez respektu. Naše komunita stojí na souhlasu a lidskosti.</span>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -512,9 +573,14 @@ export default function App() {
             >
               <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-8 md:mb-10 leading-tight tracking-tighter">Méně řečí. Víc jasno.</h2>
               <p className="text-lg md:text-3xl text-slate-400 mb-10 md:mb-12 font-medium max-w-3xl mx-auto">
+                <span className="md:hidden">
+                  Když nehledáš vztah, nemusíš trávit večery chatem. Trtkat = jasná domluva a respekt. Zdarma.
+                </span>
+                <span className="hidden md:inline">
                 Když teď nehledáš vztah, nemusíš trávit večery nekonečným chatem.
                 Trtkat je pro dospělé 18+, kteří chtějí jasnou domluvu, respekt a minimum zbytečností.
                 Začít můžeš zdarma.
+                </span>
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <a href={appUrl} target="_blank" rel="noreferrer" className="bg-white text-slate-950 px-8 md:px-14 py-4 md:py-7 rounded-2xl md:rounded-3xl font-black text-xl md:text-3xl hover:scale-[1.02] transition-all shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex items-center gap-3 md:gap-4">
