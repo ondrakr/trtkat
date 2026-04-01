@@ -172,12 +172,6 @@ const vibeImageSrc = '/images/IMG_3760.jpeg';
 const appUrl = 'https://trtkat.marhla.workers.dev/';
 const sectionWrap = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
 const sectionY = 'py-16 md:py-24';
-const fastReveal = {
-  initial: { opacity: 0, y: 10 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.12 },
-  transition: { duration: 0.28, ease: 'easeOut' as const },
-};
 
 export default function App() {
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -216,13 +210,13 @@ export default function App() {
           </div>
         </div>
       </nav>
-      <main className="flex-grow">
+      <motion.main className="flex-grow" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.2, ease: 'easeOut' }}>
         {/* Hero Section */}
         <section className={`relative min-h-[80vh] md:min-h-[90vh] flex items-center ${sectionY} overflow-hidden`}>
           <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[340px] h-[340px] md:w-[600px] md:h-[600px] bg-trtkat-blue/20 rounded-full blur-[100px] md:blur-[140px] animate-pulse" />
           <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[340px] h-[340px] md:w-[600px] md:h-[600px] bg-trtkat-pink/20 rounded-full blur-[100px] md:blur-[140px] animate-pulse" />
           
-          <motion.div className={`${sectionWrap} relative`} {...fastReveal}>
+          <div className={`${sectionWrap} relative`}>
             <div className="max-w-4xl">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
@@ -263,12 +257,12 @@ export default function App() {
                 </div>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* How it works Section */}
         <section id="jak-to-funguje" className={`${sectionY} relative overflow-hidden bg-white/2`}>
-          <motion.div className={sectionWrap} {...fastReveal}>
+          <div className={sectionWrap}>
             <div className="text-center mb-12 md:mb-16">
               <h2 className="text-4xl md:text-7xl font-black text-white mb-4">Nejsme klasická seznamka.</h2>
               <p className="text-sm sm:text-base md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">Jsme zkratka k jasné domluvě.</p>
@@ -322,12 +316,12 @@ export default function App() {
                 </p>
               </motion.div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Data Section */}
         <section id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`} ref={statsRef}>
-          <motion.div className={sectionWrap} {...fastReveal}>
+          <div className={sectionWrap}>
             <div className="mb-10 md:mb-12">
               <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 leading-tight">Sexualita v Česku v číslech</h2>
               <p className="text-lg md:text-xl text-slate-400 max-w-4xl">
@@ -386,12 +380,7 @@ export default function App() {
             </div>
 
             <div className="hidden md:grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.12 }}
-                transition={{ duration: 0.28, ease: 'easeOut' }}
-              >
+              <div>
                 <h3 className="text-2xl md:text-4xl font-black text-white mb-3">{currentStats.title}</h3>
                 <p className="text-slate-400 mb-6">
                   Klikáním mezi kategoriemi porovnáš čísla v kontextu současné české reality.
@@ -406,7 +395,7 @@ export default function App() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
               <div className="relative">
                 <div className="absolute inset-0 bg-trtkat-blue/10 blur-[100px] -z-10" />
@@ -453,12 +442,12 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Benefits Section */}
         <section id="benefity" className={`${sectionY} relative overflow-hidden`}>
-          <motion.div className={sectionWrap} {...fastReveal}>
+          <div className={sectionWrap}>
             <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
               <h2 className="text-4xl md:text-7xl font-black text-white mb-6">Ne každý teď chce vztah. <br /><span className="text-gradient">A to je v pořádku.</span></h2>
               <p className="text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
@@ -474,12 +463,8 @@ export default function App() {
 
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {mentalHealthBenefits.map((benefit, idx) => (
-                <motion.div
+                <div
                   key={idx}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: idx * 0.1 }}
-                  viewport={{ once: true }}
                   className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
                 >
                   <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${benefit.color}`}>
@@ -497,15 +482,15 @@ export default function App() {
                       ? 'Nikdo si nemusí na nic hrát. Všichni vědí, na čem jsou.'
                       : 'Minimum chaosu, minimum očekávání, maximum srozumitelnosti.'}
                   </p>
-                </motion.div>
+                </div>
               ))}
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Vibe Section */}
         <section id="vibe" className={`${sectionY} bg-trtkat-gradient/5`}>
-          <motion.div className={sectionWrap} {...fastReveal}>
+          <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="relative">
                 <div className="aspect-square rounded-[2rem] md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
@@ -568,18 +553,17 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </div>
         </section>
 
         {/* Final CTA */}
         <section className={`${sectionY} relative overflow-hidden`}>
           <div className="absolute inset-0 bg-trtkat-gradient opacity-10 blur-[100px] -z-10" />
-          <motion.div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" {...fastReveal}>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true, amount: 0.12 }}
-              transition={{ duration: 0.28, ease: 'easeOut' }}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
             >
               <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-6 md:mb-8 leading-tight tracking-tighter">Méně řečí. Víc jasno.</h2>
               <p className="text-lg md:text-3xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
@@ -602,9 +586,9 @@ export default function App() {
                 Bez paywallu. Bez přetvářky. Jen jasno.
               </p>
             </motion.div>
-          </motion.div>
+          </div>
         </section>
-      </main>
+      </motion.main>
 
       {/* Footer */}
       <footer className="bg-slate-950 border-t border-white/5 py-16 md:py-20">
