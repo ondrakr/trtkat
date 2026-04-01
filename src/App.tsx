@@ -66,6 +66,7 @@ const mentalHealthBenefits = [
 
 const logoSrc = '/logo/logo%20trtkat.svg';
 const vibeImageSrc = '/images/IMG_3760.jpeg';
+const appUrl = 'https://trtkat.marhla.workers.dev/';
 
 export default function App() {
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -85,13 +86,13 @@ export default function App() {
               <a href="#jak-to-funguje" className="hover:text-white transition-colors">Funkce</a>
               <a href="#data" className="hover:text-white transition-colors">Věda</a>
               <a href="#vibe" className="hover:text-white transition-colors">Etika</a>
-              <button className="bg-trtkat-gradient text-white px-6 py-2.5 rounded-xl font-black hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95">
+              <a href={appUrl} target="_blank" rel="noreferrer" className="bg-trtkat-gradient text-white px-6 py-2.5 rounded-xl font-black hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95">
                 Otevřít aplikaci
-              </button>
+              </a>
             </div>
-            <button className="md:hidden bg-trtkat-gradient text-white px-3 py-2 rounded-xl font-black text-xs">
+            <a href={appUrl} target="_blank" rel="noreferrer" className="md:hidden bg-trtkat-gradient text-white px-3 py-2 rounded-xl font-black text-xs">
               Otevřít aplikaci
-            </button>
+            </a>
           </div>
           <div className="md:hidden pb-3 flex items-center gap-4 overflow-x-auto text-xs font-bold uppercase tracking-wider text-slate-300">
             <a href="#jak-to-funguje" className="whitespace-nowrap">Funkce</a>
@@ -133,10 +134,10 @@ export default function App() {
                   Bez paywallu. Bez skrytých poplatků. Základní používání je zdarma pro každého.
                 </p>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6">
-                  <button className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
+                  <a href={appUrl} target="_blank" rel="noreferrer" className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
                     <Download className="w-6 h-6 md:w-7 md:h-7" />
                     Otevřít aplikaci
-                  </button>
+                  </a>
                   <a href="#data" className="text-slate-400 hover:text-white font-bold text-base md:text-lg transition-colors flex items-center justify-center gap-2">
                     Ukaž mi data <ArrowRight className="w-5 h-5" />
                   </a>
@@ -382,10 +383,10 @@ export default function App() {
                 Trtkat je zkratka, kterou jsi hledal/a. A začít můžeš zdarma.
               </p>
               <div className="flex flex-wrap justify-center gap-6">
-                <button className="bg-white text-slate-950 px-8 md:px-14 py-4 md:py-7 rounded-2xl md:rounded-3xl font-black text-xl md:text-3xl hover:scale-[1.02] transition-all shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex items-center gap-3 md:gap-4">
+                <a href={appUrl} target="_blank" rel="noreferrer" className="bg-white text-slate-950 px-8 md:px-14 py-4 md:py-7 rounded-2xl md:rounded-3xl font-black text-xl md:text-3xl hover:scale-[1.02] transition-all shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex items-center gap-3 md:gap-4">
                   <Download className="w-7 h-7 md:w-9 md:h-9" />
                   Otevřít aplikaci
-                </button>
+                </a>
               </div>
               <p className="mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-xs md:text-sm">
                 Žádné závazky. Žádné lži. Jen ty. A všechno zdarma.
