@@ -7,7 +7,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   ShieldCheck, 
-  Download, 
+  Play, 
   Zap,
   ArrowRight,
   MessageCircle,
@@ -29,10 +29,55 @@ import {
 } from 'recharts';
 import { useInView } from 'react-intersection-observer';
 
-const onlineByAgeData = [
-  { age: '18-25', online: 20.7 },
-  { age: '66-75', online: 4.9 },
-];
+const categoryChartData: Record<
+  string,
+  {
+    title: string;
+    subtitle: string;
+    suffix: string;
+    data: { label: string; value: number }[];
+  }
+> = {
+  seznamovani: {
+    title: 'Podíl online seznámení podle věku',
+    subtitle: 'U mladých dospělých je online seznamování výrazně běžnější.',
+    suffix: '%',
+    data: [
+      { label: '18-25', value: 20.7 },
+      { label: '66-75', value: 4.9 },
+    ],
+  },
+  vztahy: {
+    title: 'Struktura dlouhodobých vztahů',
+    subtitle: 'Většina dospělých žije ve vztahu, ale část zadaných má i sexuální vztah navíc.',
+    suffix: '%',
+    data: [
+      { label: 'Vztah', value: 73.7 },
+      { label: 'Bez vztahu', value: 25.6 },
+      { label: 'I sex. vztah', value: 26.7 },
+    ],
+  },
+  online: {
+    title: 'Online sexualita v číslech',
+    subtitle: 'Digitální intimita je běžná součást života napříč věkem.',
+    suffix: '%',
+    data: [
+      { label: 'Sled. porno', value: 78.5 },
+      { label: 'Riziko', value: 3.1 },
+      { label: 'Nude poslalo', value: 16.0 },
+    ],
+  },
+  bezpeci: {
+    title: 'Bezpečí a nátlak',
+    subtitle: 'Data potvrzují, že bezpečnostní pravidla musí být core feature.',
+    suffix: '%',
+    data: [
+      { label: 'Donucení ženy', value: 16.8 },
+      { label: 'Nevyž. kontakt', value: 29.9 },
+      { label: 'Nahlášení', value: 6.1 },
+    ],
+  },
+};
 
 const timelineData = [
   { period: '1993 -> 2008', label: 'Pokles počtu partnerů za 12 měsíců', value: 'Muži 1,73 -> 1,28 | Ženy 1,51 -> 0,99' },
@@ -130,6 +175,7 @@ export default function App() {
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
   const [activeStatCategory, setActiveStatCategory] = useState(statCategories[0].key);
   const currentStats = statCategories.find((item) => item.key === activeStatCategory) ?? statCategories[0];
+  const currentChart = categoryChartData[activeStatCategory] ?? categoryChartData.seznamovani;
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
@@ -178,28 +224,28 @@ export default function App() {
                 <div className="flex items-center gap-3 mb-6 md:mb-8">
                   <span className="h-px w-12 bg-trtkat-pink" />
                   <span className="text-trtkat-pink text-[11px] sm:text-sm font-black uppercase tracking-[0.18em] sm:tracking-[0.3em]">
-                    Pro dospělé 18+
+                    Pro studenty
                   </span>
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 md:mb-8 leading-[0.9] md:leading-[0.85]">
-                  Když víš, co chceš, <br />
-                  <span className="text-gradient">nemusíš kolem toho hrát hry.</span>
+                  Ušetři čas. <br />
+                  <span className="text-gradient">Užij si noc.</span>
                 </h1>
                 <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-10 md:mb-12 leading-relaxed font-medium max-w-2xl">
-                  Na Trtkatu nehledáš vztah ani netrávíš večery nekonečným vypisováním.
-                  Jen jasnou shodu, diskrétní domluvu a minimum zbytečností.
-                  Pro dospělé 18+, kteří chtějí mít jasno.
+                  Ne každý teď chce vztah. A to je v pořádku.
+                  Trtkat nabízí jasnou domluvu bez nekonečného chatu,
+                  diskrétně, jednoduše a zdarma.
                 </p>
                 <p className="text-sm sm:text-base text-trtkat-blue font-bold mb-6">
-                  Bez paywallu. Bez skrytých poplatků. Základní používání je zdarma pro každého.
+                  ÚPLNĚ ZDARMA
                 </p>
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6">
                   <a href={appUrl} target="_blank" rel="noreferrer" className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
-                    <Download className="w-6 h-6 md:w-7 md:h-7" />
+                    <Play className="w-6 h-6 md:w-7 md:h-7" />
                     Vyzkoušet zdarma
                   </a>
                   <a href="#data" className="text-slate-400 hover:text-white font-bold text-base md:text-lg transition-colors flex items-center justify-center gap-2">
-                    Zobrazit česká data <ArrowRight className="w-5 h-5" />
+                    Zajímají mě statistiky <ArrowRight className="w-5 h-5" />
                   </a>
                 </div>
               </motion.div>
@@ -311,29 +357,29 @@ export default function App() {
                 <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl mb-6">
                   <h3 className="text-base sm:text-xl font-black text-white mb-6 flex items-center gap-3">
                     <BarChart className="w-6 h-6 text-trtkat-blue" />
-                    Podíl online seznámení podle věku
+                    {currentChart.title}
                   </h3>
                   <div className="h-[250px] md:h-[300px]">
                     <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={onlineByAgeData}>
+                      <BarChart data={currentChart.data}>
                         <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                        <XAxis dataKey="age" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontWeight: 'bold' }} />
+                        <XAxis dataKey="label" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontWeight: 'bold' }} />
                         <YAxis hide />
                         <Tooltip
-                          formatter={(value: number) => [`${value} %`, 'Online seznámení']}
+                          formatter={(value: number) => [`${value} ${currentChart.suffix}`, 'Hodnota']}
                           cursor={{ fill: 'rgba(255,255,255,0.05)' }}
                           contentStyle={{ backgroundColor: '#020617', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}
                         />
-                        <Bar dataKey="online" radius={[10, 10, 0, 0]} barSize={56}>
-                          {onlineByAgeData.map((entry, index) => (
-                            <Cell key={`${entry.age}-${index}`} fill={index === 0 ? '#f062a1' : '#4fb3f0'} />
+                        <Bar dataKey="value" radius={[10, 10, 0, 0]} barSize={56}>
+                          {currentChart.data.map((entry, index) => (
+                            <Cell key={`${entry.label}-${index}`} fill={index % 2 === 0 ? '#f062a1' : '#4fb3f0'} />
                           ))}
                         </Bar>
                       </BarChart>
                     </ResponsiveContainer>
                   </div>
                   <p className="text-center text-slate-500 text-sm font-bold mt-4 italic">
-                    U mladých dospělých je online seznamování výrazně běžnější.
+                    {currentChart.subtitle}
                   </p>
                 </div>
 
@@ -472,7 +518,7 @@ export default function App() {
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <a href={appUrl} target="_blank" rel="noreferrer" className="bg-white text-slate-950 px-8 md:px-14 py-4 md:py-7 rounded-2xl md:rounded-3xl font-black text-xl md:text-3xl hover:scale-[1.02] transition-all shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex items-center gap-3 md:gap-4">
-                  <Download className="w-7 h-7 md:w-9 md:h-9" />
+                  <Play className="w-7 h-7 md:w-9 md:h-9" />
                   Vyzkoušet zdarma
                 </a>
               </div>
