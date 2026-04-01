@@ -170,6 +170,14 @@ const mentalHealthBenefits = [
 const logoSrc = '/logo/logo%20trtkat.svg';
 const vibeImageSrc = '/images/IMG_3760.jpeg';
 const appUrl = 'https://trtkat.marhla.workers.dev/';
+const sectionWrap = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
+const sectionY = 'py-16 md:py-24';
+const fastReveal = {
+  initial: { opacity: 0, y: 10 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.12 },
+  transition: { duration: 0.28, ease: 'easeOut' as const },
+};
 
 export default function App() {
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -181,7 +189,7 @@ export default function App() {
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
       {/* Navigation */}
       <nav className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className={sectionWrap}>
           <div className="flex justify-between h-16 md:h-20 items-center">
             <div className="flex items-center gap-2">
               <div className="w-24 md:w-28">
@@ -210,28 +218,28 @@ export default function App() {
       </nav>
       <main className="flex-grow">
         {/* Hero Section */}
-        <section className="relative min-h-[80vh] md:min-h-[90vh] flex items-center py-16 md:py-24 overflow-hidden">
+        <section className={`relative min-h-[80vh] md:min-h-[90vh] flex items-center ${sectionY} overflow-hidden`}>
           <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[340px] h-[340px] md:w-[600px] md:h-[600px] bg-trtkat-blue/20 rounded-full blur-[100px] md:blur-[140px] animate-pulse" />
           <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[340px] h-[340px] md:w-[600px] md:h-[600px] bg-trtkat-pink/20 rounded-full blur-[100px] md:blur-[140px] animate-pulse" />
           
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <motion.div className={`${sectionWrap} relative`} {...fastReveal}>
             <div className="max-w-4xl">
               <motion.div
-                initial={{ opacity: 0, x: -50 }}
+                initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 1, ease: "easeOut" }}
+                transition={{ duration: 0.25, ease: "easeOut" }}
               >
-                <div className="flex items-center gap-3 mb-6 md:mb-8">
+                <div className="flex items-center gap-3 mb-6">
                   <span className="h-px w-12 bg-trtkat-pink" />
                   <span className="text-trtkat-pink text-[11px] sm:text-sm font-black uppercase tracking-[0.18em] sm:tracking-[0.3em]">
                     Pro studenty
                   </span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 md:mb-8 leading-[0.9] md:leading-[0.85]">
+                <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 leading-[0.9] md:leading-[0.85]">
                   Ušetři čas. <br />
                   <span className="text-gradient">Užij si noc.</span>
                 </h1>
-                <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-10 md:mb-12 leading-relaxed font-medium max-w-2xl">
+                <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-8 leading-relaxed font-medium max-w-2xl">
                   <span className="md:hidden">
                     Ne každý teď chce vztah. Trtkat nabízí jasnou domluvu bez nekonečného chatu - diskrétně a zdarma.
                   </span>
@@ -244,7 +252,7 @@ export default function App() {
                 <p className="text-sm sm:text-base text-trtkat-blue font-bold mb-6">
                   ÚPLNĚ ZDARMA
                 </p>
-                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6">
+                <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
                   <a href={appUrl} target="_blank" rel="noreferrer" className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
                     <Play className="w-6 h-6 md:w-7 md:h-7" />
                     Vyzkoušet zdarma
@@ -255,23 +263,23 @@ export default function App() {
                 </div>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* How it works Section */}
-        <section id="jak-to-funguje" className="py-20 md:py-32 relative overflow-hidden bg-white/2">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center mb-14 md:mb-24">
-              <h2 className="text-4xl md:text-7xl font-black text-white mb-4 md:mb-6">Nejsme klasická seznamka.</h2>
+        <section id="jak-to-funguje" className={`${sectionY} relative overflow-hidden bg-white/2`}>
+          <motion.div className={sectionWrap} {...fastReveal}>
+            <div className="text-center mb-12 md:mb-16">
+              <h2 className="text-4xl md:text-7xl font-black text-white mb-4">Nejsme klasická seznamka.</h2>
               <p className="text-sm sm:text-base md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">Jsme zkratka k jasné domluvě.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
+            <div className="grid md:grid-cols-3 gap-6 md:gap-8 relative">
               <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 -z-10" />
               
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="p-7 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-slate-900/50 border border-white/5 relative"
+                className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative"
               >
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-trtkat-blue rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">1</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Match bez keců</h3>
@@ -286,7 +294,7 @@ export default function App() {
 
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="p-7 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-slate-900/50 border border-white/5 relative"
+                className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative"
               >
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-trtkat-pink rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">2</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Místo na půl cesty</h3>
@@ -301,7 +309,7 @@ export default function App() {
 
               <motion.div 
                 whileHover={{ scale: 1.02 }}
-                className="p-7 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-slate-900/50 border border-white/5 relative"
+                className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative"
               >
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">3</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Jasná očekávání</h3>
@@ -314,14 +322,14 @@ export default function App() {
                 </p>
               </motion.div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Data Section */}
-        <section id="data" className="py-20 md:py-32 bg-slate-900/30 border-y border-white/5" ref={statsRef}>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="mb-10 md:mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight">Sexualita v Česku v číslech</h2>
+        <section id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`} ref={statsRef}>
+          <motion.div className={sectionWrap} {...fastReveal}>
+            <div className="mb-10 md:mb-12">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 leading-tight">Sexualita v Česku v číslech</h2>
               <p className="text-lg md:text-xl text-slate-400 max-w-4xl">
                 <span className="md:hidden">
                   Interaktivní přehled českých dat o seznamování, vztazích, online sexualitě a bezpečí.
@@ -333,7 +341,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="hidden md:flex flex-wrap gap-3 mb-8 md:mb-10">
+            <div className="hidden md:flex flex-wrap gap-3 mb-8">
               {statCategories.map((category) => (
                 <button
                   key={category.key}
@@ -377,14 +385,15 @@ export default function App() {
               </details>
             </div>
 
-            <div className="hidden md:grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
+            <div className="hidden md:grid lg:grid-cols-2 gap-8 md:gap-12 items-start">
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
+                viewport={{ once: true, amount: 0.12 }}
+                transition={{ duration: 0.28, ease: 'easeOut' }}
               >
                 <h3 className="text-2xl md:text-4xl font-black text-white mb-3">{currentStats.title}</h3>
-                <p className="text-slate-400 mb-6 md:mb-8">
+                <p className="text-slate-400 mb-6">
                   Klikáním mezi kategoriemi porovnáš čísla v kontextu současné české reality.
                 </p>
 
@@ -444,14 +453,14 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Benefits Section */}
-        <section id="benefity" className="py-20 md:py-32 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-14 md:mb-24">
-              <h2 className="text-4xl md:text-7xl font-black text-white mb-6 md:mb-8">Ne každý teď chce vztah. <br /><span className="text-gradient">A to je v pořádku.</span></h2>
+        <section id="benefity" className={`${sectionY} relative overflow-hidden`}>
+          <motion.div className={sectionWrap} {...fastReveal}>
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
+              <h2 className="text-4xl md:text-7xl font-black text-white mb-6">Ne každý teď chce vztah. <br /><span className="text-gradient">A to je v pořádku.</span></h2>
               <p className="text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
                 <span className="md:hidden">
                   Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.
@@ -463,7 +472,7 @@ export default function App() {
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
               {mentalHealthBenefits.map((benefit, idx) => (
                 <motion.div
                   key={idx}
@@ -471,7 +480,7 @@ export default function App() {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ delay: idx * 0.1 }}
                   viewport={{ once: true }}
-                  className="p-7 md:p-10 rounded-[2rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
+                  className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
                 >
                   <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${benefit.color}`}>
                     <benefit.icon className="w-8 h-8" />
@@ -491,13 +500,13 @@ export default function App() {
                 </motion.div>
               ))}
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Vibe Section */}
-        <section id="vibe" className="py-20 md:py-32 bg-trtkat-gradient/5">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-10 md:gap-20 items-center">
+        <section id="vibe" className={`${sectionY} bg-trtkat-gradient/5`}>
+          <motion.div className={sectionWrap} {...fastReveal}>
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="relative">
                 <div className="aspect-square rounded-[2rem] md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img 
@@ -506,7 +515,7 @@ export default function App() {
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
-                <div className="mt-6 md:mt-0 md:absolute md:-bottom-10 md:-right-10 p-6 md:p-10 bg-slate-950 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl max-w-xs">
+                <div className="mt-6 md:mt-0 md:absolute md:-bottom-8 md:-right-8 p-6 md:p-8 bg-slate-950 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 shadow-2xl max-w-xs">
                   <p className="text-lg font-black text-white italic">
                     "Kvůli škole a práci nemám kapacitu na vztah. Tady aspoň nikdo nic nepředstírá a všichni vědí, na čem jsou."
                   </p>
@@ -518,8 +527,8 @@ export default function App() {
               </div>
 
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 md:mb-8 leading-tight">Důvěra a bezpečí</h2>
-                <div className="space-y-8 md:space-y-10">
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 leading-tight">Důvěra a bezpečí</h2>
+                <div className="space-y-6 md:space-y-8">
                   <div className="flex gap-4 md:gap-6">
                     <div className="flex-shrink-0 w-12 h-12 bg-trtkat-blue/20 rounded-xl flex items-center justify-center text-trtkat-blue">
                       <Lock className="w-6 h-6" />
@@ -559,20 +568,21 @@ export default function App() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         {/* Final CTA */}
-        <section className="py-20 md:py-32 relative overflow-hidden">
+        <section className={`${sectionY} relative overflow-hidden`}>
           <div className="absolute inset-0 bg-trtkat-gradient opacity-10 blur-[100px] -z-10" />
-          <div className="max-w-5xl mx-auto px-4 text-center">
+          <motion.div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center" {...fastReveal}>
             <motion.div
               initial={{ scale: 0.9, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
-              viewport={{ once: true }}
+              viewport={{ once: true, amount: 0.12 }}
+              transition={{ duration: 0.28, ease: 'easeOut' }}
             >
-              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-8 md:mb-10 leading-tight tracking-tighter">Méně řečí. Víc jasno.</h2>
-              <p className="text-lg md:text-3xl text-slate-400 mb-10 md:mb-12 font-medium max-w-3xl mx-auto">
+              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-6 md:mb-8 leading-tight tracking-tighter">Méně řečí. Víc jasno.</h2>
+              <p className="text-lg md:text-3xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
                 <span className="md:hidden">
                   Když nehledáš vztah, nemusíš trávit večery chatem. Trtkat = jasná domluva a respekt. Zdarma.
                 </span>
@@ -592,13 +602,13 @@ export default function App() {
                 Bez paywallu. Bez přetvářky. Jen jasno.
               </p>
             </motion.div>
-          </div>
+          </motion.div>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-950 border-t border-white/5 py-14 md:py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="bg-slate-950 border-t border-white/5 py-16 md:py-20">
+        <div className={sectionWrap}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
             <div className="w-32">
               <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
