@@ -147,11 +147,11 @@ export default function App() {
               <a href="#data" className="hover:text-white transition-colors">Věda</a>
               <a href="#vibe" className="hover:text-white transition-colors">Etika</a>
               <a href={appUrl} target="_blank" rel="noreferrer" className="bg-trtkat-gradient text-white px-6 py-2.5 rounded-xl font-black hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95">
-                Otevřít aplikaci
+                Vyzkoušet zdarma
               </a>
             </div>
             <a href={appUrl} target="_blank" rel="noreferrer" className="md:hidden bg-trtkat-gradient text-white px-3 py-2 rounded-xl font-black text-xs">
-              Otevřít aplikaci
+              Vyzkoušet zdarma
             </a>
           </div>
           <div className="md:hidden pb-3 flex items-center gap-4 overflow-x-auto text-xs font-bold uppercase tracking-wider text-slate-300">
@@ -178,17 +178,17 @@ export default function App() {
                 <div className="flex items-center gap-3 mb-6 md:mb-8">
                   <span className="h-px w-12 bg-trtkat-pink" />
                   <span className="text-trtkat-pink text-[11px] sm:text-sm font-black uppercase tracking-[0.18em] sm:tracking-[0.3em]">
-                    Je čas přestat se omlouvat
+                    Pro dospělé 18+
                   </span>
                 </div>
                 <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 md:mb-8 leading-[0.9] md:leading-[0.85]">
-                  Ušetři čas. <br />
-                  <span className="text-gradient">Užij si noc.</span>
+                  Když víš, co chceš, <br />
+                  <span className="text-gradient">nemusíš kolem toho hrát hry.</span>
                 </h1>
                 <p className="text-lg sm:text-xl md:text-3xl text-slate-300 mb-10 md:mb-12 leading-relaxed font-medium max-w-2xl">
-                  Průměrný člověk stráví na seznamkách 10 hodin týdně psaním zpráv, které nikam nevedou. 
-                  Trtkat chat úplně zrušil. Když je tam shoda, jdete rovnou na věc. 
-                  Jednoduše, diskrétně, hned a zdarma.
+                  Na Trtkatu nehledáš vztah ani netrávíš večery nekonečným vypisováním.
+                  Jen jasnou shodu, diskrétní domluvu a minimum zbytečností.
+                  Pro dospělé 18+, kteří chtějí mít jasno.
                 </p>
                 <p className="text-sm sm:text-base text-trtkat-blue font-bold mb-6">
                   Bez paywallu. Bez skrytých poplatků. Základní používání je zdarma pro každého.
@@ -196,10 +196,10 @@ export default function App() {
                 <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 md:gap-6">
                   <a href={appUrl} target="_blank" rel="noreferrer" className="w-full sm:w-auto bg-trtkat-gradient text-white px-8 md:px-12 py-4 md:py-6 rounded-2xl font-black text-lg md:text-2xl shadow-[0_20px_50px_rgba(240,98,161,0.3)] hover:scale-[1.02] transition-all flex items-center justify-center gap-3 md:gap-4">
                     <Download className="w-6 h-6 md:w-7 md:h-7" />
-                    Otevřít aplikaci
+                    Vyzkoušet zdarma
                   </a>
                   <a href="#data" className="text-slate-400 hover:text-white font-bold text-base md:text-lg transition-colors flex items-center justify-center gap-2">
-                    Ukaž mi data <ArrowRight className="w-5 h-5" />
+                    Zobrazit česká data <ArrowRight className="w-5 h-5" />
                   </a>
                 </div>
               </motion.div>
@@ -211,8 +211,8 @@ export default function App() {
         <section id="jak-to-funguje" className="py-20 md:py-32 relative overflow-hidden bg-white/2">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-14 md:mb-24">
-              <h2 className="text-4xl md:text-7xl font-black text-white mb-4 md:mb-6">Nejsme seznamka.</h2>
-              <p className="text-sm sm:text-base md:text-xl text-slate-400 font-medium tracking-[0.18em] uppercase">Jsme nástroj pro tvoje potřeby.</p>
+              <h2 className="text-4xl md:text-7xl font-black text-white mb-4 md:mb-6">Nejsme klasická seznamka.</h2>
+              <p className="text-sm sm:text-base md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">Jsme zkratka k jasné domluvě.</p>
             </div>
 
             <div className="grid md:grid-cols-3 gap-8 md:gap-12 relative">
@@ -225,8 +225,8 @@ export default function App() {
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-trtkat-blue rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">1</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Match bez keců</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
-                  Líbíte se si? Skvělé. Zapomeň na chatování. V Trtkat neexistují zprávy. 
-                  Když je tam shoda, jde se rovnou do akce.
+                  Padli jste si do oka? Super. Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku.
+                  Bez trapných otevíráků a bez zbytečného čekání.
                 </p>
               </motion.div>
 
@@ -237,8 +237,8 @@ export default function App() {
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-trtkat-pink rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">2</div>
                 <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Místo na půl cesty</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
-                  Algoritmus okamžitě najde ideální místo k setkání přesně uprostřed mezi vámi. 
-                  Žádné dohadování, žádné komplikace.
+                  Aplikace nabídne neutrální místo na půl cesty mezi vámi.
+                  Rychlé, jednoduché a bez zbytečného domlouvání.
                 </p>
               </motion.div>
 
@@ -247,10 +247,10 @@ export default function App() {
                 className="p-7 md:p-10 rounded-[2rem] md:rounded-[3rem] bg-slate-900/50 border border-white/5 relative"
               >
                 <div className="absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 bg-white rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl">3</div>
-                <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Čistá hlava</h3>
+                <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">Jasná očekávání</h3>
                 <p className="text-slate-400 font-medium leading-relaxed">
-                  Potkáte se, užijete si to a jdete domů. Žádné falešné sliby, 
-                  žádné emocionální břemeno. Jen čistá biologie.
+                  Každý ví, proč tu je. Bez falešných slibů, bez matení signálů a bez hraní rolí.
+                  Respekt k hranicím je základ.
                 </p>
               </motion.div>
             </div>
@@ -261,12 +261,10 @@ export default function App() {
         <section id="data" className="py-20 md:py-32 bg-slate-900/30 border-y border-white/5" ref={statsRef}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-10 md:mb-14">
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight">
-                Data o sexualitě v Česku <span className="text-trtkat-blue">přehledně a bez omáčky.</span>
-              </h2>
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight">Sexualita v Česku v číslech</h2>
               <p className="text-lg md:text-xl text-slate-400 max-w-4xl">
-                Interaktivní přehled vychází z českých reprezentativních dat. Vyber si oblast a projdi nejdůležitější čísla
-                pro seznamování, vztahy, online sexualitu i bezpečí.
+                Bez mýtů a bez moralizování. Interaktivní přehled vychází z českých reprezentativních dat a ukazuje,
+                jak se dnes lidé seznamují, co hledají online a kde jsou jejich hranice.
               </p>
             </div>
 
@@ -340,7 +338,7 @@ export default function App() {
                 </div>
 
                 <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] border border-white/10 shadow-2xl">
-                  <h3 className="text-base sm:text-xl font-black text-white mb-5">Historický kontext (timeline)</h3>
+                  <h3 className="text-base sm:text-xl font-black text-white mb-5">Jak se sexualita v Česku proměňuje</h3>
                   <div className="space-y-4">
                     {timelineData.map((item) => (
                       <div key={item.label} className="p-4 rounded-xl bg-white/5 border border-white/10">
@@ -360,11 +358,10 @@ export default function App() {
         <section id="benefity" className="py-20 md:py-32 relative overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center max-w-3xl mx-auto mb-14 md:mb-24">
-              <h2 className="text-4xl md:text-7xl font-black text-white mb-6 md:mb-8">Sex je terapie. <br /><span className="text-gradient">Doslova.</span></h2>
+              <h2 className="text-4xl md:text-7xl font-black text-white mb-6 md:mb-8">Ne každý teď chce vztah. <br /><span className="text-gradient">A to je v pořádku.</span></h2>
               <p className="text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
-                Nezávazný sex není "špatný". Je to způsob, jak se postarat o své duševní zdraví, 
-                když zrovna nemáš čas nebo energii na budování vztahu. 
-                Tvoje tělo ti poděkuje.
+                Někdy nehledáš lásku na celý život. Někdy chceš jen jasnou shodu, chemii a večer bez zbytečných her.
+                Bez přetvářky, bez tlaku a s respektem k hranicím.
               </p>
             </div>
 
@@ -381,9 +378,17 @@ export default function App() {
                   <div className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${benefit.color}`}>
                     <benefit.icon className="w-8 h-8" />
                   </div>
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-4">{benefit.title}</h3>
+                  <h3 className="text-xl md:text-2xl font-black text-white mb-4">
+                    {idx === 0 ? 'Bez her' : idx === 1 ? 'Bez tlaku' : idx === 2 ? 'Bez přetvářky' : 'Bez zbytečných očekávání'}
+                  </h3>
                   <p className="text-slate-400 font-medium leading-relaxed">
-                    {benefit.desc}
+                    {idx === 0
+                      ? 'Jasná domluva místo dlouhého balancování mezi signály.'
+                      : idx === 1
+                      ? 'Všechno stojí na dobrovolnosti, souhlasu a respektu.'
+                      : idx === 2
+                      ? 'Nikdo si nemusí na nic hrát. Všichni vědí, na čem jsou.'
+                      : 'Minimum chaosu, minimum očekávání, maximum srozumitelnosti.'}
                   </p>
                 </motion.div>
               ))}
@@ -405,7 +410,7 @@ export default function App() {
                 </div>
                 <div className="mt-6 md:mt-0 md:absolute md:-bottom-10 md:-right-10 p-6 md:p-10 bg-slate-950 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl max-w-xs">
                   <p className="text-lg font-black text-white italic">
-                    "Kvůli práci nemám čas na vztahy, ale chci být zdravý. Trtkat mi dává přesně to, co potřebuju, bez zbytečných her."
+                    "Kvůli škole a práci nemám kapacitu na vztah. Tady aspoň nikdo nic nepředstírá a všichni vědí, na čem jsou."
                   </p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-trtkat-pink" />
@@ -415,18 +420,15 @@ export default function App() {
               </div>
 
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 md:mb-8 leading-tight">
-                  Žádné hry. <br />
-                  <span className="text-trtkat-pink">Jen biologie.</span>
-                </h2>
+                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 md:mb-8 leading-tight">Důvěra a bezpečí</h2>
                 <div className="space-y-8 md:space-y-10">
                   <div className="flex gap-4 md:gap-6">
                     <div className="flex-shrink-0 w-12 h-12 bg-trtkat-blue/20 rounded-xl flex items-center justify-center text-trtkat-blue">
                       <Lock className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="text-lg md:text-xl font-black text-white mb-2">Naprostá diskrétnost</h4>
-                      <p className="text-slate-400 font-medium">Žádné propojování s FB, žádné sledování. Jen ty a tvé touhy. Co se stane v aplikaci, zůstane tam.</p>
+                      <h4 className="text-lg md:text-xl font-black text-white mb-2">Soukromí bez zbytečného sdílení</h4>
+                      <p className="text-slate-400 font-medium">To, co řešíš v aplikaci, má zůstat soukromé. Minimum zbytečností, maximum kontroly nad tím, co sdílíš a s kým.</p>
                     </div>
                   </div>
                   <div className="flex gap-4 md:gap-6">
@@ -434,8 +436,8 @@ export default function App() {
                       <MessageCircle className="w-6 h-6" />
                     </div>
                     <div>
-                      <h4 className="text-lg md:text-xl font-black text-white mb-2">Upřímná komunikace</h4>
-                      <p className="text-slate-400 font-medium">U nás se nehraje na schovávanou. Všichni vědí, proč tu jsou. Šetříme tvůj čas i nervy.</p>
+                      <h4 className="text-lg md:text-xl font-black text-white mb-2">Jasná pravidla od začátku</h4>
+                      <p className="text-slate-400 font-medium">Každý ví, proč tu je. Bez trapných her, bez vodění za nos a bez nejasných signálů.</p>
                     </div>
                   </div>
                   <div className="flex gap-4 md:gap-6">
@@ -462,23 +464,20 @@ export default function App() {
               whileInView={{ scale: 1, opacity: 1 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-8 md:mb-10 leading-tight tracking-tighter">
-                Žádné sliby. <br />
-                <span className="text-gradient">Jen výsledek.</span>
-              </h2>
+              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-8 md:mb-10 leading-tight tracking-tighter">Méně řečí. Víc jasno.</h2>
               <p className="text-lg md:text-3xl text-slate-400 mb-10 md:mb-12 font-medium max-w-3xl mx-auto">
-                Tvoje tělo nečeká na schválení od společnosti. 
-                Přestaň hledat vztah tam, kde chceš jen uvolnění. 
-                Trtkat je zkratka, kterou jsi hledal/a. A začít můžeš zdarma.
+                Když teď nehledáš vztah, nemusíš trávit večery nekonečným chatem.
+                Trtkat je pro dospělé 18+, kteří chtějí jasnou domluvu, respekt a minimum zbytečností.
+                Začít můžeš zdarma.
               </p>
               <div className="flex flex-wrap justify-center gap-6">
                 <a href={appUrl} target="_blank" rel="noreferrer" className="bg-white text-slate-950 px-8 md:px-14 py-4 md:py-7 rounded-2xl md:rounded-3xl font-black text-xl md:text-3xl hover:scale-[1.02] transition-all shadow-[0_20px_60px_rgba(255,255,255,0.15)] flex items-center gap-3 md:gap-4">
                   <Download className="w-7 h-7 md:w-9 md:h-9" />
-                  Otevřít aplikaci
+                  Vyzkoušet zdarma
                 </a>
               </div>
               <p className="mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-xs md:text-sm">
-                Žádné závazky. Žádné lži. Jen ty. A všechno zdarma.
+                Bez paywallu. Bez přetvářky. Jen jasno.
               </p>
             </motion.div>
           </div>
@@ -508,7 +507,7 @@ export default function App() {
             </div>
           </div>
           <div className="mt-10 md:mt-16 pt-8 border-t border-white/5 text-center text-slate-600 text-xs md:text-sm font-medium">
-            © 2026 Trtkat. Žijeme jen jednou, tak ať to stojí za to.
+            © 2026 Trtkat. Pro dospělé 18+.
           </div>
         </div>
       </footer>
