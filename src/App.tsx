@@ -3,7 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { 
   ShieldCheck, 
@@ -29,12 +29,70 @@ import {
 } from 'recharts';
 import { useInView } from 'react-intersection-observer';
 
-// Data focusing on the "Sex Recession" and mental health benefits
-const sexRecessionData = [
-  { year: '1990', frequency: 80, label: 'Aktivní generace' },
-  { year: '2000', frequency: 72, label: 'Nástup technologií' },
-  { year: '2010', frequency: 65, label: 'Sociální sítě' },
-  { year: '2020', frequency: 54, label: 'Dnešní izolace' },
+const onlineByAgeData = [
+  { age: '18-25', online: 20.7 },
+  { age: '66-75', online: 4.9 },
+];
+
+const timelineData = [
+  { period: '1993 -> 2008', label: 'Pokles počtu partnerů za 12 měsíců', value: 'Muži 1,73 -> 1,28 | Ženy 1,51 -> 0,99' },
+  { period: '1993 -> 2008', label: 'Pokles spokojenosti se sexuálním životem', value: 'Ženy 82 % -> 72 % | Muži 76 % -> 68 %' },
+  { period: '1993 -> 2008', label: 'Růst zodpovědnější antikoncepce', value: 'U náhodné partnerky kondom u mužů 41 % -> 88 %' },
+];
+
+const statCategories = [
+  {
+    key: 'seznamovani',
+    label: 'Seznamování',
+    title: 'Jak se lidé v Česku seznamují',
+    stats: [
+      { value: '13,4 %', title: 'párů se seznámí online', desc: 'Online je běžná cesta, ale ne jediná.' },
+      { value: '29,6 %', title: 'přes přátele a známé', desc: 'Nejčastější forma seznámení.' },
+      { value: '20,0 %', title: 'práce nebo škola', desc: 'Druhá nejsilnější cesta.' },
+      { value: '17,5 %', title: 'společenské aktivity', desc: 'Třetí nejčastější cesta.' },
+      { value: '20,7 %', title: 'online ve věku 18-25', desc: 'U mladých je online seznámení výrazně častější.' },
+      { value: '4,9 %', title: 'online ve věku 66-75', desc: 'S věkem podíl online seznámení klesá.' },
+    ],
+  },
+  {
+    key: 'vztahy',
+    label: 'Vztahy',
+    title: 'Reálné vztahové uspořádání dospělých',
+    stats: [
+      { value: '73,7 %', title: 'v dlouhodobém vztahu', desc: 'Většina dospělých žije ve vztahu.' },
+      { value: '25,6 %', title: 'bez dlouhodobého vztahu', desc: 'Významná část vztah nemá.' },
+      { value: '26,7 %', title: 'zadaných má i sexuální vztah', desc: 'Může jít i o otevřené vztahy, nejen nevěru.' },
+      { value: '17,46', title: 'první sex u žen (průměrný věk)', desc: 'U mužů je to 18,33.' },
+      { value: '16,63', title: 'první sex ženy 18-25', desc: 'U mužů 18-25 je to 17,21.' },
+      { value: '5', title: 'medián partnerů za život', desc: 'Medián je pro veřejné srovnání poctivější než průměr.' },
+    ],
+  },
+  {
+    key: 'online',
+    label: 'Online sexualita',
+    title: 'Digitální intimita je mainstream',
+    stats: [
+      { value: '78,5 %', title: 'někdy sledovalo pornografii', desc: 'Muži 89,5 % | Ženy 67,6 %.' },
+      { value: '3,1 %', title: 'ohrožení problémovým sledováním', desc: 'Ve věku 18-34 jde o 5,4 %.' },
+      { value: '12 %', title: 'mužů má zkušenost s live sexem', desc: 'U žen 4 %.' },
+      { value: '16 %', title: 'poslalo nahou fotku/video', desc: 'Stejný podíl u mužů i žen.' },
+      { value: '8,6 / 11,6', title: 'průměr partnerů za život', desc: 'Ženy 8,6 | Muži 11,6, medián je ale 5.' },
+      { value: '6 % / 8 %', title: 'nikdy nemělo sex', desc: 'Ženy cca 6 % | Muži cca 8 %.' },
+    ],
+  },
+  {
+    key: 'bezpeci',
+    label: 'Bezpečí',
+    title: 'Bezpečnost není bonus, ale základ',
+    stats: [
+      { value: '61,19 %', title: 'žen mělo sexuální problém', desc: 'U mužů 55,01 %.' },
+      { value: '21,41 %', title: 'klinicky významné potíže u žen', desc: 'U mužů 16,06 %.' },
+      { value: '5,0 %', title: 'žen hledalo odbornou pomoc', desc: 'U mužů 4,6 %.' },
+      { value: '16,8 %', title: 'žen zažilo donucení hrozbou/násilím', desc: 'U mužů 4,9 %.' },
+      { value: '29,9 %', title: 'žen zažilo nevyžádaný kontakt', desc: 'U mužů 16,9 %.' },
+      { value: '6,1 %', title: 'žen nahlásilo znásilnění/nátlak', desc: 'U mužů 2,0 %.' },
+    ],
+  },
 ];
 
 const mentalHealthBenefits = [
@@ -70,6 +128,8 @@ const appUrl = 'https://trtkat.marhla.workers.dev/';
 
 export default function App() {
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
+  const [activeStatCategory, setActiveStatCategory] = useState(statCategories[0].key);
+  const currentStats = statCategories.find((item) => item.key === activeStatCategory) ?? statCategories[0];
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
@@ -197,70 +257,99 @@ export default function App() {
           </div>
         </section>
 
-        {/* Data Section - The Sex Recession */}
+        {/* Data Section */}
         <section id="data" className="py-20 md:py-32 bg-slate-900/30 border-y border-white/5" ref={statsRef}>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid lg:grid-cols-2 gap-12 md:gap-24 items-center">
+            <div className="mb-10 md:mb-14">
+              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 md:mb-6 leading-tight">
+                Data o sexualitě v Česku <span className="text-trtkat-blue">přehledně a bez omáčky.</span>
+              </h2>
+              <p className="text-lg md:text-xl text-slate-400 max-w-4xl">
+                Interaktivní přehled vychází z českých reprezentativních dat. Vyber si oblast a projdi nejdůležitější čísla
+                pro seznamování, vztahy, online sexualitu i bezpečí.
+              </p>
+            </div>
+
+            <div className="flex flex-wrap gap-3 mb-8 md:mb-10">
+              {statCategories.map((category) => (
+                <button
+                  key={category.key}
+                  onClick={() => setActiveStatCategory(category.key)}
+                  className={`px-4 py-2 rounded-xl text-sm md:text-base font-bold transition-all border ${
+                    activeStatCategory === category.key
+                      ? 'bg-trtkat-gradient text-white border-transparent'
+                      : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10'
+                  }`}
+                >
+                  {category.label}
+                </button>
+              ))}
+            </div>
+
+            <div className="grid lg:grid-cols-2 gap-12 md:gap-20 items-start">
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
               >
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 md:mb-8 leading-tight">
-                  Mladí lidé mají <br />
-                  <span className="text-trtkat-blue">nejméně sexu v historii.</span>
-                </h2>
-                <p className="text-lg md:text-xl text-slate-400 mb-8 md:mb-10 leading-relaxed font-medium">
-                  Studie ukazují, že frekvence sexu u mladých dospělých klesá už tři dekády. 
-                  Výsledek? Rekordní míra úzkostí, depresí a pocitu izolace. 
-                  Technologie nás spojily digitálně, ale odpojily fyzicky. 
-                  My to chceme změnit.
+                <h3 className="text-2xl md:text-4xl font-black text-white mb-3">{currentStats.title}</h3>
+                <p className="text-slate-400 mb-6 md:mb-8">
+                  Klikáním mezi kategoriemi porovnáš čísla v kontextu současné české reality.
                 </p>
-                
-                <div className="space-y-5 md:space-y-8">
-                  <div className="p-6 md:p-8 bg-white/5 rounded-3xl border border-white/10">
-                    <div className="text-4xl font-black text-trtkat-pink mb-2">-30%</div>
-                    <div className="text-slate-300 font-bold text-lg">Pokles sexuální aktivity od roku 1990</div>
-                    <p className="text-slate-500 mt-2">Důsledek: Vyšší hladina stresu a pocit prázdnoty.</p>
-                  </div>
-                  <div className="p-6 md:p-8 bg-white/5 rounded-3xl border border-white/10">
-                    <div className="text-4xl font-black text-trtkat-blue mb-2">8 z 10</div>
-                    <div className="text-slate-300 font-bold text-lg">lidí potvrzuje, že sex jim okamžitě zlepší náladu</div>
-                    <p className="text-slate-500 mt-2">Fyzický kontakt je biologická nutnost, ne luxus.</p>
-                  </div>
-                  <div className="p-6 md:p-8 bg-trtkat-blue/10 rounded-3xl border border-trtkat-blue/30">
-                    <div className="text-2xl font-black text-trtkat-blue mb-2">Vše zdarma</div>
-                    <p className="text-slate-300 font-medium">Žádné předplatné pro základní používání. Otevřeš a používáš zdarma.</p>
-                  </div>
+
+                <div className="grid sm:grid-cols-2 gap-4 md:gap-5">
+                  {currentStats.stats.map((stat) => (
+                    <div key={stat.title} className="p-5 md:p-6 bg-white/5 rounded-2xl border border-white/10">
+                      <div className="text-3xl md:text-4xl font-black text-trtkat-pink mb-1">{stat.value}</div>
+                      <div className="text-slate-200 font-bold">{stat.title}</div>
+                      <p className="text-slate-500 mt-2 text-sm md:text-base">{stat.desc}</p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
 
               <div className="relative">
                 <div className="absolute inset-0 bg-trtkat-blue/10 blur-[100px] -z-10" />
-                <div className="bg-slate-950 p-6 md:p-10 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl h-[360px] sm:h-[440px] md:h-[500px]">
-                  <h3 className="text-base sm:text-xl font-black text-white mb-6 md:mb-12 flex items-center gap-3">
+                <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl mb-6">
+                  <h3 className="text-base sm:text-xl font-black text-white mb-6 flex items-center gap-3">
                     <BarChart className="w-6 h-6 text-trtkat-blue" />
-                    Frekvence sexu u mladých (index)
+                    Podíl online seznámení podle věku
                   </h3>
-                  <ResponsiveContainer width="100%" height="80%">
-                    <BarChart data={sexRecessionData}>
-                      <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
-                      <XAxis dataKey="year" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontWeight: 'bold' }} />
-                      <YAxis hide />
-                      <Tooltip 
-                        cursor={{ fill: 'rgba(255,255,255,0.05)' }}
-                        contentStyle={{ backgroundColor: '#020617', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}
-                      />
-                      <Bar dataKey="frequency" radius={[10, 10, 0, 0]} barSize={42}>
-                        {sexRecessionData.map((entry, index) => (
-                          <Cell key={`cell-${index}`} fill={index === 3 ? '#f062a1' : '#4fb3f0'} opacity={0.6 + (index * 0.1)} />
-                        ))}
-                      </Bar>
-                    </BarChart>
-                  </ResponsiveContainer>
+                  <div className="h-[250px] md:h-[300px]">
+                    <ResponsiveContainer width="100%" height="100%">
+                      <BarChart data={onlineByAgeData}>
+                        <CartesianGrid strokeDasharray="3 3" stroke="rgba(255,255,255,0.05)" vertical={false} />
+                        <XAxis dataKey="age" axisLine={false} tickLine={false} tick={{ fill: '#64748b', fontWeight: 'bold' }} />
+                        <YAxis hide />
+                        <Tooltip
+                          formatter={(value: number) => [`${value} %`, 'Online seznámení']}
+                          cursor={{ fill: 'rgba(255,255,255,0.05)' }}
+                          contentStyle={{ backgroundColor: '#020617', borderRadius: '20px', border: '1px solid rgba(255,255,255,0.1)', color: '#fff' }}
+                        />
+                        <Bar dataKey="online" radius={[10, 10, 0, 0]} barSize={56}>
+                          {onlineByAgeData.map((entry, index) => (
+                            <Cell key={`${entry.age}-${index}`} fill={index === 0 ? '#f062a1' : '#4fb3f0'} />
+                          ))}
+                        </Bar>
+                      </BarChart>
+                    </ResponsiveContainer>
+                  </div>
                   <p className="text-center text-slate-500 text-sm font-bold mt-4 italic">
-                    "Máme víc followerů, ale míň doteků. Je čas to otočit."
+                    U mladých dospělých je online seznamování výrazně běžnější.
                   </p>
+                </div>
+
+                <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] border border-white/10 shadow-2xl">
+                  <h3 className="text-base sm:text-xl font-black text-white mb-5">Historický kontext (timeline)</h3>
+                  <div className="space-y-4">
+                    {timelineData.map((item) => (
+                      <div key={item.label} className="p-4 rounded-xl bg-white/5 border border-white/10">
+                        <div className="text-trtkat-blue font-bold text-sm uppercase tracking-wider">{item.period}</div>
+                        <div className="text-slate-200 font-bold mt-1">{item.label}</div>
+                        <div className="text-slate-400 text-sm mt-1">{item.value}</div>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
