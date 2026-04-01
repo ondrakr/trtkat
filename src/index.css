@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Quicksand:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-trtkat-blue: #4fb3f0;
+  --color-trtkat-pink: #f062a1;
+  --font-sans: "Quicksand", "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-slate-950 text-slate-100 antialiased;
+  }
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-linear-to-r from-trtkat-blue to-trtkat-pink;
+}
+
+.bg-trtkat-gradient {
+  @apply bg-linear-to-r from-trtkat-blue to-trtkat-pink;
+}
+
+.bg-trtkat-gradient-hover {
+  @apply bg-linear-to-r from-trtkat-blue/90 to-trtkat-pink/90;
+}
