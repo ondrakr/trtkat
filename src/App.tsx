@@ -315,11 +315,11 @@ export default function App() {
                 </div>
                 <div className="mt-6 md:mt-0 md:absolute md:-bottom-10 md:-right-10 p-6 md:p-10 bg-slate-950 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl max-w-xs">
                   <p className="text-lg font-black text-white italic">
-                    "Nehledám vztah, hledám uvolnění. Trtkat mi dává přesně to, co potřebuji, bez zbytečných her."
+                    "Kvůli práci nemám čas na vztahy, ale chci být zdravý. Trtkat mi dává přesně to, co potřebuju, bez zbytečných her."
                   </p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-trtkat-pink" />
-                    <span className="font-bold text-slate-400">Uživatelka, Praha</span>
+                    <span className="font-bold text-slate-400">Marek, Praha</span>
                   </div>
                 </div>
               </div>
