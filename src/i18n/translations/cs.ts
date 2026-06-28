@@ -15,7 +15,6 @@ export const cs: SiteCopy = {
     benefits: 'Benefity',
     download: 'Stáhnout',
     blog: 'Blog',
-    faq: 'FAQ',
   },
   stores: {
     appStoreLabel: 'Stáhnout v App Store',
@@ -212,42 +211,6 @@ export const cs: SiteCopy = {
         bodyMobile: 'Souhlas, slušnost a lidskost jsou základ.',
         bodyDesktop:
           'Nezávazně neznamená bez respektu. Naše komunita stojí na souhlasu a lidskosti.',
-      },
-    ],
-  },
-  faq: {
-    title: 'Časté dotazy',
-    subtitle: 'Krátké odpovědi na to, co studenti řeší nejčastěji.',
-    items: [
-      {
-        question: 'Co je Trtkat?',
-        answer:
-          'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Zaměřujeme se na osvětu o bezpečném a nezávazném seznamování a sexualní výchovu pro studenty.',
-      },
-      {
-        question: 'Je Trtkat zdarma?',
-        answer:
-          'Ano. Trtkat je úplně zdarma — bez paywallu a bez skrytých poplatků za základní používání aplikace.',
-      },
-      {
-        question: 'Je Trtkat pro studenty?',
-        answer:
-          'Ano. Trtkat je navržený primárně pro studenty v České republice, kteří chtějí poznávat nové lidi bez tlaku na vztah.',
-      },
-      {
-        question: 'Je Trtkat bezpečný?',
-        answer:
-          'Bezpečí stavíme na souhlasu, respektu k hranicím a jasné domluvě. Nezávazné seznamování u nás neznamená nejasnost — naopak.',
-      },
-      {
-        question: 'Čím se liší od klasických seznamek?',
-        answer:
-          'Nejsme na vztahy. Máme jedno jasné zaměření — nezávazné seznamování. Méně zbytečného chatu, víc jasna a edukace o bezpečném seznámení.',
-      },
-      {
-        question: 'Musím hledat vztah?',
-        answer:
-          'Ne. Trtkat je pro lidi, kteří teď nehledají vztah, ale chtějí nové kontakty, přátelství nebo příjemný společný večer.',
       },
     ],
   },

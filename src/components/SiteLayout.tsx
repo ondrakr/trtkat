@@ -25,7 +25,6 @@ export function SiteLayout() {
               <a href="/#jak-to-funguje" className="hover:text-white transition-colors">{t.nav.about}</a>
               <a href="/#data" className="hover:text-white transition-colors">{t.nav.stats}</a>
               <Link to="/blog" className="hover:text-white transition-colors">{t.nav.blog}</Link>
-              <a href="/#faq" className="hover:text-white transition-colors">{t.nav.faq}</a>
               <LangDropdown />
               <StoreBadges size="sm" className="hidden xl:flex" />
               <a

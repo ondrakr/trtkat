@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-
-const GA_ID = import.meta.env.VITE_GA4_MEASUREMENT_ID;
+import { GA4_MEASUREMENT_ID } from '../config/analytics';
 
 declare global {
   interface Window {
@@ -31,12 +30,12 @@ export function Analytics() {
   const location = useLocation();
 
   useEffect(() => {
-    if (!GA_ID) return;
-    loadGtag(GA_ID);
+    if (!GA4_MEASUREMENT_ID) return;
+    loadGtag(GA4_MEASUREMENT_ID);
   }, []);
 
   useEffect(() => {
-    if (!GA_ID || !window.gtag) return;
+    if (!GA4_MEASUREMENT_ID || !window.gtag) return;
     window.gtag('event', 'page_view', {
       page_path: location.pathname + location.search + location.hash,
       page_title: document.title,

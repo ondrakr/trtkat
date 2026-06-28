@@ -15,7 +15,6 @@ export const en: SiteCopy = {
     benefits: 'Benefits',
     download: 'Download',
     blog: 'Blog',
-    faq: 'FAQ',
   },
   stores: {
     appStoreLabel: 'Download on the App Store',
@@ -212,42 +211,6 @@ export const en: SiteCopy = {
         bodyMobile: 'Consent, decency, and humanity are the foundation.',
         bodyDesktop:
           'Casual does not mean disrespectful. Our community is built on consent and humanity.',
-      },
-    ],
-  },
-  faq: {
-    title: 'Frequently asked questions',
-    subtitle: 'Short answers to what students ask most often.',
-    items: [
-      {
-        question: 'What is Trtkat?',
-        answer:
-          'Trtkat is a modern dating app for making new contacts, friendships, and casual meetups. We focus on awareness about safe casual dating and sexual education for students.',
-      },
-      {
-        question: 'Is Trtkat free?',
-        answer:
-          'Yes. Trtkat is completely free — no paywall and no hidden fees for basic app use.',
-      },
-      {
-        question: 'Is Trtkat for students?',
-        answer:
-          'Yes. Trtkat is designed mainly for students who want to meet new people without relationship pressure.',
-      },
-      {
-        question: 'Is Trtkat safe?',
-        answer:
-          'Safety is built on consent, respect for boundaries, and clear plans. Casual dating on Trtkat does not mean unclear expectations.',
-      },
-      {
-        question: 'How is it different from classic dating apps?',
-        answer:
-          'We are not for relationships. We have one clear focus — casual dating. Less pointless chat, more clarity, and education about safe meetups.',
-      },
-      {
-        question: 'Do I have to look for a relationship?',
-        answer:
-          'No. Trtkat is for people who are not looking for a relationship right now but want new contacts, friendship, or a good evening together.',
       },
     ],
   },

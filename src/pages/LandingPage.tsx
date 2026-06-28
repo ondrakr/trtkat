@@ -24,7 +24,6 @@ import {
 import { useInView } from 'react-intersection-observer';
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from '../components/StoreBadges';
-import { FAQSection } from '../components/FAQSection';
 import { SEO } from '../components/SEO';
 import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY } from '../lib/navigation';
@@ -265,8 +264,6 @@ export function LandingPage() {
             </div>
           </div>
         </section>
-
-        <FAQSection />
 
         <section id="stahnout-cta" className={`${sectionY} relative overflow-hidden`}>
           <div className="absolute inset-0 bg-trtkat-gradient opacity-10 blur-[100px] -z-10" />

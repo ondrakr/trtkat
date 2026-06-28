@@ -14,7 +14,6 @@ const links = [
   { href: '/#jak-to-funguje', key: 'about' as const },
   { href: '/#data', key: 'stats' as const },
   { to: '/blog', key: 'blog' as const },
-  { href: '/#faq', key: 'faq' as const },
   { href: '/#stahnout', key: 'download' as const },
 ];
 
@@ -34,7 +33,6 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     about: t.nav.about,
     stats: t.nav.stats,
     blog: t.nav.blog,
-    faq: t.nav.faq,
     download: t.nav.download,
   };
 

@@ -55,19 +55,12 @@ export function buildMobileAppSchema(t: SiteCopy) {
   };
 }
 
-export function buildFAQSchema(items: Array<{ question: string; answer: string }>) {
-  return {
-    '@context': 'https://schema.org',
-    '@type': 'FAQPage',
-    mainEntity: items.map((item) => ({
-      '@type': 'Question',
-      name: item.question,
-      acceptedAnswer: {
-        '@type': 'Answer',
-        text: item.answer,
-      },
-    })),
-  };
+export function buildLandingSchemas(t: SiteCopy) {
+  return [
+    buildOrganizationSchema(t.meta.description),
+    buildWebSiteSchema(t.meta.description),
+    buildMobileAppSchema(t),
+  ];
 }
 
 export function buildArticleSchema(post: {
@@ -100,13 +93,4 @@ export function buildArticleSchema(post: {
     },
     mainEntityOfPage: `${SITE_URL}${post.path}`,
   };
-}
-
-export function buildLandingSchemas(t: SiteCopy) {
-  return [
-    buildOrganizationSchema(t.meta.description),
-    buildWebSiteSchema(t.meta.description),
-    buildMobileAppSchema(t),
-    buildFAQSchema(t.faq.items),
-  ];
 }
