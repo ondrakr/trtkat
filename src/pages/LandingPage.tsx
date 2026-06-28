@@ -27,7 +27,7 @@ import { StoreBadges } from '../components/StoreBadges';
 import { FAQSection } from '../components/FAQSection';
 import { SEO } from '../components/SEO';
 import { buildLandingSchemas } from '../lib/schema';
-import { sectionWrap, sectionY } from '../lib/navigation';
+import { sectionWrap, sectionWrapNarrow, sectionY } from '../lib/navigation';
 
 const benefitIcons = [Smile, Moon, Zap, Sparkles];
 const vibeImageSrc = '/images/IMG_3760.jpeg';
@@ -56,13 +56,14 @@ export function LandingPage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
-        <section className="relative overflow-hidden">
-          <div className="pointer-events-none absolute inset-0">
-            <div className="absolute -top-16 right-0 h-56 w-56 sm:h-72 sm:w-72 md:h-[600px] md:w-[600px] rounded-full bg-trtkat-blue/20 blur-[80px] md:blur-[140px]" />
-            <div className="absolute bottom-0 left-0 h-56 w-56 sm:h-72 sm:w-72 md:h-[600px] md:w-[600px] rounded-full bg-trtkat-pink/20 blur-[80px] md:blur-[140px]" />
+        <section className="relative isolate">
+          <div className="pointer-events-none absolute inset-0 -bottom-24 sm:-bottom-32">
+            <div className="absolute -top-20 right-[-10%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-blue/25 blur-[90px] md:blur-[150px]" />
+            <div className="absolute bottom-[-15%] left-[-12%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-pink/25 blur-[90px] md:blur-[150px]" />
           </div>
+          <div className="hero-fade-bottom" aria-hidden="true" />
 
-          <div className={`${sectionWrap} relative min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] md:min-h-[90vh] flex items-center py-10 sm:py-14 md:py-24`}>
+          <div className={`${sectionWrap} relative z-[2] min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] md:min-h-[90vh] flex items-center py-10 sm:py-14 md:py-24 pb-20 sm:pb-24 md:pb-28`}>
             <div className="mx-auto w-full max-w-4xl md:mx-0">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
@@ -102,16 +103,16 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="jak-to-funguje" className={`${sectionY} relative overflow-hidden bg-white/2`}>
+        <section id="jak-to-funguje" className={`${sectionY} relative -mt-8 sm:-mt-12 bg-gradient-to-b from-slate-950 via-white/[0.02] to-transparent`}>
           <div className={sectionWrap}>
             <div className="text-center mb-10 sm:mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-tight">{t.how.title}</h2>
-              <p className="text-xs sm:text-sm md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase px-2">{t.how.subtitle}</p>
+              <p className="text-xs sm:text-sm md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">{t.how.subtitle}</p>
             </div>
             <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative">
               {t.how.steps.map((step, idx) => (
-                <motion.div key={step.title} whileHover={{ scale: 1.02 }} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative">
-                  <div className={`absolute -top-3 -left-2 md:-top-6 md:-left-6 w-11 h-11 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-slate-950 font-black text-lg md:text-2xl shadow-xl ${idx === 0 ? 'bg-trtkat-blue' : idx === 1 ? 'bg-trtkat-pink' : 'bg-white'}`}>{idx + 1}</div>
+                <motion.div key={step.title} whileHover={{ scale: 1.02 }} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative mt-4 sm:mt-0">
+                  <div className={`absolute -top-3 left-3 sm:-top-6 sm:-left-6 w-11 h-11 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-slate-950 font-black text-lg md:text-2xl shadow-xl ${idx === 0 ? 'bg-trtkat-blue' : idx === 1 ? 'bg-trtkat-pink' : 'bg-white'}`}>{idx + 1}</div>
                   <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4 mt-5 md:mt-4">{step.title}</h3>
                   <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
                     <span className="md:hidden">{step.bodyMobile}</span>
@@ -200,10 +201,11 @@ export function LandingPage() {
 
         <section id="benefity" className={`${sectionY} relative overflow-hidden`}>
           <div className={sectionWrap}>
-            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight">
-                {t.benefits.title} <br />
-                <span className="text-gradient">{t.benefits.titleAccent}</span>
+            <div className="text-center max-w-3xl lg:max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight text-balance">
+                <span className="inline-block">{t.benefits.title}</span>
+                <br />
+                <span className="text-gradient inline-block">{t.benefits.titleAccent}</span>
               </h2>
               <p className="text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
                 <span className="md:hidden">{t.benefits.introMobile}</span>
@@ -268,7 +270,7 @@ export function LandingPage() {
 
         <section id="stahnout-cta" className={`${sectionY} relative overflow-hidden`}>
           <div className="absolute inset-0 bg-trtkat-gradient opacity-10 blur-[100px] -z-10" />
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className={`${sectionWrapNarrow} text-center`}>
             <h2 className="text-3xl sm:text-4xl md:text-8xl font-black text-white mb-5 sm:mb-6 md:mb-8 leading-tight tracking-tighter">{t.cta.title}</h2>
             <p className="text-base sm:text-lg md:text-3xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
               <span className="md:hidden">{t.cta.bodyMobile}</span>

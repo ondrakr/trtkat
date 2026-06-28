@@ -1,10 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { SiteLayout } from './components/SiteLayout';
 import { Analytics } from './components/Analytics';
-import { LandingPage } from './pages/LandingPage';
-import { BlogIndexPage } from './pages/BlogIndexPage';
-import { BlogPostPage } from './pages/BlogPostPage';
-import { LegalPage } from './pages/LegalPage';
+import { LandingPage, BlogIndexPage, BlogPostPage, LegalPage } from './pages';
 
 export default function App() {
   return (

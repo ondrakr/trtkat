@@ -176,7 +176,7 @@ export const cs: SiteCopy = {
     ],
   },
   benefits: {
-    title: 'Ne každý teď chce vztah.',
+    title: 'Ne každý teď chce\u00A0vztah.',
     titleAccent: 'A to je v pořádku.',
     introMobile: 'Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.',
     introDesktop:

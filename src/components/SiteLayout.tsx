@@ -13,7 +13,7 @@ export function SiteLayout() {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
+    <div className="min-h-screen flex flex-col overflow-x-clip bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
       <nav className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5">
         <div className={sectionWrap}>
           <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">

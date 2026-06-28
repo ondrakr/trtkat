@@ -10,9 +10,14 @@
 }
 
 @layer base {
+  html {
+    overflow-x: clip;
+  }
+
   body {
     @apply bg-slate-950 text-slate-100 antialiased font-sans font-normal;
     font-feature-settings: "kern" 1;
+    min-width: 0;
   }
 
   h1,
@@ -44,5 +49,15 @@
   .font-book {
     font-family: "Nunito", "Quicksand", ui-sans-serif, system-ui, sans-serif;
     font-weight: 300;
+  }
+
+  .hero-fade-bottom {
+    @apply pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 sm:h-52 md:h-64;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgb(2 6 23 / 0.45) 45%,
+      rgb(2 6 23) 100%
+    );
   }
 }

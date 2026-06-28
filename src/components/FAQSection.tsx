@@ -1,7 +1,5 @@
 import { useI18n } from '../i18n/I18nProvider';
-
-const sectionWrap = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
-const sectionY = 'py-14 sm:py-16 md:py-24';
+import { sectionWrap, sectionY } from '../lib/navigation';
 
 export function FAQSection() {
   const { t } = useI18n();
