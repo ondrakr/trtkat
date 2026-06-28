@@ -14,6 +14,7 @@ import {
   Sparkles,
   Smile,
   Moon,
+  Menu,
 } from 'lucide-react';
 import {
   BarChart,
@@ -27,46 +28,22 @@ import {
 } from 'recharts';
 import { useInView } from 'react-intersection-observer';
 import { useI18n } from './i18n/I18nProvider';
-import type { Locale } from './i18n/detectLocale';
 import { StoreBadges } from './components/StoreBadges';
+import { LangDropdown } from './components/LangDropdown';
+import { MobileNav } from './components/MobileNav';
 
 const benefitIcons = [Smile, Moon, Zap, Sparkles];
 
 const logoSrc = '/logo/logo%20trtkat.svg';
 const vibeImageSrc = '/images/IMG_3760.jpeg';
 const sectionWrap = 'max-w-7xl mx-auto px-4 sm:px-6 lg:px-8';
-const sectionY = 'py-16 md:py-24';
-
-const LOCALE_LABELS: Record<Locale, string> = {
-  cs: 'Čeština',
-  en: 'English',
-  el: 'Ελληνικά',
-};
-
-function LangSwitch({ locale, setLocale }: { locale: Locale; setLocale: (l: Locale) => void }) {
-  return (
-    <div className="flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider">
-      {(['cs', 'en', 'el'] as const).map((code, i) => (
-        <React.Fragment key={code}>
-          {i > 0 && <span className="text-slate-600">|</span>}
-          <button
-            type="button"
-            onClick={() => setLocale(code)}
-            className={locale === code ? 'text-white' : 'text-slate-500 hover:text-slate-300 transition-colors'}
-            aria-label={LOCALE_LABELS[code]}
-          >
-            {code}
-          </button>
-        </React.Fragment>
-      ))}
-    </div>
-  );
-}
+const sectionY = 'py-14 sm:py-16 md:py-24';
 
 export default function App() {
-  const { locale, setLocale, t } = useI18n();
+  const { t } = useI18n();
   const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
   const [activeStatCategory, setActiveStatCategory] = useState(t.data.statCategories[0].key);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const currentStats =
     t.data.statCategories.find((item) => item.key === activeStatCategory) ?? t.data.statCategories[0];
@@ -74,43 +51,43 @@ export default function App() {
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
-      <nav className="sticky top-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-white/5">
+      <nav className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5">
         <div className={sectionWrap}>
-          <div className="flex justify-between h-16 md:h-20 items-center gap-3">
-            <div className="w-24 md:w-28 shrink-0">
+          <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">
+            <a href="#" className="w-20 sm:w-24 md:w-28 shrink-0" aria-label="Trtkat">
               <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
-            </div>
-            <div className="hidden md:flex items-center gap-6 lg:gap-8 text-sm font-300 uppercase tracking-wider text-slate-400">
+            </a>
+
+            <div className="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-300 uppercase tracking-wider text-slate-400">
               <a href="#jak-to-funguje" className="hover:text-white transition-colors">{t.nav.about}</a>
               <a href="#data" className="hover:text-white transition-colors">{t.nav.stats}</a>
               <a href="#vibe" className="hover:text-white transition-colors">{t.nav.ethics}</a>
-              <LangSwitch locale={locale} setLocale={setLocale} />
-              <StoreBadges size="sm" className="hidden lg:flex" />
+              <LangDropdown />
+              <StoreBadges size="sm" className="hidden xl:flex" />
               <a
                 href="#stahnout"
-                className="lg:hidden bg-trtkat-gradient text-white px-4 py-2.5 rounded-xl font-black text-xs whitespace-nowrap hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95"
+                className="xl:hidden bg-trtkat-gradient text-white px-4 py-2.5 rounded-xl font-black text-xs whitespace-nowrap hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95"
               >
                 {t.nav.download}
               </a>
             </div>
-            <div className="md:hidden flex items-center gap-3">
-              <LangSwitch locale={locale} setLocale={setLocale} />
-              <a
-                href="#stahnout"
-                className="bg-trtkat-gradient text-white px-3 py-2 rounded-xl font-black text-xs whitespace-nowrap"
+
+            <div className="md:hidden flex items-center gap-2">
+              <LangDropdown />
+              <button
+                type="button"
+                onClick={() => setMobileNavOpen(true)}
+                aria-label="Open menu"
+                className="rounded-xl border border-white/10 p-2.5 text-slate-200 hover:bg-white/5 transition-colors"
               >
-                {t.nav.download}
-              </a>
+                <Menu className="h-5 w-5" />
+              </button>
             </div>
-          </div>
-          <div className="md:hidden pb-3 flex items-center gap-4 overflow-x-auto text-xs font-bold uppercase tracking-wider text-slate-300">
-            <a href="#jak-to-funguje" className="whitespace-nowrap">{t.nav.features}</a>
-            <a href="#data" className="whitespace-nowrap">{t.nav.science}</a>
-            <a href="#benefity" className="whitespace-nowrap">{t.nav.benefits}</a>
-            <a href="#vibe" className="whitespace-nowrap">{t.nav.ethics}</a>
           </div>
         </div>
       </nav>
+
+      <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
 
       <motion.main
         className="flex-grow"
@@ -118,37 +95,48 @@ export default function App() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
-        <section className={`relative min-h-[80vh] md:min-h-[90vh] flex items-center ${sectionY} overflow-hidden`}>
-          <div className="absolute top-0 right-0 -translate-y-1/4 translate-x-1/4 w-[340px] h-[340px] md:w-[600px] md:h-[600px] bg-trtkat-blue/20 rounded-full blur-[100px] md:blur-[140px] animate-pulse" />
-          <div className="absolute bottom-0 left-0 translate-y-1/4 -translate-x-1/4 w-[340px] h-[340px] md:w-[600px] md:h-[600px] bg-trtkat-pink/20 rounded-full blur-[100px] md:blur-[140px] animate-pulse" />
+        <section className="relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-0">
+            <div className="absolute -top-16 right-0 h-56 w-56 sm:h-72 sm:w-72 md:h-[600px] md:w-[600px] rounded-full bg-trtkat-blue/20 blur-[80px] md:blur-[140px]" />
+            <div className="absolute bottom-0 left-0 h-56 w-56 sm:h-72 sm:w-72 md:h-[600px] md:w-[600px] rounded-full bg-trtkat-pink/20 blur-[80px] md:blur-[140px]" />
+          </div>
 
-          <div className={`${sectionWrap} relative`}>
-            <div className="max-w-4xl">
+          <div className={`${sectionWrap} relative min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] md:min-h-[90vh] flex items-center py-10 sm:py-14 md:py-24`}>
+            <div className="mx-auto w-full max-w-4xl md:mx-0">
               <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.25, ease: 'easeOut' }}
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="text-center md:text-left"
               >
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="h-px w-12 bg-trtkat-pink" />
-                  <span className="text-trtkat-pink text-[11px] sm:text-sm font-black uppercase tracking-[0.18em] sm:tracking-[0.3em]">
+                <div className="mb-5 flex items-center justify-center gap-3 md:justify-start md:mb-6">
+                  <span className="hidden h-px w-10 bg-trtkat-pink sm:block md:w-12" />
+                  <span className="rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink">
                     {t.hero.badge}
                   </span>
                 </div>
-                <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-6 leading-[0.9] md:leading-[0.85]">
-                  {t.hero.titleLine1} <br />
+
+                <h1 className="text-[2.65rem] leading-[0.95] sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
+                  {t.hero.titleLine1}
+                  <br />
                   <span className="text-gradient">{t.hero.titleLine2}</span>
                 </h1>
-                <p className="font-book text-base sm:text-lg md:text-2xl text-slate-300 mb-8 leading-relaxed max-w-2xl">
+
+                <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 md:max-w-2xl md:text-2xl">
                   {t.hero.body}
                 </p>
-                <div id="stahnout" className="flex flex-col sm:flex-row items-stretch sm:items-center gap-6 sm:gap-12 mt-12">
-                  <StoreBadges size="lg" />
+
+                <div
+                  id="stahnout"
+                  className="mt-8 flex flex-col items-center gap-5 sm:mt-10 md:mt-12 md:items-start"
+                >
+                  <StoreBadges size="lg" layout="stack" className="justify-center md:justify-start" />
                   <a
                     href="#data"
-                    className="text-slate-400 hover:text-white font-bold text-base md:text-lg transition-colors flex items-center justify-center gap-2"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 transition-colors hover:border-white/20 hover:text-white sm:text-base md:text-lg"
                   >
-                    {t.hero.statsLink} <ArrowRight className="w-5 h-5" />
+                    {t.hero.statsLink}
+                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
                   </a>
                 </div>
               </motion.div>
@@ -158,31 +146,31 @@ export default function App() {
 
         <section id="jak-to-funguje" className={`${sectionY} relative overflow-hidden bg-white/2`}>
           <div className={sectionWrap}>
-            <div className="text-center mb-12 md:mb-16">
-              <h2 className="text-4xl md:text-7xl font-black text-white mb-4">{t.how.title}</h2>
-              <p className="text-sm sm:text-base md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">
+            <div className="text-center mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-tight">{t.how.title}</h2>
+              <p className="text-xs sm:text-sm md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase px-2">
                 {t.how.subtitle}
               </p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6 md:gap-8 relative">
+            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative">
               <div className="hidden md:block absolute top-1/2 left-0 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent -translate-y-1/2 -z-10" />
 
               {t.how.steps.map((step, idx) => (
                 <motion.div
                   key={step.title}
                   whileHover={{ scale: 1.02 }}
-                  className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative"
+                  className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative"
                 >
                   <div
-                    className={`absolute -top-3 -left-2 md:-top-6 md:-left-6 w-12 h-12 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-slate-950 font-black text-xl md:text-2xl shadow-xl ${
+                    className={`absolute -top-3 -left-2 md:-top-6 md:-left-6 w-11 h-11 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-slate-950 font-black text-lg md:text-2xl shadow-xl ${
                       idx === 0 ? 'bg-trtkat-blue' : idx === 1 ? 'bg-trtkat-pink' : 'bg-white'
                     }`}
                   >
                     {idx + 1}
                   </div>
-                  <h3 className="text-xl md:text-2xl font-black text-white mb-4 mt-6 md:mt-4">{step.title}</h3>
-                  <p className="text-slate-400 font-medium leading-relaxed">
+                  <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4 mt-5 md:mt-4">{step.title}</h3>
+                  <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
                     <span className="md:hidden">{step.bodyMobile}</span>
                     <span className="hidden md:inline">{step.bodyDesktop}</span>
                   </p>
@@ -194,9 +182,9 @@ export default function App() {
 
         <section id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`} ref={statsRef}>
           <div className={sectionWrap}>
-            <div className="mb-10 md:mb-12">
-              <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-4 leading-tight">{t.data.title}</h2>
-              <p className="text-lg md:text-xl text-slate-400 max-w-4xl">
+            <div className="mb-8 sm:mb-10 md:mb-12">
+              <h2 className="text-2xl sm:text-3xl md:text-6xl font-black text-white mb-3 sm:mb-4 leading-tight">{t.data.title}</h2>
+              <p className="text-base sm:text-lg md:text-xl text-slate-400 max-w-4xl">
                 <span className="md:hidden">{t.data.introMobile}</span>
                 <span className="hidden md:inline">{t.data.introDesktop}</span>
               </p>
@@ -315,33 +303,33 @@ export default function App() {
 
         <section id="benefity" className={`${sectionY} relative overflow-hidden`}>
           <div className={sectionWrap}>
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
-              <h2 className="text-4xl md:text-7xl font-black text-white mb-6">
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight">
                 {t.benefits.title} <br />
                 <span className="text-gradient">{t.benefits.titleAccent}</span>
               </h2>
-              <p className="text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
+              <p className="text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
                 <span className="md:hidden">{t.benefits.introMobile}</span>
                 <span className="hidden md:inline">{t.benefits.introDesktop}</span>
               </p>
             </div>
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
               {t.benefits.items.map((benefit, idx) => {
                 const Icon = benefitIcons[idx];
                 const colors = ['text-trtkat-blue', 'text-trtkat-pink', 'text-yellow-400', 'text-purple-400'];
                 return (
                   <div
                     key={benefit.title}
-                    className="p-6 md:p-8 rounded-[2rem] md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
+                    className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-all group"
                   >
                     <div
-                      className={`w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 group-hover:scale-110 transition-transform ${colors[idx]}`}
+                      className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform ${colors[idx]}`}
                     >
-                      <Icon className="w-8 h-8" />
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
                     </div>
-                    <h3 className="text-xl md:text-2xl font-black text-white mb-4">{benefit.title}</h3>
-                    <p className="text-slate-400 font-medium leading-relaxed">{benefit.desc}</p>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4">{benefit.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">{benefit.desc}</p>
                   </div>
                 );
               })}
@@ -353,15 +341,15 @@ export default function App() {
           <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="relative">
-                <div className="aspect-square rounded-[2rem] md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
+                <div className="aspect-[4/5] sm:aspect-square rounded-3xl md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img
                     src={vibeImageSrc}
                     alt={t.trust.imageAlt}
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
-                <div className="mt-6 md:mt-0 md:absolute md:-bottom-8 md:-right-8 p-6 md:p-8 bg-slate-950 rounded-[2rem] md:rounded-[2.5rem] border border-white/10 shadow-2xl max-w-xs">
-                  <p className="text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
+                <div className="mt-6 lg:mt-0 lg:absolute lg:-bottom-8 lg:-right-8 p-5 sm:p-6 md:p-8 bg-slate-950 rounded-3xl md:rounded-[2.5rem] border border-white/10 shadow-2xl max-w-xs mx-auto lg:mx-0">
+                  <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-trtkat-pink" />
                     <span className="font-bold text-slate-400">{t.trust.author}</span>
@@ -370,8 +358,8 @@ export default function App() {
               </div>
 
               <div>
-                <h2 className="text-3xl sm:text-4xl md:text-6xl font-black text-white mb-6 leading-tight">{t.trust.title}</h2>
-                <div className="space-y-6 md:space-y-8">
+                <h2 className="text-2xl sm:text-3xl md:text-6xl font-black text-white mb-5 sm:mb-6 leading-tight">{t.trust.title}</h2>
+                <div className="space-y-5 sm:space-y-6 md:space-y-8">
                   {t.trust.items.map((item, idx) => {
                     const icons = [Lock, MessageCircle, ShieldCheck];
                     const Icon = icons[idx];
@@ -379,13 +367,13 @@ export default function App() {
                     return (
                       <div key={item.title} className="flex gap-4 md:gap-6">
                         <div
-                          className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${iconColors[idx]}`}
+                          className={`flex-shrink-0 w-11 h-11 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center ${iconColors[idx]}`}
                         >
-                          <Icon className="w-6 h-6" />
+                          <Icon className="w-5 h-5 sm:w-6 sm:h-6" />
                         </div>
                         <div>
-                          <h4 className="text-lg md:text-xl font-black text-white mb-2">{item.title}</h4>
-                          <p className="text-slate-400 font-medium">
+                          <h4 className="text-base sm:text-lg md:text-xl font-black text-white mb-1.5 sm:mb-2">{item.title}</h4>
+                          <p className="text-sm sm:text-base text-slate-400 font-medium">
                             <span className="md:hidden">{item.bodyMobile}</span>
                             <span className="hidden md:inline">{item.bodyDesktop}</span>
                           </p>
@@ -407,17 +395,17 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.22, ease: 'easeOut' }}
             >
-              <h2 className="text-4xl sm:text-5xl md:text-8xl font-black text-white mb-6 md:mb-8 leading-tight tracking-tighter">
+              <h2 className="text-3xl sm:text-4xl md:text-8xl font-black text-white mb-5 sm:mb-6 md:mb-8 leading-tight tracking-tighter">
                 {t.cta.title}
               </h2>
-              <p className="text-lg md:text-3xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
+              <p className="text-base sm:text-lg md:text-3xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
                 <span className="md:hidden">{t.cta.bodyMobile}</span>
                 <span className="hidden md:inline">{t.cta.bodyDesktop}</span>
               </p>
               <div className="flex justify-center">
-                <StoreBadges size="lg" className="justify-center" />
+                <StoreBadges size="lg" layout="stack" className="justify-center" />
               </div>
-              <p className="mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-xs md:text-sm">
+              <p className="mt-8 sm:mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">
                 {t.cta.footnote}
               </p>
             </motion.div>
@@ -425,15 +413,15 @@ export default function App() {
         </section>
       </motion.main>
 
-      <footer className="bg-slate-950 border-t border-white/5 py-16 md:py-20">
+      <footer className="bg-slate-950 border-t border-white/5 py-12 sm:py-16 md:py-20">
         <div className={sectionWrap}>
           <div className="flex flex-col md:flex-row justify-between items-center gap-8 md:gap-12">
-            <div className="w-32">
+            <div className="w-28 sm:w-32">
               <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
             </div>
             <div className="text-center md:text-right space-y-4">
               <h4 className="text-white font-black uppercase tracking-[0.18em] text-xs">{t.footer.offer}</h4>
-              <div className="flex flex-wrap justify-center md:justify-end gap-5 md:gap-8 text-slate-400 font-bold uppercase tracking-wide text-xs md:text-sm">
+              <div className="flex flex-wrap justify-center md:justify-end gap-4 sm:gap-5 md:gap-8 text-slate-400 font-bold uppercase tracking-wide text-xs md:text-sm">
                 <a href="#jak-to-funguje" className="hover:text-white transition-colors">{t.footer.howItWorks}</a>
                 <a href="#data" className="hover:text-white transition-colors">{t.footer.stats}</a>
                 <a href="#vibe" className="hover:text-white transition-colors">{t.footer.safety}</a>
@@ -442,7 +430,7 @@ export default function App() {
               <StoreBadges size="sm" className="justify-center md:justify-end" />
             </div>
           </div>
-          <div className="mt-10 md:mt-16 pt-8 border-t border-white/5 text-center text-slate-600 text-xs md:text-sm font-medium">
+          <div className="mt-8 sm:mt-10 md:mt-16 pt-8 border-t border-white/5 text-center text-slate-600 text-xs md:text-sm font-medium">
             {t.footer.copyright}
           </div>
         </div>
