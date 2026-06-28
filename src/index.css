@@ -1,11 +1,9 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Noto+Sans:ital,wght@0,300;0,400;0,600;0,700&family=Nunito:wght@300;400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
   --color-trtkat-blue: #4fb3f0;
   --color-trtkat-pink: #f062a1;
-  /* Nunito: nejbližší korespondent k Quicksand; .font-book používá 300 (light) */
-  --font-sans: "Nunito", "Quicksand", "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Nunito", "Quicksand", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Quicksand", "Nunito", ui-sans-serif, system-ui, sans-serif;
 }
 
@@ -26,11 +24,6 @@
   h3,
   h4 {
     @apply font-display;
-  }
-
-  html[lang='el'] {
-    --font-sans: "Noto Sans", "Nunito", "Quicksand", "Inter", ui-sans-serif, system-ui, sans-serif;
-    --font-display: "Noto Sans", "Quicksand", "Nunito", ui-sans-serif, system-ui, sans-serif;
   }
 }
 
@@ -60,5 +53,78 @@
       rgb(2 6 23 / 0.35) 60%,
       rgb(2 6 23) 100%
     );
+  }
+
+  .hero-enter {
+    animation: hero-enter 0.45s ease-out both;
+  }
+
+  .hero-enter--delay {
+    animation-delay: 0.08s;
+  }
+
+  .hero-phone-float {
+    animation: hero-float 5s ease-in-out infinite;
+  }
+
+  .reveal-section {
+    opacity: 0;
+    transform: translate3d(0, 28px, 0);
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease;
+  }
+
+  .reveal-section--visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .cta-glow {
+    filter: blur(100px);
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -10px, 0);
+  }
+}
+
+@media (max-width: 767px) {
+  .hero-blurs {
+    display: none;
+  }
+
+  .cta-glow {
+    filter: none;
+    opacity: 0.08;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-enter,
+  .hero-enter--delay,
+  .hero-phone-float,
+  .reveal-section {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 }

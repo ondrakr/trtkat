@@ -17,7 +17,15 @@ export function SiteLayout() {
   const isHome = pathname === '/';
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32);
+    let ticking = false;
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(() => {
+        setScrolled(window.scrollY > 32);
+        ticking = false;
+      });
+    };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
@@ -29,11 +37,11 @@ export function SiteLayout() {
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
       <nav
         className={cn(
-          'top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300',
+          'top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
           isHome ? 'fixed inset-x-0' : 'sticky inset-x-0',
           navSolid
-            ? 'bg-slate-950/85 backdrop-blur-md border-b border-white/5 shadow-[0_8px_32px_rgba(2,6,23,0.45)]'
-            : 'bg-transparent border-b border-transparent',
+            ? 'border-b border-white/5 bg-slate-950/95 shadow-[0_8px_32px_rgba(2,6,23,0.45)] md:bg-slate-950/85 md:backdrop-blur-md'
+            : 'border-b border-transparent bg-transparent',
         )}
       >
         <div className={sectionWrap}>

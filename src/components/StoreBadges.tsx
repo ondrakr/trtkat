@@ -11,9 +11,10 @@ type StoreBadgesProps = {
   size?: keyof typeof badgeHeights;
   layout?: 'row' | 'stack';
   className?: string;
+  priority?: boolean;
 };
 
-export function StoreBadges({ size = 'md', layout = 'row', className = '' }: StoreBadgesProps) {
+export function StoreBadges({ size = 'md', layout = 'row', className = '', priority = false }: StoreBadgesProps) {
   const { t } = useI18n();
   const height = badgeHeights[size];
   const layoutClass =
@@ -36,7 +37,7 @@ export function StoreBadges({ size = 'md', layout = 'row', className = '' }: Sto
           src="/badges/app-store.svg"
           alt=""
           className={`${height} w-auto max-w-full`}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
           decoding="async"
         />
       </a>
@@ -53,7 +54,7 @@ export function StoreBadges({ size = 'md', layout = 'row', className = '' }: Sto
           src="/badges/google-play.svg"
           alt=""
           className={`${height} w-auto max-w-full`}
-          loading="lazy"
+          loading={priority ? 'eager' : 'lazy'}
           decoding="async"
         />
       </a>

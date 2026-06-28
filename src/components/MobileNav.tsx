@@ -4,6 +4,7 @@ import { X } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from './StoreBadges';
 import { LangDropdown } from './LangDropdown';
+import { cn } from '../lib/utils';
 
 type MobileNavProps = {
   open: boolean;
@@ -27,8 +28,6 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     };
   }, [open]);
 
-  if (!open) return null;
-
   const labelMap = {
     about: t.nav.about,
     stats: t.nav.stats,
@@ -37,12 +36,35 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
   };
 
   return (
-    <div className="fixed inset-0 z-[70] md:hidden">
-      <button type="button" aria-label="Close menu" className="absolute inset-0 bg-slate-950/80 backdrop-blur-sm" onClick={onClose} />
-      <div className="absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-slate-950 shadow-2xl">
+    <div
+      className={cn('fixed inset-0 z-[70] md:hidden', open ? 'pointer-events-auto' : 'pointer-events-none')}
+      aria-hidden={!open}
+    >
+      <button
+        type="button"
+        aria-label="Close menu"
+        tabIndex={open ? 0 : -1}
+        className={cn(
+          'absolute inset-0 bg-slate-950/92 transition-opacity duration-200 ease-out',
+          open ? 'opacity-100' : 'opacity-0',
+        )}
+        onClick={onClose}
+      />
+      <div
+        className={cn(
+          'absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-slate-950 shadow-2xl transition-transform duration-200 ease-out will-change-transform',
+          open ? 'translate-x-0' : 'translate-x-full',
+        )}
+      >
         <div className="flex items-center justify-between border-b border-white/5 px-5 py-4">
           <LangDropdown />
-          <button type="button" onClick={onClose} aria-label="Close menu" className="rounded-xl border border-white/10 p-2 text-slate-300 hover:bg-white/5 hover:text-white transition-colors">
+          <button
+            type="button"
+            onClick={onClose}
+            aria-label="Close menu"
+            tabIndex={open ? 0 : -1}
+            className="rounded-xl border border-white/10 p-2.5 text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
+          >
             <X className="h-5 w-5" />
           </button>
         </div>
@@ -51,11 +73,21 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             {links.map(({ href, to, key }) => (
               <li key={key}>
                 {to ? (
-                  <Link to={to} onClick={onClose} className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors">
+                  <Link
+                    to={to}
+                    onClick={onClose}
+                    tabIndex={open ? 0 : -1}
+                    className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors"
+                  >
                     {labelMap[key]}
                   </Link>
                 ) : (
-                  <a href={href} onClick={onClose} className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors">
+                  <a
+                    href={href}
+                    onClick={onClose}
+                    tabIndex={open ? 0 : -1}
+                    className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors"
+                  >
                     {labelMap[key]}
                   </a>
                 )}

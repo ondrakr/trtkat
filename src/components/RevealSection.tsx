@@ -1,28 +1,41 @@
-import type { ReactNode } from 'react';
-import { motion } from 'motion/react';
-import { useInView } from 'react-intersection-observer';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { cn } from '../lib/utils';
 
 type RevealSectionProps = {
   children: ReactNode;
   className?: string;
   id?: string;
-  delay?: number;
 };
 
-export function RevealSection({ children, className, id, delay = 0 }: RevealSectionProps) {
-  const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.1, rootMargin: '-60px 0px' });
+export function RevealSection({ children, className, id }: RevealSectionProps) {
+  const ref = useRef<HTMLElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.08, rootMargin: '0px 0px -40px 0px' },
+    );
+
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
 
   return (
-    <motion.section
+    <section
       id={id}
       ref={ref}
-      initial={{ opacity: 0, y: 40 }}
-      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
-      transition={{ duration: 0.7, delay, ease: [0.22, 1, 0.36, 1] }}
-      className={cn(className)}
+      className={cn('reveal-section', visible && 'reveal-section--visible', className)}
     >
       {children}
-    </motion.section>
+    </section>
   );
 }
