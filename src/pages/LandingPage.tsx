@@ -26,7 +26,7 @@ import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from '../components/StoreBadges';
 import { SEO } from '../components/SEO';
 import { buildLandingSchemas } from '../lib/schema';
-import { sectionWrap, sectionWrapNarrow, sectionY } from '../lib/navigation';
+import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
 
 const benefitIcons = [Smile, Moon, Zap, Sparkles];
 const vibeImageSrc = '/images/IMG_3760.jpeg';
@@ -56,42 +56,75 @@ export function LandingPage() {
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
         <section className="relative isolate overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 -bottom-24 sm:-bottom-32 overflow-hidden">
-            <div className="absolute -top-20 right-[-10%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-blue/25 blur-[90px] md:blur-[150px]" />
-            <div className="absolute bottom-[-15%] left-[-12%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-pink/25 blur-[90px] md:blur-[150px]" />
+          <div className="pointer-events-none absolute inset-0 overflow-hidden">
+            <div className="absolute -top-24 left-[-15%] h-72 w-72 sm:h-96 sm:w-96 lg:h-[520px] lg:w-[520px] rounded-full bg-trtkat-blue/20 blur-[100px] lg:blur-[130px]" />
+            <div className="absolute top-[8%] right-[-8%] h-80 w-80 sm:h-[28rem] sm:w-[28rem] lg:h-[600px] lg:w-[600px] rounded-full bg-trtkat-pink/25 blur-[100px] lg:blur-[140px]" />
+            <div className="absolute bottom-[-10%] left-[20%] h-64 w-64 rounded-full bg-trtkat-pink/10 blur-[90px] lg:hidden" />
           </div>
           <div className="hero-fade-bottom" aria-hidden="true" />
 
-          <div className={`${sectionWrap} relative z-[2] min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] md:min-h-[90vh] flex items-center py-10 sm:py-14 md:py-20`}>
-            <div className="mx-auto w-full max-w-4xl md:mx-0">
+          <div className={`${sectionWrap} relative z-[2] min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)] flex items-center py-10 sm:py-12 lg:py-16`}>
+            <div className="grid w-full grid-cols-1 items-center gap-y-8 sm:gap-y-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-10 xl:grid-cols-2 xl:gap-x-16">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, ease: 'easeOut' }}
-                className="text-center md:text-left"
+                transition={{ duration: 0.35, ease: 'easeOut' }}
+                className="order-1 text-center lg:col-start-1 lg:row-start-1 lg:text-left"
               >
-                <div className="mb-5 flex items-center justify-center gap-3 md:justify-start md:mb-6">
-                  <span className="hidden h-px w-10 bg-trtkat-pink sm:block md:w-12" />
-                  <span className="rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink">
+                <div className="mb-4 flex items-center justify-center gap-3 sm:mb-5 lg:justify-start">
+                  <span className="hidden h-px w-10 bg-trtkat-pink sm:block lg:w-12" />
+                  <span className="rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-trtkat-pink sm:text-xs">
                     {t.hero.badge}
                   </span>
                 </div>
 
-                <h1 className="text-[3.35rem] leading-[0.92] sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
+                <h1 className="text-[2.65rem] leading-[0.94] font-black tracking-tighter text-white sm:text-5xl sm:leading-[0.92] md:text-6xl lg:text-[3.75rem] lg:leading-[0.92] xl:text-7xl xl:leading-[0.9] 2xl:text-[5rem]">
                   {t.hero.titleLine1}
                   <br />
                   <span className="text-gradient">{t.hero.titleLine2}</span>
                 </h1>
+              </motion.div>
 
-                <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 md:max-w-2xl md:text-2xl">
+              <motion.div
+                initial={{ opacity: 0, y: 28, scale: 0.94 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
+                className="order-2 relative mx-auto w-full max-w-[240px] sm:max-w-[300px] md:max-w-[340px] lg:order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none lg:justify-self-end"
+              >
+                <motion.div
+                  animate={{ y: [0, -14, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
+                  className="relative"
+                >
+                  <div className="hero-phone-glow pointer-events-none absolute inset-[4%] -z-10 scale-110 blur-2xl" aria-hidden="true" />
+                  <div className="pointer-events-none absolute -inset-4 rounded-[3rem] bg-linear-to-b from-white/[0.06] to-transparent opacity-60 sm:-inset-6 lg:-inset-8" aria-hidden="true" />
+                  <img
+                    src={heroPhoneSrc}
+                    alt={t.hero.imageAlt}
+                    width={788}
+                    height={1400}
+                    fetchPriority="high"
+                    decoding="async"
+                    className="relative w-full drop-shadow-[0_28px_80px_rgba(240,98,161,0.22)]"
+                  />
+                </motion.div>
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.35, delay: 0.08, ease: 'easeOut' }}
+                className="order-3 text-center lg:col-start-1 lg:row-start-2 lg:text-left"
+              >
+                <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg lg:mx-0 lg:max-w-lg xl:max-w-xl xl:text-xl">
                   {t.hero.body}
                 </p>
 
-                <div id="stahnout" className="mt-8 flex flex-col items-center gap-5 sm:mt-10 md:mt-12 md:items-start">
-                  <StoreBadges size="lg" layout="stack" className="justify-center md:justify-start" />
+                <div id="stahnout" className="mt-7 flex flex-col items-center gap-4 sm:mt-8 sm:gap-5 lg:items-start">
+                  <StoreBadges size="lg" layout="stack" className="justify-center lg:justify-start" />
                   <a
                     href="#data"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 transition-colors hover:border-white/20 hover:text-white sm:text-base md:text-lg"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 transition-colors hover:border-trtkat-pink/30 hover:text-white sm:text-base"
                   >
                     {t.hero.statsLink}
                     <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
@@ -235,6 +268,13 @@ export function LandingPage() {
               <div className="relative">
                 <div className="aspect-[4/5] sm:aspect-square rounded-3xl md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
                   <img src={vibeImageSrc} alt={t.trust.imageAlt} className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700" />
+                </div>
+                <div className="mt-6 lg:mt-0 lg:absolute lg:-bottom-8 lg:-right-8 p-5 sm:p-6 md:p-8 bg-slate-950 rounded-3xl md:rounded-[2.5rem] border border-white/10 shadow-2xl max-w-xs mx-auto lg:mx-0">
+                  <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
+                  <div className="mt-4 flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-trtkat-pink" />
+                    <span className="font-bold text-slate-400">{t.trust.author}</span>
+                  </div>
                 </div>
               </div>
               <div>

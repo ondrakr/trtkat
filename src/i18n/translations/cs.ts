@@ -26,6 +26,7 @@ export const cs: SiteCopy = {
     titleLine2: 'Užij si noc.',
     body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
     statsLink: 'Zajímají mě statistiky',
+    imageAlt: 'Trtkat aplikace na iPhonu — profil, shoda a chat',
   },
   how: {
     title: 'Nejsme klasická seznamka.',

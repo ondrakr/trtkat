@@ -26,6 +26,7 @@ export const en: SiteCopy = {
     titleLine2: 'Enjoy the night.',
     body: 'Not everyone wants a relationship. Trtkat helps you find someone for a pleasant evening and connection — simply, without endless messaging.',
     statsLink: 'Show me the stats',
+    imageAlt: 'Trtkat app on iPhone — profile, match, and chat',
   },
   how: {
     title: 'We are not a classic dating app.',
