@@ -26,7 +26,7 @@ export function StoreBadges({ size = 'md', className = '' }: StoreBadgesProps) {
         className="inline-block transition-opacity hover:opacity-85 active:scale-[0.98]"
       >
         <img
-          src="/badges/app-store.png"
+          src="/badges/app-store.svg"
           alt=""
           className={`${height} w-auto`}
           loading="lazy"
@@ -41,7 +41,7 @@ export function StoreBadges({ size = 'md', className = '' }: StoreBadgesProps) {
         className="inline-block transition-opacity hover:opacity-85 active:scale-[0.98]"
       >
         <img
-          src="/badges/google-play.png"
+          src="/badges/google-play.svg"
           alt=""
           className={`${height} w-auto`}
           loading="lazy"
