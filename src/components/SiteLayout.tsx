@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { LangDropdown } from './LangDropdown';
@@ -7,21 +7,34 @@ import { StoreBadges } from './StoreBadges';
 import { SocialLinks } from './SocialLinks';
 import { useI18n } from '../i18n/I18nProvider';
 import { logoSrc, sectionWrap } from '../lib/navigation';
+import { cn } from '../lib/utils';
 
 export function SiteLayout() {
   const { t } = useI18n();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const { pathname } = useLocation();
   const isHome = pathname === '/';
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 32);
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  const navSolid = !isHome || scrolled;
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
       <nav
-        className={
-          isHome
-            ? 'fixed inset-x-0 top-0 z-50 bg-transparent'
-            : 'sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5'
-        }
+        className={cn(
+          'top-0 z-50 transition-[background-color,backdrop-filter,border-color,box-shadow] duration-300',
+          isHome ? 'fixed inset-x-0' : 'sticky inset-x-0',
+          navSolid
+            ? 'bg-slate-950/85 backdrop-blur-md border-b border-white/5 shadow-[0_8px_32px_rgba(2,6,23,0.45)]'
+            : 'bg-transparent border-b border-transparent',
+        )}
       >
         <div className={sectionWrap}>
           <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">

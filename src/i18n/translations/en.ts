@@ -21,8 +21,8 @@ export const en: SiteCopy = {
     googlePlayLabel: 'Get it on Google Play',
   },
   hero: {
-    badge: 'For students',
-    titleLine1: 'Save time.',
+    badge: 'Free',
+    titleLine1: 'Save time',
     titleLine2: 'Enjoy the night.',
     body: 'Not everyone wants a relationship. Trtkat helps you find someone for a pleasant evening and connection — simply, without endless messaging.',
     statsLink: 'Show me the stats',

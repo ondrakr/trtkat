@@ -21,9 +21,9 @@ import {
   Cell,
   BarChart as RechartsBarChart,
 } from 'recharts';
-import { useInView } from 'react-intersection-observer';
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from '../components/StoreBadges';
+import { RevealSection } from '../components/RevealSection';
 import { SEO } from '../components/SEO';
 import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
@@ -33,7 +33,6 @@ const vibeImageSrc = '/images/IMG_3760.jpeg';
 
 export function LandingPage() {
   const { t } = useI18n();
-  const { ref: statsRef } = useInView({ triggerOnce: true, threshold: 0.2 });
   const [activeStatCategory, setActiveStatCategory] = useState(t.data.statCategories[0].key);
 
   const currentStats =
@@ -78,9 +77,8 @@ export function LandingPage() {
                 </div>
 
                 <h1 className="text-[3.35rem] leading-[0.92] sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
-                  {t.hero.titleLine1}
-                  <br />
-                  <span className="text-gradient">{t.hero.titleLine2}</span>
+                  <span className="block whitespace-nowrap">{t.hero.titleLine1}</span>
+                  <span className="text-gradient block">{t.hero.titleLine2}</span>
                 </h1>
 
                 <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 md:max-w-2xl md:text-2xl">
@@ -124,7 +122,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="jak-to-funguje" className="relative pt-8 sm:pt-10 md:pt-12 pb-14 sm:pb-16 md:pb-24">
+        <RevealSection id="jak-to-funguje" className="relative pt-8 sm:pt-10 md:pt-12 pb-14 sm:pb-16 md:pb-24">
           <div className={sectionWrap}>
             <div className="text-center mb-10 sm:mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-[1.12] sm:leading-[1.1]">{t.how.title}</h2>
@@ -143,9 +141,9 @@ export function LandingPage() {
               ))}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`} ref={statsRef}>
+        <RevealSection id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`}>
           <div className={sectionWrap}>
             <div className="mb-8 sm:mb-10 md:mb-12">
               <h2 className="text-2xl sm:text-3xl md:text-6xl font-black text-white mb-3 sm:mb-4 leading-tight">{t.data.title}</h2>
@@ -218,9 +216,9 @@ export function LandingPage() {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section id="benefity" className={`${sectionY} relative overflow-hidden`}>
+        <RevealSection id="benefity" className={`${sectionY} relative overflow-hidden`}>
           <div className={sectionWrap}>
             <div className="text-center max-w-3xl lg:max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight text-balance">
@@ -249,9 +247,9 @@ export function LandingPage() {
               })}
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section id="vibe" className={`${sectionY} bg-trtkat-gradient/5`}>
+        <RevealSection id="vibe" className={`${sectionY} bg-trtkat-gradient/5`}>
           <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
               <div className="relative">
@@ -292,9 +290,9 @@ export function LandingPage() {
               </div>
             </div>
           </div>
-        </section>
+        </RevealSection>
 
-        <section id="stahnout-cta" className={`${sectionY} relative overflow-hidden`}>
+        <RevealSection id="stahnout-cta" className={`${sectionY} relative overflow-hidden`}>
           <div className="absolute inset-0 bg-trtkat-gradient opacity-10 blur-[100px] -z-10" />
           <div className={`${sectionWrapNarrow} text-center`}>
             <h2 className="text-3xl sm:text-4xl md:text-8xl font-black text-white mb-5 sm:mb-6 md:mb-8 leading-tight tracking-tighter">{t.cta.title}</h2>
@@ -307,7 +305,7 @@ export function LandingPage() {
             </div>
             <p className="mt-8 sm:mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">{t.cta.footnote}</p>
           </div>
-        </section>
+        </RevealSection>
       </motion.main>
     </>
   );

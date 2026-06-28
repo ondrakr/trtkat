@@ -21,8 +21,8 @@ export const cs: SiteCopy = {
     googlePlayLabel: 'Stáhnout na Google Play',
   },
   hero: {
-    badge: 'Pro studenty',
-    titleLine1: 'Ušetři čas.',
+    badge: 'Zdarma',
+    titleLine1: 'Ušetři čas',
     titleLine2: 'Užij si noc.',
     body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
     statsLink: 'Zajímají mě statistiky',
