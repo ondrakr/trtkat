@@ -7,6 +7,7 @@ import { StoreBadges } from './StoreBadges';
 import { SocialLinks } from './SocialLinks';
 import { useI18n } from '../i18n/I18nProvider';
 import { logoSrc, sectionWrap } from '../lib/navigation';
+import { openCookieSettings } from '../lib/cookies';
 import { cn } from '../lib/utils';
 
 export function SiteLayout() {
@@ -108,6 +109,13 @@ export function SiteLayout() {
                 <Link to="/ochrana-soukromi" className="hover:text-white transition-colors">{t.footer.privacy}</Link>
                 <Link to="/podminky" className="hover:text-white transition-colors">{t.footer.terms}</Link>
                 <Link to="/kontakt" className="hover:text-white transition-colors">{t.footer.contact}</Link>
+                <button
+                  type="button"
+                  onClick={() => openCookieSettings()}
+                  className="text-left hover:text-white transition-colors"
+                >
+                  {t.footer.cookieSettings}
+                </button>
               </div>
             </div>
 

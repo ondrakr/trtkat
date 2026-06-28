@@ -249,7 +249,7 @@ export const cs: SiteCopy = {
     ],
   },
   about: {
-    title: 'Kdo za Trtkatem stojí',
+    title: 'Kdo za Trtkat stojí',
     bodyMobile:
       'Nezávislý český projekt — malý tým vývojářů a odborníků na sexuální zdraví, kteří spojují praktickou appku s osvětou.',
     bodyDesktop:
@@ -268,7 +268,18 @@ export const cs: SiteCopy = {
     badge: 'Připravujeme',
     heading: 'Na aplikaci pracujeme',
     body:
-      'Trtkat pro iOS a Android je ve finální fázi vývoje. Jakmile bude připravená ke stažení, dáme to vědět. Děkujeme za trpělivost.',
+      'Trtkat pro iOS a Android je ve finální fázi vývoje. Zanech e-mail a dáme ti vědět, až bude aplikace ke stažení.',
+    emailLabel: 'E-mail pro předběžný přístup',
+    emailPlaceholder: 'tvuj@email.cz',
+    submitButton: 'Chci přístup',
+    successTitle: 'Jsi na seznamu',
+    successBody: 'Jakmile bude Trtkat připravený ke stažení, pošleme ti e-mail.',
+    privacyNote: 'E-mail použijeme jen pro info o spuštění aplikace. Žádný spam.',
+    errors: {
+      invalid_email: 'Zadej platnou e-mailovou adresu.',
+      submit_failed: 'Nepodařilo se odeslat. Zkus to prosím znovu.',
+      network: 'Chyba připojení. Zkontroluj internet a zkus to znovu.',
+    },
     platforms: 'iOS · Android',
   },
   footer: {
@@ -284,6 +295,7 @@ export const cs: SiteCopy = {
     contact: 'Kontakt',
     followUs: 'Sleduj nás',
     copyright: '© 2026 Trtkat. Pro dospělé 18+.',
+    cookieSettings: 'Nastavení cookies',
   },
   legal: {
     privacy: {
@@ -332,5 +344,26 @@ export const cs: SiteCopy = {
     readMore: 'Číst článek',
     backToBlog: 'Zpět na blog',
     backHome: 'Zpět na úvod',
+    loading: 'Načítání článků…',
+  },
+  cookies: {
+    title: 'Cookies a vaše soukromí',
+    description:
+      'Používáme nezbytné cookies pro fungování webu. Analytické cookies (Google Analytics) nám pomáhají web vylepšovat — pouze s vaším souhlasem. Více v',
+    privacyLink: 'ochraně soukromí',
+    acceptAll: 'Přijmout vše',
+    rejectOptional: 'Jen nezbytné',
+    customize: 'Nastavit',
+    settingsTitle: 'Nastavení cookies',
+    necessaryTitle: 'Nezbytné',
+    necessaryDesc: 'Zajišťují základní funkce webu a ukládání vašeho rozhodnutí o cookies.',
+    alwaysOn: 'Vždy zapnuto',
+    analyticsTitle: 'Analytické',
+    analyticsDesc: 'Google Analytics — anonymizované statistiky návštěvnosti (počet návštěv, stránky).',
+    marketingTitle: 'Marketingové',
+    marketingDesc: 'Pro budoucí reklamní měření. Momentálně nepoužíváme — můžete nechat vypnuto.',
+    saveMinimal: 'Uložit jen nezbytné',
+    saveChoices: 'Uložit volby',
+    settingsLink: 'Nastavení cookies',
   },
 };

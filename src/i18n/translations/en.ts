@@ -268,7 +268,18 @@ export const en: SiteCopy = {
     badge: 'In development',
     heading: 'We are working on the app',
     body:
-      'Trtkat for iOS and Android is in the final stage of development. We will let you know as soon as it is ready to download. Thank you for your patience.',
+      'Trtkat for iOS and Android is in the final stage of development. Leave your email and we will let you know when the app is ready.',
+    emailLabel: 'Email for early access',
+    emailPlaceholder: 'you@email.com',
+    submitButton: 'Get early access',
+    successTitle: 'You are on the list',
+    successBody: 'We will email you as soon as Trtkat is ready to download.',
+    privacyNote: 'We use your email only to notify you about the launch. No spam.',
+    errors: {
+      invalid_email: 'Please enter a valid email address.',
+      submit_failed: 'Could not submit. Please try again.',
+      network: 'Connection error. Check your internet and try again.',
+    },
     platforms: 'iOS · Android',
   },
   footer: {
@@ -284,6 +295,7 @@ export const en: SiteCopy = {
     contact: 'Contact',
     followUs: 'Follow us',
     copyright: '© 2026 Trtkat. For adults 18+.',
+    cookieSettings: 'Cookie settings',
   },
   legal: {
     privacy: {
@@ -332,5 +344,26 @@ export const en: SiteCopy = {
     readMore: 'Read article',
     backToBlog: 'Back to blog',
     backHome: 'Back to home',
+    loading: 'Loading articles…',
+  },
+  cookies: {
+    title: 'Cookies and your privacy',
+    description:
+      'We use essential cookies for the site to work. Analytics cookies (Google Analytics) help us improve the site — only with your consent. More in our',
+    privacyLink: 'privacy policy',
+    acceptAll: 'Accept all',
+    rejectOptional: 'Essential only',
+    customize: 'Customize',
+    settingsTitle: 'Cookie settings',
+    necessaryTitle: 'Essential',
+    necessaryDesc: 'Required for basic site functionality and storing your cookie choice.',
+    alwaysOn: 'Always on',
+    analyticsTitle: 'Analytics',
+    analyticsDesc: 'Google Analytics — anonymized traffic statistics (visits, pages).',
+    marketingTitle: 'Marketing',
+    marketingDesc: 'For future ad measurement. Not used yet — you can leave this off.',
+    saveMinimal: 'Save essential only',
+    saveChoices: 'Save choices',
+    settingsLink: 'Cookie settings',
   },
 };

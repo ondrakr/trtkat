@@ -7,6 +7,71 @@ import sitemap from 'vite-plugin-sitemap';
 const SITE_URL = 'https://www.trtkat.cz';
 import { SITEMAP_PATHS } from './sitemap.routes';
 
+function waitlistDevApi() {
+  return {
+    name: 'waitlist-dev-api',
+    configureServer(server: import('vite').ViteDevServer) {
+      server.middlewares.use('/api/waitlist', (req, res, next) => {
+        if (req.method !== 'POST') {
+          next();
+          return;
+        }
+
+        let body = '';
+        req.on('data', (chunk) => {
+          body += chunk;
+        });
+        req.on('end', () => {
+          try {
+            const parsed = JSON.parse(body) as { email?: string };
+            const email = typeof parsed.email === 'string' ? parsed.email.trim().toLowerCase() : '';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              res.statusCode = 400;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: 'invalid_email' }));
+              return;
+            }
+
+            console.log('[dev waitlist]', email);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ ok: true }));
+          } catch {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: 'invalid_email' }));
+          }
+        });
+      });
+
+      server.middlewares.use('/api/cookie-consent', (req, res, next) => {
+        if (req.method !== 'POST') {
+          next();
+          return;
+        }
+
+        let body = '';
+        req.on('data', (chunk) => {
+          body += chunk;
+        });
+        req.on('end', () => {
+          try {
+            const parsed = JSON.parse(body) as { visitorId?: string; analytics?: boolean; marketing?: boolean };
+            console.log('[dev cookie-consent]', parsed);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ ok: true }));
+          } catch {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: 'invalid_body' }));
+          }
+        });
+      });
+    },
+  };
+}
+
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
   const isGithubPages = process.env.GITHUB_ACTIONS === 'true';
@@ -16,6 +81,7 @@ export default defineConfig(({mode}) => {
     plugins: [
       react(),
       tailwindcss(),
+      waitlistDevApi(),
       sitemap({
         hostname: SITE_URL,
         outDir: 'dist',

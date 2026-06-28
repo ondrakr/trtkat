@@ -92,6 +92,17 @@ export type SiteCopy = {
     badge: string;
     heading: string;
     body: string;
+    emailLabel: string;
+    emailPlaceholder: string;
+    submitButton: string;
+    successTitle: string;
+    successBody: string;
+    privacyNote: string;
+    errors: {
+      invalid_email: string;
+      submit_failed: string;
+      network: string;
+    };
     platforms: string;
   };
   footer: {
@@ -107,6 +118,7 @@ export type SiteCopy = {
     contact: string;
     followUs: string;
     copyright: string;
+    cookieSettings: string;
   };
   legal: {
     privacy: { title: string; metaDescription: string; sections: LegalSection[] };
@@ -120,5 +132,25 @@ export type SiteCopy = {
     readMore: string;
     backToBlog: string;
     backHome: string;
+    loading: string;
+  };
+  cookies: {
+    title: string;
+    description: string;
+    privacyLink: string;
+    acceptAll: string;
+    rejectOptional: string;
+    customize: string;
+    settingsTitle: string;
+    necessaryTitle: string;
+    necessaryDesc: string;
+    alwaysOn: string;
+    analyticsTitle: string;
+    analyticsDesc: string;
+    marketingTitle: string;
+    marketingDesc: string;
+    saveMinimal: string;
+    saveChoices: string;
+    settingsLink: string;
   };
 };

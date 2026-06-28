@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { GA4_MEASUREMENT_ID } from '../config/analytics';
+import { getAnalyticsConsent } from '../lib/cookies';
 
 declare global {
   interface Window {
@@ -23,7 +24,7 @@ function loadGtag(id: string) {
     window.dataLayer?.push(args);
   };
   window.gtag('js', new Date());
-  window.gtag('config', id, { send_page_view: false });
+  window.gtag('config', id, { send_page_view: false, anonymize_ip: true });
 }
 
 export function Analytics() {
@@ -31,11 +32,20 @@ export function Analytics() {
 
   useEffect(() => {
     if (!GA4_MEASUREMENT_ID) return;
-    loadGtag(GA4_MEASUREMENT_ID);
+
+    function maybeLoad() {
+      if (getAnalyticsConsent()) {
+        loadGtag(GA4_MEASUREMENT_ID!);
+      }
+    }
+
+    maybeLoad();
+    window.addEventListener('trtkat:consent', maybeLoad);
+    return () => window.removeEventListener('trtkat:consent', maybeLoad);
   }, []);
 
   useEffect(() => {
-    if (!GA4_MEASUREMENT_ID || !window.gtag) return;
+    if (!GA4_MEASUREMENT_ID || !window.gtag || !getAnalyticsConsent()) return;
     window.gtag('event', 'page_view', {
       page_path: location.pathname + location.search + location.hash,
       page_title: document.title,

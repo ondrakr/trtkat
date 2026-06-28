@@ -2,12 +2,14 @@ import { Suspense, lazy } from 'react';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { SiteLayout } from './components/SiteLayout';
 import { Analytics } from './components/Analytics';
+import { CookieConsent } from './components/CookieConsent';
 
 const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ default: m.LandingPage })));
 const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage').then((m) => ({ default: m.BlogIndexPage })));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then((m) => ({ default: m.BlogPostPage })));
 const LegalPage = lazy(() => import('./pages/LegalPage').then((m) => ({ default: m.LegalPage })));
 const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage').then((m) => ({ default: m.ComingSoonPage })));
+const AdminRoutes = lazy(() => import('./admin/AdminRoutes').then((m) => ({ default: m.AdminRoutes })));
 
 function PageFallback() {
   return <div className="min-h-[50vh] bg-slate-950" aria-hidden="true" />;
@@ -19,6 +21,7 @@ export default function App() {
       <Analytics />
       <Suspense fallback={<PageFallback />}>
         <Routes>
+          <Route path="/admin/*" element={<AdminRoutes />} />
           <Route element={<SiteLayout />}>
             <Route index element={<LandingPage />} />
             <Route path="/blog" element={<BlogIndexPage />} />
@@ -31,6 +34,7 @@ export default function App() {
           </Route>
         </Routes>
       </Suspense>
+      <CookieConsent />
     </BrowserRouter>
   );
 }

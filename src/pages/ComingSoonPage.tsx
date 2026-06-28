@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Smartphone } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
+import { WaitlistForm } from '../components/WaitlistForm';
 import { SEO } from '../components/SEO';
 import { DOWNLOAD_PAGE_PATH } from '../config/stores';
 import { sectionWrap, sectionY } from '../lib/navigation';
@@ -42,6 +43,10 @@ export function ComingSoonPage() {
             <p className="text-base sm:text-lg text-slate-300 font-medium leading-relaxed max-w-lg mx-auto mb-8">
               {t.comingSoon.body}
             </p>
+
+            <div className="mb-8">
+              <WaitlistForm />
+            </div>
 
             <p className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] text-slate-500">
               {t.comingSoon.platforms}

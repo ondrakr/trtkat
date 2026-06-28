@@ -1,15 +1,35 @@
+import { useEffect, useState } from 'react';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { SEO } from '../components/SEO';
-import { getBlogPost } from '../blog/posts';
+import { fetchPostBySlug, type BlogPost } from '../blog/service';
 import { buildArticleSchema } from '../lib/schema';
 import { sectionWrap, sectionY } from '../lib/navigation';
 
 export function BlogPostPage() {
   const { slug } = useParams();
   const { t, locale } = useI18n();
-  const post = slug ? getBlogPost(slug) : undefined;
+  const [post, setPost] = useState<BlogPost | undefined>();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!slug) {
+      setLoading(false);
+      return;
+    }
+    fetchPostBySlug(slug)
+      .then(setPost)
+      .finally(() => setLoading(false));
+  }, [slug]);
+
+  if (loading) {
+    return (
+      <main className={`${sectionY} flex-grow`}>
+        <div className={`${sectionWrap} text-slate-400`}>{t.blog.loading}</div>
+      </main>
+    );
+  }
 
   if (!post) return <Navigate to="/blog" replace />;
 

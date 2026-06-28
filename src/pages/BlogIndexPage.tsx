@@ -1,12 +1,21 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { SEO } from '../components/SEO';
-import { BLOG_POSTS } from '../blog/posts';
+import { fetchPublishedPosts, type BlogPost } from '../blog/service';
 import { sectionWrap, sectionY } from '../lib/navigation';
 
 export function BlogIndexPage() {
   const { t, locale } = useI18n();
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetchPublishedPosts()
+      .then(setPosts)
+      .finally(() => setLoading(false));
+  }, []);
 
   return (
     <>
@@ -26,29 +35,33 @@ export function BlogIndexPage() {
             <p className="text-base sm:text-lg text-slate-400">{t.blog.subtitle}</p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map((post) => {
-              const localized = locale === 'en' ? post.en : post.cs;
-              return (
-                <article
-                  key={post.slug}
-                  className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition-colors"
-                >
-                  <time className="text-xs font-bold uppercase tracking-wider text-trtkat-pink" dateTime={post.datePublished}>
-                    {new Date(post.datePublished).toLocaleDateString(locale === 'en' ? 'en-GB' : 'cs-CZ')}
-                  </time>
-                  <h2 className="mt-3 text-xl font-black text-white leading-snug">{localized.title}</h2>
-                  <p className="mt-3 text-sm text-slate-400 leading-relaxed">{localized.excerpt}</p>
-                  <Link
-                    to={`/blog/${post.slug}`}
-                    className="mt-5 inline-flex text-sm font-bold text-trtkat-blue hover:text-white transition-colors"
+          {loading ? (
+            <p className="text-slate-400">{t.blog.loading}</p>
+          ) : (
+            <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              {posts.map((post) => {
+                const localized = locale === 'en' ? post.en : post.cs;
+                return (
+                  <article
+                    key={post.slug}
+                    className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition-colors"
                   >
-                    {t.blog.readMore} →
-                  </Link>
-                </article>
-              );
-            })}
-          </div>
+                    <time className="text-xs font-bold uppercase tracking-wider text-trtkat-pink" dateTime={post.datePublished}>
+                      {new Date(post.datePublished).toLocaleDateString(locale === 'en' ? 'en-GB' : 'cs-CZ')}
+                    </time>
+                    <h2 className="mt-3 text-xl font-black text-white leading-snug">{localized.title}</h2>
+                    <p className="mt-3 text-sm text-slate-400 leading-relaxed">{localized.excerpt}</p>
+                    <Link
+                      to={`/blog/${post.slug}`}
+                      className="mt-5 inline-flex text-sm font-bold text-trtkat-blue hover:text-white transition-colors"
+                    >
+                      {t.blog.readMore} →
+                    </Link>
+                  </article>
+                );
+              })}
+            </div>
+          )}
         </div>
       </main>
     </>
