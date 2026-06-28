@@ -36,18 +36,12 @@ export type SiteCopy = {
     titleLine1: string;
     titleLine2: string;
     body: string;
-    freeNote: string;
     imageAlt: string;
   };
   how: {
     title: string;
-    titleAccent: string;
     subtitle: string;
-    introMobile: string;
-    introDesktop: string;
-    matching: { title: string; bodyMobile: string; bodyDesktop: string };
     steps: Array<{ title: string; bodyMobile: string; bodyDesktop: string }>;
-    values: Array<{ title: string; desc: string }>;
   };
   features: {
     title: string;
@@ -68,12 +62,17 @@ export type SiteCopy = {
     charts: Record<string, ChartCategory>;
     timeline: TimelineItem[];
   };
+  benefits: {
+    title: string;
+    titleAccent: string;
+    introMobile: string;
+    introDesktop: string;
+    items: Array<{ title: string; desc: string }>;
+  };
   trust: {
     title: string;
     quote: string;
     author: string;
-    authorDetail: string;
-    authorInitials: string;
     imageAlt: string;
     items: Array<{ title: string; bodyMobile: string; bodyDesktop: string }>;
   };
@@ -81,10 +80,6 @@ export type SiteCopy = {
     title: string;
     bodyMobile: string;
     bodyDesktop: string;
-  };
-  faq: {
-    title: string;
-    items: Array<{ question: string; answer: string }>;
   };
   cta: {
     title: string;
@@ -103,7 +98,6 @@ export type SiteCopy = {
     offer: string;
     howItWorks: string;
     stats: string;
-    faq: string;
     safety: string;
     download: string;
     blog: string;

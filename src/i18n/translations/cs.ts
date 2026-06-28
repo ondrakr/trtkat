@@ -25,29 +25,17 @@ export const cs: SiteCopy = {
     titleLine1: 'Ušetři čas.',
     titleLine2: 'Užij si noc.',
     body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
-    freeNote: 'Nekomerční projekt — neplatíš, neprodáváme tvá data, bez reklam.',
     imageAlt: 'Trtkat aplikace na iPhonu — profil, shoda a chat',
   },
   how: {
     title: 'Nejsme klasická seznamka.',
-    titleAccent: 'Ne každý teď chce\u00A0vztah.',
-    subtitle: 'Zkratka k jasné domluvě.',
-    introMobile:
-      'Někdy nehledáš vztah — stačí jasná shoda, respekt a minimum zbytečností. Trtkat tě k tomu dovede.',
-    introDesktop:
-      'Někdy nehledáš lásku na celý život. Chceš jasnou shodu, chemii a večer bez přetvářky. Trtkat není další swipe appka s nekonečným chatem — jsme zkratka k jasné domluvě.',
-    matching: {
-      title: 'Jak funguje matching',
-      bodyMobile: 'Swipe, filtry podle vzdálenosti a věku. Shoda oběma směry — a jde se dál.',
-      bodyDesktop:
-        'Profily procházíš swipem a filtruješ podle vzdálenosti, věku a toho, co hledáš. Když padnete na sebe oba, otevře se chat a můžete rovnou domluvit další krok.',
-    },
+    subtitle: 'Jsme zkratka k jasné domluvě.',
     steps: [
       {
         title: 'Match bez keců',
         bodyMobile: 'Padli jste si do oka? Jdete rovnou na další krok.',
         bodyDesktop:
-          'Padli jste si do oka? Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku. Bez zbytečného čekání na odpověď.',
+          'Padli jste si do oka? Super. Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku. Bez trapných otevíráků a bez zbytečného čekání.',
       },
       {
         title: 'Místo na půl cesty',
@@ -62,12 +50,6 @@ export const cs: SiteCopy = {
           'Každý ví, proč tu je. Bez falešných slibů, bez matení signálů a bez hraní rolí. Respekt k hranicím je základ.',
       },
     ],
-    values: [
-      { title: 'Bez her', desc: 'Bez obcházení a falešných náznaků.' },
-      { title: 'Bez tlaku', desc: 'Všechno stojí na vzájemném souhlasu a respektu.' },
-      { title: 'Opravdově', desc: 'Každý profil patří reálnému člověku.' },
-      { title: 'Bez očekávání', desc: 'Bez bolestných zklamání a zbytečného trápení.' },
-    ],
   },
   features: {
     title: 'Co v aplikaci najdeš',
@@ -81,7 +63,7 @@ export const cs: SiteCopy = {
         title: 'Rezervace hotelu na půl cesty',
         bodyMobile: 'Hotel mezi vámi — zarezervuj ho rovnou v aplikaci.',
         bodyDesktop:
-          'Jste z různých měst? Trtkat najde hotel přesně na půl cesty a rezervaci vyřídíš na místě — bez přepínání mezi appkami.',
+          'Jste z různých měst? Trtkat najde hotel přesně na půl cesty a rezervaci vyřídíš na místě — bez dalších app a zbytečného domlouvání.',
       },
       {
         title: 'Plán rande na jedno kliknutí',
@@ -93,7 +75,7 @@ export const cs: SiteCopy = {
         title: 'Flirtovací hry',
         bodyMobile: 'Truth or Dare a další hry, co rozproudí konverzaci.',
         bodyDesktop:
-          'Seznamovací a flirty hry přímo v chatu — Truth or Dare, kostka na pravdu, odvážné otázky. Rozlouskni ledy a rozproudí konverzaci.',
+          'Seznamovací a flirty hry přímo v chatu — Truth or Dare, kostka na pravdu, odvážné otázky. Rozlouskni ledy bez trapných otevíráků.',
       },
       {
         title: 'Mapa rande míst',
@@ -226,13 +208,24 @@ export const cs: SiteCopy = {
       },
     ],
   },
+  benefits: {
+    title: 'Ne každý teď chce\u00A0vztah.',
+    titleAccent: 'A to je v pořádku.',
+    introMobile: 'Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.',
+    introDesktop:
+      'Někdy nehledáš lásku na celý život. Někdy chceš jen jasnou shodu, chemii a večer bez zbytečných her. Bez přetvářky, bez tlaku a s respektem k hranicím.',
+    items: [
+      { title: 'Bez her', desc: 'Bez obcházení a falešných náznaků.' },
+      { title: 'Bez tlaku', desc: 'Všechno stojí na vzájemném souhlasu a respektu.' },
+      { title: 'Opravdově', desc: 'Každý profil patří reálnému člověku.' },
+      { title: 'Bez očekávání', desc: 'Bez bolestných zklamání a trápení.' },
+    ],
+  },
   trust: {
     title: 'Důvěra a bezpečí',
     quote:
-      'Beta verzi jsem testoval dva měsíce. Nejvíc mě bavil plán rande — místo, navigace, hotovo. Žádné tři dny psaní o ničem.',
-    author: 'Marek, 24',
-    authorDetail: 'Praha-Holešovice · beta tester',
-    authorInitials: 'M',
+      'Kvůli škole a práci nemám kapacitu na vztah. Tady aspoň nikdo nic nepředstírá a všichni vědí, na čem jsou.',
+    author: 'Marek, Praha',
     imageAlt: 'Intimita',
     items: [
       {
@@ -262,36 +255,6 @@ export const cs: SiteCopy = {
     bodyDesktop:
       'Trtkat vzniká jako nezávislý český projekt zaměřený na férové nezávazné seznamování. Za aplikací stojí malý tým vývojářů a odborníků na sexuální zdraví, kteří chtějí spojit praktickou appku s osvětou o bezpečném seznamování.',
   },
-  faq: {
-    title: 'Časté otázky',
-    items: [
-      {
-        question: 'Kdo uvidí můj profil?',
-        answer:
-          'Profil vidí uživatelé v aplikaci podle tvých filtrů a vzdálenosti. Na webu se nezobrazuje — web slouží jen jako informace o projektu.',
-      },
-      {
-        question: 'Jak smažu účet?',
-        answer:
-          'Účet smažeš přímo v aplikaci v nastavení profilu. Po smazání odstraníme tvá data v souladu s našimi zásadami ochrany soukromí.',
-      },
-      {
-        question: 'Jak nahlásím nevhodné chování?',
-        answer:
-          'V aplikaci můžeš profil nahlásit nebo uživatele zablokovat. Každé nahlášení projde týmem — nevhodné chování nechceme tolerovat.',
-      },
-      {
-        question: 'Proč je to zdarma?',
-        answer:
-          'Trtkat je nekomerční projekt. Neplatíš za nic, neprodáváme tvá data a nezobrazujeme reklamy. Chceme férovou alternativu k placeným seznamkám.',
-      },
-      {
-        question: 'Je app dostupná i na Androidu?',
-        answer:
-          'Ano — připravujeme verze pro iOS i Android. Jakmile bude appka ke stažení, oznámíme to na webu a sociálních sítích.',
-      },
-    ],
-  },
   cta: {
     title: 'Méně řečí. Víc jasno.',
     bodyMobile:
@@ -312,7 +275,6 @@ export const cs: SiteCopy = {
     offer: 'Nabídka',
     howItWorks: 'Jak to funguje',
     stats: 'Statistiky',
-    faq: 'FAQ',
     safety: 'Bezpečí',
     download: 'Stáhnout aplikaci',
     blog: 'Blog',

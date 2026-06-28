@@ -97,7 +97,6 @@ export function SiteLayout() {
                 <a href="/#jak-to-funguje" className="hover:text-white transition-colors">{t.footer.howItWorks}</a>
                 <a href="/#funkce" className="hover:text-white transition-colors">{t.nav.features}</a>
                 <a href="/#data" className="hover:text-white transition-colors">{t.footer.stats}</a>
-                <a href="/#faq" className="hover:text-white transition-colors">{t.footer.faq}</a>
                 <Link to="/blog" className="hover:text-white transition-colors">{t.footer.blog}</Link>
                 <a href="/#stahnout" className="hover:text-white transition-colors">{t.footer.download}</a>
               </div>
