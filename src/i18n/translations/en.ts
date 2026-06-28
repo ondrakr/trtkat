@@ -2,9 +2,9 @@ import type { SiteCopy } from './types';
 
 export const en: SiteCopy = {
   meta: {
-    title: 'Trtkat — casual dating for students | Free',
+    title: 'Trtkat — casual dating | Free',
     description:
-      'Modern dating app for students. Casual meetups, awareness about safe dating and sexual education. Completely free.',
+      'Modern dating app for adults 18+. Casual meetups, awareness about safe dating and sexual education. Completely free.',
   },
   nav: {
     about: 'About',
@@ -25,17 +25,29 @@ export const en: SiteCopy = {
     titleLine1: 'Save time.',
     titleLine2: 'Enjoy the night.',
     body: 'Not everyone wants a relationship. Trtkat helps you find someone for a pleasant evening and connection — simply, without endless messaging.',
+    freeNote: 'Non-commercial project — no fees, no selling your data, no ads.',
     imageAlt: 'Trtkat app on iPhone — profile, match, and chat',
   },
   how: {
     title: 'We are not a classic dating app.',
-    subtitle: 'We are a shortcut to a clear plan.',
+    titleAccent: 'Not everyone wants a relationship right now.',
+    subtitle: 'A shortcut to a clear plan.',
+    introMobile:
+      'Sometimes you are not looking for a relationship — a clear match, respect, and minimal fuss is enough. Trtkat gets you there.',
+    introDesktop:
+      'Sometimes you are not looking for love for life. You want a clear match, chemistry, and an evening without pretending. Trtkat is not another swipe app with endless chat — we are a shortcut to a clear plan.',
+    matching: {
+      title: 'How matching works',
+      bodyMobile: 'Swipe, filters by distance and age. Mutual match — and you move on.',
+      bodyDesktop:
+        'Browse profiles with swipe and filter by distance, age, and what you are looking for. When you both match, chat opens and you can plan the next step right away.',
+    },
     steps: [
       {
         title: 'Match without small talk',
         bodyMobile: 'Mutual interest? Move straight to the next step.',
         bodyDesktop:
-          'Mutual interest? Great. Trtkat skips long messaging and moves you straight to the next step. No awkward openers, no pointless waiting.',
+          'Mutual interest? Trtkat skips long messaging and moves you straight to the next step. No pointless waiting for a reply.',
       },
       {
         title: 'A meetup spot halfway',
@@ -50,6 +62,12 @@ export const en: SiteCopy = {
           'Everyone knows why they are here. No false promises, no mixed signals, no role-playing. Respect for boundaries is the foundation.',
       },
     ],
+    values: [
+      { title: 'No games', desc: 'No beating around the bush or fake signals.' },
+      { title: 'No pressure', desc: 'Everything is based on mutual consent and respect.' },
+      { title: 'For real', desc: 'Every profile belongs to a real person.' },
+      { title: 'No expectations', desc: 'Without painful disappointment or unnecessary drama.' },
+    ],
   },
   features: {
     title: 'What you get in the app',
@@ -63,7 +81,7 @@ export const en: SiteCopy = {
         title: 'Halfway hotel booking',
         bodyMobile: 'A hotel between you — book it right in the app.',
         bodyDesktop:
-          'In different cities? Trtkat finds a hotel exactly halfway and you can book it on the spot — no extra apps, no back-and-forth.',
+          'In different cities? Trtkat finds a hotel exactly halfway and you can book it on the spot — without switching between apps.',
       },
       {
         title: 'Date plan in one tap',
@@ -75,7 +93,7 @@ export const en: SiteCopy = {
         title: 'Flirty games',
         bodyMobile: 'Truth or Dare and more games to spark the conversation.',
         bodyDesktop:
-          'Icebreaker and flirty games right in chat — Truth or Dare, truth dice, bold prompts. Break the ice without awkward openers.',
+          'Icebreaker and flirty games right in chat — Truth or Dare, truth dice, bold prompts. Break the ice and spark the conversation.',
       },
       {
         title: 'Date spots map',
@@ -208,24 +226,13 @@ export const en: SiteCopy = {
       },
     ],
   },
-  benefits: {
-    title: 'Not everyone wants a relationship right now.',
-    titleAccent: 'And that is okay.',
-    introMobile: 'Not everyone wants a relationship. Sometimes a clear match, respect, and minimal fuss is enough.',
-    introDesktop:
-      'Sometimes you are not looking for love for life. Sometimes you just want a clear match, chemistry, and an evening without unnecessary games. No pretending, no pressure, and with respect for boundaries.',
-    items: [
-      { title: 'No games', desc: 'No beating around the bush or fake signals.' },
-      { title: 'No pressure', desc: 'Everything is based on mutual consent and respect.' },
-      { title: 'For real', desc: 'Every profile belongs to a real person.' },
-      { title: 'No expectations', desc: 'Without painful disappointment or drama.' },
-    ],
-  },
   trust: {
     title: 'Trust and safety',
     quote:
-      'Between school and work I do not have capacity for a relationship. Here at least nobody pretends and everyone knows where they stand.',
-    author: 'Marek, Prague',
+      'I tested the beta for two months. What I liked most was the date plan — venue, navigation, done. No three days of texting about nothing.',
+    author: 'Marek, 24',
+    authorDetail: 'Prague-Holešovice · beta tester',
+    authorInitials: 'M',
     imageAlt: 'Intimacy',
     items: [
       {
@@ -248,6 +255,43 @@ export const en: SiteCopy = {
       },
     ],
   },
+  about: {
+    title: 'Who is behind Trtkat',
+    bodyMobile:
+      'An independent Czech project — a small team of developers and sexual health experts combining a practical app with education.',
+    bodyDesktop:
+      'Trtkat is an independent Czech project focused on fair casual dating. A small team of developers and sexual health experts wants to combine a practical app with education about safe dating.',
+  },
+  faq: {
+    title: 'FAQ',
+    items: [
+      {
+        question: 'Who can see my profile?',
+        answer:
+          'Your profile is visible to in-app users based on your filters and distance. It is not shown on the website — the site is for project information only.',
+      },
+      {
+        question: 'How do I delete my account?',
+        answer:
+          'You can delete your account in the app profile settings. After deletion, we remove your data in line with our privacy policy.',
+      },
+      {
+        question: 'How do I report inappropriate behavior?',
+        answer:
+          'In the app you can report a profile or block a user. Every report is reviewed by our team — we do not tolerate inappropriate behavior.',
+      },
+      {
+        question: 'Why is it free?',
+        answer:
+          'Trtkat is a non-commercial project. You pay nothing, we do not sell your data, and we show no ads. We want a fair alternative to paid dating apps.',
+      },
+      {
+        question: 'Is the app available on Android too?',
+        answer:
+          'Yes — we are preparing versions for iOS and Android. Once the app is available for download, we will announce it on the website and social media.',
+      },
+    ],
+  },
   cta: {
     title: 'Less talk. More clarity.',
     bodyMobile:
@@ -256,10 +300,19 @@ export const en: SiteCopy = {
       'If you are not looking for a relationship right now, you do not have to spend your evenings in endless chat. Trtkat is a mobile app for adults 18+ who want clear plans, respect, and minimal fuss. Download it for free.',
     footnote: 'iOS and Android · Free · For adults 18+',
   },
+  comingSoon: {
+    title: 'Coming soon',
+    badge: 'In development',
+    heading: 'We are working on the app',
+    body:
+      'Trtkat for iOS and Android is in the final stage of development. We will let you know as soon as it is ready to download. Thank you for your patience.',
+    platforms: 'iOS · Android',
+  },
   footer: {
     offer: 'Offer',
     howItWorks: 'How it works',
     stats: 'Statistics',
+    faq: 'FAQ',
     safety: 'Safety',
     download: 'Download the app',
     blog: 'Blog',
@@ -312,7 +365,7 @@ export const en: SiteCopy = {
   blog: {
     title: 'Blog and education',
     metaDescription:
-      'Articles about casual dating, sexual education, and safe meetups for students. Education from Trtkat.',
+      'Articles about casual dating, sexual education, and safe meetups. Education from Trtkat.',
     subtitle: 'Education about dating, sexual education, and safe casual meetups.',
     readMore: 'Read article',
     backToBlog: 'Back to blog',

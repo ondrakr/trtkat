@@ -2,9 +2,9 @@ import type { SiteCopy } from './types';
 
 export const cs: SiteCopy = {
   meta: {
-    title: 'Trtkat — nezávazné seznamování pro studenty | Zdarma',
+    title: 'Trtkat — nezávazné seznamování | Zdarma',
     description:
-      'Moderní seznamovací aplikace pro studenty. Nezávazné seznámení, osvěta o bezpečném seznamování a sexualní výchova. Úplně zdarma.',
+      'Moderní seznamovací aplikace pro dospělé 18+. Nezávazné seznámení, osvěta o bezpečném seznamování a sexualní výchova. Úplně zdarma.',
   },
   nav: {
     about: 'O nás',
@@ -25,17 +25,29 @@ export const cs: SiteCopy = {
     titleLine1: 'Ušetři čas.',
     titleLine2: 'Užij si noc.',
     body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
+    freeNote: 'Nekomerční projekt — neplatíš, neprodáváme tvá data, bez reklam.',
     imageAlt: 'Trtkat aplikace na iPhonu — profil, shoda a chat',
   },
   how: {
     title: 'Nejsme klasická seznamka.',
-    subtitle: 'Jsme zkratka k jasné domluvě.',
+    titleAccent: 'Ne každý teď chce\u00A0vztah.',
+    subtitle: 'Zkratka k jasné domluvě.',
+    introMobile:
+      'Někdy nehledáš vztah — stačí jasná shoda, respekt a minimum zbytečností. Trtkat tě k tomu dovede.',
+    introDesktop:
+      'Někdy nehledáš lásku na celý život. Chceš jasnou shodu, chemii a večer bez přetvářky. Trtkat není další swipe appka s nekonečným chatem — jsme zkratka k jasné domluvě.',
+    matching: {
+      title: 'Jak funguje matching',
+      bodyMobile: 'Swipe, filtry podle vzdálenosti a věku. Shoda oběma směry — a jde se dál.',
+      bodyDesktop:
+        'Profily procházíš swipem a filtruješ podle vzdálenosti, věku a toho, co hledáš. Když padnete na sebe oba, otevře se chat a můžete rovnou domluvit další krok.',
+    },
     steps: [
       {
         title: 'Match bez keců',
         bodyMobile: 'Padli jste si do oka? Jdete rovnou na další krok.',
         bodyDesktop:
-          'Padli jste si do oka? Super. Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku. Bez trapných otevíráků a bez zbytečného čekání.',
+          'Padli jste si do oka? Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku. Bez zbytečného čekání na odpověď.',
       },
       {
         title: 'Místo na půl cesty',
@@ -50,6 +62,12 @@ export const cs: SiteCopy = {
           'Každý ví, proč tu je. Bez falešných slibů, bez matení signálů a bez hraní rolí. Respekt k hranicím je základ.',
       },
     ],
+    values: [
+      { title: 'Bez her', desc: 'Bez obcházení a falešných náznaků.' },
+      { title: 'Bez tlaku', desc: 'Všechno stojí na vzájemném souhlasu a respektu.' },
+      { title: 'Opravdově', desc: 'Každý profil patří reálnému člověku.' },
+      { title: 'Bez očekávání', desc: 'Bez bolestných zklamání a zbytečného trápení.' },
+    ],
   },
   features: {
     title: 'Co v aplikaci najdeš',
@@ -63,7 +81,7 @@ export const cs: SiteCopy = {
         title: 'Rezervace hotelu na půl cesty',
         bodyMobile: 'Hotel mezi vámi — zarezervuj ho rovnou v aplikaci.',
         bodyDesktop:
-          'Jste z různých měst? Trtkat najde hotel přesně na půl cesty a rezervaci vyřídíš na místě — bez dalších app a zbytečného domlouvání.',
+          'Jste z různých měst? Trtkat najde hotel přesně na půl cesty a rezervaci vyřídíš na místě — bez přepínání mezi appkami.',
       },
       {
         title: 'Plán rande na jedno kliknutí',
@@ -75,7 +93,7 @@ export const cs: SiteCopy = {
         title: 'Flirtovací hry',
         bodyMobile: 'Truth or Dare a další hry, co rozproudí konverzaci.',
         bodyDesktop:
-          'Seznamovací a flirty hry přímo v chatu — Truth or Dare, kostka na pravdu, odvážné otázky. Rozlouskni ledy bez trapných otevíráků.',
+          'Seznamovací a flirty hry přímo v chatu — Truth or Dare, kostka na pravdu, odvážné otázky. Rozlouskni ledy a rozproudí konverzaci.',
       },
       {
         title: 'Mapa rande míst',
@@ -208,24 +226,13 @@ export const cs: SiteCopy = {
       },
     ],
   },
-  benefits: {
-    title: 'Ne každý teď chce\u00A0vztah.',
-    titleAccent: 'A to je v pořádku.',
-    introMobile: 'Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.',
-    introDesktop:
-      'Někdy nehledáš lásku na celý život. Někdy chceš jen jasnou shodu, chemii a večer bez zbytečných her. Bez přetvářky, bez tlaku a s respektem k hranicím.',
-    items: [
-      { title: 'Bez her', desc: 'Bez obcházení a falešných náznaků.' },
-      { title: 'Bez tlaku', desc: 'Všechno stojí na vzájemném souhlasu a respektu.' },
-      { title: 'Opravdově', desc: 'Každý profil patří reálnému člověku.' },
-      { title: 'Bez očekávání', desc: 'Bez bolestných zklamání a trápení.' },
-    ],
-  },
   trust: {
     title: 'Důvěra a bezpečí',
     quote:
-      'Kvůli škole a práci nemám kapacitu na vztah. Tady aspoň nikdo nic nepředstírá a všichni vědí, na čem jsou.',
-    author: 'Marek, Praha',
+      'Beta verzi jsem testoval dva měsíce. Nejvíc mě bavil plán rande — místo, navigace, hotovo. Žádné tři dny psaní o ničem.',
+    author: 'Marek, 24',
+    authorDetail: 'Praha-Holešovice · beta tester',
+    authorInitials: 'M',
     imageAlt: 'Intimita',
     items: [
       {
@@ -248,6 +255,43 @@ export const cs: SiteCopy = {
       },
     ],
   },
+  about: {
+    title: 'Kdo za Trtkatem stojí',
+    bodyMobile:
+      'Nezávislý český projekt — malý tým vývojářů a odborníků na sexuální zdraví, kteří spojují praktickou appku s osvětou.',
+    bodyDesktop:
+      'Trtkat vzniká jako nezávislý český projekt zaměřený na férové nezávazné seznamování. Za aplikací stojí malý tým vývojářů a odborníků na sexuální zdraví, kteří chtějí spojit praktickou appku s osvětou o bezpečném seznamování.',
+  },
+  faq: {
+    title: 'Časté otázky',
+    items: [
+      {
+        question: 'Kdo uvidí můj profil?',
+        answer:
+          'Profil vidí uživatelé v aplikaci podle tvých filtrů a vzdálenosti. Na webu se nezobrazuje — web slouží jen jako informace o projektu.',
+      },
+      {
+        question: 'Jak smažu účet?',
+        answer:
+          'Účet smažeš přímo v aplikaci v nastavení profilu. Po smazání odstraníme tvá data v souladu s našimi zásadami ochrany soukromí.',
+      },
+      {
+        question: 'Jak nahlásím nevhodné chování?',
+        answer:
+          'V aplikaci můžeš profil nahlásit nebo uživatele zablokovat. Každé nahlášení projde týmem — nevhodné chování nechceme tolerovat.',
+      },
+      {
+        question: 'Proč je to zdarma?',
+        answer:
+          'Trtkat je nekomerční projekt. Neplatíš za nic, neprodáváme tvá data a nezobrazujeme reklamy. Chceme férovou alternativu k placeným seznamkám.',
+      },
+      {
+        question: 'Je app dostupná i na Androidu?',
+        answer:
+          'Ano — připravujeme verze pro iOS i Android. Jakmile bude appka ke stažení, oznámíme to na webu a sociálních sítích.',
+      },
+    ],
+  },
   cta: {
     title: 'Méně řečí. Víc jasno.',
     bodyMobile:
@@ -256,10 +300,19 @@ export const cs: SiteCopy = {
       'Když teď nehledáš vztah, nemusíš trávit večery nekonečným chatem. Trtkat je mobilní aplikace pro dospělé 18+, kteří chtějí jasnou domluvu, respekt a minimum zbytečností. Stáhni si ji zdarma.',
     footnote: 'iOS a Android · Zdarma · Pro dospělé 18+',
   },
+  comingSoon: {
+    title: 'Již brzy',
+    badge: 'Připravujeme',
+    heading: 'Na aplikaci pracujeme',
+    body:
+      'Trtkat pro iOS a Android je ve finální fázi vývoje. Jakmile bude připravená ke stažení, dáme to vědět. Děkujeme za trpělivost.',
+    platforms: 'iOS · Android',
+  },
   footer: {
     offer: 'Nabídka',
     howItWorks: 'Jak to funguje',
     stats: 'Statistiky',
+    faq: 'FAQ',
     safety: 'Bezpečí',
     download: 'Stáhnout aplikaci',
     blog: 'Blog',
@@ -312,7 +365,7 @@ export const cs: SiteCopy = {
   blog: {
     title: 'Blog a osvěta',
     metaDescription:
-      'Články o nezávazném seznamování, sexualní výchově a bezpečném seznámení pro studenty. Edukace od Trtkat.',
+      'Články o nezávazném seznamování, sexualní výchově a bezpečném seznámení. Edukace od Trtkat.',
     subtitle: 'Edukace o seznamování, sexualní výchově a bezpečném nezávazném seznámení.',
     readMore: 'Číst článek',
     backToBlog: 'Zpět na blog',

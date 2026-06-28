@@ -7,6 +7,7 @@ const LandingPage = lazy(() => import('./pages/LandingPage').then((m) => ({ defa
 const BlogIndexPage = lazy(() => import('./pages/BlogIndexPage').then((m) => ({ default: m.BlogIndexPage })));
 const BlogPostPage = lazy(() => import('./pages/BlogPostPage').then((m) => ({ default: m.BlogPostPage })));
 const LegalPage = lazy(() => import('./pages/LegalPage').then((m) => ({ default: m.LegalPage })));
+const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage').then((m) => ({ default: m.ComingSoonPage })));
 
 function PageFallback() {
   return <div className="min-h-[50vh] bg-slate-950" aria-hidden="true" />;
@@ -25,6 +26,7 @@ export default function App() {
             <Route path="/ochrana-soukromi" element={<LegalPage type="privacy" />} />
             <Route path="/podminky" element={<LegalPage type="terms" />} />
             <Route path="/kontakt" element={<LegalPage type="contact" />} />
+            <Route path="/ziskat-aplikaci" element={<ComingSoonPage />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Route>
         </Routes>

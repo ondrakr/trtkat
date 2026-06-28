@@ -70,6 +70,9 @@ export function LandingPage() {
 
                 <div id="stahnout" className="mt-8 flex flex-col items-center sm:mt-10 md:mt-12 md:items-start">
                   <StoreBadges size="lg" layout="stack" priority className="justify-center md:justify-start" />
+                  <p className="mt-4 max-w-md text-center text-sm text-slate-500 font-medium leading-relaxed md:text-left">
+                    {t.hero.freeNote}
+                  </p>
                 </div>
               </div>
 
@@ -90,11 +93,29 @@ export function LandingPage() {
 
         <RevealSection id="jak-to-funguje" className="relative pt-8 sm:pt-10 md:pt-12 pb-14 sm:pb-16 md:pb-24">
           <div className={sectionWrap}>
-            <div className="text-center mb-10 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-[1.12] sm:leading-[1.1]">{t.how.title}</h2>
-              <p className="text-xs sm:text-sm md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">{t.how.subtitle}</p>
+            <div className="text-center max-w-4xl mx-auto mb-10 sm:mb-12 md:mb-16">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-3 sm:mb-4 leading-[1.12] sm:leading-[1.1] text-balance">
+                <span className="block">{t.how.title}</span>
+                <span className="text-gradient block">{t.how.titleAccent}</span>
+              </h2>
+              <p className="text-xs sm:text-sm md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase mb-4 sm:mb-5">
+                {t.how.subtitle}
+              </p>
+              <p className="text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
+                <span className="md:hidden">{t.how.introMobile}</span>
+                <span className="hidden md:inline">{t.how.introDesktop}</span>
+              </p>
             </div>
-            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative">
+
+            <div className="mb-8 sm:mb-10 md:mb-12 rounded-3xl md:rounded-[2.5rem] border border-trtkat-blue/20 bg-trtkat-blue/5 p-5 sm:p-6 md:p-8">
+              <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3">{t.how.matching.title}</h3>
+              <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
+                <span className="md:hidden">{t.how.matching.bodyMobile}</span>
+                <span className="hidden md:inline">{t.how.matching.bodyDesktop}</span>
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative mb-10 sm:mb-12 md:mb-16">
               {t.how.steps.map((step, idx) => (
                 <div key={step.title} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative mt-4 sm:mt-0 transition-transform hover:scale-[1.02]">
                   <div className={`absolute -top-3 left-3 sm:-top-6 sm:-left-6 w-11 h-11 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-slate-950 font-black text-lg md:text-2xl shadow-xl ${idx === 0 ? 'bg-trtkat-blue' : idx === 1 ? 'bg-trtkat-pink' : 'bg-white'}`}>{idx + 1}</div>
@@ -105,6 +126,22 @@ export function LandingPage() {
                   </p>
                 </div>
               ))}
+            </div>
+
+            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {t.how.values.map((value, idx) => {
+                const Icon = benefitIcons[idx];
+                const colors = ['text-trtkat-blue', 'text-trtkat-pink', 'text-yellow-400', 'text-purple-400'];
+                return (
+                  <div key={value.title} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
+                    <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform ${colors[idx]}`}>
+                      <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4">{value.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">{value.desc}</p>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </RevealSection>
@@ -152,37 +189,6 @@ export function LandingPage() {
 
         <StatsSection />
 
-        <RevealSection id="benefity" className={`${sectionY} relative overflow-hidden`}>
-          <div className={sectionWrap}>
-            <div className="text-center max-w-3xl lg:max-w-5xl mx-auto mb-10 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight text-balance">
-                <span className="inline-block">{t.benefits.title}</span>
-                <br />
-                <span className="text-gradient inline-block">{t.benefits.titleAccent}</span>
-              </h2>
-              <p className="text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
-                <span className="md:hidden">{t.benefits.introMobile}</span>
-                <span className="hidden md:inline">{t.benefits.introDesktop}</span>
-              </p>
-            </div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {t.benefits.items.map((benefit, idx) => {
-                const Icon = benefitIcons[idx];
-                const colors = ['text-trtkat-blue', 'text-trtkat-pink', 'text-yellow-400', 'text-purple-400'];
-                return (
-                  <div key={benefit.title} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform ${colors[idx]}`}>
-                      <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
-                    </div>
-                    <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4">{benefit.title}</h3>
-                    <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">{benefit.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </RevealSection>
-
         <RevealSection id="vibe" className={`${sectionY} bg-trtkat-gradient/5`}>
           <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
@@ -199,8 +205,13 @@ export function LandingPage() {
                 <div className="mt-6 lg:mt-0 lg:absolute lg:-bottom-8 lg:-right-8 p-5 sm:p-6 md:p-8 bg-slate-950 rounded-3xl md:rounded-[2.5rem] border border-white/10 shadow-2xl max-w-xs mx-auto lg:mx-0">
                   <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
                   <div className="mt-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-trtkat-pink" />
-                    <span className="font-bold text-slate-400">{t.trust.author}</span>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-trtkat-pink text-sm font-black text-white">
+                      {t.trust.authorInitials}
+                    </div>
+                    <div>
+                      <span className="block font-bold text-white">{t.trust.author}</span>
+                      <span className="block text-sm font-medium text-slate-500">{t.trust.authorDetail}</span>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -232,6 +243,40 @@ export function LandingPage() {
           </div>
         </RevealSection>
 
+        <RevealSection id="o-nas" className={`${sectionY} relative overflow-hidden`}>
+          <div className={sectionWrap}>
+            <div className="max-w-3xl mx-auto text-center">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-5 sm:mb-6 leading-tight">
+                {t.about.title}
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
+                <span className="md:hidden">{t.about.bodyMobile}</span>
+                <span className="hidden md:inline">{t.about.bodyDesktop}</span>
+              </p>
+            </div>
+          </div>
+        </RevealSection>
+
+        <RevealSection id="faq" className={`${sectionY} bg-slate-900/30 border-y border-white/5`}>
+          <div className={`${sectionWrap} max-w-3xl`}>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-8 sm:mb-10 text-center">
+              {t.faq.title}
+            </h2>
+            <div className="space-y-3">
+              {t.faq.items.map((item) => (
+                <details key={item.question} className="group rounded-2xl border border-white/10 bg-white/5 open:bg-white/[0.07]">
+                  <summary className="cursor-pointer list-none px-5 py-4 sm:px-6 sm:py-5 font-bold text-white marker:content-none [&::-webkit-details-marker]:hidden">
+                    {item.question}
+                  </summary>
+                  <p className="px-5 pb-5 sm:px-6 sm:pb-6 text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
+                    {item.answer}
+                  </p>
+                </details>
+              ))}
+            </div>
+          </div>
+        </RevealSection>
+
         <RevealSection id="stahnout-cta" className={`${sectionY} relative overflow-hidden`}>
           <div className="cta-glow pointer-events-none absolute inset-0 bg-trtkat-gradient opacity-10 -z-10" aria-hidden="true" />
           <div className={`${sectionWrapNarrow} text-center`}>
@@ -240,8 +285,11 @@ export function LandingPage() {
               <span className="md:hidden">{t.cta.bodyMobile}</span>
               <span className="hidden md:inline">{t.cta.bodyDesktop}</span>
             </p>
-            <div className="flex justify-center">
+            <div className="flex flex-col items-center justify-center">
               <StoreBadges size="lg" layout="stack" className="justify-center" />
+              <p className="mt-5 max-w-lg text-center text-sm text-slate-500 font-medium leading-relaxed">
+                {t.hero.freeNote}
+              </p>
             </div>
             <p className="mt-8 sm:mt-10 md:mt-12 text-slate-500 font-bold uppercase tracking-[0.12em] md:tracking-[0.3em] text-[10px] sm:text-xs md:text-sm">{t.cta.footnote}</p>
           </div>

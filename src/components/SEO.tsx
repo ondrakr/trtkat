@@ -36,15 +36,30 @@ function setJsonLd(data: Record<string, unknown> | Record<string, unknown>[] | u
   document.head.appendChild(script);
 }
 
+function setLink(rel: string, href: string, attrs: Record<string, string> = {}) {
+  const selector = `link[rel="${rel}"]${attrs.hreflang ? `[hreflang="${attrs.hreflang}"]` : ''}`;
+  let el = document.querySelector(selector) as HTMLLinkElement | null;
+  if (!el) {
+    el = document.createElement('link');
+    el.rel = rel;
+    document.head.appendChild(el);
+  }
+  el.href = href;
+  Object.entries(attrs).forEach(([key, value]) => el!.setAttribute(key, value));
+}
+
 export function SEO({ title, description, path = '/', type = 'website', jsonLd, noindex }: SEOProps) {
   const { locale } = useI18n();
   const url = `${SITE_URL}${path === '/' ? '' : path}`;
   const ogLocale = locale === 'en' ? 'en_GB' : 'cs_CZ';
+  const contentLanguage = locale === 'en' ? 'en' : 'cs';
 
   useEffect(() => {
     document.title = title;
+    document.documentElement.lang = locale;
 
     setMeta('description', description);
+    setMeta('content-language', contentLanguage);
     setMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow');
     setMeta('googlebot', noindex ? 'noindex, nofollow' : 'index, follow');
 
@@ -56,13 +71,23 @@ export function SEO({ title, description, path = '/', type = 'website', jsonLd, 
     }
     canonical.href = url;
 
+    setLink('alternate', `${SITE_URL}/`, { hreflang: 'cs' });
+    setLink('alternate', `${SITE_URL}/`, { hreflang: 'x-default' });
+    if (locale === 'en') {
+      setLink('alternate', url, { hreflang: 'en' });
+    }
+
     setMeta('og:title', title, true);
     setMeta('og:description', description, true);
     setMeta('og:url', url, true);
     setMeta('og:type', type, true);
     setMeta('og:site_name', SITE_NAME, true);
     setMeta('og:locale', ogLocale, true);
-    setMeta('og:locale:alternate', locale === 'cs' ? 'en_GB' : 'cs_CZ', true);
+    if (locale === 'cs') {
+      setMeta('og:locale:alternate', 'en_GB', true);
+    } else {
+      setMeta('og:locale:alternate', 'cs_CZ', true);
+    }
     setMeta('og:image', OG_IMAGE, true);
     setMeta('og:image:alt', title, true);
 
@@ -72,7 +97,7 @@ export function SEO({ title, description, path = '/', type = 'website', jsonLd, 
     setMeta('twitter:image', OG_IMAGE);
 
     setJsonLd(jsonLd);
-  }, [title, description, url, type, ogLocale, locale, jsonLd, noindex]);
+  }, [title, description, url, type, ogLocale, locale, jsonLd, noindex, contentLanguage]);
 
   return null;
 }

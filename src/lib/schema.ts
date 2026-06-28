@@ -1,7 +1,6 @@
 import { SITE_URL } from '../config/site';
 import { OG_IMAGE, SITE_NAME } from '../config/seo';
 import { SOCIAL_LINKS } from '../config/social';
-import { APP_STORE_URL, GOOGLE_PLAY_URL } from '../config/stores';
 import type { SiteCopy } from '../i18n/translations/types';
 
 export function buildOrganizationSchema(description: string) {
@@ -10,7 +9,7 @@ export function buildOrganizationSchema(description: string) {
     '@type': 'Organization',
     name: SITE_NAME,
     url: SITE_URL,
-    logo: `${SITE_URL}/logo/logo%20trtkat.svg`,
+    logo: `${SITE_URL}/favicon/android-chrome-192x192.png`,
     description,
     sameAs: [SOCIAL_LINKS.instagram, SOCIAL_LINKS.facebook, SOCIAL_LINKS.tiktok],
   };
@@ -23,7 +22,7 @@ export function buildWebSiteSchema(description: string) {
     name: SITE_NAME,
     url: SITE_URL,
     description,
-    inLanguage: ['cs-CZ', 'en'],
+    inLanguage: 'cs-CZ',
     publisher: {
       '@type': 'Organization',
       name: SITE_NAME,
@@ -45,12 +44,10 @@ export function buildMobileAppSchema(t: SiteCopy) {
       priceCurrency: 'CZK',
     },
     description: t.meta.description,
-    downloadUrl: [APP_STORE_URL, GOOGLE_PLAY_URL],
-    installUrl: [APP_STORE_URL, GOOGLE_PLAY_URL],
     audience: {
       '@type': 'PeopleAudience',
       suggestedMinAge: 18,
-      audienceType: 'Students',
+      audienceType: 'Adults',
     },
   };
 }
@@ -88,7 +85,7 @@ export function buildArticleSchema(post: {
       name: SITE_NAME,
       logo: {
         '@type': 'ImageObject',
-        url: `${SITE_URL}/logo/logo%20trtkat.svg`,
+        url: `${SITE_URL}/favicon/android-chrome-192x192.png`,
       },
     },
     mainEntityOfPage: `${SITE_URL}${post.path}`,

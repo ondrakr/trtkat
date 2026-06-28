@@ -5,7 +5,7 @@ export const SITE_NAME = 'Trtkat';
 
 export const SEO_KEYWORDS_CS = [
   'nezávazné seznamování',
-  'seznamovací aplikace pro studenty',
+  'seznamovací aplikace',
   'sexuální výchova',
   'osvěta seznamování',
   'aplikace zdarma',
@@ -14,7 +14,7 @@ export const SEO_KEYWORDS_CS = [
 
 export const SEO_KEYWORDS_EN = [
   'casual dating app',
-  'dating app for students',
+  'dating app',
   'sexual education',
   'free dating app',
   'safe dating',
