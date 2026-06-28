@@ -10,8 +10,9 @@
 }
 
 @layer base {
-  html {
-    overflow-x: clip;
+  html,
+  body {
+    overflow-x: hidden;
   }
 
   body {
@@ -52,11 +53,11 @@
   }
 
   .hero-fade-bottom {
-    @apply pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-40 sm:h-52 md:h-64;
+    @apply pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-32 sm:h-40 md:h-48;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgb(2 6 23 / 0.45) 45%,
+      rgb(2 6 23 / 0.35) 60%,
       rgb(2 6 23) 100%
     );
   }

@@ -56,14 +56,14 @@ export function LandingPage() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
-        <section className="relative isolate">
-          <div className="pointer-events-none absolute inset-0 -bottom-24 sm:-bottom-32">
+        <section className="relative isolate overflow-hidden">
+          <div className="pointer-events-none absolute inset-0 -bottom-24 sm:-bottom-32 overflow-hidden">
             <div className="absolute -top-20 right-[-10%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-blue/25 blur-[90px] md:blur-[150px]" />
             <div className="absolute bottom-[-15%] left-[-12%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-pink/25 blur-[90px] md:blur-[150px]" />
           </div>
           <div className="hero-fade-bottom" aria-hidden="true" />
 
-          <div className={`${sectionWrap} relative z-[2] min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] md:min-h-[90vh] flex items-center py-10 sm:py-14 md:py-24 pb-20 sm:pb-24 md:pb-28`}>
+          <div className={`${sectionWrap} relative z-[2] min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] md:min-h-[90vh] flex items-center py-10 sm:py-14 md:py-20`}>
             <div className="mx-auto w-full max-w-4xl md:mx-0">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
@@ -103,10 +103,10 @@ export function LandingPage() {
           </div>
         </section>
 
-        <section id="jak-to-funguje" className={`${sectionY} relative -mt-8 sm:-mt-12 bg-gradient-to-b from-slate-950 via-white/[0.02] to-transparent`}>
+        <section id="jak-to-funguje" className="relative pt-8 sm:pt-10 md:pt-12 pb-14 sm:pb-16 md:pb-24">
           <div className={sectionWrap}>
             <div className="text-center mb-10 sm:mb-12 md:mb-16">
-              <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-tight">{t.how.title}</h2>
+              <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-[1.12] sm:leading-[1.1]">{t.how.title}</h2>
               <p className="text-xs sm:text-sm md:text-xl text-slate-400 font-medium tracking-[0.08em] uppercase">{t.how.subtitle}</p>
             </div>
             <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative">
