@@ -36,7 +36,6 @@ export type SiteCopy = {
     titleLine1: string;
     titleLine2: string;
     body: string;
-    statsLink: string;
     imageAlt: string;
   };
   how: {

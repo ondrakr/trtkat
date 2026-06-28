@@ -3,7 +3,6 @@ import { motion } from 'motion/react';
 import {
   ShieldCheck,
   Zap,
-  ArrowRight,
   MessageCircle,
   Lock,
   Sparkles,
@@ -76,7 +75,7 @@ export function LandingPage() {
                   </span>
                 </div>
 
-                <h1 className="text-[3.35rem] leading-[0.92] sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
+                <h1 className="text-[3.35rem] leading-[1.08] sm:text-6xl sm:leading-[1.06] md:text-8xl md:leading-[1.04] lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
                   <span className="block whitespace-nowrap">{t.hero.titleLine1}</span>
                   <span className="text-gradient block">{t.hero.titleLine2}</span>
                 </h1>
@@ -85,15 +84,8 @@ export function LandingPage() {
                   {t.hero.body}
                 </p>
 
-                <div id="stahnout" className="mt-8 flex flex-col items-center gap-5 sm:mt-10 md:mt-12 md:items-start">
+                <div id="stahnout" className="mt-8 flex flex-col items-center sm:mt-10 md:mt-12 md:items-start">
                   <StoreBadges size="lg" layout="stack" className="justify-center md:justify-start" />
-                  <a
-                    href="#data"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 transition-colors hover:border-white/20 hover:text-white sm:text-base md:text-lg"
-                  >
-                    {t.hero.statsLink}
-                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </a>
                 </div>
               </motion.div>
 

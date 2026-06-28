@@ -35,7 +35,7 @@
 }
 
 .text-gradient {
-  @apply bg-clip-text text-transparent bg-linear-to-r from-trtkat-blue to-trtkat-pink;
+  @apply inline-block bg-clip-text pb-[0.08em] text-transparent bg-linear-to-r from-trtkat-blue to-trtkat-pink;
 }
 
 .bg-trtkat-gradient {
