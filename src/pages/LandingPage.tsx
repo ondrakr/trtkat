@@ -56,48 +56,59 @@ export function LandingPage() {
         transition={{ duration: 0.2, ease: 'easeOut' }}
       >
         <section className="relative isolate overflow-hidden">
-          <div className="pointer-events-none absolute inset-0 overflow-hidden">
-            <div className="absolute -top-24 left-[-15%] h-72 w-72 sm:h-96 sm:w-96 lg:h-[520px] lg:w-[520px] rounded-full bg-trtkat-blue/20 blur-[100px] lg:blur-[130px]" />
-            <div className="absolute top-[8%] right-[-8%] h-80 w-80 sm:h-[28rem] sm:w-[28rem] lg:h-[600px] lg:w-[600px] rounded-full bg-trtkat-pink/25 blur-[100px] lg:blur-[140px]" />
-            <div className="absolute bottom-[-10%] left-[20%] h-64 w-64 rounded-full bg-trtkat-pink/10 blur-[90px] lg:hidden" />
+          <div className="pointer-events-none absolute inset-0 -bottom-24 sm:-bottom-32 overflow-hidden">
+            <div className="absolute -top-20 right-[-10%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-blue/25 blur-[90px] md:blur-[150px]" />
+            <div className="absolute bottom-[-15%] left-[-12%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-pink/25 blur-[90px] md:blur-[150px]" />
           </div>
           <div className="hero-fade-bottom" aria-hidden="true" />
 
-          <div className={`${sectionWrap} relative z-[2] min-h-[calc(100svh-3.5rem)] sm:min-h-[calc(100svh-4rem)] lg:min-h-[calc(100svh-5rem)] flex items-center py-10 sm:py-12 lg:py-16`}>
-            <div className="grid w-full grid-cols-1 items-center gap-y-8 sm:gap-y-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-x-10 xl:grid-cols-2 xl:gap-x-16">
+          <div className={`${sectionWrap} relative z-[2] min-h-svh flex items-center pt-14 sm:pt-16 md:pt-20 pb-10 sm:pb-14 md:pb-20`}>
+            <div className="grid w-full grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
               <motion.div
                 initial={{ opacity: 0, y: 16 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, ease: 'easeOut' }}
-                className="order-1 text-center lg:col-start-1 lg:row-start-1 lg:text-left"
+                transition={{ duration: 0.3, ease: 'easeOut' }}
+                className="order-1 mx-auto w-full max-w-4xl text-center md:mx-0 md:text-left"
               >
-                <div className="mb-4 flex items-center justify-center gap-3 sm:mb-5 lg:justify-start">
-                  <span className="hidden h-px w-10 bg-trtkat-pink sm:block lg:w-12" />
-                  <span className="rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-trtkat-pink sm:text-xs">
+                <div className="mb-5 flex items-center justify-center gap-3 md:justify-start md:mb-6">
+                  <span className="hidden h-px w-10 bg-trtkat-pink sm:block md:w-12" />
+                  <span className="rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink">
                     {t.hero.badge}
                   </span>
                 </div>
 
-                <h1 className="text-[2.65rem] leading-[0.94] font-black tracking-tighter text-white sm:text-5xl sm:leading-[0.92] md:text-6xl lg:text-[3.75rem] lg:leading-[0.92] xl:text-7xl xl:leading-[0.9] 2xl:text-[5rem]">
+                <h1 className="text-[3.35rem] leading-[0.92] sm:text-6xl md:text-8xl lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
                   {t.hero.titleLine1}
                   <br />
                   <span className="text-gradient">{t.hero.titleLine2}</span>
                 </h1>
+
+                <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 md:max-w-2xl md:text-2xl">
+                  {t.hero.body}
+                </p>
+
+                <div id="stahnout" className="mt-8 flex flex-col items-center gap-5 sm:mt-10 md:mt-12 md:items-start">
+                  <StoreBadges size="lg" layout="stack" className="justify-center md:justify-start" />
+                  <a
+                    href="#data"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 transition-colors hover:border-white/20 hover:text-white sm:text-base md:text-lg"
+                  >
+                    {t.hero.statsLink}
+                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
+                  </a>
+                </div>
               </motion.div>
 
               <motion.div
                 initial={{ opacity: 0, y: 28, scale: 0.94 }}
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 transition={{ duration: 0.55, delay: 0.12, ease: [0.22, 1, 0.36, 1] }}
-                className="order-2 relative mx-auto w-full max-w-[240px] sm:max-w-[300px] md:max-w-[340px] lg:order-2 lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mx-0 lg:max-w-none lg:justify-self-end"
+                className="order-2 mx-auto w-full max-w-[204px] sm:max-w-[255px] md:max-w-[289px] lg:mx-0 lg:max-w-[85%] lg:justify-self-end"
               >
                 <motion.div
                   animate={{ y: [0, -14, 0] }}
                   transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }}
-                  className="relative"
                 >
-                  <div className="hero-phone-glow pointer-events-none absolute inset-[4%] -z-10 scale-110 blur-2xl" aria-hidden="true" />
-                  <div className="pointer-events-none absolute -inset-4 rounded-[3rem] bg-linear-to-b from-white/[0.06] to-transparent opacity-60 sm:-inset-6 lg:-inset-8" aria-hidden="true" />
                   <img
                     src={heroPhoneSrc}
                     alt={t.hero.imageAlt}
@@ -105,31 +116,9 @@ export function LandingPage() {
                     height={1400}
                     fetchPriority="high"
                     decoding="async"
-                    className="relative w-full drop-shadow-[0_28px_80px_rgba(240,98,161,0.22)]"
+                    className="w-full"
                   />
                 </motion.div>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.35, delay: 0.08, ease: 'easeOut' }}
-                className="order-3 text-center lg:col-start-1 lg:row-start-2 lg:text-left"
-              >
-                <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg lg:mx-0 lg:max-w-lg xl:max-w-xl xl:text-xl">
-                  {t.hero.body}
-                </p>
-
-                <div id="stahnout" className="mt-7 flex flex-col items-center gap-4 sm:mt-8 sm:gap-5 lg:items-start">
-                  <StoreBadges size="lg" layout="stack" className="justify-center lg:justify-start" />
-                  <a
-                    href="#data"
-                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 transition-colors hover:border-trtkat-pink/30 hover:text-white sm:text-base"
-                  >
-                    {t.hero.statsLink}
-                    <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
-                  </a>
-                </div>
               </motion.div>
             </div>
           </div>

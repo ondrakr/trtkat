@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
+import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { LangDropdown } from './LangDropdown';
 import { MobileNav } from './MobileNav';
@@ -11,10 +11,18 @@ import { logoSrc, sectionWrap } from '../lib/navigation';
 export function SiteLayout() {
   const { t } = useI18n();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const { pathname } = useLocation();
+  const isHome = pathname === '/';
 
   return (
     <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
-      <nav className="sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5">
+      <nav
+        className={
+          isHome
+            ? 'fixed inset-x-0 top-0 z-50 bg-transparent'
+            : 'sticky top-0 z-50 bg-slate-950/90 backdrop-blur-md border-b border-white/5'
+        }
+      >
         <div className={sectionWrap}>
           <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">
             <Link to="/" className="w-20 sm:w-24 md:w-28 shrink-0" aria-label="Trtkat">
