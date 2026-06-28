@@ -3,13 +3,22 @@ export type StatCategory = {
   key: string;
   label: string;
   title: string;
+  insight?: string;
   stats: StatItem[];
+};
+export type ChartDataPoint = {
+  label: string;
+  value?: number;
+  women?: number;
+  men?: number;
 };
 export type ChartCategory = {
   title: string;
   subtitle: string;
   suffix: string;
-  data: { label: string; value: number }[];
+  type?: 'simple' | 'grouped';
+  seriesLabels?: { women: string; men: string };
+  data: ChartDataPoint[];
 };
 export type TimelineItem = { period: string; label: string; value: string };
 
@@ -58,6 +67,10 @@ export type SiteCopy = {
     timelineTitle: string;
     timelineAccordion: string;
     tooltipValue: string;
+    sourceLabel: string;
+    sourceText: string;
+    womenLabel: string;
+    menLabel: string;
     statCategories: StatCategory[];
     charts: Record<string, ChartCategory>;
     timeline: TimelineItem[];
