@@ -61,15 +61,15 @@ export const en: SiteCopy = {
     items: [
       {
         title: 'Halfway hotel booking',
-        bodyMobile: 'A hotel right between you — book it directly in the app.',
+        bodyMobile: 'A hotel between you — book it right in the app.',
         bodyDesktop:
-          'In different cities? The app suggests a hotel halfway and you can book it in Trtkat without switching between apps.',
+          'In different cities? Trtkat finds a hotel exactly halfway and you can book it on the spot — no extra apps, no back-and-forth.',
       },
       {
         title: 'Date plan in one tap',
-        bodyMobile: 'Venue, navigation, Bolt or Uber — straight from the app.',
+        bodyMobile: 'Venue, navigation, Bolt or Uber — all from the app.',
         bodyDesktop:
-          'Plan a date with a specific place. Open navigation to the address, or launch Bolt or Uber — the app hands you off where you need to go.',
+          'Pick a specific date spot and launch navigation, Bolt, or Uber in one tap. No searching or copying addresses — the app gets you there.',
       },
       {
         title: 'Flirty games',

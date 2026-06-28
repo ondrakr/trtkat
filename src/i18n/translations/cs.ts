@@ -60,16 +60,16 @@ export const cs: SiteCopy = {
       'Trtkat není jen seznamka. Rezervuj hotel na půl cesty, naplánuj rande s navigací nebo Boltem/Uberem, zahraj si seznamovací hry a objev hezká místa v okolí.',
     items: [
       {
-        title: 'Rezervace na půl cesty',
-        bodyMobile: 'Hotel přesně mezi vámi — rezervace přímo v aplikaci.',
+        title: 'Rezervace hotelu na půl cesty',
+        bodyMobile: 'Hotel mezi vámi — zarezervuj ho rovnou v aplikaci.',
         bodyDesktop:
-          'Jste z různých měst? Aplikace navrhne hotel na půl cesty a rezervaci vyřešíš v Trtkatu, bez přepínání mezi appkami.',
+          'Jste z různých měst? Trtkat najde hotel přesně na půl cesty a rezervaci vyřídíš na místě — bez dalších app a zbytečného domlouvání.',
       },
       {
         title: 'Plán rande na jedno kliknutí',
-        bodyMobile: 'Místo, navigace i Bolt nebo Uber — rovnou z aplikace.',
+        bodyMobile: 'Místo, navigace, Bolt nebo Uber — vše z aplikace.',
         bodyDesktop:
-          'Naplánuj rande s konkrétním místem. Otevři navigaci na adresu, nebo spusť Bolt či Uber — aplikace tě přepne tam, kam potřebuješ.',
+          'Zvol konkrétní místo rande a jedním klepnutím spusť navigaci, Bolt nebo Uber. Adresu nemusíš hledat ani kopírovat — aplikace tě tam dovede.',
       },
       {
         title: 'Flirtovací hry',
