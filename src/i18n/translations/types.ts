@@ -13,6 +13,9 @@ export type ChartCategory = {
 };
 export type TimelineItem = { period: string; label: string; value: string };
 
+export type FAQItem = { question: string; answer: string };
+export type LegalSection = { heading?: string; paragraphs: string[] };
+
 export type SiteCopy = {
   meta: { title: string; description: string };
   nav: {
@@ -23,6 +26,8 @@ export type SiteCopy = {
     science: string;
     benefits: string;
     download: string;
+    blog: string;
+    faq: string;
   };
   stores: {
     appStoreLabel: string;
@@ -66,6 +71,11 @@ export type SiteCopy = {
     imageAlt: string;
     items: Array<{ title: string; bodyMobile: string; bodyDesktop: string }>;
   };
+  faq: {
+    title: string;
+    subtitle: string;
+    items: FAQItem[];
+  };
   cta: {
     title: string;
     bodyMobile: string;
@@ -78,6 +88,25 @@ export type SiteCopy = {
     stats: string;
     safety: string;
     download: string;
+    blog: string;
+    legal: string;
+    privacy: string;
+    terms: string;
+    contact: string;
+    followUs: string;
     copyright: string;
+  };
+  legal: {
+    privacy: { title: string; metaDescription: string; sections: LegalSection[] };
+    terms: { title: string; metaDescription: string; sections: LegalSection[] };
+    contact: { title: string; metaDescription: string; sections: LegalSection[]; emailPlaceholder: string };
+  };
+  blog: {
+    title: string;
+    metaDescription: string;
+    subtitle: string;
+    readMore: string;
+    backToBlog: string;
+    backHome: string;
   };
 };

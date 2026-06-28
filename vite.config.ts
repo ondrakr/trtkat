@@ -3,7 +3,9 @@ import react from '@vitejs/plugin-react';
 import path from 'path';
 import {defineConfig, loadEnv} from 'vite';
 import sitemap from 'vite-plugin-sitemap';
-import { SITE_URL } from './src/config/site';
+
+const SITE_URL = 'https://www.trtkat.cz';
+import { SITEMAP_PATHS } from './sitemap.routes';
 
 export default defineConfig(({mode}) => {
   const env = loadEnv(mode, '.', '');
@@ -20,6 +22,7 @@ export default defineConfig(({mode}) => {
         changefreq: 'weekly',
         priority: 1,
         generateRobotsTxt: false,
+        dynamicRoutes: SITEMAP_PATHS.filter((path) => path !== '/'),
       }),
     ],
     define: {

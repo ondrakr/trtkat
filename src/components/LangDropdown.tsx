@@ -6,7 +6,6 @@ import type { Locale } from '../i18n/detectLocale';
 const LOCALES: { code: Locale; flag: string; label: string }[] = [
   { code: 'cs', flag: '🇨🇿', label: 'Čeština' },
   { code: 'en', flag: '🇬🇧', label: 'English' },
-  { code: 'el', flag: '🇬🇷', label: 'Ελληνικά' },
 ];
 
 export function LangDropdown() {

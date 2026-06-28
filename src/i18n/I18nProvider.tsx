@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useEffect, useMemo, useState } from 'react';
 import { detectLocale, persistLocale, type Locale } from './detectLocale';
 import { getCopy, type SiteCopy } from './translations';
-import { SITE_URL } from '../config/site';
 
 type I18nContextValue = {
   locale: Locale;
@@ -23,19 +22,7 @@ export function I18nProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     document.documentElement.lang = locale;
-    document.title = t.meta.title;
-
-    const meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute('content', t.meta.description);
-
-    let canonical = document.querySelector('link[rel="canonical"]');
-    if (!canonical) {
-      canonical = document.createElement('link');
-      canonical.setAttribute('rel', 'canonical');
-      document.head.appendChild(canonical);
-    }
-    canonical.setAttribute('href', `${SITE_URL}/`);
-  }, [locale, t.meta.title, t.meta.description]);
+  }, [locale]);
 
   const value = useMemo(() => ({ locale, t, setLocale }), [locale, t]);
 

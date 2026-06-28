@@ -2,8 +2,9 @@ import type { SiteCopy } from './types';
 
 export const en: SiteCopy = {
   meta: {
-    title: 'Trtkat — clear plans without endless chat',
-    description: 'The Trtkat mobile app helps you find someone for a good evening. Simple, discreet, and free.',
+    title: 'Trtkat — casual dating for students | Free',
+    description:
+      'Modern dating app for students. Casual meetups, awareness about safe dating and sexual education. Completely free.',
   },
   nav: {
     about: 'About',
@@ -13,6 +14,8 @@ export const en: SiteCopy = {
     science: 'Data',
     benefits: 'Benefits',
     download: 'Download',
+    blog: 'Blog',
+    faq: 'FAQ',
   },
   stores: {
     appStoreLabel: 'Download on the App Store',
@@ -212,6 +215,42 @@ export const en: SiteCopy = {
       },
     ],
   },
+  faq: {
+    title: 'Frequently asked questions',
+    subtitle: 'Short answers to what students ask most often.',
+    items: [
+      {
+        question: 'What is Trtkat?',
+        answer:
+          'Trtkat is a modern dating app for making new contacts, friendships, and casual meetups. We focus on awareness about safe casual dating and sexual education for students.',
+      },
+      {
+        question: 'Is Trtkat free?',
+        answer:
+          'Yes. Trtkat is completely free — no paywall and no hidden fees for basic app use.',
+      },
+      {
+        question: 'Is Trtkat for students?',
+        answer:
+          'Yes. Trtkat is designed mainly for students who want to meet new people without relationship pressure.',
+      },
+      {
+        question: 'Is Trtkat safe?',
+        answer:
+          'Safety is built on consent, respect for boundaries, and clear plans. Casual dating on Trtkat does not mean unclear expectations.',
+      },
+      {
+        question: 'How is it different from classic dating apps?',
+        answer:
+          'We are not for relationships. We have one clear focus — casual dating. Less pointless chat, more clarity, and education about safe meetups.',
+      },
+      {
+        question: 'Do I have to look for a relationship?',
+        answer:
+          'No. Trtkat is for people who are not looking for a relationship right now but want new contacts, friendship, or a good evening together.',
+      },
+    ],
+  },
   cta: {
     title: 'Less talk. More clarity.',
     bodyMobile:
@@ -226,6 +265,60 @@ export const en: SiteCopy = {
     stats: 'Statistics',
     safety: 'Safety',
     download: 'Download the app',
+    blog: 'Blog',
+    legal: 'Legal',
+    privacy: 'Privacy',
+    terms: 'Terms',
+    contact: 'Contact',
+    followUs: 'Follow us',
     copyright: '© 2026 Trtkat. For adults 18+.',
+  },
+  legal: {
+    privacy: {
+      title: 'Privacy policy',
+      metaDescription: 'Trtkat privacy policy. Data processing information will be added.',
+      sections: [
+        {
+          paragraphs: [
+            'This page is prepared for the Trtkat privacy policy.',
+            'The final text will be added by the operator. Until then, use the contact page for questions.',
+          ],
+        },
+      ],
+    },
+    terms: {
+      title: 'Terms of use',
+      metaDescription: 'Trtkat terms of use. Final wording will be added.',
+      sections: [
+        {
+          paragraphs: [
+            'This page is prepared for the Trtkat terms of use.',
+            'Trtkat is for adults 18+. Final terms will be added by the operator.',
+          ],
+        },
+      ],
+    },
+    contact: {
+      title: 'Contact',
+      metaDescription: 'Contact the Trtkat team. Email and details will be added.',
+      emailPlaceholder: 'info@trtkat.cz',
+      sections: [
+        {
+          paragraphs: [
+            'Have a question about the app, partnership, or privacy? Get in touch.',
+            'We will add the contact email and other details soon.',
+          ],
+        },
+      ],
+    },
+  },
+  blog: {
+    title: 'Blog and education',
+    metaDescription:
+      'Articles about casual dating, sexual education, and safe meetups for students. Education from Trtkat.',
+    subtitle: 'Education about dating, sexual education, and safe casual meetups.',
+    readMore: 'Read article',
+    backToBlog: 'Back to blog',
+    backHome: 'Back to home',
   },
 };

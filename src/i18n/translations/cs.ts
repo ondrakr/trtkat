@@ -2,8 +2,9 @@ import type { SiteCopy } from './types';
 
 export const cs: SiteCopy = {
   meta: {
-    title: 'Trtkat — jasná domluva bez zbytečného chatu',
-    description: 'Mobilní aplikace Trtkat pomáhá najít někoho na příjemný večer. Jednoduše, diskrétně a zdarma.',
+    title: 'Trtkat — nezávazné seznamování pro studenty | Zdarma',
+    description:
+      'Moderní seznamovací aplikace pro studenty. Nezávazné seznámení, osvěta o bezpečném seznamování a sexualní výchova. Úplně zdarma.',
   },
   nav: {
     about: 'O nás',
@@ -13,6 +14,8 @@ export const cs: SiteCopy = {
     science: 'Věda',
     benefits: 'Benefity',
     download: 'Stáhnout',
+    blog: 'Blog',
+    faq: 'FAQ',
   },
   stores: {
     appStoreLabel: 'Stáhnout v App Store',
@@ -22,7 +25,7 @@ export const cs: SiteCopy = {
     badge: 'Pro studenty',
     titleLine1: 'Ušetři čas.',
     titleLine2: 'Užij si noc.',
-    body: 'Ne každý chce vztah. Trtkat pomáhá najít někoho na příjemný večer a poznání, jednoduše a bez zdlouhavého psaní.',
+    body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
     statsLink: 'Zajímají mě statistiky',
   },
   how: {
@@ -212,6 +215,42 @@ export const cs: SiteCopy = {
       },
     ],
   },
+  faq: {
+    title: 'Časté dotazy',
+    subtitle: 'Krátké odpovědi na to, co studenti řeší nejčastěji.',
+    items: [
+      {
+        question: 'Co je Trtkat?',
+        answer:
+          'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Zaměřujeme se na osvětu o bezpečném a nezávazném seznamování a sexualní výchovu pro studenty.',
+      },
+      {
+        question: 'Je Trtkat zdarma?',
+        answer:
+          'Ano. Trtkat je úplně zdarma — bez paywallu a bez skrytých poplatků za základní používání aplikace.',
+      },
+      {
+        question: 'Je Trtkat pro studenty?',
+        answer:
+          'Ano. Trtkat je navržený primárně pro studenty v České republice, kteří chtějí poznávat nové lidi bez tlaku na vztah.',
+      },
+      {
+        question: 'Je Trtkat bezpečný?',
+        answer:
+          'Bezpečí stavíme na souhlasu, respektu k hranicím a jasné domluvě. Nezávazné seznamování u nás neznamená nejasnost — naopak.',
+      },
+      {
+        question: 'Čím se liší od klasických seznamek?',
+        answer:
+          'Nejsme na vztahy. Máme jedno jasné zaměření — nezávazné seznamování. Méně zbytečného chatu, víc jasna a edukace o bezpečném seznámení.',
+      },
+      {
+        question: 'Musím hledat vztah?',
+        answer:
+          'Ne. Trtkat je pro lidi, kteří teď nehledají vztah, ale chtějí nové kontakty, přátelství nebo příjemný společný večer.',
+      },
+    ],
+  },
   cta: {
     title: 'Méně řečí. Víc jasno.',
     bodyMobile:
@@ -226,6 +265,60 @@ export const cs: SiteCopy = {
     stats: 'Statistiky',
     safety: 'Bezpečí',
     download: 'Stáhnout aplikaci',
+    blog: 'Blog',
+    legal: 'Právní informace',
+    privacy: 'Ochrana soukromí',
+    terms: 'Podmínky',
+    contact: 'Kontakt',
+    followUs: 'Sleduj nás',
     copyright: '© 2026 Trtkat. Pro dospělé 18+.',
+  },
+  legal: {
+    privacy: {
+      title: 'Ochrana soukromí',
+      metaDescription: 'Zásady ochrany osobních údajů aplikace Trtkat. Informace o zpracování dat budou doplněny.',
+      sections: [
+        {
+          paragraphs: [
+            'Tato stránka je připravena pro zveřejnění zásad ochrany osobních údajů aplikace Trtkat.',
+            'Finální text doplní provozovatel. Do té doby pro dotazy využij kontaktní stránku.',
+          ],
+        },
+      ],
+    },
+    terms: {
+      title: 'Podmínky používání',
+      metaDescription: 'Podmínky používání aplikace a webu Trtkat. Finální znění bude doplněno.',
+      sections: [
+        {
+          paragraphs: [
+            'Tato stránka je připravena pro zveřejnění podmínek používání služby Trtkat.',
+            'Trtkat je určen pro dospělé uživatele 18+. Finální podmínky doplní provozovatel.',
+          ],
+        },
+      ],
+    },
+    contact: {
+      title: 'Kontakt',
+      metaDescription: 'Kontaktujte tým Trtkat. E-mail a kontaktní údaje budou doplněny.',
+      emailPlaceholder: 'info@trtkat.cz',
+      sections: [
+        {
+          paragraphs: [
+            'Máš dotaz k aplikaci, spolupráci nebo ochraně soukromí? Napiš nám.',
+            'Kontaktní e-mail a další údaje doplníme co nejdříve.',
+          ],
+        },
+      ],
+    },
+  },
+  blog: {
+    title: 'Blog a osvěta',
+    metaDescription:
+      'Články o nezávazném seznamování, sexualní výchově a bezpečném seznámení pro studenty. Edukace od Trtkat.',
+    subtitle: 'Edukace o seznamování, sexualní výchově a bezpečném nezávazném seznámení.',
+    readMore: 'Číst článek',
+    backToBlog: 'Zpět na blog',
+    backHome: 'Zpět na úvod',
   },
 };
