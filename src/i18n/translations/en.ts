@@ -105,13 +105,29 @@ export const en: SiteCopy = {
         label: 'First sex',
         title: 'When do Czechs start? By age and gender',
         insight:
-          'Younger generations start earlier than the population average — men aged 18–25 average 17.2, but the overall male average is 18.3 (older cohorts pull it up).',
+          'This is not “how old they are now” — it is “how old they were at first sex”. The 18–25 cohort averages ~16.6 (women) and ~17.2 (men); the national male average is higher because older men started later.',
         stats: [
-          { value: '16.63 / 17.21', title: 'first sex at age 18–25', desc: 'Average age for women / men (CZECHSEX 2024).' },
-          { value: '17.46 / 18.33', title: 'first sex — whole population', desc: 'Women vs. men; higher male average due to older generations.' },
-          { value: '23.5% / 35.5%', title: '18–25 have not had sex yet', desc: 'Share of women / men without first intercourse — surprisingly high among men.' },
+          {
+            value: '16.63 · 17.21',
+            title: 'Age at first sex (people now aged 18–25)',
+            desc: 'Average age of first sex reported by respondents currently aged 18–25 — women · men.',
+          },
+          {
+            value: '17.46 · 18.33',
+            title: 'National average age of first sex',
+            desc: 'Average across all age groups — women · men. Older generations pull the male average up.',
+          },
+          {
+            value: '23.5% · 35.5%',
+            title: '18–25 respondents without first sex yet',
+            desc: 'Share of women · men in this age group who have not had intercourse yet.',
+          },
           { value: '~70%', title: 'of men held back by insecurity', desc: 'At first sex they report shyness or uncertainty about intimacy.' },
-          { value: '13.38 / 13.5', title: 'age of first masturbation (18–25)', desc: 'Women / men — self-discovery starts well before first sex.' },
+          {
+            value: '13.38 · 13.5',
+            title: 'First masturbation (18–25 respondents)',
+            desc: 'Average age for women · men — usually years before first sex.',
+          },
           { value: '2013 → 2024', title: 'age of first sex is stable', desc: 'Women 17.73 → 17.46 | Men 17.79 → 18.33 — no dramatic shift, generational mix.' },
         ],
       },
@@ -120,14 +136,26 @@ export const en: SiteCopy = {
         label: 'Dating',
         title: 'Where people meet today — offline and online',
         insight:
-          'Online is not the only path (13.4% of couples), but among 18–25 it is already 20.7%. Young people meet least in bars — only 11.2%.',
+          'Online is not the only path (13.4% of couples overall), but among respondents aged 18–25, 20.7% met online. In that group, bars are the least common — 11.2%.',
         stats: [
-          { value: '29.6%', title: 'through friends and acquaintances', desc: 'Still the most common path to a partner in the Czech Republic.' },
-          { value: '20.0%', title: 'work or school', desc: 'The second strongest offline path.' },
-          { value: '20.7%', title: 'online at age 18–25', desc: 'For the youngest adults, the internet is a key channel.' },
-          { value: '13.4%', title: 'online — whole population', desc: 'In the US the share of online couples is much higher (~50%).' },
-          { value: '11.2%', title: 'bar/party among 18–25', desc: 'Lowest among young people — the “meeting in a pub” myth does not hold.' },
-          { value: '4.9%', title: 'online at age 66–75', desc: 'Digital dating drops sharply with age.' },
+          { value: '29.6%', title: 'through friends and acquaintances', desc: 'Still the most common path in the whole population.' },
+          { value: '20.0%', title: 'work or school', desc: 'The second strongest offline path (whole population).' },
+          {
+            value: '20.7%',
+            title: 'online (respondents aged 18–25)',
+            desc: 'Share of people aged 18–25 who met their partner on the internet.',
+          },
+          { value: '13.4%', title: 'online — whole population', desc: 'Share of couples who met online (all age groups).' },
+          {
+            value: '11.2%',
+            title: 'bar/party (respondents 18–25)',
+            desc: 'Lowest in the youngest cohort — the “meeting in a pub” myth does not hold.',
+          },
+          {
+            value: '4.9%',
+            title: 'online (respondents 66–75)',
+            desc: 'Digital dating drops sharply among seniors.',
+          },
         ],
       },
       {
@@ -135,14 +163,18 @@ export const en: SiteCopy = {
         label: 'Relationships',
         title: 'Relationships, freedom, and sex frequency',
         insight:
-          'Almost half of 18–25 year-olds have never had a long-term relationship — but in a relationship people have sex ~5× per month vs. under 1× when single.',
+          'Almost half of respondents aged 18–25 have never had a long-term relationship — but people in relationships have sex ~5.7× per month, while the whole population averages under 1×.',
         stats: [
-          { value: '46%', title: '18–25 without a long-term relationship', desc: 'Possible generational shift — experimenting longer, rushing less.' },
-          { value: '73.7%', title: 'of adults in a relationship', desc: 'Most of the population lives in long-term partnerships.' },
+          {
+            value: '46%',
+            title: '18–25 respondents without LTR',
+            desc: 'Share of young adults who have never had a long-term relationship.',
+          },
+          { value: '73.7%', title: 'of adults in a relationship', desc: 'Most of the population lives in long-term partnerships (whole population).' },
           { value: '26.7%', title: 'of partnered people also have a sexual relationship', desc: 'Open relationships and parallel contacts — not just infidelity.' },
-          { value: '5.7× / mo.', title: 'sex in a relationship', desc: 'Men 5.72 | Women 5.63 — huge gap compared to singles.' },
-          { value: '0.71 / 0.99', title: 'sex per month (singles)', desc: 'Average for women / men outside stable relationships — under once a month.' },
-          { value: '5', title: 'median lifetime partners', desc: 'Average (8.6 women / 11.6 men) is skewed by extremes — median is fairer.' },
+          { value: '5.63 · 5.72', title: 'sex per month in a relationship', desc: 'Average for women · men with a long-term partner.' },
+          { value: '1.7 · 1.3', title: 'sex per month (respondents 18–25)', desc: 'Average for women · men in the youngest cohort — not singles only.' },
+          { value: '0.71 · 0.99', title: 'sex per month (whole population)', desc: 'Average for women · men across all ages and statuses.' },
         ],
       },
       {
@@ -150,14 +182,18 @@ export const en: SiteCopy = {
         label: 'Online sexuality',
         title: 'Digital intimacy is mainstream',
         insight:
-          '78.5% of the population has watched porn — among young adults it starts earlier (women ~14.5, men ~14.2). AI and sexting are changing the rules.',
+          '78.5% of the population has watched porn. Respondents aged 18–25 recall first porn at ~14.5 (women) and ~14.2 (men) — much earlier than older generations.',
         stats: [
-          { value: '78.5%', title: 'have watched porn at some point', desc: 'Men 89.5% | Women 67.6% — the gender gap narrows among young adults.' },
-          { value: '14.5 / 14.2', title: 'age of first porn (18–25)', desc: 'Average age for women / men in the youngest cohort.' },
-          { value: '16%', title: 'have sent a nude photo/video', desc: 'Same share among men and women — sexting is normal risk and tool.' },
-          { value: '12% / 4%', title: 'live sex (cam)', desc: 'Experience among men / women with interactive online sexuality.' },
-          { value: '3.1%', title: 'at risk of problematic porn use', desc: 'Among 18–34 it is 5.4% — smaller but important group.' },
-          { value: '6% / 8%', title: 'have never had sex', desc: 'Share of women / men in the whole population — not just among young people.' },
+          { value: '78.5%', title: 'have watched porn at some point', desc: 'Men 89.5% · Women 67.6% (whole population).' },
+          {
+            value: '14.52 · 14.18',
+            title: 'age of first porn (respondents 18–25)',
+            desc: 'How old they were at first viewing — average for women · men.',
+          },
+          { value: '16%', title: 'have sent a nude photo/video', desc: 'Same share among men and women — sexting is common and a risk.' },
+          { value: '12% · 4%', title: 'live sex (cam)', desc: 'Experience among men · women with interactive online sexuality.' },
+          { value: '3.1%', title: 'at risk of problematic porn use', desc: 'In the 18–34 cohort it is 5.4% — smaller but important group.' },
+          { value: '6% · 8%', title: 'have never had sex', desc: 'Share of women · men in the whole population (not just young people).' },
         ],
       },
       {
@@ -170,8 +206,8 @@ export const en: SiteCopy = {
           { value: '16.8%', title: 'of women — coercion/violence', desc: 'Sexual pressure or violence in lifetime — among men 4.9%.' },
           { value: '29.9%', title: 'of women — unwanted contact', desc: 'Unwanted touch or sexual advances — among men 16.9%.' },
           { value: '20%', title: 'of women — orgasm difficulties', desc: 'One in five — more common than people talk about.' },
-          { value: '61% / 55%', title: 'sexual problem in lifetime', desc: 'Women / men report some issue — most without help.' },
-          { value: '5.0% / 4.6%', title: 'sought professional help', desc: 'Women / men — huge gap between need and the system.' },
+          { value: '61% · 55%', title: 'sexual problem in lifetime', desc: 'Share of women · men reporting an issue — most without help.' },
+          { value: '5.0% · 4.6%', title: 'sought professional help', desc: 'Share of women · men — huge gap between need and the system.' },
           { value: '6.1%', title: 'of women reported rape', desc: 'True scope is likely higher — stigma holds people back.' },
         ],
       },
@@ -179,18 +215,18 @@ export const en: SiteCopy = {
     charts: {
       prvniseks: {
         title: 'Average age of first sex',
-        subtitle: 'Women vs. men — whole population vs. the 18–25 cohort.',
+        subtitle: 'How old respondents were at first intercourse — 18–25 cohort vs. whole population.',
         suffix: ' yrs',
         type: 'grouped',
         seriesLabels: { women: 'Women', men: 'Men' },
         data: [
-          { label: '18–25', women: 16.63, men: 17.21 },
+          { label: 'Respondents 18–25', women: 16.63, men: 17.21 },
           { label: 'All adults', women: 17.46, men: 18.33 },
         ],
       },
       seznamovani: {
         title: 'How people meet their partner',
-        subtitle: 'Share of couples by meeting place (CZECHSEX) + bar among 18–25.',
+        subtitle: 'Share of couples by meeting place (whole population) + bar among respondents 18–25.',
         suffix: '%',
         type: 'simple',
         data: [
@@ -198,29 +234,29 @@ export const en: SiteCopy = {
           { label: 'Work/school', value: 20.0 },
           { label: 'Activities', value: 17.5 },
           { label: 'Online', value: 13.4 },
-          { label: 'Bar (18–25)', value: 11.2 },
+          { label: 'Bar (resp. 18–25)', value: 11.2 },
         ],
       },
       vztahy: {
         title: 'Sex frequency per month',
-        subtitle: 'Difference between singles and people in relationships — by gender.',
+        subtitle: 'Average among respondents 18–25 vs. people in a relationship — by gender.',
         suffix: '×',
         type: 'grouped',
         seriesLabels: { women: 'Women', men: 'Men' },
         data: [
-          { label: 'Singles 18–25', women: 1.7, men: 1.3 },
+          { label: 'Respondents 18–25', women: 1.7, men: 1.3 },
           { label: 'In relationship', women: 5.63, men: 5.72 },
         ],
       },
       online: {
         title: 'Online dating by age',
-        subtitle: 'Almost one in five among young adults — under 5% among seniors. Population: 13.4%.',
+        subtitle: 'Share of respondents in each age group who met online. Whole population: 13.4%.',
         suffix: '%',
         type: 'simple',
         data: [
-          { label: '18–25', value: 20.7 },
+          { label: 'Resp. 18–25', value: 20.7 },
           { label: 'All', value: 13.4 },
-          { label: '66–75', value: 4.9 },
+          { label: 'Resp. 66–75', value: 4.9 },
         ],
       },
       bezpeci: {
@@ -250,7 +286,7 @@ export const en: SiteCopy = {
       {
         period: '2008 → 2024',
         label: 'Online dating grows',
-        value: '13.4% of couples online · up to 20.7% among 18–25',
+        value: '13.4% of couples online · up to 20.7% among respondents 18–25',
       },
       {
         period: '2013 → 2024',
@@ -265,7 +301,7 @@ export const en: SiteCopy = {
       {
         period: '2024',
         label: 'Young adults without a relationship',
-        value: '46% of 18–25 never had LTR · 35.5% of men without sex',
+        value: '46% of 18–25 respondents without LTR · 35.5% of men without sex',
       },
     ],
   },

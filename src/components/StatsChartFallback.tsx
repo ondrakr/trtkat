@@ -1,6 +1,7 @@
-import { BarChart } from 'lucide-react';
+import { BarChart3, UserRound } from 'lucide-react';
 import type { ChartCategory } from '../i18n/translations/types';
 import { useI18n } from '../i18n/I18nProvider';
+import { StatsGenderLegend } from './StatsGenderValue';
 
 type StatsChartFallbackProps = {
   chart: ChartCategory;
@@ -14,22 +15,20 @@ export function StatsChartFallback({ chart }: StatsChartFallbackProps) {
   const isGrouped = chart.type === 'grouped';
 
   const maxSimple = Math.max(...chart.data.map((item) => item.value ?? 0), 1);
-  const maxGrouped = Math.max(
-    ...chart.data.flatMap((item) => [item.women ?? 0, item.men ?? 0]),
-    1,
-  );
+  const maxGrouped = Math.max(...chart.data.flatMap((item) => [item.women ?? 0, item.men ?? 0]), 1);
 
   return (
     <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl">
       <h3 className="text-base sm:text-xl font-black text-white mb-2 flex items-center gap-3">
-        <BarChart className="w-6 h-6 text-trtkat-blue" />
+        <BarChart3 className="w-6 h-6 text-trtkat-blue" />
         {chart.title}
       </h3>
-      <p className="text-sm text-slate-400 mb-6">{chart.subtitle}</p>
-      <div className="space-y-4">
+      <p className="text-sm text-slate-400 mb-4">{chart.subtitle}</p>
+      {isGrouped && <StatsGenderLegend womenLabel={t.data.womenLabel} menLabel={t.data.menLabel} />}
+      <div className="space-y-4 mt-4">
         {isGrouped
           ? chart.data.map((item) => (
-              <div key={item.label} className="space-y-2">
+              <div key={item.label} className="space-y-2 rounded-xl border border-white/5 p-3">
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-400">{item.label}</p>
                 {[
                   { label: t.data.womenLabel, value: item.women ?? 0, color: PINK },
@@ -37,7 +36,10 @@ export function StatsChartFallback({ chart }: StatsChartFallbackProps) {
                 ].map((row) => (
                   <div key={row.label}>
                     <div className="mb-1 flex items-center justify-between text-sm font-bold">
-                      <span className="text-slate-300">{row.label}</span>
+                      <span className="inline-flex items-center gap-1.5" style={{ color: row.color }}>
+                        <UserRound className="h-3.5 w-3.5" />
+                        {row.label}
+                      </span>
                       <span style={{ color: row.color }}>
                         {row.value}
                         {chart.suffix}
@@ -60,7 +62,7 @@ export function StatsChartFallback({ chart }: StatsChartFallbackProps) {
               <div key={item.label}>
                 <div className="mb-2 flex items-center justify-between text-sm font-bold">
                   <span className="text-slate-300">{item.label}</span>
-                  <span className="text-trtkat-pink">
+                  <span style={{ color: index % 2 === 0 ? PINK : BLUE }}>
                     {item.value}
                     {chart.suffix}
                   </span>

@@ -105,13 +105,29 @@ export const cs: SiteCopy = {
         label: 'První sex',
         title: 'Kdy Češi poprvé? Podle věku a pohlaví',
         insight:
-          'Mladší generace začíná dříve než průměr populace — u mužů 18–25 je průměr 17,2 roku, celkový průměr mužů je ale 18,3 (historická paměť starších kohort).',
+          'Nejde o to, v kolika letech lidé teď jsou — jde o to, v kolika letech poprvé. Mladší kohorta (18–25) vzpomíná průměr ~16,6 (ženy) a ~17,2 (muži); celonárodní průměr mužů je vyšší kvůli starším generacím.',
         stats: [
-          { value: '16,63 / 17,21', title: 'první sex ve věku 18–25', desc: 'Průměrný věk u žen / u mužů (CZECHSEX 2024).' },
-          { value: '17,46 / 18,33', title: 'první sex — celá populace', desc: 'Ženy vs. muži; u mužů vyšší průměr kvůli starším generacím.' },
-          { value: '23,5 % / 35,5 %', title: '18–25 ještě nemělo sex', desc: 'Podíl žen / mužů bez prvního styku — u mužů překvapivě vysoký.' },
+          {
+            value: '16,63 · 17,21',
+            title: 'V kolika letech poprvé? (lidé nyní 18–25)',
+            desc: 'Průměrný věk prvního sexu, který dnes uvádějí respondenti ve věku 18–25 let — ženy · muži.',
+          },
+          {
+            value: '17,46 · 18,33',
+            title: 'Celonárodní průměr prvního sexu',
+            desc: 'Průměr napříč všemi věkovými skupinami — ženy · muži. U mužů vyšší číslo táhnou starší generace.',
+          },
+          {
+            value: '23,5 % · 35,5 %',
+            title: 'Respondenti 18–25 bez prvního sexu',
+            desc: 'Podíl žen · mužů v této věkové skupině, kteří dosud neměli pohlavní styk.',
+          },
           { value: '~70 %', title: 'mužů brzdí nejistota', desc: 'Při prvním sexu uvádějí plachost nebo nejistotu navázat kontakt.' },
-          { value: '13,38 / 13,5', title: 'věk první masturbace (18–25)', desc: 'Ženy / muži — sebeobjevování začíná výrazně dříve než první sex.' },
+          {
+            value: '13,38 · 13,5',
+            title: 'První masturbace (respondenti 18–25)',
+            desc: 'Průměrný věk u žen · mužů — obvykle roky před prvním sexem.',
+          },
           { value: '2013 → 2024', title: 'věk prvního sexu stagnuje', desc: 'Ženy 17,73 → 17,46 | Muži 17,79 → 18,33 — dramatický posun ne, spíš generační mix.' },
         ],
       },
@@ -120,14 +136,26 @@ export const cs: SiteCopy = {
         label: 'Seznamování',
         title: 'Kde se dnes potkávají — offline i online',
         insight:
-          'Online není jediná cesta (13,4 % párů), ale u 18–25 let už 20,7 %. Na baru se mladí seznamují nejméně — jen 11,2 %.',
+          'Online není jediná cesta (13,4 % párů celkově), ale mezi respondenty ve věku 18–25 se 20,7 % seznámilo online. Na baru se v této skupině seznamuje nejméně — 11,2 %.',
         stats: [
-          { value: '29,6 %', title: 'přes přátele a známé', desc: 'Stále nejčastější cesta k partnerovi v ČR.' },
-          { value: '20,0 %', title: 'práce nebo škola', desc: 'Druhá nejsilnější offline cesta.' },
-          { value: '20,7 %', title: 'online ve věku 18–25', desc: 'U nejmladších je internet klíčový kanál.' },
-          { value: '13,4 %', title: 'online — celá populace', desc: 'V USA je podíl online párů výrazně vyšší (~50 %).' },
-          { value: '11,2 %', title: 'bar/večírek u 18–25', desc: 'U mladých nejméně — mýtus o „seznámení v hospodě“ neplatí.' },
-          { value: '4,9 %', title: 'online ve věku 66–75', desc: 'S věkem digitální seznamování prudce klesá.' },
+          { value: '29,6 %', title: 'přes přátele a známé', desc: 'Stále nejčastější cesta k partnerovi v celé populaci.' },
+          { value: '20,0 %', title: 'práce nebo škola', desc: 'Druhá nejsilnější offline cesta (celá populace).' },
+          {
+            value: '20,7 %',
+            title: 'online (respondenti 18–25)',
+            desc: 'Podíl lidí ve věku 18–25, kteří se s partnerem seznámili přes internet.',
+          },
+          { value: '13,4 %', title: 'online — celá populace', desc: 'Podíl párů, které se seznámily online (všechny věkové skupiny).' },
+          {
+            value: '11,2 %',
+            title: 'bar/večírek (respondenti 18–25)',
+            desc: 'U nejmladší kohorty nejméně — mýtus o „seznámení v hospodě“ neplatí.',
+          },
+          {
+            value: '4,9 %',
+            title: 'online (respondenti 66–75)',
+            desc: 'U seniorů digitální seznamování prudce klesá.',
+          },
         ],
       },
       {
@@ -135,14 +163,18 @@ export const cs: SiteCopy = {
         label: 'Vztahy',
         title: 'Vztahy, svoboda a frekvence sexu',
         insight:
-          'Skoro polovina mladých 18–25 nemá za sebou dlouhodobý vztah — ale ve vztahu je sex ~5× měsíčně vs. pod 1× u singles.',
+          'Mezi respondenty 18–25 nemá za sebou dlouhodobý vztah skoro polovina — ale lidé ve vztahu mají sex v průměru ~5,7× měsíčně, zatímco celá populace pod 1×.',
         stats: [
-          { value: '46 %', title: '18–25 bez dlouhodobého vztahu', desc: 'Možná generační posun — déle experimentují, méně spěchají.' },
-          { value: '73,7 %', title: 'dospělých ve vztahu', desc: 'Většina populace žije v dlouhodobém partnerství.' },
+          {
+            value: '46 %',
+            title: 'respondenti 18–25 bez LTR',
+            desc: 'Podíl mladých dospělých, kteří dosud neměli dlouhodobý partnerský vztah.',
+          },
+          { value: '73,7 %', title: 'dospělých ve vztahu', desc: 'Většina populace žije v dlouhodobém partnerství (celá populace).' },
           { value: '26,7 %', title: 'zadaných má i sex. vztah', desc: 'Otevřené vztahy i paralelní kontakty — ne jen nevěra.' },
-          { value: '5,7× / měs.', title: 'sex ve vztahu', desc: 'Muži 5,72 | Ženy 5,63 — vysoký rozdíl oproti singles.' },
-          { value: '0,71 / 0,99', title: 'sex za měsíc (singles)', desc: 'Průměr žen / mužů mimo stabilní vztah — pod 1× měsíčně.' },
-          { value: '5', title: 'medián partnerů za život', desc: 'Průměr (8,6 ženy / 11,6 muži) zkreslují extrémy — medián je poctivější.' },
+          { value: '5,63 · 5,72', title: 'sex za měsíc ve vztahu', desc: 'Průměr u žen · mužů s dlouhodobým partnerem.' },
+          { value: '1,7 · 1,3', title: 'sex za měsíc (respondenti 18–25)', desc: 'Průměr u žen · mužů v nejmladší kohortě — ne jen singles.' },
+          { value: '0,71 · 0,99', title: 'sex za měsíc (celá populace)', desc: 'Průměr u žen · mužů napříč všemi věky a stavy.' },
         ],
       },
       {
@@ -150,14 +182,18 @@ export const cs: SiteCopy = {
         label: 'Online sexualita',
         title: 'Digitální intimita je mainstream',
         insight:
-          'Pornografie sledovalo 78,5 % populace — u mladých začínají dříve (ženy ~14,5 roku, muži ~14,2). AI a sexting mění pravidla hry.',
+          'Pornografii sledovalo 78,5 % populace. Respondenti 18–25 vzpomínají první porno v ~14,5 letech (ženy) resp. ~14,2 (muži) — výrazně dříve než starší generace.',
         stats: [
-          { value: '78,5 %', title: 'někdy sledovalo pornografii', desc: 'Muži 89,5 % | Ženy 67,6 % — gender gap se zužuje u mladých.' },
-          { value: '14,5 / 14,2', title: 'věk prvního porna (18–25)', desc: 'Průměrný věk u žen / mužů v nejmladší kohortě.' },
-          { value: '16 %', title: 'poslalo nahou fotku/video', desc: 'Stejný podíl u mužů i žen — sexting je normální riziko i nástroj.' },
-          { value: '12 % / 4 %', title: 'live sex (cam)', desc: 'Zkušenost mužů / žen s interaktivní online sexualitou.' },
-          { value: '3,1 %', title: 'riziko problémového porna', desc: 'Ve věku 18–34 jde o 5,4 % — menší, ale důležitá skupina.' },
-          { value: '6 % / 8 %', title: 'nikdy nemělo sex', desc: 'Podíl žen / mužů v celé populaci — ne jen u mladých.' },
+          { value: '78,5 %', title: 'někdy sledovalo pornografii', desc: 'Muži 89,5 % · Ženy 67,6 % (celá populace).' },
+          {
+            value: '14,52 · 14,18',
+            title: 'věk prvního porna (respondenti 18–25)',
+            desc: 'Kolik jim bylo při prvním sledování — průměr u žen · mužů.',
+          },
+          { value: '16 %', title: 'poslalo nahou fotku/video', desc: 'Stejný podíl u mužů i žen — sexting je běžný i riziko.' },
+          { value: '12 % · 4 %', title: 'live sex (cam)', desc: 'Zkušenost mužů · žen s interaktivní online sexualitou.' },
+          { value: '3,1 %', title: 'riziko problémového porna', desc: 'V kohortě 18–34 jde o 5,4 % — menší, ale důležitá skupina.' },
+          { value: '6 % · 8 %', title: 'nikdy nemělo sex', desc: 'Podíl žen · mužů v celé populaci (ne jen u mladých).' },
         ],
       },
       {
@@ -170,8 +206,8 @@ export const cs: SiteCopy = {
           { value: '16,8 %', title: 'žen — donucení/násilí', desc: 'Sexuální nátlak nebo násilí za život — u mužů 4,9 %.' },
           { value: '29,9 %', title: 'žen — nevyžádaný kontakt', desc: 'Nevyžádané dotyky nebo sexuální návrhy — u mužů 16,9 %.' },
           { value: '20 %', title: 'žen — potíže s orgasmem', desc: 'Každá pátá žena — častější téma než se mluví.' },
-          { value: '61 % / 55 %', title: 'sexuální problém za život', desc: 'Ženy / muži uvádějí nějakou potíž — většina bez pomoci.' },
-          { value: '5,0 % / 4,6 %', title: 'hledalo odbornou pomoc', desc: 'Ženy / muži — obrovská mezera mezi potřebou a systémem.' },
+          { value: '61 % · 55 %', title: 'sexuální problém za život', desc: 'Podíl žen · mužů uvádějících potíž — většina bez pomoci.' },
+          { value: '5,0 % · 4,6 %', title: 'hledalo odbornou pomoc', desc: 'Podíl žen · mužů — obrovská mezera mezi potřebou a systémem.' },
           { value: '6,1 %', title: 'žen nahlásilo znásilnění', desc: 'Skutečný rozsah je pravděpodobně vyšší — stigma brzdí.' },
         ],
       },
@@ -179,18 +215,18 @@ export const cs: SiteCopy = {
     charts: {
       prvniseks: {
         title: 'Průměrný věk prvního sexu',
-        subtitle: 'Srovnání žen a mužů — celá populace vs. kohorta 18–25 let.',
+        subtitle: 'Kolik let respondentům bylo, když poprvé — srovnání kohorty 18–25 a celé populace.',
         suffix: ' let',
         type: 'grouped',
         seriesLabels: { women: 'Ženy', men: 'Muži' },
         data: [
-          { label: '18–25 let', women: 16.63, men: 17.21 },
+          { label: 'Respondenti 18–25', women: 16.63, men: 17.21 },
           { label: 'Celá populace', women: 17.46, men: 18.33 },
         ],
       },
       seznamovani: {
         title: 'Jak se lidé seznámí s partnerem',
-        subtitle: 'Podíl párů podle místa seznámení (CZECHSEX) + bar u 18–25.',
+        subtitle: 'Podíl párů podle místa seznámení (celá populace) + bar u respondentů 18–25.',
         suffix: '%',
         type: 'simple',
         data: [
@@ -198,29 +234,29 @@ export const cs: SiteCopy = {
           { label: 'Práce/škola', value: 20.0 },
           { label: 'Aktivity', value: 17.5 },
           { label: 'Online', value: 13.4 },
-          { label: 'Bar (18–25)', value: 11.2 },
+          { label: 'Bar (resp. 18–25)', value: 11.2 },
         ],
       },
       vztahy: {
         title: 'Frekvence sexu za měsíc',
-        subtitle: 'Rozdíl mezi singles a lidmi ve vztahu — podle pohlaví.',
+        subtitle: 'Průměr u respondentů 18–25 vs. lidí ve vztahu — podle pohlaví.',
         suffix: '×',
         type: 'grouped',
         seriesLabels: { women: 'Ženy', men: 'Muži' },
         data: [
-          { label: 'Singles 18–25', women: 1.7, men: 1.3 },
+          { label: 'Respondenti 18–25', women: 1.7, men: 1.3 },
           { label: 'Ve vztahu', women: 5.63, men: 5.72 },
         ],
       },
       online: {
         title: 'Online seznamování podle věku',
-        subtitle: 'U mladých téměř každý pátý — u seniorů pod 5 %. Celá populace: 13,4 %.',
+        subtitle: 'Podíl respondentů v dané věkové skupině, kteří se seznámili online. Celá populace: 13,4 %.',
         suffix: '%',
         type: 'simple',
         data: [
-          { label: '18–25', value: 20.7 },
+          { label: 'Resp. 18–25', value: 20.7 },
           { label: 'Celkem', value: 13.4 },
-          { label: '66–75', value: 4.9 },
+          { label: 'Resp. 66–75', value: 4.9 },
         ],
       },
       bezpeci: {
@@ -250,7 +286,7 @@ export const cs: SiteCopy = {
       {
         period: '2008 → 2024',
         label: 'Online seznamování roste',
-        value: '13,4 % párů online · u 18–25 až 20,7 %',
+        value: '13,4 % párů online · u respondentů 18–25 až 20,7 %',
       },
       {
         period: '2013 → 2024',
@@ -265,7 +301,7 @@ export const cs: SiteCopy = {
       {
         period: '2024',
         label: 'Mladí bez vztahu',
-        value: '46 % 18–25 nemá dlouhodobý vztah · 35,5 % mužů bez sexu',
+        value: '46 % respondentů 18–25 bez LTR · 35,5 % mužů bez sexu',
       },
     ],
   },
