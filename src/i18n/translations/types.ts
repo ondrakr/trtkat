@@ -43,6 +43,13 @@ export type SiteCopy = {
     subtitle: string;
     steps: Array<{ title: string; bodyMobile: string; bodyDesktop: string }>;
   };
+  features: {
+    title: string;
+    subtitle: string;
+    introMobile: string;
+    introDesktop: string;
+    items: Array<{ title: string; bodyMobile: string; bodyDesktop: string }>;
+  };
   data: {
     title: string;
     introMobile: string;

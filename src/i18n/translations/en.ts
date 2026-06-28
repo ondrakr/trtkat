@@ -22,7 +22,7 @@ export const en: SiteCopy = {
   },
   hero: {
     badge: 'Free',
-    titleLine1: 'Save time',
+    titleLine1: 'Save time.',
     titleLine2: 'Enjoy the night.',
     body: 'Not everyone wants a relationship. Trtkat helps you find someone for a pleasant evening and connection — simply, without endless messaging.',
     imageAlt: 'Trtkat app on iPhone — profile, match, and chat',
@@ -48,6 +48,40 @@ export const en: SiteCopy = {
         bodyMobile: 'Clear rules and respect for boundaries from the start.',
         bodyDesktop:
           'Everyone knows why they are here. No false promises, no mixed signals, no role-playing. Respect for boundaries is the foundation.',
+      },
+    ],
+  },
+  features: {
+    title: 'What you get in the app',
+    subtitle: 'More than swiping and chat',
+    introMobile:
+      'Hotel booking, date plans with navigation, flirty games, and a map of great spots — all inside the app.',
+    introDesktop:
+      'Trtkat is not just a dating app. Book a hotel halfway, plan a date with navigation or Bolt/Uber, play icebreaker games, and discover great places nearby.',
+    items: [
+      {
+        title: 'Halfway hotel booking',
+        bodyMobile: 'A hotel right between you — book it directly in the app.',
+        bodyDesktop:
+          'In different cities? The app suggests a hotel halfway and you can book it in Trtkat without switching between apps.',
+      },
+      {
+        title: 'Date plan in one tap',
+        bodyMobile: 'Venue, navigation, Bolt or Uber — straight from the app.',
+        bodyDesktop:
+          'Plan a date with a specific place. Open navigation to the address, or launch Bolt or Uber — the app hands you off where you need to go.',
+      },
+      {
+        title: 'Flirty games',
+        bodyMobile: 'Truth or Dare and more games to spark the conversation.',
+        bodyDesktop:
+          'Icebreaker and flirty games right in chat — Truth or Dare, truth dice, bold prompts. Break the ice without awkward openers.',
+      },
+      {
+        title: 'Date spots map',
+        bodyMobile: 'Curated places nearby — cafés, bars, viewpoints.',
+        bodyDesktop:
+          'An interactive map of great date spots. Pick by mood, open navigation, and you are set.',
       },
     ],
   },

@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import {
   ShieldCheck,
   MessageCircle,
@@ -7,6 +6,10 @@ import {
   Smile,
   Moon,
   Zap,
+  Hotel,
+  Navigation,
+  Dices,
+  Map,
 } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from '../components/StoreBadges';
@@ -17,6 +20,13 @@ import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
 
 const benefitIcons = [Smile, Moon, Zap, Sparkles];
+const featureIcons = [Hotel, Navigation, Dices, Map];
+const featureColors = [
+  'text-trtkat-pink bg-trtkat-pink/15 border-trtkat-pink/20',
+  'text-trtkat-blue bg-trtkat-blue/15 border-trtkat-blue/20',
+  'text-yellow-400 bg-yellow-400/15 border-yellow-400/20',
+  'text-purple-400 bg-purple-400/15 border-purple-400/20',
+];
 const vibeImageSrc = '/images/IMG_3760.jpeg';
 
 export function LandingPage() {
@@ -95,6 +105,47 @@ export function LandingPage() {
                   </p>
                 </div>
               ))}
+            </div>
+          </div>
+        </RevealSection>
+
+        <RevealSection id="funkce" className={`${sectionY} relative overflow-hidden bg-slate-900/30`}>
+          <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
+            <div className="absolute -top-32 right-[-8%] h-72 w-72 rounded-full bg-trtkat-pink/10 blur-[100px]" />
+            <div className="absolute bottom-[-20%] left-[-10%] h-80 w-80 rounded-full bg-trtkat-blue/10 blur-[100px]" />
+          </div>
+          <div className={`${sectionWrap} relative`}>
+            <div className="text-center max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-16">
+              <p className="text-xs sm:text-sm font-black uppercase tracking-[0.18em] text-trtkat-pink mb-3 sm:mb-4">
+                {t.features.subtitle}
+              </p>
+              <h2 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-black text-white mb-4 sm:mb-6 leading-tight text-balance">
+                {t.features.title}
+              </h2>
+              <p className="text-base sm:text-lg md:text-xl text-slate-400 font-medium leading-relaxed">
+                <span className="md:hidden">{t.features.introMobile}</span>
+                <span className="hidden md:inline">{t.features.introDesktop}</span>
+              </p>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+              {t.features.items.map((feature, idx) => {
+                const Icon = featureIcons[idx];
+                return (
+                  <article
+                    key={feature.title}
+                    className="group relative overflow-hidden rounded-3xl md:rounded-[2.5rem] border border-white/5 bg-slate-950/60 p-5 sm:p-6 md:p-8 transition-colors hover:border-white/10 hover:bg-slate-950/80"
+                  >
+                    <div className={`mb-5 sm:mb-6 inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl border ${featureColors[idx]} transition-transform group-hover:scale-110`}>
+                      <Icon className="h-7 w-7 sm:h-8 sm:w-8" />
+                    </div>
+                    <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4">{feature.title}</h3>
+                    <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
+                      <span className="md:hidden">{feature.bodyMobile}</span>
+                      <span className="hidden md:inline">{feature.bodyDesktop}</span>
+                    </p>
+                  </article>
+                );
+              })}
             </div>
           </div>
         </RevealSection>

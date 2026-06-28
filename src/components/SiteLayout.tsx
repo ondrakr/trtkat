@@ -52,6 +52,7 @@ export function SiteLayout() {
 
             <div className="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-300 uppercase tracking-wider text-slate-400">
               <a href="/#jak-to-funguje" className="hover:text-white transition-colors">{t.nav.about}</a>
+              <a href="/#funkce" className="hover:text-white transition-colors">{t.nav.features}</a>
               <a href="/#data" className="hover:text-white transition-colors">{t.nav.stats}</a>
               <Link to="/blog" className="hover:text-white transition-colors">{t.nav.blog}</Link>
               <LangDropdown />
@@ -94,6 +95,7 @@ export function SiteLayout() {
               <h4 className="text-white font-black uppercase tracking-[0.18em] text-xs mb-4">{t.footer.offer}</h4>
               <div className="flex flex-col gap-3 text-slate-400 font-bold text-sm">
                 <a href="/#jak-to-funguje" className="hover:text-white transition-colors">{t.footer.howItWorks}</a>
+                <a href="/#funkce" className="hover:text-white transition-colors">{t.nav.features}</a>
                 <a href="/#data" className="hover:text-white transition-colors">{t.footer.stats}</a>
                 <Link to="/blog" className="hover:text-white transition-colors">{t.footer.blog}</Link>
                 <a href="/#stahnout" className="hover:text-white transition-colors">{t.footer.download}</a>

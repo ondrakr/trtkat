@@ -22,7 +22,7 @@ export const cs: SiteCopy = {
   },
   hero: {
     badge: 'Zdarma',
-    titleLine1: 'Ušetři čas',
+    titleLine1: 'Ušetři čas.',
     titleLine2: 'Užij si noc.',
     body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
     imageAlt: 'Trtkat aplikace na iPhonu — profil, shoda a chat',
@@ -48,6 +48,40 @@ export const cs: SiteCopy = {
         bodyMobile: 'Jasná pravidla a respekt k hranicím od začátku.',
         bodyDesktop:
           'Každý ví, proč tu je. Bez falešných slibů, bez matení signálů a bez hraní rolí. Respekt k hranicím je základ.',
+      },
+    ],
+  },
+  features: {
+    title: 'Co v aplikaci najdeš',
+    subtitle: 'Víc než swipe a chat',
+    introMobile:
+      'Rezervace hotelu, plán rande s navigací, flirty hry a mapa ověřených míst — vše přímo v aplikaci.',
+    introDesktop:
+      'Trtkat není jen seznamka. Rezervuj hotel na půl cesty, naplánuj rande s navigací nebo Boltem/Uberem, zahraj si seznamovací hry a objev hezká místa v okolí.',
+    items: [
+      {
+        title: 'Rezervace na půl cesty',
+        bodyMobile: 'Hotel přesně mezi vámi — rezervace přímo v aplikaci.',
+        bodyDesktop:
+          'Jste z různých měst? Aplikace navrhne hotel na půl cesty a rezervaci vyřešíš v Trtkatu, bez přepínání mezi appkami.',
+      },
+      {
+        title: 'Plán rande na jedno kliknutí',
+        bodyMobile: 'Místo, navigace i Bolt nebo Uber — rovnou z aplikace.',
+        bodyDesktop:
+          'Naplánuj rande s konkrétním místem. Otevři navigaci na adresu, nebo spusť Bolt či Uber — aplikace tě přepne tam, kam potřebuješ.',
+      },
+      {
+        title: 'Flirtovací hry',
+        bodyMobile: 'Truth or Dare a další hry, co rozproudí konverzaci.',
+        bodyDesktop:
+          'Seznamovací a flirty hry přímo v chatu — Truth or Dare, kostka na pravdu, odvážné otázky. Rozlouskni ledy bez trapných otevíráků.',
+      },
+      {
+        title: 'Mapa rande míst',
+        bodyMobile: 'Ověřená místa v okolí — kavárny, bary, výhledy.',
+        bodyDesktop:
+          'Interaktivní mapa hezkých míst na rande. Vyber podle nálady, otevři navigaci a máš jasno, kam jít.',
       },
     ],
   },

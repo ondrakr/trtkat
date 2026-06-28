@@ -13,6 +13,7 @@ type MobileNavProps = {
 
 const links = [
   { href: '/#jak-to-funguje', key: 'about' as const },
+  { href: '/#funkce', key: 'features' as const },
   { href: '/#data', key: 'stats' as const },
   { to: '/blog', key: 'blog' as const },
   { href: '/#stahnout', key: 'download' as const },
@@ -30,6 +31,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
 
   const labelMap = {
     about: t.nav.about,
+    features: t.nav.features,
     stats: t.nav.stats,
     blog: t.nav.blog,
     download: t.nav.download,
