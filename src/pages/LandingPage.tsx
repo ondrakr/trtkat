@@ -14,7 +14,7 @@ import {
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from '../components/StoreBadges';
 import { RevealSection } from '../components/RevealSection';
-import { LazyStatsSection } from '../components/LazyStatsSection';
+import { StatsSection } from '../components/StatsSection';
 import { SEO } from '../components/SEO';
 import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
@@ -150,7 +150,7 @@ export function LandingPage() {
           </div>
         </RevealSection>
 
-        <LazyStatsSection />
+        <StatsSection />
 
         <RevealSection id="benefity" className={`${sectionY} relative overflow-hidden`}>
           <div className={sectionWrap}>
