@@ -86,7 +86,7 @@ export const en: SiteCopy = {
     ],
   },
   data: {
-    title: 'Can you guess reality?',
+    title: 'What you think vs. what the data says',
     introMobile: '8 questions — guess and see how it really is.',
     introDesktop: 'Guess across 8 questions from Czech research — reality often surprises.',
     compareHint: '',

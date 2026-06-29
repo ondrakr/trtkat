@@ -39,12 +39,13 @@ export function StatsQuiz() {
   const [phase, setPhase] = useState<Phase>('playing');
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<(number | null)[]>(() => Array(questions.length).fill(null));
+  const [revealed, setRevealed] = useState<boolean[]>(() => Array(questions.length).fill(false));
 
   const current = questions[index];
   const picked = answers[index];
-  const revealed = picked !== null;
+  const isRevealed = revealed[index];
   const isCorrect = picked === current?.correctIndex;
-  const progress = ((index + (revealed ? 1 : 0)) / questions.length) * 100;
+  const progress = ((index + 1) / questions.length) * 100;
   const CategoryIcon = current ? CATEGORY_ICONS[current.category] : Heart;
 
   const score = useMemo(
@@ -63,13 +64,19 @@ export function StatsQuiz() {
     setPhase('playing');
     setIndex(0);
     setAnswers(Array(questions.length).fill(null));
+    setRevealed(Array(questions.length).fill(false));
   }
 
   function pick(optionIndex: number) {
-    if (revealed || !current) return;
+    if (isRevealed || !current) return;
     setAnswers((prev) => {
       const next = [...prev];
       next[index] = optionIndex;
+      return next;
+    });
+    setRevealed((prev) => {
+      const next = [...prev];
+      next[index] = true;
       return next;
     });
   }
@@ -79,7 +86,6 @@ export function StatsQuiz() {
   }
 
   function goNext() {
-    if (!revealed) return;
     if (index >= questions.length - 1) {
       setPhase('done');
       return;
@@ -114,11 +120,14 @@ export function StatsQuiz() {
 
   if (!current) return null;
 
+  const showCorrect = isRevealed && isCorrect;
+  const showWrong = isRevealed && !isCorrect;
+
   return (
     <div className="relative w-full">
       <div className="pointer-events-none absolute -inset-px rounded-3xl md:rounded-[2.5rem] bg-gradient-to-r from-trtkat-blue/20 via-transparent to-trtkat-pink/20 opacity-60" />
 
-      <div className="relative flex min-h-[580px] sm:min-h-[560px] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm">
+      <div className="relative flex min-h-[520px] sm:min-h-[500px] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm">
         <div className="px-5 sm:px-8 md:px-10 pt-5 sm:pt-6">
           <div className="mb-4 h-1 rounded-full bg-white/10 overflow-hidden">
             <div
@@ -139,73 +148,55 @@ export function StatsQuiz() {
         </div>
 
         <div key={index} className="quiz-enter flex flex-1 flex-col px-5 sm:px-8 md:px-10 pb-5 sm:pb-6 md:pb-8">
-          <h3 className="mt-5 sm:mt-6 min-h-[4.5rem] sm:min-h-[5rem] text-xl sm:text-2xl md:text-3xl font-black text-white leading-snug text-balance">
+          <h3 className="mt-5 sm:mt-6 min-h-[4rem] sm:min-h-[4.5rem] text-xl sm:text-2xl md:text-3xl font-black text-white leading-snug text-balance">
             {current.question}
           </h3>
 
-          <div className="mt-6 sm:mt-8 grid gap-3 sm:grid-cols-2">
-            {current.options.map((option, optionIndex) => {
-              const isPick = picked === optionIndex;
-              const isAnswer = optionIndex === current.correctIndex;
-              let state: 'idle' | 'correct' | 'wrong' | 'missed' = 'idle';
-              if (revealed) {
-                if (isAnswer) state = 'correct';
-                else if (isPick) state = 'wrong';
-                else state = 'missed';
-              }
-
-              return (
-                <button
-                  key={option}
-                  type="button"
-                  disabled={revealed}
-                  onClick={() => pick(optionIndex)}
-                  style={{ animationDelay: `${optionIndex * 50}ms` }}
-                  className={cn(
-                    'quiz-option-enter relative text-left rounded-2xl border px-4 py-4 sm:py-5 font-bold text-sm sm:text-base transition-[border-color,background-color,transform,box-shadow] duration-300',
-                    state === 'idle' &&
-                      'border-white/10 bg-white/[0.03] text-slate-200 hover:border-trtkat-blue/50 hover:bg-white/[0.07] hover:shadow-[0_0_24px_rgba(79,179,240,0.12)] active:scale-[0.99]',
-                    state === 'correct' &&
-                      'border-emerald-400/60 bg-emerald-500/15 text-white shadow-[0_0_24px_rgba(52,211,153,0.15)]',
-                    state === 'wrong' && 'border-red-400/50 bg-red-500/10 text-white',
-                    state === 'missed' && 'border-white/5 bg-white/[0.02] text-slate-500 opacity-50',
-                  )}
-                >
-                  <span className="flex items-center justify-between gap-3">
-                    <span>{option}</span>
-                    {state === 'correct' && <CheckCircle2 className="h-5 w-5 text-emerald-400 shrink-0" />}
-                    {state === 'wrong' && <XCircle className="h-5 w-5 text-red-400 shrink-0" />}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="mt-6 sm:mt-8 h-[11.5rem] sm:h-[11rem] shrink-0">
-            {revealed ? (
-              <div
-                className={cn(
-                  'quiz-reveal-enter h-full overflow-y-auto rounded-2xl border p-5 sm:p-6',
-                  isCorrect ? 'border-emerald-400/30 bg-emerald-500/5' : 'border-trtkat-pink/30 bg-trtkat-pink/5',
-                )}
-              >
-                <p className={cn('font-black text-sm mb-2', isCorrect ? 'text-emerald-400' : 'text-trtkat-pink')}>
-                  {isCorrect ? quiz.correct : quiz.wrong}
-                </p>
-                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 mb-1">
-                  {quiz.reality}
-                </p>
-                <p className="text-2xl sm:text-3xl font-black text-white mb-2">{current.answer}</p>
-                <p className="text-sm text-slate-400 leading-relaxed">{current.explanation}</p>
+          <div className="mt-6 sm:mt-8 flex-1 min-h-[16rem] sm:min-h-[15rem]">
+            {!isRevealed ? (
+              <div className="grid h-full gap-3 sm:gap-4 sm:grid-cols-2">
+                {current.options.map((option, optionIndex) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => pick(optionIndex)}
+                    style={{ animationDelay: `${optionIndex * 50}ms` }}
+                    className="quiz-option-enter flex min-h-[4.5rem] sm:min-h-[5.5rem] items-center rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-5 sm:px-6 sm:py-6 text-left font-bold text-base sm:text-lg text-slate-200 transition-[border-color,background-color,transform,box-shadow] duration-300 hover:border-trtkat-blue/50 hover:bg-white/[0.07] hover:shadow-[0_0_28px_rgba(79,179,240,0.14)] active:scale-[0.99]"
+                  >
+                    {option}
+                  </button>
+                ))}
               </div>
             ) : (
-              <p className="flex h-full items-center justify-center text-center text-sm text-slate-600 px-4">
-                {quiz.pickHint}
-              </p>
+              <div
+                className={cn(
+                  'quiz-reveal-enter flex h-full flex-col justify-center rounded-2xl sm:rounded-3xl border p-6 sm:p-8 md:p-10',
+                  showCorrect && 'border-emerald-400/40 bg-emerald-500/10 shadow-[0_0_40px_rgba(52,211,153,0.12)]',
+                  showWrong && 'border-red-400/40 bg-red-500/10 shadow-[0_0_40px_rgba(248,113,113,0.1)]',
+                )}
+              >
+                <div className="flex items-start gap-3 mb-4">
+                  {showCorrect && <CheckCircle2 className="h-6 w-6 sm:h-7 sm:w-7 text-emerald-400 shrink-0 mt-0.5" />}
+                  {showWrong && <XCircle className="h-6 w-6 sm:h-7 sm:w-7 text-red-400 shrink-0 mt-0.5" />}
+                  <p className={cn('font-black text-base sm:text-lg', showCorrect && 'text-emerald-400', showWrong && 'text-red-400')}>
+                    {showCorrect ? quiz.correct : quiz.wrong}
+                  </p>
+                </div>
+
+                {showWrong && picked !== null && (
+                  <p className="text-sm text-slate-500 mb-3 line-through decoration-red-400/60">{current.options[picked]}</p>
+                )}
+
+                <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
+                  {quiz.reality}
+                </p>
+                <p className="text-3xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4">{current.answer}</p>
+                <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-3xl">{current.explanation}</p>
+              </div>
             )}
           </div>
 
-          <div className="mt-auto flex items-center justify-between gap-4 border-t border-white/10 pt-5 sm:pt-6">
+          <div className="mt-6 sm:mt-8 flex items-center justify-between gap-4 border-t border-white/10 pt-5 sm:pt-6">
             <button
               type="button"
               onClick={goPrev}
@@ -240,13 +231,7 @@ export function StatsQuiz() {
             <button
               type="button"
               onClick={goNext}
-              disabled={!revealed}
-              className={cn(
-                'inline-flex items-center gap-1.5 rounded-xl px-4 py-2.5 text-sm font-black transition-all',
-                revealed
-                  ? 'bg-trtkat-gradient text-white shadow-[0_0_20px_rgba(240,98,161,0.25)] hover:opacity-90'
-                  : 'text-slate-600 cursor-not-allowed',
-              )}
+              className="inline-flex items-center gap-1.5 rounded-xl bg-trtkat-gradient px-4 py-2.5 text-sm font-black text-white shadow-[0_0_20px_rgba(240,98,161,0.25)] hover:opacity-90 transition-all"
             >
               {index >= questions.length - 1 ? quiz.finish : quiz.next}
               <ChevronRight className="h-4 w-4" />

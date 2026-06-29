@@ -86,7 +86,7 @@ export const cs: SiteCopy = {
     ],
   },
   data: {
-    title: 'Uhádneš realitu?',
+    title: 'Co si myslíš vs. co říkají data?',
     introMobile: '8 otázek — tipni si a uvidíš, jak to doopravdy je.',
     introDesktop: 'Tipni si u 8 otázek z českého výzkumu — realita často překvapí.',
     compareHint: '',
