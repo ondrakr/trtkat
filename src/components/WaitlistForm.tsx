@@ -28,7 +28,7 @@ export function WaitlistForm() {
 
   if (status === 'success') {
     return (
-      <div className="rounded-2xl border border-trtkat-pink/30 bg-trtkat-pink/10 px-5 py-4 text-left">
+      <div className="glass-badge rounded-2xl px-5 py-4 text-left">
         <p className="text-sm sm:text-base font-bold text-white">{t.comingSoon.successTitle}</p>
         <p className="mt-1 text-sm text-slate-300">{t.comingSoon.successBody}</p>
       </div>
@@ -53,7 +53,7 @@ export function WaitlistForm() {
             if (status === 'error') setStatus('idle');
           }}
           placeholder={t.comingSoon.emailPlaceholder}
-          className="w-full rounded-xl border border-white/10 bg-slate-950/80 px-4 py-3 text-base text-white placeholder:text-slate-500 outline-none transition-colors focus:border-trtkat-pink/50"
+          className="glass-input w-full rounded-xl px-4 py-3 text-base text-white placeholder:text-slate-500 outline-none transition-colors focus:border-trtkat-pink/50"
         />
         <button
           type="submit"

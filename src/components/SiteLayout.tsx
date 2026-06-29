@@ -35,14 +35,12 @@ export function SiteLayout() {
   const navSolid = !isHome || scrolled;
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-950 text-slate-100 selection:bg-trtkat-pink/30">
+    <div className="app-canvas min-h-screen flex flex-col text-slate-100 selection:bg-trtkat-pink/30">
       <nav
         className={cn(
           'top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
           isHome ? 'fixed inset-x-0' : 'sticky inset-x-0',
-          navSolid
-            ? 'border-b border-white/5 bg-slate-950/95 shadow-[0_8px_32px_rgba(2,6,23,0.45)] md:bg-slate-950/85 md:backdrop-blur-md'
-            : 'border-b border-transparent bg-transparent',
+          navSolid ? 'glass-nav' : 'border-b border-transparent bg-transparent',
         )}
       >
         <div className={sectionWrap}>
@@ -72,7 +70,7 @@ export function SiteLayout() {
                 type="button"
                 onClick={() => setMobileNavOpen(true)}
                 aria-label="Open menu"
-                className="rounded-xl border border-white/10 p-2.5 text-slate-200 hover:bg-white/5 transition-colors"
+                className="glass-subtle rounded-xl p-2.5 text-slate-200 hover:bg-white/10 transition-colors"
               >
                 <Menu className="h-5 w-5" />
               </button>
@@ -84,7 +82,7 @@ export function SiteLayout() {
       <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
       <Outlet />
 
-      <footer className="bg-slate-950 border-t border-white/5 py-12 sm:py-16 md:py-20">
+      <footer className="glass-strong border-t border-white/5 py-12 sm:py-16 md:py-20">
         <div className={sectionWrap}>
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             <div>

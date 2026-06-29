@@ -50,7 +50,7 @@ export function CookieConsent() {
       aria-labelledby="cookie-title"
       aria-describedby="cookie-desc"
     >
-      <div className="mx-auto max-w-4xl rounded-2xl border border-white/10 bg-slate-950/95 backdrop-blur-md shadow-2xl p-5 sm:p-6">
+      <div className="mx-auto max-w-4xl glass-strong rounded-2xl shadow-2xl p-5 sm:p-6">
         {!settingsOpen ? (
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div className="max-w-2xl">
@@ -68,14 +68,14 @@ export function CookieConsent() {
               <button
                 type="button"
                 onClick={() => apply({ necessary: true, analytics: false, marketing: false })}
-                className="rounded-xl border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 hover:bg-white/5"
+                className="glass-subtle rounded-xl px-4 py-2.5 text-sm font-bold text-slate-300 hover:bg-white/10"
               >
                 {t.cookies.rejectOptional}
               </button>
               <button
                 type="button"
                 onClick={() => setSettingsOpen(true)}
-                className="inline-flex items-center gap-2 rounded-xl border border-white/10 px-4 py-2.5 text-sm font-bold text-white hover:bg-white/5"
+                className="inline-flex items-center gap-2 glass-subtle rounded-xl px-4 py-2.5 text-sm font-bold text-white hover:bg-white/10"
               >
                 <Settings2 className="h-4 w-4" />
                 {t.cookies.customize}
@@ -104,7 +104,7 @@ export function CookieConsent() {
             </div>
 
             <div className="space-y-4 mb-6">
-              <div className="rounded-xl border border-white/5 p-4">
+              <div className="glass-subtle rounded-xl p-4">
                 <div className="flex items-center justify-between gap-4">
                   <div>
                     <p className="font-bold text-white text-sm">{t.cookies.necessaryTitle}</p>

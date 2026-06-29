@@ -18,7 +18,7 @@ export function StatsChartFallback({ chart }: StatsChartFallbackProps) {
   const maxGrouped = Math.max(...chart.data.flatMap((item) => [item.women ?? 0, item.men ?? 0]), 1);
 
   return (
-    <div className="bg-slate-950 p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] border border-white/10 shadow-2xl">
+    <div className="glass-card p-6 md:p-8 rounded-[2rem] md:rounded-[3rem] shadow-2xl">
       <h3 className="text-base sm:text-xl font-black text-white mb-2 flex items-center gap-3">
         <BarChart3 className="w-6 h-6 text-trtkat-blue" />
         {chart.title}

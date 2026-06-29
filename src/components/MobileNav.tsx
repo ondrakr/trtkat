@@ -47,14 +47,14 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
         aria-label="Close menu"
         tabIndex={open ? 0 : -1}
         className={cn(
-          'absolute inset-0 bg-slate-950/92 transition-opacity duration-200 ease-out',
+          'absolute inset-0 glass-overlay transition-opacity duration-200 ease-out',
           open ? 'opacity-100' : 'opacity-0',
         )}
         onClick={onClose}
       />
       <div
         className={cn(
-          'absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col border-l border-white/10 bg-slate-950 shadow-2xl transition-transform duration-200 ease-out will-change-transform',
+          'absolute inset-y-0 right-0 flex w-[min(100%,20rem)] flex-col border-l border-white/10 glass-strong shadow-2xl transition-transform duration-200 ease-out will-change-transform',
           open ? 'translate-x-0' : 'translate-x-full',
         )}
       >
@@ -65,7 +65,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
             onClick={onClose}
             aria-label="Close menu"
             tabIndex={open ? 0 : -1}
-            className="rounded-xl border border-white/10 p-2.5 text-slate-300 hover:bg-white/5 hover:text-white transition-colors"
+            className="glass-subtle rounded-xl p-2.5 text-slate-300 hover:text-white transition-colors"
           >
             <X className="h-5 w-5" />
           </button>

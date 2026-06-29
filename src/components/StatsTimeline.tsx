@@ -13,7 +13,7 @@ export function StatsTimeline() {
   const { t } = useI18n();
 
   return (
-    <section className="mt-4 rounded-[2rem] md:rounded-[3rem] border border-white/10 bg-slate-950/60 p-6 sm:p-8 md:p-10">
+    <section className="mt-4 glass-card rounded-[2rem] md:rounded-[3rem] p-6 sm:p-8 md:p-10">
       <div className="mb-8 flex flex-wrap items-end justify-between gap-4">
         <div>
           <p className="text-xs font-black uppercase tracking-[0.15em] text-trtkat-blue mb-2 flex items-center gap-2">
@@ -45,7 +45,7 @@ export function StatsTimeline() {
                   )}
                 </div>
 
-                <div className="flex-1 min-w-0 rounded-2xl border border-white/10 bg-white/[0.03] p-4 md:p-3 lg:p-4 hover:border-white/15 transition-colors">
+                <div className="flex-1 min-w-0 glass-subtle rounded-2xl p-4 md:p-3 lg:p-4 hover:border-white/15 transition-colors">
                   <time className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-trtkat-blue">
                     {from}
                     {to && (

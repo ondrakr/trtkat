@@ -44,7 +44,7 @@ export function BlogIndexPage() {
                 return (
                   <article
                     key={post.slug}
-                    className="rounded-3xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition-colors"
+                    className="glass-subtle glass-interactive rounded-3xl p-6"
                   >
                     <time className="text-xs font-bold uppercase tracking-wider text-trtkat-pink" dateTime={post.datePublished}>
                       {new Date(post.datePublished).toLocaleDateString(locale === 'en' ? 'en-GB' : 'cs-CZ')}

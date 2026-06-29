@@ -27,12 +27,12 @@ export function ComingSoonPage() {
             {t.blog.backHome}
           </Link>
 
-          <div className="rounded-[2rem] md:rounded-[3rem] border border-white/10 bg-slate-900/60 p-8 sm:p-10 md:p-12 text-center shadow-2xl">
+          <div className="glass-card rounded-[2rem] md:rounded-[3rem] p-8 sm:p-10 md:p-12 text-center shadow-2xl">
             <div className="mx-auto mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-trtkat-gradient text-white shadow-lg">
               <Smartphone className="h-8 w-8" />
             </div>
 
-            <span className="inline-block rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink mb-5">
+            <span className="glass-badge inline-block px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink mb-5">
               {t.comingSoon.badge}
             </span>
 

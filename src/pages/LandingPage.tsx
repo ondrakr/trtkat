@@ -54,7 +54,7 @@ export function LandingPage() {
               <div className="hero-enter order-1 mx-auto w-full max-w-4xl text-center md:mx-0 md:text-left">
                 <div className="mb-5 flex items-center justify-center gap-3 md:justify-start md:mb-6">
                   <span className="hidden h-px w-10 bg-trtkat-pink sm:block md:w-12" />
-                  <span className="rounded-full border border-trtkat-pink/30 bg-trtkat-pink/10 px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink">
+                  <span className="glass-badge rounded-full px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink">
                     {t.hero.badge}
                   </span>
                 </div>
@@ -96,7 +96,7 @@ export function LandingPage() {
             </div>
             <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 relative">
               {t.how.steps.map((step, idx) => (
-                <div key={step.title} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-slate-900/50 border border-white/5 relative mt-4 sm:mt-0 transition-transform hover:scale-[1.02]">
+                <div key={step.title} className="glass-card glass-interactive p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] relative mt-4 sm:mt-0 transition-transform hover:scale-[1.02]">
                   <div className={`absolute -top-3 left-3 sm:-top-6 sm:-left-6 w-11 h-11 md:w-16 md:h-16 rounded-2xl flex items-center justify-center text-slate-950 font-black text-lg md:text-2xl shadow-xl ${idx === 0 ? 'bg-trtkat-blue' : idx === 1 ? 'bg-trtkat-pink' : 'bg-white'}`}>{idx + 1}</div>
                   <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4 mt-5 md:mt-4">{step.title}</h3>
                   <p className="text-sm sm:text-base text-slate-400 font-medium leading-relaxed">
@@ -109,7 +109,7 @@ export function LandingPage() {
           </div>
         </RevealSection>
 
-        <RevealSection id="funkce" className={`${sectionY} relative overflow-hidden bg-slate-900/30`}>
+        <RevealSection id="funkce" className={`${sectionY} relative overflow-hidden glass-section`}>
           <div className="pointer-events-none absolute inset-0 overflow-hidden" aria-hidden="true">
             <div className="absolute -top-32 right-[-8%] h-72 w-72 rounded-full bg-trtkat-pink/10 blur-[100px]" />
             <div className="absolute bottom-[-20%] left-[-10%] h-80 w-80 rounded-full bg-trtkat-blue/10 blur-[100px]" />
@@ -133,7 +133,7 @@ export function LandingPage() {
                 return (
                   <article
                     key={feature.title}
-                    className="group relative overflow-hidden rounded-3xl md:rounded-[2.5rem] border border-white/5 bg-slate-950/60 p-5 sm:p-6 md:p-8 transition-colors hover:border-white/10 hover:bg-slate-950/80"
+                    className="group glass-card glass-interactive relative overflow-hidden rounded-3xl md:rounded-[2.5rem] p-5 sm:p-6 md:p-8"
                   >
                     <div className={`mb-5 sm:mb-6 inline-flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-2xl border ${featureColors[idx]} transition-transform group-hover:scale-110`}>
                       <Icon className="h-7 w-7 sm:h-8 sm:w-8" />
@@ -170,8 +170,8 @@ export function LandingPage() {
                 const Icon = benefitIcons[idx];
                 const colors = ['text-trtkat-blue', 'text-trtkat-pink', 'text-yellow-400', 'text-purple-400'];
                 return (
-                  <div key={benefit.title} className="p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] bg-white/5 border border-white/5 hover:bg-white/10 transition-colors group">
-                    <div className={`w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform ${colors[idx]}`}>
+                  <div key={benefit.title} className="glass-subtle glass-interactive p-5 sm:p-6 md:p-8 rounded-3xl md:rounded-[2.5rem] group">
+                    <div className={`glass-subtle w-14 h-14 sm:w-16 sm:h-16 rounded-2xl flex items-center justify-center mb-6 sm:mb-8 group-hover:scale-110 transition-transform ${colors[idx]}`}>
                       <Icon className="w-7 h-7 sm:w-8 sm:h-8" />
                     </div>
                     <h3 className="text-lg sm:text-xl md:text-2xl font-black text-white mb-3 sm:mb-4">{benefit.title}</h3>
@@ -187,7 +187,7 @@ export function LandingPage() {
           <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 xl:gap-28 items-center">
               <div className="relative pb-20 sm:pb-24 lg:pb-0">
-                <div className="aspect-[4/5] sm:aspect-square rounded-3xl md:rounded-[4rem] overflow-hidden border border-white/10 shadow-2xl">
+                <div className="aspect-[4/5] sm:aspect-square rounded-3xl md:rounded-[4rem] overflow-hidden glass shadow-2xl">
                   <img
                     src={vibeImageSrc}
                     alt={t.trust.imageAlt}
@@ -196,7 +196,7 @@ export function LandingPage() {
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
-                <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:-bottom-8 lg:-right-8 p-5 sm:p-6 md:p-8 bg-slate-950 rounded-3xl md:rounded-[2.5rem] border border-white/10 shadow-2xl max-w-xs w-[calc(100%-2rem)] sm:w-auto mx-auto lg:mx-0">
+                <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:-bottom-8 lg:-right-8 p-5 sm:p-6 md:p-8 glass-card rounded-3xl md:rounded-[2.5rem] shadow-2xl max-w-xs w-[calc(100%-2rem)] sm:w-auto mx-auto lg:mx-0">
                   <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-trtkat-pink" />

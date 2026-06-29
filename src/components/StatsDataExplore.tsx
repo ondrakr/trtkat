@@ -30,7 +30,7 @@ function hasGenderSplit(value: string) {
 }
 
 function ChartSkeleton() {
-  return <div className="h-[340px] rounded-[2rem] border border-white/10 bg-slate-950/50 animate-pulse" />;
+  return <div className="h-[340px] rounded-[2rem] glass-subtle animate-pulse" />;
 }
 
 export function StatsDataExplore() {
@@ -62,7 +62,7 @@ export function StatsDataExplore() {
                 'inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all border',
                 active
                   ? 'bg-trtkat-gradient text-white border-transparent shadow-[0_0_20px_rgba(240,98,161,0.25)]'
-                  : 'bg-white/5 text-slate-300 border-white/10 hover:bg-white/10',
+                  : 'glass-subtle glass-interactive text-slate-300 hover:bg-white/10',
               )}
             >
               <Icon className={cn('h-4 w-4 shrink-0', active ? 'text-white' : 'text-trtkat-blue')} />
@@ -73,7 +73,7 @@ export function StatsDataExplore() {
       </div>
 
       {currentStats.insight && (
-        <div className="mb-8 md:mb-10 rounded-2xl border border-trtkat-blue/20 bg-gradient-to-r from-trtkat-pink/10 via-slate-950/50 to-trtkat-blue/10 p-5 sm:p-6">
+        <div className="mb-8 md:mb-10 glass-card rounded-2xl border-trtkat-blue/20 bg-gradient-to-r from-trtkat-pink/10 via-transparent to-trtkat-blue/10 p-5 sm:p-6">
           <p className="text-sm sm:text-base text-slate-200 leading-relaxed flex gap-3">
             <Lightbulb className="h-5 w-5 text-trtkat-pink shrink-0 mt-0.5" />
             <span>
@@ -99,7 +99,7 @@ export function StatsDataExplore() {
             {currentStats.stats.map((stat) => (
               <div
                 key={stat.title}
-                className="relative overflow-hidden p-4 sm:p-5 rounded-2xl border border-white/10 bg-white/[0.03] hover:bg-white/[0.05] transition-colors"
+                className="glass-subtle glass-interactive relative overflow-hidden p-4 sm:p-5 rounded-2xl"
               >
                 {hasGenderSplit(stat.value) && (
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-trtkat-pink via-white/20 to-trtkat-blue" />
