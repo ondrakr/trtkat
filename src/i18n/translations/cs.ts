@@ -14,7 +14,7 @@ export const cs: SiteCopy = {
     science: 'Věda',
     benefits: 'Benefity',
     download: 'Stáhnout',
-    blog: 'Blog',
+    references: 'Reference',
   },
   stores: {
     appStoreLabel: 'Stáhnout v App Store',

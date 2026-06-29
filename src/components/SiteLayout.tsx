@@ -3,10 +3,11 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { LangDropdown } from './LangDropdown';
 import { MobileNav } from './MobileNav';
+import { NavAnchor } from './NavAnchor';
 import { StoreBadges } from './StoreBadges';
 import { SocialLinks } from './SocialLinks';
 import { useI18n } from '../i18n/I18nProvider';
-import { logoSrc, sectionWrap } from '../lib/navigation';
+import { logoSrc, sectionWrap, smoothScrollToId } from '../lib/navigation';
 import { openCookieSettings } from '../lib/cookies';
 import { cn } from '../lib/utils';
 
@@ -14,8 +15,16 @@ export function SiteLayout() {
   const { t } = useI18n();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   const isHome = pathname === '/';
+
+  useEffect(() => {
+    if (!isHome || !hash) return;
+    const id = hash.replace('#', '');
+    if (!id) return;
+    const timer = window.setTimeout(() => smoothScrollToId(id), 0);
+    return () => window.clearTimeout(timer);
+  }, [isHome, hash]);
 
   useEffect(() => {
     let ticking = false;
@@ -50,18 +59,26 @@ export function SiteLayout() {
             </Link>
 
             <div className="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-300 uppercase tracking-wider text-slate-400">
-              <a href="/#jak-to-funguje" className="hover:text-white transition-colors">{t.nav.about}</a>
-              <a href="/#funkce" className="hover:text-white transition-colors">{t.nav.features}</a>
-              <a href="/#data" className="hover:text-white transition-colors">{t.nav.stats}</a>
-              <Link to="/blog" className="hover:text-white transition-colors">{t.nav.blog}</Link>
+              <NavAnchor id="jak-to-funguje" className="hover:text-white transition-colors">
+                {t.nav.about}
+              </NavAnchor>
+              <NavAnchor id="funkce" className="hover:text-white transition-colors">
+                {t.nav.features}
+              </NavAnchor>
+              <NavAnchor id="data" className="hover:text-white transition-colors">
+                {t.nav.stats}
+              </NavAnchor>
+              <NavAnchor id="duvera" className="hover:text-white transition-colors">
+                {t.nav.references}
+              </NavAnchor>
               <LangDropdown />
               <StoreBadges size="sm" className="hidden xl:flex" />
-              <a
-                href="/#stahnout"
+              <NavAnchor
+                id="stahnout"
                 className="xl:hidden bg-trtkat-gradient text-white px-4 py-2.5 rounded-xl font-black text-xs whitespace-nowrap hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95"
               >
                 {t.nav.download}
-              </a>
+              </NavAnchor>
             </div>
 
             <div className="md:hidden flex items-center gap-2">

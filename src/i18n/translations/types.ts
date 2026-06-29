@@ -68,7 +68,7 @@ export type SiteCopy = {
     science: string;
     benefits: string;
     download: string;
-    blog: string;
+    references: string;
   };
   stores: {
     appStoreLabel: string;

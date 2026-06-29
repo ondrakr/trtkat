@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { Link } from 'react-router-dom';
 import { X } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from './StoreBadges';
 import { LangDropdown } from './LangDropdown';
+import { NavAnchor } from './NavAnchor';
 import { cn } from '../lib/utils';
 
 type MobileNavProps = {
@@ -12,11 +12,11 @@ type MobileNavProps = {
 };
 
 const links = [
-  { href: '/#jak-to-funguje', key: 'about' as const },
-  { href: '/#funkce', key: 'features' as const },
-  { href: '/#data', key: 'stats' as const },
-  { to: '/blog', key: 'blog' as const },
-  { href: '/#stahnout', key: 'download' as const },
+  { id: 'jak-to-funguje', key: 'about' as const },
+  { id: 'funkce', key: 'features' as const },
+  { id: 'data', key: 'stats' as const },
+  { id: 'duvera', key: 'references' as const },
+  { id: 'stahnout', key: 'download' as const },
 ];
 
 export function MobileNav({ open, onClose }: MobileNavProps) {
@@ -33,7 +33,7 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
     about: t.nav.about,
     features: t.nav.features,
     stats: t.nav.stats,
-    blog: t.nav.blog,
+    references: t.nav.references,
     download: t.nav.download,
   };
 
@@ -72,27 +72,15 @@ export function MobileNav({ open, onClose }: MobileNavProps) {
         </div>
         <nav className="flex-1 overflow-y-auto px-5 py-6">
           <ul className="space-y-1">
-            {links.map(({ href, to, key }) => (
+            {links.map(({ id, key }) => (
               <li key={key}>
-                {to ? (
-                  <Link
-                    to={to}
-                    onClick={onClose}
-                    tabIndex={open ? 0 : -1}
-                    className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors"
-                  >
-                    {labelMap[key]}
-                  </Link>
-                ) : (
-                  <a
-                    href={href}
-                    onClick={onClose}
-                    tabIndex={open ? 0 : -1}
-                    className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors"
-                  >
-                    {labelMap[key]}
-                  </a>
-                )}
+                <NavAnchor
+                  id={id}
+                  onNavigate={onClose}
+                  className="block rounded-xl px-4 py-3.5 text-base font-bold text-slate-200 hover:bg-white/5 hover:text-white transition-colors"
+                >
+                  {labelMap[key]}
+                </NavAnchor>
               </li>
             ))}
           </ul>

@@ -14,7 +14,7 @@ export const en: SiteCopy = {
     science: 'Data',
     benefits: 'Benefits',
     download: 'Download',
-    blog: 'Blog',
+    references: 'References',
   },
   stores: {
     appStoreLabel: 'Download on the App Store',

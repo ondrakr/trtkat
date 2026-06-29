@@ -21,6 +21,20 @@
     overflow-x: hidden;
   }
 
+  html {
+    scroll-behavior: auto;
+  }
+
+  [id] {
+    scroll-margin-top: 4rem;
+  }
+
+  @media (min-width: 768px) {
+    [id] {
+      scroll-margin-top: 5rem;
+    }
+  }
+
   body {
     @apply text-slate-100 antialiased font-sans font-normal;
     font-feature-settings: "kern" 1;
