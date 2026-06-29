@@ -47,13 +47,20 @@ export function SiteLayout() {
     <div className="app-shell min-h-screen flex flex-col text-slate-100 selection:bg-trtkat-pink/30">
       <nav
         className={cn(
-          'top-0 z-50 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300',
+          'relative top-0 z-50',
           isHome ? 'fixed inset-x-0' : 'sticky inset-x-0',
-          navSolid ? 'glass-nav' : 'border-b border-transparent bg-transparent',
         )}
       >
-        <div className={sectionWrap}>
-          <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">
+        <div
+          aria-hidden
+          className={cn(
+            'glass-nav-bg pointer-events-none absolute inset-0 transition-opacity duration-300',
+            navSolid ? 'opacity-100' : 'opacity-0',
+          )}
+        />
+        <div className="relative z-10">
+          <div className={sectionWrap}>
+            <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">
             <Link to="/" className="w-20 sm:w-24 md:w-28 shrink-0" aria-label="Trtkat">
               <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
             </Link>
@@ -92,14 +99,16 @@ export function SiteLayout() {
                 <Menu className="h-5 w-5" />
               </button>
             </div>
+            </div>
           </div>
         </div>
       </nav>
 
       <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
-      <Outlet />
+      <div className="page-content flex min-h-0 flex-1 flex-col min-w-0">
+        <Outlet />
 
-      <footer className="glass-strong border-t border-white/5 py-12 sm:py-16 md:py-20">
+        <footer className="glass-strong border-t border-white/5 py-12 sm:py-16 md:py-20">
         <div className={sectionWrap}>
           <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
             <div>
@@ -145,7 +154,8 @@ export function SiteLayout() {
             {t.footer.copyright}
           </div>
         </div>
-      </footer>
+        </footer>
+      </div>
     </div>
   );
 }

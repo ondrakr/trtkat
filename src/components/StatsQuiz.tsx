@@ -198,14 +198,14 @@ export function StatsQuiz() {
 
           <div className="relative mt-3 sm:mt-4 flex-1 min-h-0 min-w-0">
             {!isRevealed ? (
-              <div className="grid h-full min-h-0 auto-rows-[4.75rem] gap-2.5 sm:grid-cols-2 sm:auto-rows-[5.5rem] sm:gap-3">
+              <div className="grid h-full min-h-0 grid-rows-4 gap-3 sm:grid-cols-2 sm:grid-rows-2 sm:gap-4">
                 {current.options.map((option, optionIndex) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => pick(optionIndex)}
                     style={{ animationDelay: `${optionIndex * 50}ms` }}
-                    className="quiz-option-enter glass-option glass-interactive flex h-full items-center rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 text-left font-bold text-base sm:text-lg text-slate-200 break-words active:scale-[0.99]"
+                    className="quiz-option-enter glass-option glass-interactive flex h-full min-h-0 items-center rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 text-left font-bold text-base sm:text-lg text-slate-200 break-words active:scale-[0.99]"
                   >
                     {option}
                   </button>
@@ -259,7 +259,7 @@ export function StatsQuiz() {
             )}
           </div>
 
-          <div className="shrink-0 mt-3 sm:mt-4 min-w-0">
+          <div className="shrink-0 mt-8 sm:mt-10 min-w-0">
             <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-between sm:gap-4">
               <button
                 type="button"
