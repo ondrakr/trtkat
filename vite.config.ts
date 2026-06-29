@@ -68,6 +68,39 @@ function waitlistDevApi() {
           }
         });
       });
+
+      server.middlewares.use('/api/account-deletion', (req, res, next) => {
+        if (req.method !== 'POST') {
+          next();
+          return;
+        }
+
+        let body = '';
+        req.on('data', (chunk) => {
+          body += chunk;
+        });
+        req.on('end', () => {
+          try {
+            const parsed = JSON.parse(body) as { email?: string; note?: string | null };
+            const email = typeof parsed.email === 'string' ? parsed.email.trim().toLowerCase() : '';
+            if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+              res.statusCode = 400;
+              res.setHeader('Content-Type', 'application/json');
+              res.end(JSON.stringify({ error: 'invalid_email' }));
+              return;
+            }
+
+            console.log('[dev account-deletion]', email, parsed.note ?? null);
+            res.statusCode = 200;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ ok: true }));
+          } catch {
+            res.statusCode = 400;
+            res.setHeader('Content-Type', 'application/json');
+            res.end(JSON.stringify({ error: 'invalid_email' }));
+          }
+        });
+      });
     },
   };
 }

@@ -59,8 +59,12 @@ export function CookieConsent() {
               </h2>
               <p id="cookie-desc" className="text-sm text-slate-400 leading-relaxed">
                 {t.cookies.description}{' '}
-                <Link to="/ochrana-soukromi" className="text-trtkat-blue hover:text-white underline-offset-2 hover:underline">
+                <Link to="/privacy" className="text-trtkat-blue hover:text-white underline-offset-2 hover:underline">
                   {t.cookies.privacyLink}
+                </Link>
+                {' · '}
+                <Link to="/cookies" className="text-trtkat-blue hover:text-white underline-offset-2 hover:underline">
+                  {t.cookies.settingsLink}
                 </Link>
               </p>
             </div>

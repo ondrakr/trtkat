@@ -161,6 +161,9 @@ export type SiteCopy = {
     legal: string;
     privacy: string;
     terms: string;
+    community: string;
+    accountDeletion: string;
+    childSafety: string;
     contact: string;
     followUs: string;
     copyright: string;

@@ -9,7 +9,6 @@ import { StoreBadges } from './StoreBadges';
 import { SocialLinks } from './SocialLinks';
 import { useI18n } from '../i18n/I18nProvider';
 import { logoSrc, sectionWrap, smoothScrollToId } from '../lib/navigation';
-import { openCookieSettings } from '../lib/cookies';
 import { frostedNavStyle } from '../lib/frostedGlass';
 
 export function SiteLayout() {
@@ -126,16 +125,13 @@ export function SiteLayout() {
               <div>
                 <h4 className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-white">{t.footer.legal}</h4>
                 <div className="flex flex-col gap-3 text-sm font-bold text-slate-400">
-                  <Link to="/ochrana-soukromi" className="transition-colors hover:text-white">{t.footer.privacy}</Link>
-                  <Link to="/podminky" className="transition-colors hover:text-white">{t.footer.terms}</Link>
-                  <Link to="/kontakt" className="transition-colors hover:text-white">{t.footer.contact}</Link>
-                  <button
-                    type="button"
-                    onClick={() => openCookieSettings()}
-                    className="text-left transition-colors hover:text-white"
-                  >
-                    {t.footer.cookieSettings}
-                  </button>
+                  <Link to="/privacy" className="transition-colors hover:text-white">{t.footer.privacy}</Link>
+                  <Link to="/terms" className="transition-colors hover:text-white">{t.footer.terms}</Link>
+                  <Link to="/community-guidelines" className="transition-colors hover:text-white">{t.footer.community}</Link>
+                  <Link to="/account-deletion" className="transition-colors hover:text-white">{t.footer.accountDeletion}</Link>
+                  <Link to="/child-safety" className="transition-colors hover:text-white">{t.footer.childSafety}</Link>
+                  <Link to="/support" className="transition-colors hover:text-white">{t.footer.contact}</Link>
+                  <Link to="/cookies" className="transition-colors hover:text-white">{t.footer.cookieSettings}</Link>
                 </div>
               </div>
 

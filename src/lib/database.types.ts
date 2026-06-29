@@ -96,6 +96,36 @@ export type Database = {
         };
         Relationships: [];
       };
+      account_deletion_requests: {
+        Row: {
+          id: string;
+          email: string;
+          note: string | null;
+          source: string;
+          status: string;
+          created_at: string;
+          processed_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          email: string;
+          note?: string | null;
+          source?: string;
+          status?: string;
+          created_at?: string;
+          processed_at?: string | null;
+        };
+        Update: {
+          id?: string;
+          email?: string;
+          note?: string | null;
+          source?: string;
+          status?: string;
+          created_at?: string;
+          processed_at?: string | null;
+        };
+        Relationships: [];
+      };
       cookie_consents: {
         Row: {
           id: string;
