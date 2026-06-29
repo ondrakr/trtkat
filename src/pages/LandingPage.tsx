@@ -196,7 +196,7 @@ export function LandingPage() {
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
-                <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:-bottom-8 lg:-right-8 p-5 sm:p-6 md:p-8 glass-card rounded-3xl md:rounded-[2.5rem] shadow-2xl max-w-xs w-[calc(100%-2rem)] sm:w-auto mx-auto lg:mx-0">
+                <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:-bottom-8 lg:-right-8 z-10 p-5 sm:p-6 md:p-8 glass-card rounded-3xl md:rounded-[2.5rem] shadow-2xl max-w-xs w-[calc(100%-2rem)] sm:w-auto mx-auto lg:mx-0">
                   <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
                   <div className="mt-4 flex items-center gap-3">
                     <div className="w-10 h-10 rounded-full bg-trtkat-pink" />

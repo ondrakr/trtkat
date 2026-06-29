@@ -18,7 +18,7 @@
 @layer base {
   html,
   body {
-    overflow-x: hidden;
+    min-width: 0;
   }
 
   html {
@@ -71,6 +71,7 @@
   .app-shell {
     min-height: 100vh;
     background: transparent;
+    overflow-x: clip;
   }
 
   .glass {
@@ -82,7 +83,7 @@
   }
 
   .glass-card {
-    background: linear-gradient(165deg, rgb(30 41 59 / 0.52), rgb(15 23 42 / 0.38));
+    background: linear-gradient(165deg, rgb(30 41 59 / 0.42), rgb(15 23 42 / 0.28));
     backdrop-filter: blur(28px) saturate(var(--glass-saturate));
     -webkit-backdrop-filter: blur(28px) saturate(var(--glass-saturate));
     border: 1px solid var(--glass-border);
@@ -106,11 +107,12 @@
   }
 
   .glass-nav {
-    background: linear-gradient(180deg, rgb(2 6 23 / 0.62), rgb(2 6 23 / 0.48));
+    background: linear-gradient(180deg, rgb(2 6 23 / 0.55), rgb(2 6 23 / 0.42));
     backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     border-bottom: 1px solid var(--glass-border-subtle);
     box-shadow: 0 4px 24px rgb(0 0 0 / 0.2), inset 0 1px 0 var(--glass-highlight);
+    isolation: isolate;
   }
 
   .glass-section {
@@ -220,7 +222,7 @@
 
   .reveal-section--visible {
     opacity: 1;
-    transform: translate3d(0, 0, 0);
+    transform: none;
   }
 
   .cta-glow {

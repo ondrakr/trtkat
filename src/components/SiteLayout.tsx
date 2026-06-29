@@ -47,7 +47,7 @@ export function SiteLayout() {
     <div className="app-shell min-h-screen flex flex-col text-slate-100 selection:bg-trtkat-pink/30">
       <nav
         className={cn(
-          'top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',
+          'top-0 z-50 transition-[background-color,border-color,box-shadow,backdrop-filter] duration-300',
           isHome ? 'fixed inset-x-0' : 'sticky inset-x-0',
           navSolid ? 'glass-nav' : 'border-b border-transparent bg-transparent',
         )}
