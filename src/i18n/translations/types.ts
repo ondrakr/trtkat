@@ -33,15 +33,12 @@ export type StatsQuizQuestion = {
 };
 
 export type StatsQuizCopy = {
-  badge: string;
-  title: string;
-  intro: string;
-  startCta: string;
   progress: string;
   pickHint: string;
   correct: string;
   wrong: string;
   reality: string;
+  prev: string;
   next: string;
   finish: string;
   scoreTitle: string;

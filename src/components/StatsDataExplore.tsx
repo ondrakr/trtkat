@@ -43,10 +43,10 @@ export function StatsDataExplore() {
   const ActiveIcon = CATEGORY_ICONS[currentStats.key] ?? Heart;
 
   return (
-    <div className="mt-12 sm:mt-16 pt-12 border-t border-white/10">
-      <div className="text-center max-w-2xl mx-auto mb-8 sm:mb-10">
-        <h3 className="text-2xl sm:text-3xl font-black text-white mb-2">{t.data.quiz.exploreTitle}</h3>
-        <p className="text-slate-400 text-sm sm:text-base">{t.data.quiz.exploreIntro}</p>
+    <div className="mt-12 sm:mt-16 md:mt-20 pt-12 sm:pt-16 border-t border-white/10">
+      <div className="text-center mb-8 sm:mb-10 md:mb-12">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-black text-white mb-2">{t.data.quiz.exploreTitle}</h3>
+        <p className="text-slate-400 text-sm sm:text-base max-w-2xl mx-auto">{t.data.quiz.exploreIntro}</p>
       </div>
 
       <div className="flex flex-wrap justify-center gap-2 sm:gap-3 mb-8">
@@ -73,7 +73,7 @@ export function StatsDataExplore() {
       </div>
 
       {currentStats.insight && (
-        <div className="mb-8 max-w-4xl mx-auto rounded-2xl border border-trtkat-blue/20 bg-gradient-to-r from-trtkat-pink/10 via-slate-950/50 to-trtkat-blue/10 p-5 sm:p-6">
+        <div className="mb-8 md:mb-10 rounded-2xl border border-trtkat-blue/20 bg-gradient-to-r from-trtkat-pink/10 via-slate-950/50 to-trtkat-blue/10 p-5 sm:p-6">
           <p className="text-sm sm:text-base text-slate-200 leading-relaxed flex gap-3">
             <Lightbulb className="h-5 w-5 text-trtkat-pink shrink-0 mt-0.5" />
             <span>
@@ -84,7 +84,7 @@ export function StatsDataExplore() {
         </div>
       )}
 
-      <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-start mb-10 md:mb-14 max-w-6xl mx-auto">
+      <div className="grid lg:grid-cols-2 gap-8 md:gap-12 xl:gap-16 items-start mb-10 md:mb-14">
         <div>
           <div className="flex items-center gap-3 mb-2">
             <span className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-trtkat-gradient shadow-lg">
