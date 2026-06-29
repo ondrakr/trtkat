@@ -166,9 +166,9 @@ export function StatsQuiz() {
     <div className="relative w-full min-w-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 rounded-3xl md:rounded-[2.5rem] bg-gradient-to-r from-trtkat-blue/20 via-transparent to-trtkat-pink/20 opacity-60" />
 
-      <div className="relative flex h-[34rem] sm:h-[32rem] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm overflow-hidden">
-        <div className="shrink-0 px-4 sm:px-8 md:px-10 pt-4 sm:pt-6 min-w-0">
-          <div className="mb-4 h-1 rounded-full bg-white/10 overflow-hidden">
+      <div className="relative flex h-[38rem] sm:h-[34rem] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm overflow-hidden">
+        <div className="shrink-0 px-4 sm:px-8 md:px-10 pt-4 sm:pt-5 min-w-0">
+          <div className="mb-3 sm:mb-4 h-1 rounded-full bg-white/10 overflow-hidden">
             <div
               className="h-full bg-trtkat-gradient transition-[width] duration-500 ease-out"
               style={{ width: `${progress}%` }}
@@ -188,17 +188,17 @@ export function StatsQuiz() {
 
         <div
           key={index}
-          className="quiz-enter quiz-swipe-area flex min-h-0 flex-1 flex-col px-4 sm:px-8 md:px-10 pb-4 sm:pb-6 md:pb-8"
+          className="quiz-enter quiz-swipe-area flex min-h-0 flex-1 flex-col px-4 sm:px-8 md:px-10 pb-4 sm:pb-5"
           onTouchStart={swipe.onTouchStart}
           onTouchEnd={swipe.onTouchEnd}
         >
-          <h3 className="mt-4 sm:mt-5 h-[4.5rem] sm:h-[5rem] shrink-0 overflow-y-auto text-lg sm:text-2xl md:text-3xl font-black text-white leading-snug text-balance break-words">
+          <h3 className="mt-2 sm:mt-3 h-[3.5rem] sm:h-[4.5rem] shrink-0 overflow-y-auto text-lg sm:text-2xl md:text-3xl font-black text-white leading-snug text-balance break-words">
             {current.question}
           </h3>
 
-          <div className="relative mt-4 sm:mt-5 h-[19rem] sm:h-[17.5rem] shrink-0 min-w-0">
+          <div className="relative mt-3 sm:mt-4 flex-1 min-h-0 min-w-0">
             {!isRevealed ? (
-              <div className="grid h-full grid-rows-4 gap-2.5 sm:grid-cols-2 sm:grid-rows-2 sm:gap-3 min-w-0">
+              <div className="grid h-full min-h-0 grid-rows-4 gap-2 sm:grid-cols-2 sm:grid-rows-2 sm:gap-3">
                 {current.options.map((option, optionIndex) => (
                   <button
                     key={option}
@@ -259,7 +259,7 @@ export function StatsQuiz() {
             )}
           </div>
 
-          <div className="mt-auto shrink-0 border-t border-white/10 pt-4 sm:pt-5 min-w-0">
+          <div className="shrink-0 mt-3 sm:mt-4 border-t border-white/10 pt-3 sm:pt-4 min-w-0">
             <div className="hidden sm:flex justify-center gap-1.5 mb-4">
               {questions.map((_, i) => (
                 <span
