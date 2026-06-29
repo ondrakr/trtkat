@@ -22,6 +22,41 @@ export type ChartCategory = {
 };
 export type TimelineItem = { period: string; label: string; value: string };
 
+export type StatsQuizQuestion = {
+  id: string;
+  category: 'prvniseks' | 'seznamovani' | 'vztahy' | 'online' | 'bezpeci';
+  question: string;
+  options: string[];
+  correctIndex: number;
+  answer: string;
+  explanation: string;
+};
+
+export type StatsQuizCopy = {
+  badge: string;
+  title: string;
+  intro: string;
+  startCta: string;
+  progress: string;
+  pickHint: string;
+  correct: string;
+  wrong: string;
+  reality: string;
+  next: string;
+  finish: string;
+  scoreTitle: string;
+  scorePerfect: string;
+  scoreGood: string;
+  scoreLow: string;
+  tryAgain: string;
+  sourceNote: string;
+  exploreTitle: string;
+  exploreIntro: string;
+  exploreHint: string;
+  categoryLabels: Record<StatsQuizQuestion['category'], string>;
+  questions: StatsQuizQuestion[];
+};
+
 export type LegalSection = { heading?: string; paragraphs: string[] };
 
 export type SiteCopy = {
@@ -71,6 +106,7 @@ export type SiteCopy = {
     sourceText: string;
     womenLabel: string;
     menLabel: string;
+    quiz: StatsQuizCopy;
     statCategories: StatCategory[];
     charts: Record<string, ChartCategory>;
     timeline: TimelineItem[];
