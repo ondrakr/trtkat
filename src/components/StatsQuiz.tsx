@@ -259,19 +259,7 @@ export function StatsQuiz() {
             )}
           </div>
 
-          <div className="shrink-0 mt-3 sm:mt-4 border-t border-white/10 pt-3 sm:pt-4 min-w-0">
-            <div className="hidden sm:flex justify-center gap-1.5 mb-4">
-              {questions.map((_, i) => (
-                <span
-                  key={i}
-                  className={cn(
-                    'h-1.5 rounded-full transition-all duration-300',
-                    i === index ? 'w-6 bg-trtkat-gradient' : i < index ? 'w-1.5 bg-trtkat-pink/70' : 'w-1.5 bg-white/15',
-                  )}
-                />
-              ))}
-            </div>
-
+          <div className="shrink-0 mt-3 sm:mt-4 min-w-0">
             <div className="grid grid-cols-2 gap-2 sm:flex sm:items-center sm:justify-between sm:gap-4">
               <button
                 type="button"
