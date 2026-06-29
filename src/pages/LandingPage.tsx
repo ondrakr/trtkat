@@ -42,9 +42,9 @@ export function LandingPage() {
         jsonLd={buildLandingSchemas(t)}
       />
 
-      <main className="flex-grow">
-        <section className="relative isolate overflow-hidden">
-          <div className="hero-blurs pointer-events-none absolute inset-0 -bottom-24 sm:-bottom-32 overflow-hidden">
+      <main className="flex-grow overflow-x-clip">
+        <section className="relative isolate">
+          <div className="hero-blurs pointer-events-none absolute inset-0 -bottom-40 sm:-bottom-48 md:-bottom-64 overflow-visible">
             <div className="absolute -top-20 right-[-10%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-blue/25 blur-[60px] md:blur-[150px]" />
             <div className="absolute bottom-[-15%] left-[-12%] h-64 w-64 sm:h-80 sm:w-80 md:h-[640px] md:w-[640px] rounded-full bg-trtkat-pink/25 blur-[60px] md:blur-[150px]" />
           </div>
@@ -89,7 +89,7 @@ export function LandingPage() {
           </div>
         </section>
 
-        <RevealSection id="jak-to-funguje" className="relative pt-8 sm:pt-10 md:pt-12 pb-14 sm:pb-16 md:pb-24">
+        <RevealSection id="jak-to-funguje" className="relative -mt-24 sm:-mt-28 md:-mt-36 pt-4 sm:pt-6 md:pt-8 pb-14 sm:pb-16 md:pb-24">
           <div className={sectionWrap}>
             <div className="text-center mb-10 sm:mb-12 md:mb-16">
               <h2 className="text-3xl sm:text-4xl md:text-7xl font-black text-white mb-3 sm:mb-4 leading-[1.12] sm:leading-[1.1]">{t.how.title}</h2>
