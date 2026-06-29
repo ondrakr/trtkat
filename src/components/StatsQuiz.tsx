@@ -166,7 +166,7 @@ export function StatsQuiz() {
     <div className="relative w-full min-w-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 rounded-3xl md:rounded-[2.5rem] bg-gradient-to-r from-trtkat-blue/20 via-transparent to-trtkat-pink/20 opacity-60" />
 
-      <div className="relative flex h-[34rem] sm:h-[30rem] flex-col glass-card rounded-3xl md:rounded-[2.5rem] overflow-hidden">
+      <div className="relative flex h-[36rem] sm:h-[32rem] flex-col glass-card rounded-3xl md:rounded-[2.5rem] overflow-hidden">
         <div className="shrink-0 px-4 sm:px-8 md:px-10 pt-4 sm:pt-5 min-w-0">
           <div className="mb-3 sm:mb-4 h-1 rounded-full bg-white/10 overflow-hidden">
             <div
@@ -205,7 +205,7 @@ export function StatsQuiz() {
                     type="button"
                     onClick={() => pick(optionIndex)}
                     style={{ animationDelay: `${optionIndex * 50}ms` }}
-                    className="quiz-option-enter glass-option glass-interactive flex min-h-[3.25rem] items-center rounded-2xl px-4 py-2.5 sm:min-h-[3.5rem] sm:px-5 sm:py-3 text-left font-bold text-base sm:text-lg text-slate-200 break-words active:scale-[0.99]"
+                    className="quiz-option-enter glass-option glass-interactive flex min-h-[3.5rem] items-center rounded-2xl px-4 py-3 sm:min-h-[4rem] sm:px-5 sm:py-3.5 text-left font-bold text-base sm:text-lg text-slate-200 break-words active:scale-[0.99]"
                   >
                     {option}
                   </button>
