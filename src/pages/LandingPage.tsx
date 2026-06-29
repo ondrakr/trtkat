@@ -250,7 +250,7 @@ export function LandingPage() {
           <div className="cta-glow pointer-events-none absolute inset-0 bg-trtkat-gradient opacity-10 -z-10" aria-hidden="true" />
           <div className={`${sectionWrapNarrow} text-center`}>
             <h2 className="text-3xl sm:text-4xl md:text-8xl font-black text-white mb-5 sm:mb-6 md:mb-8 leading-tight tracking-tighter">{t.cta.title}</h2>
-            <p className="text-base sm:text-lg md:text-3xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
+            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-slate-400 mb-8 md:mb-10 font-medium max-w-3xl mx-auto">
               <span className="md:hidden">{t.cta.bodyMobile}</span>
               <span className="hidden md:inline">{t.cta.bodyDesktop}</span>
             </p>

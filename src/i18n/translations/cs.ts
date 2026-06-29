@@ -105,6 +105,7 @@ export const cs: SiteCopy = {
       next: 'Další',
       finish: 'Zobrazit výsledek',
       finishShort: 'Výsledek',
+      closeResult: 'Zavřít výsledek',
       scoreTitle: 'Tvůj výsledek',
       scorePerfect: 'Excelentní! Máš přehled o české sexualitě.',
       scoreGood: 'Solidní tipování — pár čísel ale dokáže překvapit.',

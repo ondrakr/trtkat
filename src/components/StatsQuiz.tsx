@@ -9,6 +9,7 @@ import {
   RefreshCw,
   ShieldCheck,
   Users,
+  X,
   XCircle,
   type LucideIcon,
 } from 'lucide-react';
@@ -100,6 +101,19 @@ export function StatsQuiz() {
     setRevealed((prev) => {
       const next = [...prev];
       next[index] = true;
+      return next;
+    });
+  }
+
+  function dismissReveal() {
+    setRevealed((prev) => {
+      const next = [...prev];
+      next[index] = false;
+      return next;
+    });
+    setAnswers((prev) => {
+      const next = [...prev];
+      next[index] = null;
       return next;
     });
   }
@@ -200,12 +214,21 @@ export function StatsQuiz() {
             ) : (
               <div
                 className={cn(
-                  'quiz-reveal-enter flex h-full flex-col justify-center rounded-2xl sm:rounded-3xl border p-5 sm:p-8 md:p-10 min-w-0 overflow-y-auto',
+                  'quiz-reveal-enter relative flex h-full flex-col justify-center rounded-2xl sm:rounded-3xl border p-5 sm:p-8 md:p-10 min-w-0 overflow-y-auto',
                   showCorrect && 'border-emerald-400/40 bg-emerald-500/10 shadow-[0_0_40px_rgba(52,211,153,0.12)]',
                   showWrong && 'border-red-400/40 bg-red-500/10 shadow-[0_0_40px_rgba(248,113,113,0.1)]',
                 )}
               >
-                <div className="flex items-start gap-3 mb-3 sm:mb-4 min-w-0">
+                <button
+                  type="button"
+                  onClick={dismissReveal}
+                  aria-label={quiz.closeResult}
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-slate-950/60 text-slate-400 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white"
+                >
+                  <X className="h-4 w-4" />
+                </button>
+
+                <div className="flex items-start gap-3 mb-3 sm:mb-4 min-w-0 pr-8">
                   {showCorrect && <CheckCircle2 className="h-6 w-6 sm:h-7 sm:w-7 text-emerald-400 shrink-0 mt-0.5" />}
                   {showWrong && <XCircle className="h-6 w-6 sm:h-7 sm:w-7 text-red-400 shrink-0 mt-0.5" />}
                   <p

@@ -105,6 +105,7 @@ export const en: SiteCopy = {
       next: 'Next',
       finish: 'See your score',
       finishShort: 'Score',
+      closeResult: 'Close result',
       scoreTitle: 'Your score',
       scorePerfect: 'Excellent! You know Czech sexuality data well.',
       scoreGood: 'Solid guessing — a few numbers still surprise.',

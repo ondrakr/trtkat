@@ -42,6 +42,7 @@ export type StatsQuizCopy = {
   next: string;
   finish: string;
   finishShort: string;
+  closeResult: string;
   scoreTitle: string;
   scorePerfect: string;
   scoreGood: string;
