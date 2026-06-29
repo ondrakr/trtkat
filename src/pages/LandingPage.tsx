@@ -50,7 +50,7 @@ export function LandingPage() {
           </div>
           <div className="hero-fade-bottom" aria-hidden="true" />
 
-          <div className={`${sectionWrap} relative z-[2] min-h-svh flex items-center pt-14 sm:pt-16 md:pt-20 pb-10 sm:pb-14 md:pb-20`}>
+          <div className={`${sectionWrap} relative z-[2] min-h-svh flex items-start sm:items-center pt-18 sm:pt-16 md:pt-20 pb-10 sm:pb-14 md:pb-20`}>
             <div className="grid w-full grid-cols-1 items-center gap-8 sm:gap-10 lg:grid-cols-2 lg:gap-x-12 xl:gap-x-16">
               <div className="hero-enter order-1 mx-auto w-full max-w-4xl text-center md:mx-0 md:text-left">
                 <div className="mb-5 flex items-center justify-center gap-3 md:justify-start md:mb-6">
