@@ -86,9 +86,7 @@ export const cs: SiteCopy = {
     ],
   },
   data: {
-    title: 'Co si myslíš vs. co říkají data?',
-    introMobile: '8 otázek — tipni si a uvidíš, jak to doopravdy je.',
-    introDesktop: 'Tipni si u 8 otázek z českého výzkumu — realita často překvapí.',
+    title: 'Statistiky',
     compareHint: '',
     timelineTitle: 'Jak se sexualita v Česku proměňuje',
     timelineAccordion: 'Historický kontext (1993 → 2013 → 2024)',
@@ -106,6 +104,7 @@ export const cs: SiteCopy = {
       prev: 'Předchozí',
       next: 'Další',
       finish: 'Zobrazit výsledek',
+      finishShort: 'Výsledek',
       scoreTitle: 'Tvůj výsledek',
       scorePerfect: 'Excelentní! Máš přehled o české sexualitě.',
       scoreGood: 'Solidní tipování — pár čísel ale dokáže překvapit.',

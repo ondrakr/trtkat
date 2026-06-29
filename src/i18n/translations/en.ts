@@ -86,9 +86,7 @@ export const en: SiteCopy = {
     ],
   },
   data: {
-    title: 'What you think vs. what the data says',
-    introMobile: '8 questions — guess and see how it really is.',
-    introDesktop: 'Guess across 8 questions from Czech research — reality often surprises.',
+    title: 'Statistics',
     compareHint: '',
     timelineTitle: 'How sexuality in the Czech Republic is changing',
     timelineAccordion: 'Historical context (1993 → 2013 → 2024)',
@@ -106,6 +104,7 @@ export const en: SiteCopy = {
       prev: 'Previous',
       next: 'Next',
       finish: 'See your score',
+      finishShort: 'Score',
       scoreTitle: 'Your score',
       scorePerfect: 'Excellent! You know Czech sexuality data well.',
       scoreGood: 'Solid guessing — a few numbers still surprise.',

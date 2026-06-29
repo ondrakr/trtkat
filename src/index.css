@@ -103,6 +103,10 @@
   .quiz-popover {
     animation: quiz-popover 0.2s ease-out both;
   }
+
+  .quiz-swipe-area {
+    touch-action: pan-y;
+  }
 }
 
 @keyframes hero-enter {

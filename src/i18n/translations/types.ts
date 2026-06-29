@@ -41,6 +41,7 @@ export type StatsQuizCopy = {
   prev: string;
   next: string;
   finish: string;
+  finishShort: string;
   scoreTitle: string;
   scorePerfect: string;
   scoreGood: string;
@@ -93,8 +94,6 @@ export type SiteCopy = {
   };
   data: {
     title: string;
-    introMobile: string;
-    introDesktop: string;
     compareHint: string;
     timelineTitle: string;
     timelineAccordion: string;

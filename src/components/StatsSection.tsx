@@ -49,15 +49,11 @@ export function StatsSection() {
   return (
     <RevealSection id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`}>
       <div className={sectionWrap}>
-        <div className="mb-8 sm:mb-10 md:mb-12 text-center max-w-3xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-3 sm:mb-4 leading-tight">
+        <div className="mb-8 sm:mb-10 md:mb-12 text-center">
+          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight inline-flex flex-wrap items-center justify-center gap-2">
             {t.data.title}
-          </h2>
-          <p className="text-base sm:text-lg text-slate-400 inline-flex flex-wrap items-center justify-center gap-x-1">
-            <span className="md:hidden">{t.data.introMobile}</span>
-            <span className="hidden md:inline">{t.data.introDesktop}</span>
             <DataSourceInfo />
-          </p>
+          </h2>
         </div>
 
         <StatsQuiz />
