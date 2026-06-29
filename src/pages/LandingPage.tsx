@@ -18,6 +18,7 @@ import { StatsSection } from '../components/StatsSection';
 import { SEO } from '../components/SEO';
 import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
+import { frostedQuoteStyle } from '../lib/frostedGlass';
 
 const benefitIcons = [Smile, Moon, Zap, Sparkles];
 const featureIcons = [Hotel, Navigation, Dices, Map];
@@ -183,11 +184,11 @@ export function LandingPage() {
           </div>
         </RevealSection>
 
-        <RevealSection id="duvera" className={`${sectionY} glass-section bg-trtkat-gradient/5`}>
+        <RevealSection id="duvera" className={`${sectionY} bg-trtkat-gradient/5`}>
           <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 xl:gap-28 items-center">
               <div className="relative pb-20 sm:pb-24 lg:pb-0">
-                <div className="aspect-[4/5] sm:aspect-square rounded-3xl md:rounded-[4rem] overflow-hidden glass shadow-2xl">
+                <div className="aspect-[4/5] sm:aspect-square rounded-3xl md:rounded-[4rem] overflow-hidden shadow-2xl">
                   <img
                     src={vibeImageSrc}
                     alt={t.trust.imageAlt}
@@ -196,11 +197,16 @@ export function LandingPage() {
                     className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
                   />
                 </div>
-                <div className="absolute -bottom-6 sm:-bottom-8 left-1/2 -translate-x-1/2 lg:left-auto lg:translate-x-0 lg:-bottom-8 lg:-right-8 z-10 p-5 sm:p-6 md:p-8 glass-card rounded-3xl md:rounded-[2.5rem] shadow-2xl max-w-xs w-[calc(100%-2rem)] sm:w-auto mx-auto lg:mx-0">
-                  <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-trtkat-pink" />
-                    <span className="font-bold text-slate-400">{t.trust.author}</span>
+                <div className="absolute -bottom-6 sm:-bottom-8 inset-x-0 flex justify-center px-4 lg:inset-auto lg:bottom-8 lg:right-8 lg:block lg:px-0">
+                  <div
+                    className="z-10 w-full max-w-xs rounded-3xl p-5 sm:w-auto sm:p-6 md:rounded-[2.5rem] md:p-8"
+                    style={frostedQuoteStyle}
+                  >
+                    <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{t.trust.quote}&rdquo;</p>
+                    <div className="mt-4 flex items-center gap-3">
+                      <div className="h-10 w-10 rounded-full bg-trtkat-pink" />
+                      <span className="font-bold text-slate-400">{t.trust.author}</span>
+                    </div>
                   </div>
                 </div>
               </div>

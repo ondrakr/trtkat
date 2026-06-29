@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { createPortal } from 'react-dom';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { Menu } from 'lucide-react';
 import { LangDropdown } from './LangDropdown';
@@ -9,14 +10,19 @@ import { SocialLinks } from './SocialLinks';
 import { useI18n } from '../i18n/I18nProvider';
 import { logoSrc, sectionWrap, smoothScrollToId } from '../lib/navigation';
 import { openCookieSettings } from '../lib/cookies';
-import { cn } from '../lib/utils';
+import { frostedNavStyle } from '../lib/frostedGlass';
 
 export function SiteLayout() {
   const { t } = useI18n();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const { pathname, hash } = useLocation();
   const isHome = pathname === '/';
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     if (!isHome || !hash) return;
@@ -43,117 +49,107 @@ export function SiteLayout() {
 
   const navSolid = !isHome || scrolled;
 
-  return (
-    <div className="app-shell min-h-screen flex flex-col text-slate-100 selection:bg-trtkat-pink/30">
-      <nav
-        className={cn(
-          'relative top-0 z-50',
-          isHome ? 'fixed inset-x-0' : 'sticky inset-x-0',
-        )}
-      >
-        <div
-          aria-hidden
-          className={cn(
-            'glass-nav-bg pointer-events-none absolute inset-0 transition-opacity duration-300',
-            navSolid ? 'opacity-100' : 'opacity-0',
-          )}
-        />
-        <div className="relative z-10">
-          <div className={sectionWrap}>
-            <div className="flex justify-between h-14 sm:h-16 md:h-20 items-center gap-3">
-            <Link to="/" className="w-20 sm:w-24 md:w-28 shrink-0" aria-label="Trtkat">
-              <img src={logoSrc} alt="Trtkat logo" className="w-full h-auto" />
+  const navbar = (
+    <nav className="fixed inset-x-0 top-0 z-[60]" style={navSolid ? frostedNavStyle : undefined}>
+      <div className={sectionWrap}>
+          <div className="flex h-14 sm:h-16 md:h-20 items-center justify-between gap-3">
+            <Link to="/" className="w-20 shrink-0 sm:w-24 md:w-28" aria-label="Trtkat">
+              <img src={logoSrc} alt="Trtkat logo" className="h-auto w-full" />
             </Link>
 
-            <div className="hidden md:flex items-center gap-5 lg:gap-8 text-sm font-300 uppercase tracking-wider text-slate-400">
-              <NavAnchor id="jak-to-funguje" className="hover:text-white transition-colors">
+            <div className="hidden items-center gap-5 text-sm font-300 uppercase tracking-wider text-slate-400 md:flex lg:gap-8">
+              <NavAnchor id="jak-to-funguje" className="transition-colors hover:text-white">
                 {t.nav.about}
               </NavAnchor>
-              <NavAnchor id="funkce" className="hover:text-white transition-colors">
+              <NavAnchor id="funkce" className="transition-colors hover:text-white">
                 {t.nav.features}
               </NavAnchor>
-              <NavAnchor id="data" className="hover:text-white transition-colors">
+              <NavAnchor id="data" className="transition-colors hover:text-white">
                 {t.nav.stats}
               </NavAnchor>
-              <NavAnchor id="duvera" className="hover:text-white transition-colors">
+              <NavAnchor id="duvera" className="transition-colors hover:text-white">
                 {t.nav.references}
               </NavAnchor>
               <LangDropdown />
               <StoreBadges size="sm" className="hidden xl:flex" />
               <NavAnchor
                 id="stahnout"
-                className="xl:hidden bg-trtkat-gradient text-white px-4 py-2.5 rounded-xl font-black text-xs whitespace-nowrap hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] transition-all active:scale-95"
+                className="whitespace-nowrap rounded-xl bg-trtkat-gradient px-4 py-2.5 text-xs font-black text-white transition-all hover:shadow-[0_0_20px_rgba(240,98,161,0.3)] active:scale-95 xl:hidden"
               >
                 {t.nav.download}
               </NavAnchor>
             </div>
 
-            <div className="md:hidden flex items-center gap-2">
+            <div className="flex items-center gap-2 md:hidden">
               <LangDropdown />
               <button
                 type="button"
                 onClick={() => setMobileNavOpen(true)}
                 aria-label="Open menu"
-                className="glass-subtle rounded-xl p-2.5 text-slate-200 hover:bg-white/10 transition-colors"
+                className="glass-subtle rounded-xl p-2.5 text-slate-200 transition-colors hover:bg-white/10"
               >
                 <Menu className="h-5 w-5" />
               </button>
             </div>
-            </div>
           </div>
         </div>
-      </nav>
+    </nav>
+  );
+
+  return (
+    <div className="app-shell flex min-h-screen flex-col text-slate-100 selection:bg-trtkat-pink/30">
+      {mounted ? createPortal(navbar, document.body) : null}
 
       <MobileNav open={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
       <div className="page-content flex min-h-0 flex-1 flex-col min-w-0">
         <Outlet />
 
         <footer className="glass-strong border-t border-white/5 py-12 sm:py-16 md:py-20">
-        <div className={sectionWrap}>
-          <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
-            <div>
-              <img src={logoSrc} alt="Trtkat logo" className="w-28 sm:w-32 mb-4" />
-              <p className="text-sm text-slate-500 leading-relaxed max-w-xs">{t.meta.description}</p>
-            </div>
+          <div className={sectionWrap}>
+            <div className="grid gap-10 md:grid-cols-2 lg:grid-cols-4">
+              <div>
+                <img src={logoSrc} alt="Trtkat logo" className="mb-4 w-28 sm:w-32" />
+                <p className="max-w-xs text-sm leading-relaxed text-slate-500">{t.meta.description}</p>
+              </div>
 
-            <div>
-              <h4 className="text-white font-black uppercase tracking-[0.18em] text-xs mb-4">{t.footer.offer}</h4>
-              <div className="flex flex-col gap-3 text-slate-400 font-bold text-sm">
-                <a href="/#jak-to-funguje" className="hover:text-white transition-colors">{t.footer.howItWorks}</a>
-                <a href="/#funkce" className="hover:text-white transition-colors">{t.nav.features}</a>
-                <a href="/#data" className="hover:text-white transition-colors">{t.footer.stats}</a>
-                <Link to="/blog" className="hover:text-white transition-colors">{t.footer.blog}</Link>
-                <a href="/#stahnout" className="hover:text-white transition-colors">{t.footer.download}</a>
+              <div>
+                <h4 className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-white">{t.footer.offer}</h4>
+                <div className="flex flex-col gap-3 text-sm font-bold text-slate-400">
+                  <a href="/#jak-to-funguje" className="transition-colors hover:text-white">{t.footer.howItWorks}</a>
+                  <a href="/#funkce" className="transition-colors hover:text-white">{t.nav.features}</a>
+                  <a href="/#data" className="transition-colors hover:text-white">{t.footer.stats}</a>
+                  <Link to="/blog" className="transition-colors hover:text-white">{t.footer.blog}</Link>
+                  <a href="/#stahnout" className="transition-colors hover:text-white">{t.footer.download}</a>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="mb-4 text-xs font-black uppercase tracking-[0.18em] text-white">{t.footer.legal}</h4>
+                <div className="flex flex-col gap-3 text-sm font-bold text-slate-400">
+                  <Link to="/ochrana-soukromi" className="transition-colors hover:text-white">{t.footer.privacy}</Link>
+                  <Link to="/podminky" className="transition-colors hover:text-white">{t.footer.terms}</Link>
+                  <Link to="/kontakt" className="transition-colors hover:text-white">{t.footer.contact}</Link>
+                  <button
+                    type="button"
+                    onClick={() => openCookieSettings()}
+                    className="text-left transition-colors hover:text-white"
+                  >
+                    {t.footer.cookieSettings}
+                  </button>
+                </div>
+              </div>
+
+              <div className="space-y-4">
+                <h4 className="text-xs font-black uppercase tracking-[0.18em] text-white">{t.footer.followUs}</h4>
+                <SocialLinks />
+                <StoreBadges size="sm" />
               </div>
             </div>
 
-            <div>
-              <h4 className="text-white font-black uppercase tracking-[0.18em] text-xs mb-4">{t.footer.legal}</h4>
-              <div className="flex flex-col gap-3 text-slate-400 font-bold text-sm">
-                <Link to="/ochrana-soukromi" className="hover:text-white transition-colors">{t.footer.privacy}</Link>
-                <Link to="/podminky" className="hover:text-white transition-colors">{t.footer.terms}</Link>
-                <Link to="/kontakt" className="hover:text-white transition-colors">{t.footer.contact}</Link>
-                <button
-                  type="button"
-                  onClick={() => openCookieSettings()}
-                  className="text-left hover:text-white transition-colors"
-                >
-                  {t.footer.cookieSettings}
-                </button>
-              </div>
-            </div>
-
-            <div className="space-y-4">
-              <h4 className="text-white font-black uppercase tracking-[0.18em] text-xs">{t.footer.followUs}</h4>
-              <SocialLinks />
-              <StoreBadges size="sm" />
+            <div className="mt-10 border-t border-white/5 pt-8 text-center text-xs font-medium text-slate-600 md:text-sm">
+              {t.footer.copyright}
             </div>
           </div>
-
-          <div className="mt-10 pt-8 border-t border-white/5 text-center text-slate-600 text-xs md:text-sm font-medium">
-            {t.footer.copyright}
-          </div>
-        </div>
         </footer>
       </div>
     </div>
