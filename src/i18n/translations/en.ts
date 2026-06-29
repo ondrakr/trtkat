@@ -2,9 +2,9 @@ import type { SiteCopy } from './types';
 
 export const en: SiteCopy = {
   meta: {
-    title: 'Trtkat — casual dating | Free',
+    title: 'Free Dating App | Casual Meetups 18+ | Trtkat',
     description:
-      'Modern dating app for adults 18+. Casual meetups, awareness about safe dating and sexual education. Completely free.',
+      'Trtkat is a free casual dating app for adults 18+. Low-pressure meetups, clear expectations, and safe dating education. Download free on iOS and Android.',
   },
   nav: {
     about: 'About',
@@ -532,14 +532,45 @@ export const en: SiteCopy = {
     },
   },
   blog: {
-    title: 'Blog and education',
+    title: 'Dating & sexual health blog',
     metaDescription:
-      'Articles about casual dating, sexual education, and safe meetups. Education from Trtkat.',
+      'Articles on casual dating, safe flirting, consent, and sexual education for students and adults. Education from Trtkat.',
     subtitle: 'Education about dating, sexual education, and safe casual meetups.',
     readMore: 'Read article',
     backToBlog: 'Back to blog',
     backHome: 'Back to home',
     loading: 'Loading articles…',
+  },
+  seoFaq: {
+    title: 'Frequently asked questions about Trtkat',
+    subtitle: 'Casual dating, safety, and how the app works',
+    items: [
+      {
+        question: 'What is Trtkat and who is the dating app for?',
+        answer:
+          'Trtkat is a mobile dating app for adults 18+ looking for casual meetups, flirting, or a pleasant evening without relationship pressure. It suits students, singles, and busy people who want clear plans instead of endless messaging.',
+      },
+      {
+        question: 'Is Trtkat really free?',
+        answer:
+          'Yes — core use of Trtkat is free. The goal is to make safe dating education and casual meetups accessible without the paywalls common on many dating platforms.',
+      },
+      {
+        question: 'How is Trtkat different from Tinder and classic dating sites?',
+        answer:
+          'Unlike typical swipe apps, Trtkat focuses on clear expectations, respect for boundaries, and fast planning — including meetup spots halfway between you, navigation, and hotel booking. It is built for low-pressure casual dating, not marriage matching.',
+      },
+      {
+        question: 'Is casual dating on Trtkat safe?',
+        answer:
+          'Safety is central: education on consent, boundaries, and responsible behaviour online and offline. The app promotes verified profiles, clear rules, and educational content about safe dating.',
+      },
+      {
+        question: 'How do I download the Trtkat app?',
+        answer:
+          'Trtkat will be available free on the App Store for iOS and Google Play for Android. Visit trtkat.cz for download links and launch updates.',
+      },
+    ],
   },
   cookies: {
     title: 'Cookies and your privacy',

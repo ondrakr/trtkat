@@ -16,6 +16,7 @@ import { StoreBadges } from '../components/StoreBadges';
 import { RevealSection } from '../components/RevealSection';
 import { StatsSection } from '../components/StatsSection';
 import { SEO } from '../components/SEO';
+import { SeoFaqSection } from '../components/SeoFaqSection';
 import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
 import { frostedQuoteStyle } from '../lib/frostedGlass';
@@ -31,7 +32,7 @@ const featureColors = [
 const vibeImageSrc = '/images/IMG_3760.jpeg';
 
 export function LandingPage() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
 
   return (
     <>
@@ -39,7 +40,7 @@ export function LandingPage() {
         title={t.meta.title}
         description={t.meta.description}
         path="/"
-        jsonLd={buildLandingSchemas(t)}
+        jsonLd={buildLandingSchemas(t, locale)}
       />
 
       <main className="flex-grow overflow-x-clip">
@@ -251,6 +252,8 @@ export function LandingPage() {
             </div>
           </div>
         </RevealSection>
+
+        <SeoFaqSection />
 
         <RevealSection id="stahnout-cta" className={`${sectionY} relative overflow-hidden`}>
           <div className="cta-glow pointer-events-none absolute inset-0 bg-trtkat-gradient opacity-10 -z-10" aria-hidden="true" />

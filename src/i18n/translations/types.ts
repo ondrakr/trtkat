@@ -199,4 +199,9 @@ export type SiteCopy = {
     saveChoices: string;
     settingsLink: string;
   };
+  seoFaq: {
+    title: string;
+    subtitle: string;
+    items: { question: string; answer: string }[];
+  };
 };

@@ -43,13 +43,18 @@ export function BlogPostPage() {
         description={localized.metaDescription}
         path={path}
         type="article"
-        jsonLd={buildArticleSchema({
-          title: localized.title,
-          description: localized.metaDescription,
-          path,
-          datePublished: post.datePublished,
-          dateModified: post.dateModified,
-        })}
+        publishedTime={post.datePublished}
+        modifiedTime={post.dateModified}
+        jsonLd={buildArticleSchema(
+          {
+            title: localized.title,
+            description: localized.metaDescription,
+            path,
+            datePublished: post.datePublished,
+            dateModified: post.dateModified,
+          },
+          locale,
+        )}
       />
       <main className={`${sectionY} flex-grow`}>
         <article className={`${sectionWrap} max-w-3xl`}>

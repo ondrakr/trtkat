@@ -1,13 +1,15 @@
 import { useEffect } from 'react';
 import { useI18n } from '../i18n/I18nProvider';
 import { SITE_URL } from '../config/site';
-import { OG_IMAGE, SITE_NAME } from '../config/seo';
+import { OG_IMAGE, OG_IMAGE_HEIGHT, OG_IMAGE_WIDTH, SEO_KEYWORDS_CS, SEO_KEYWORDS_EN, SITE_NAME } from '../config/seo';
 
 type SEOProps = {
   title: string;
   description: string;
   path?: string;
   type?: 'website' | 'article';
+  publishedTime?: string;
+  modifiedTime?: string;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   noindex?: boolean;
 };
@@ -29,10 +31,17 @@ function setJsonLd(data: Record<string, unknown> | Record<string, unknown>[] | u
   if (existing) existing.remove();
   if (!data) return;
 
+  const payload = Array.isArray(data)
+    ? {
+        '@context': 'https://schema.org',
+        '@graph': data.map(({ '@context': _ctx, ...node }) => node),
+      }
+    : data;
+
   const script = document.createElement('script');
   script.id = id;
   script.type = 'application/ld+json';
-  script.textContent = JSON.stringify(data);
+  script.textContent = JSON.stringify(payload);
   document.head.appendChild(script);
 }
 
@@ -48,17 +57,28 @@ function setLink(rel: string, href: string, attrs: Record<string, string> = {}) 
   Object.entries(attrs).forEach(([key, value]) => el!.setAttribute(key, value));
 }
 
-export function SEO({ title, description, path = '/', type = 'website', jsonLd, noindex }: SEOProps) {
+export function SEO({
+  title,
+  description,
+  path = '/',
+  type = 'website',
+  publishedTime,
+  modifiedTime,
+  jsonLd,
+  noindex,
+}: SEOProps) {
   const { locale } = useI18n();
   const url = `${SITE_URL}${path === '/' ? '' : path}`;
   const ogLocale = locale === 'en' ? 'en_GB' : 'cs_CZ';
   const contentLanguage = locale === 'en' ? 'en' : 'cs';
+  const keywords = (locale === 'en' ? SEO_KEYWORDS_EN : SEO_KEYWORDS_CS).join(', ');
 
   useEffect(() => {
     document.title = title;
     document.documentElement.lang = locale;
 
     setMeta('description', description);
+    setMeta('keywords', keywords);
     setMeta('content-language', contentLanguage);
     setMeta('robots', noindex ? 'noindex, nofollow' : 'index, follow');
     setMeta('googlebot', noindex ? 'noindex, nofollow' : 'index, follow');
@@ -89,7 +109,16 @@ export function SEO({ title, description, path = '/', type = 'website', jsonLd, 
       setMeta('og:locale:alternate', 'cs_CZ', true);
     }
     setMeta('og:image', OG_IMAGE, true);
+    setMeta('og:image:width', OG_IMAGE_WIDTH, true);
+    setMeta('og:image:height', OG_IMAGE_HEIGHT, true);
     setMeta('og:image:alt', title, true);
+
+    if (type === 'article' && publishedTime) {
+      setMeta('article:published_time', publishedTime, true);
+      if (modifiedTime) {
+        setMeta('article:modified_time', modifiedTime, true);
+      }
+    }
 
     setMeta('twitter:card', 'summary_large_image');
     setMeta('twitter:title', title);
@@ -97,7 +126,7 @@ export function SEO({ title, description, path = '/', type = 'website', jsonLd, 
     setMeta('twitter:image', OG_IMAGE);
 
     setJsonLd(jsonLd);
-  }, [title, description, url, type, ogLocale, locale, jsonLd, noindex, contentLanguage]);
+  }, [title, description, url, type, publishedTime, modifiedTime, ogLocale, locale, jsonLd, noindex, contentLanguage, keywords]);
 
   return null;
 }

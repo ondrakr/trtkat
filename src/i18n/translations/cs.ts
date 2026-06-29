@@ -2,9 +2,9 @@ import type { SiteCopy } from './types';
 
 export const cs: SiteCopy = {
   meta: {
-    title: 'Trtkat — nezávazné seznamování | Zdarma',
+    title: 'Seznamka zdarma | Nezávazné seznámení 18+ | Trtkat',
     description:
-      'Moderní seznamovací aplikace pro dospělé 18+. Nezávazné seznámení, osvěta o bezpečném seznamování a sexualní výchova. Úplně zdarma.',
+      'Trtkat je seznamovací aplikace zdarma pro nezávazné seznámení a flirt bez tlaku. Bezpečná osvěta, jasná domluva a rande na půl cesty. Pro dospělé 18+.',
   },
   nav: {
     about: 'O nás',
@@ -532,14 +532,45 @@ export const cs: SiteCopy = {
     },
   },
   blog: {
-    title: 'Blog a osvěta',
+    title: 'Blog o seznamování a sexualní výchově',
     metaDescription:
-      'Články o nezávazném seznamování, sexualní výchově a bezpečném seznámení. Edukace od Trtkat.',
+      'Články o nezávazném seznamování, bezpečném flirtu, souhlasu a sexualní výchově pro studenty i dospělé. Osvěta od aplikace Trtkat.',
     subtitle: 'Edukace o seznamování, sexualní výchově a bezpečném nezávazném seznámení.',
     readMore: 'Číst článek',
     backToBlog: 'Zpět na blog',
     backHome: 'Zpět na úvod',
     loading: 'Načítání článků…',
+  },
+  seoFaq: {
+    title: 'Časté dotazy o seznamování přes Trtkat',
+    subtitle: 'Nezávazné seznámení, bezpečí a jak aplikace funguje',
+    items: [
+      {
+        question: 'Co je Trtkat a pro koho je seznamovací aplikace?',
+        answer:
+          'Trtkat je mobilní seznamovací aplikace pro dospělé 18+, kteří hledají nezávazné seznámení, flirt nebo příjemný večer bez tlaku na vztah. Hodí se pro studenty, singlíky i lidi s nabitým programem, kteří chtějí jasnou domluvu místo nekonečného chatu.',
+      },
+      {
+        question: 'Je Trtkat opravdu zdarma?',
+        answer:
+          'Ano — základní používání aplikace Trtkat je zdarma. Cílem je zpřístupnit bezpečnou osvětu o seznamování a nezávazné seznámení bez bariér, které běžné placené seznamky často nastavují.',
+      },
+      {
+        question: 'Čím se Trtkat liší od Tinderu a klasických seznamek?',
+        answer:
+          'Na rozdíl od klasického swipe modelu Trtkat klade důraz na jasná očekávání, respekt k hranicím a rychlou domluvu — včetně návrhu místa na půl cesty, navigace a rezervace hotelu. Není to seznamka pro manželství, ale zkratka k férovému nezávaznému rande.',
+      },
+      {
+        question: 'Je nezávazné seznamování na Trtkat bezpečné?',
+        answer:
+          'Bezpečí je jádrem projektu: osvěta o souhlasu, hranicích a bezpečném chování online i offline. Aplikace podporuje ověřené profily, jasná pravidla a vzdělávací obsah o zodpovědném seznamování.',
+      },
+      {
+        question: 'Jak stáhnu aplikaci Trtkat?',
+        answer:
+          'Trtkat bude dostupný zdarma v App Store pro iOS a na Google Play pro Android. Na webu trtkat.cz najdeš odkazy ke stažení a novinky o spuštění.',
+      },
+    ],
   },
   cookies: {
     title: 'Cookies a vaše soukromí',
