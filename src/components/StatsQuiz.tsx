@@ -196,16 +196,16 @@ export function StatsQuiz() {
             {current.question}
           </h3>
 
-          <div className="relative mt-3 sm:mt-4 flex-1 min-h-0 min-w-0 flex items-center">
+          <div className="relative mt-3 sm:mt-4 flex-1 min-h-0 min-w-0">
             {!isRevealed ? (
-              <div className="grid w-full gap-2 sm:grid-cols-2 sm:gap-2.5">
+              <div className="grid h-full min-h-0 grid-rows-4 gap-2 sm:grid-cols-2 sm:grid-rows-2 sm:gap-2.5">
                 {current.options.map((option, optionIndex) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => pick(optionIndex)}
                     style={{ animationDelay: `${optionIndex * 50}ms` }}
-                    className="quiz-option-enter glass-option glass-interactive flex min-h-[2.75rem] sm:min-h-[3.25rem] items-center rounded-xl px-4 py-2.5 sm:px-5 sm:py-3 text-left font-bold text-sm sm:text-base text-slate-200 break-words active:scale-[0.99]"
+                    className="quiz-option-enter glass-option glass-interactive flex h-full min-h-0 items-center rounded-2xl px-4 py-3 sm:px-5 sm:py-3.5 text-left font-bold text-base sm:text-lg text-slate-200 break-words active:scale-[0.99]"
                   >
                     {option}
                   </button>
