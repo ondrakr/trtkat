@@ -209,14 +209,13 @@
   }
 
   .hero-fade-bottom {
-    @apply pointer-events-none absolute inset-x-0 bottom-0 z-[1] h-28 sm:h-36 md:h-44;
+    @apply pointer-events-none absolute inset-x-0 bottom-0 z-[2] h-28 sm:h-36 md:h-44;
     background: linear-gradient(
       to bottom,
       transparent 0%,
-      rgb(2 6 23 / 0.05) 20%,
-      rgb(2 6 23 / 0.25) 45%,
-      rgb(2 6 23 / 0.55) 70%,
-      rgb(2 6 23 / 0.82) 88%,
+      rgb(2 6 23 / 0.35) 30%,
+      rgb(2 6 23 / 0.75) 60%,
+      rgb(2 6 23 / 0.95) 82%,
       rgb(2 6 23) 100%
     );
   }
