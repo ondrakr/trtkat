@@ -166,8 +166,8 @@ export function StatsQuiz() {
     <div className="relative w-full min-w-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 rounded-3xl md:rounded-[2.5rem] bg-gradient-to-r from-trtkat-blue/20 via-transparent to-trtkat-pink/20 opacity-60" />
 
-      <div className="relative flex min-h-[520px] sm:min-h-[500px] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm overflow-hidden">
-        <div className="px-4 sm:px-8 md:px-10 pt-4 sm:pt-6 min-w-0">
+      <div className="relative flex h-[34rem] sm:h-[32rem] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm overflow-hidden">
+        <div className="shrink-0 px-4 sm:px-8 md:px-10 pt-4 sm:pt-6 min-w-0">
           <div className="mb-4 h-1 rounded-full bg-white/10 overflow-hidden">
             <div
               className="h-full bg-trtkat-gradient transition-[width] duration-500 ease-out"
@@ -188,24 +188,24 @@ export function StatsQuiz() {
 
         <div
           key={index}
-          className="quiz-enter quiz-swipe-area flex flex-1 flex-col px-4 sm:px-8 md:px-10 pb-4 sm:pb-6 md:pb-8 min-w-0"
+          className="quiz-enter quiz-swipe-area flex min-h-0 flex-1 flex-col px-4 sm:px-8 md:px-10 pb-4 sm:pb-6 md:pb-8"
           onTouchStart={swipe.onTouchStart}
           onTouchEnd={swipe.onTouchEnd}
         >
-          <h3 className="mt-4 sm:mt-6 min-h-[3.5rem] sm:min-h-[4.5rem] text-lg sm:text-2xl md:text-3xl font-black text-white leading-snug text-balance break-words">
+          <h3 className="mt-4 sm:mt-5 h-[4.5rem] sm:h-[5rem] shrink-0 overflow-y-auto text-lg sm:text-2xl md:text-3xl font-black text-white leading-snug text-balance break-words">
             {current.question}
           </h3>
 
-          <div className="mt-5 sm:mt-8 flex-1 min-h-[14rem] sm:min-h-[15rem] min-w-0">
+          <div className="relative mt-4 sm:mt-5 h-[19rem] sm:h-[17.5rem] shrink-0 min-w-0">
             {!isRevealed ? (
-              <div className="grid h-full gap-2.5 sm:gap-4 sm:grid-cols-2 min-w-0">
+              <div className="grid h-full grid-rows-4 gap-2.5 sm:grid-cols-2 sm:grid-rows-2 sm:gap-3 min-w-0">
                 {current.options.map((option, optionIndex) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => pick(optionIndex)}
                     style={{ animationDelay: `${optionIndex * 50}ms` }}
-                    className="quiz-option-enter flex min-h-[4rem] sm:min-h-[5.5rem] items-center rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-4 sm:px-6 sm:py-6 text-left font-bold text-sm sm:text-lg text-slate-200 break-words transition-[border-color,background-color,transform,box-shadow] duration-300 hover:border-trtkat-blue/50 hover:bg-white/[0.07] hover:shadow-[0_0_28px_rgba(79,179,240,0.14)] active:scale-[0.99]"
+                    className="quiz-option-enter flex h-full min-h-0 items-center rounded-2xl border border-white/10 bg-white/[0.03] px-5 py-3 sm:px-6 sm:py-4 text-left font-bold text-base sm:text-lg text-slate-200 break-words transition-[border-color,background-color,transform,box-shadow] duration-300 hover:border-trtkat-blue/50 hover:bg-white/[0.07] hover:shadow-[0_0_28px_rgba(79,179,240,0.14)] active:scale-[0.99]"
                   >
                     {option}
                   </button>
@@ -214,7 +214,7 @@ export function StatsQuiz() {
             ) : (
               <div
                 className={cn(
-                  'quiz-reveal-enter relative flex h-full flex-col justify-center rounded-2xl sm:rounded-3xl border p-5 sm:p-8 md:p-10 min-w-0 overflow-y-auto',
+                  'quiz-reveal-enter absolute inset-0 flex flex-col rounded-2xl sm:rounded-3xl border p-5 sm:p-7 md:p-8 min-w-0 overflow-y-auto',
                   showCorrect && 'border-emerald-400/40 bg-emerald-500/10 shadow-[0_0_40px_rgba(52,211,153,0.12)]',
                   showWrong && 'border-red-400/40 bg-red-500/10 shadow-[0_0_40px_rgba(248,113,113,0.1)]',
                 )}
@@ -251,7 +251,7 @@ export function StatsQuiz() {
                 <p className="text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-500 mb-2">
                   {quiz.reality}
                 </p>
-                <p className="text-2xl sm:text-4xl md:text-5xl font-black text-white mb-3 sm:mb-4 break-words">
+                <p className="text-xl sm:text-3xl md:text-4xl font-black text-white mb-2 sm:mb-3 break-words">
                   {current.answer}
                 </p>
                 <p className="text-sm sm:text-base text-slate-400 leading-relaxed break-words">{current.explanation}</p>
@@ -259,7 +259,7 @@ export function StatsQuiz() {
             )}
           </div>
 
-          <div className="mt-5 sm:mt-8 border-t border-white/10 pt-4 sm:pt-6 min-w-0">
+          <div className="mt-auto shrink-0 border-t border-white/10 pt-4 sm:pt-5 min-w-0">
             <div className="hidden sm:flex justify-center gap-1.5 mb-4">
               {questions.map((_, i) => (
                 <span

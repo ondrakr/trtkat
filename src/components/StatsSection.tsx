@@ -50,7 +50,7 @@ export function StatsSection() {
     <RevealSection id="data" className={`${sectionY} bg-slate-900/30 border-y border-white/5`}>
       <div className={sectionWrap}>
         <div className="mb-8 sm:mb-10 md:mb-12 text-center">
-          <h2 className="text-2xl sm:text-3xl md:text-5xl font-black text-white leading-tight inline-flex flex-wrap items-center justify-center gap-2">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-white leading-tight inline-flex flex-wrap items-center justify-center gap-2">
             {t.data.title}
             <DataSourceInfo />
           </h2>
