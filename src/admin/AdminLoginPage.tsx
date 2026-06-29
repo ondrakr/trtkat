@@ -23,8 +23,8 @@ export function AdminLoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
-      <div className="w-full max-w-md rounded-3xl border border-white/10 bg-white/5 p-8">
+    <div className="app-shell min-h-screen flex items-center justify-center p-6">
+      <div className="w-full max-w-md glass-card rounded-3xl p-8">
         <p className="text-xs font-black uppercase tracking-[0.2em] text-trtkat-pink mb-2">Trtkat</p>
         <h1 className="text-2xl font-black text-white mb-6">Přihlášení do adminu</h1>
 
@@ -44,7 +44,7 @@ export function AdminLoginPage() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none focus:border-trtkat-pink/50"
+              className="glass-input w-full rounded-xl px-4 py-3 text-white outline-none focus:border-trtkat-pink/50"
             />
           </div>
           <div>
@@ -58,7 +58,7 @@ export function AdminLoginPage() {
               required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-3 text-white outline-none focus:border-trtkat-pink/50"
+              className="glass-input w-full rounded-xl px-4 py-3 text-white outline-none focus:border-trtkat-pink/50"
             />
           </div>
           {error && <p className="text-sm text-red-400">{error}</p>}

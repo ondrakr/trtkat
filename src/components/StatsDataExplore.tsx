@@ -62,7 +62,7 @@ export function StatsDataExplore() {
                 'inline-flex items-center gap-2 px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all border',
                 active
                   ? 'bg-trtkat-gradient text-white border-transparent shadow-[0_0_20px_rgba(240,98,161,0.25)]'
-                  : 'glass-subtle glass-interactive text-slate-300 hover:bg-white/10',
+                  : 'glass-subtle glass-interactive text-slate-300',
               )}
             >
               <Icon className={cn('h-4 w-4 shrink-0', active ? 'text-white' : 'text-trtkat-blue')} />

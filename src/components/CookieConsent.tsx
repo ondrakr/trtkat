@@ -114,7 +114,7 @@ export function CookieConsent() {
                 </div>
               </div>
 
-              <label className="flex items-start justify-between gap-4 rounded-xl border border-white/5 p-4 cursor-pointer">
+              <label className="flex items-start justify-between gap-4 glass-subtle rounded-xl p-4 cursor-pointer">
                 <div>
                   <p className="font-bold text-white text-sm">{t.cookies.analyticsTitle}</p>
                   <p className="text-xs text-slate-400 mt-1">{t.cookies.analyticsDesc}</p>
@@ -127,7 +127,7 @@ export function CookieConsent() {
                 />
               </label>
 
-              <label className="flex items-start justify-between gap-4 rounded-xl border border-white/5 p-4 cursor-pointer">
+              <label className="flex items-start justify-between gap-4 glass-subtle rounded-xl p-4 cursor-pointer">
                 <div>
                   <p className="font-bold text-white text-sm">{t.cookies.marketingTitle}</p>
                   <p className="text-xs text-slate-400 mt-1">{t.cookies.marketingDesc}</p>
@@ -145,7 +145,7 @@ export function CookieConsent() {
               <button
                 type="button"
                 onClick={() => apply({ necessary: true, analytics: false, marketing: false })}
-                className={cn('rounded-xl border border-white/10 px-4 py-2.5 text-sm font-bold text-slate-300 hover:bg-white/5')}
+                className={cn('glass-subtle rounded-xl px-4 py-2.5 text-sm font-bold text-slate-300 hover:bg-white/10')}
               >
                 {t.cookies.saveMinimal}
               </button>

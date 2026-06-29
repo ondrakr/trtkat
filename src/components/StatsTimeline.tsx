@@ -37,7 +37,7 @@ export function StatsTimeline() {
             <li key={`${item.period}-${item.label}`} className="relative flex md:flex-col md:items-center md:text-center">
               <div className="flex md:flex-col md:items-center gap-4 md:gap-3 w-full">
                 <div className="relative z-10 shrink-0">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-trtkat-pink/50 bg-slate-950 shadow-[0_0_16px_rgba(240,98,161,0.25)]">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full border-2 border-trtkat-pink/50 glass-strong shadow-[0_0_16px_rgba(240,98,161,0.25)]">
                     <Clock className="h-4 w-4 text-trtkat-pink" />
                   </div>
                   {index < t.data.timeline.length - 1 && (
@@ -45,7 +45,7 @@ export function StatsTimeline() {
                   )}
                 </div>
 
-                <div className="flex-1 min-w-0 glass-subtle rounded-2xl p-4 md:p-3 lg:p-4 hover:border-white/15 transition-colors">
+                <div className="flex-1 min-w-0 glass-subtle glass-interactive rounded-2xl p-4 md:p-3 lg:p-4">
                   <time className="inline-flex items-center gap-1.5 text-[10px] sm:text-xs font-black uppercase tracking-wider text-trtkat-blue">
                     {from}
                     {to && (

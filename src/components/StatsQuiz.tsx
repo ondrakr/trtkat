@@ -135,7 +135,7 @@ export function StatsQuiz() {
   if (phase === 'done') {
     return (
       <div className="w-full min-w-0">
-        <div className="quiz-score-enter relative overflow-hidden rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-trtkat-blue/10 via-slate-950/90 to-trtkat-pink/10 p-8 sm:p-10 md:p-12 text-center shadow-2xl">
+        <div className="quiz-score-enter relative overflow-hidden glass-card rounded-3xl md:rounded-[2.5rem] bg-gradient-to-br from-trtkat-blue/10 via-transparent to-trtkat-pink/10 p-8 sm:p-10 md:p-12 text-center shadow-2xl">
           <div className="pointer-events-none absolute -top-24 left-1/2 h-48 w-96 -translate-x-1/2 rounded-full bg-trtkat-pink/20 blur-3xl" />
           <p className="relative text-xs font-black uppercase tracking-wider text-trtkat-blue mb-2">{quiz.scoreTitle}</p>
           <p className="relative text-5xl sm:text-6xl md:text-7xl font-black text-white mb-2">
@@ -146,7 +146,7 @@ export function StatsQuiz() {
           <button
             type="button"
             onClick={reset}
-            className="relative inline-flex items-center gap-2 rounded-2xl border border-white/15 bg-white/5 px-6 py-3 text-sm font-black text-white hover:bg-white/10 hover:border-white/25 transition-all"
+            className="relative inline-flex items-center gap-2 rounded-2xl glass-subtle glass-interactive px-6 py-3 text-sm font-black text-white"
           >
             <RefreshCw className="h-4 w-4" />
             {quiz.tryAgain}
@@ -166,7 +166,7 @@ export function StatsQuiz() {
     <div className="relative w-full min-w-0 overflow-hidden">
       <div className="pointer-events-none absolute inset-0 rounded-3xl md:rounded-[2.5rem] bg-gradient-to-r from-trtkat-blue/20 via-transparent to-trtkat-pink/20 opacity-60" />
 
-      <div className="relative flex h-[38rem] sm:h-[34rem] flex-col rounded-3xl md:rounded-[2.5rem] border border-white/10 bg-slate-950/80 shadow-2xl backdrop-blur-sm overflow-hidden">
+      <div className="relative flex h-[38rem] sm:h-[34rem] flex-col glass-card rounded-3xl md:rounded-[2.5rem] overflow-hidden">
         <div className="shrink-0 px-4 sm:px-8 md:px-10 pt-4 sm:pt-5 min-w-0">
           <div className="mb-3 sm:mb-4 h-1 rounded-full bg-white/10 overflow-hidden">
             <div
@@ -176,7 +176,7 @@ export function StatsQuiz() {
           </div>
 
           <div className="flex items-center justify-between gap-3 min-w-0">
-            <span className="inline-flex min-w-0 items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-2.5 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
+            <span className="inline-flex min-w-0 items-center gap-2 rounded-full glass-subtle px-2.5 sm:px-3 py-1.5 text-[10px] sm:text-xs font-bold uppercase tracking-wider text-slate-400">
               <CategoryIcon className="h-3.5 w-3.5 shrink-0 text-trtkat-blue" />
               <span className="truncate">{quiz.categoryLabels[current.category]}</span>
             </span>
@@ -223,7 +223,7 @@ export function StatsQuiz() {
                   type="button"
                   onClick={dismissReveal}
                   aria-label={quiz.closeResult}
-                  className="absolute top-3 right-3 sm:top-4 sm:right-4 inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/10 bg-slate-950/60 text-slate-400 transition-colors hover:border-white/25 hover:bg-white/10 hover:text-white"
+                  className="absolute top-3 right-3 sm:top-4 sm:right-4 glass-subtle inline-flex h-8 w-8 items-center justify-center rounded-full text-slate-400 transition-colors hover:text-white"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -270,7 +270,7 @@ export function StatsQuiz() {
                   'inline-flex items-center justify-center gap-1 rounded-xl px-3 py-2.5 text-xs sm:text-sm font-bold transition-all min-w-0',
                   index === 0
                     ? 'text-slate-600 cursor-not-allowed'
-                    : 'text-slate-300 hover:text-white hover:bg-white/5 border border-white/10 sm:border-transparent',
+                    : 'text-slate-300 hover:text-white glass-subtle sm:border-transparent',
                 )}
               >
                 <ChevronLeft className="h-4 w-4 shrink-0" />

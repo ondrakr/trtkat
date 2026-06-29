@@ -35,7 +35,7 @@ export function AdminCookiesPage() {
           { label: 'Marketing ano', value: stats.marketing },
           { label: 'Jen nezbytné', value: stats.rejected },
         ].map((s) => (
-          <div key={s.label} className="rounded-2xl border border-white/10 bg-white/5 p-4">
+          <div key={s.label} className="glass-subtle rounded-2xl p-4">
             <p className="text-xs uppercase tracking-wider text-slate-400">{s.label}</p>
             <p className="text-2xl font-black text-white mt-1">{loading ? '…' : s.value}</p>
           </div>
@@ -44,7 +44,7 @@ export function AdminCookiesPage() {
 
       {error && <p className="text-red-400 mb-4">{error}</p>}
 
-      <div className="rounded-2xl border border-white/10 overflow-x-auto">
+      <div className="glass-table rounded-2xl overflow-x-auto">
         <table className="w-full text-sm min-w-[560px]">
           <thead className="bg-white/5 text-left text-xs uppercase tracking-wider text-slate-400">
             <tr>

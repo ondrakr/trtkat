@@ -29,7 +29,7 @@ export function AdminDashboardPage() {
           <Link
             key={card.label}
             to={card.to}
-            className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:bg-white/[0.07] transition-colors"
+            className="glass-subtle glass-interactive rounded-2xl p-6"
           >
             <p className="text-xs font-bold uppercase tracking-wider text-slate-400">{card.label}</p>
             <p className="mt-2 text-3xl font-black text-white">{loading ? '…' : card.value}</p>

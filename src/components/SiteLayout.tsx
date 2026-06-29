@@ -35,7 +35,7 @@ export function SiteLayout() {
   const navSolid = !isHome || scrolled;
 
   return (
-    <div className="app-canvas min-h-screen flex flex-col text-slate-100 selection:bg-trtkat-pink/30">
+    <div className="app-shell min-h-screen flex flex-col text-slate-100 selection:bg-trtkat-pink/30">
       <nav
         className={cn(
           'top-0 z-50 transition-[background-color,border-color,box-shadow] duration-300',

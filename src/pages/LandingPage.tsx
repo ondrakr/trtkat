@@ -183,7 +183,7 @@ export function LandingPage() {
           </div>
         </RevealSection>
 
-        <RevealSection id="vibe" className={`${sectionY} bg-trtkat-gradient/5`}>
+        <RevealSection id="vibe" className={`${sectionY} glass-section bg-trtkat-gradient/5`}>
           <div className={sectionWrap}>
             <div className="grid lg:grid-cols-2 gap-12 md:gap-16 lg:gap-24 xl:gap-28 items-center">
               <div className="relative pb-20 sm:pb-24 lg:pb-0">

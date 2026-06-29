@@ -48,7 +48,7 @@ export function LegalPage({ type }: LegalPageProps) {
             ))}
 
             {type === 'contact' && (
-              <p className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 text-trtkat-pink font-bold">
+              <p className="glass-subtle rounded-2xl px-5 py-4 text-trtkat-pink font-bold">
                 {t.legal.contact.emailPlaceholder}
               </p>
             )}

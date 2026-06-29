@@ -32,7 +32,7 @@ export function ComingSoonPage() {
               <Smartphone className="h-8 w-8" />
             </div>
 
-            <span className="glass-badge inline-block px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink mb-5">
+            <span className="glass-badge inline-block rounded-full px-3 py-1 text-[10px] sm:text-xs font-black uppercase tracking-[0.18em] text-trtkat-pink mb-5">
               {t.comingSoon.badge}
             </span>
 

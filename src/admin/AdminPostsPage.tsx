@@ -33,7 +33,7 @@ export function AdminPostsPage() {
 
       {error && <p className="text-red-400 mb-4">{error}</p>}
 
-      <div className="rounded-2xl border border-white/10 overflow-hidden">
+      <div className="glass-table rounded-2xl overflow-hidden">
         <table className="w-full text-sm">
           <thead className="bg-white/5 text-left text-xs uppercase tracking-wider text-slate-400">
             <tr>

@@ -28,7 +28,7 @@ export function StatsChartFallback({ chart }: StatsChartFallbackProps) {
       <div className="space-y-4 mt-4">
         {isGrouped
           ? chart.data.map((item) => (
-              <div key={item.label} className="space-y-2 rounded-xl border border-white/5 p-3">
+              <div key={item.label} className="space-y-2 rounded-xl glass-subtle p-3">
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-400">{item.label}</p>
                 {[
                   { label: t.data.womenLabel, value: item.women ?? 0, color: PINK },

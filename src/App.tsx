@@ -12,7 +12,7 @@ const ComingSoonPage = lazy(() => import('./pages/ComingSoonPage').then((m) => (
 const AdminRoutes = lazy(() => import('./admin/AdminRoutes').then((m) => ({ default: m.AdminRoutes })));
 
 function PageFallback() {
-  return <div className="min-h-[50vh] bg-slate-950" aria-hidden="true" />;
+  return <div className="app-shell min-h-[50vh]" aria-hidden="true" />;
 }
 
 export default function App() {

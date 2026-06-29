@@ -27,7 +27,7 @@ export function AdminLayout() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center text-slate-400">
+      <div className="app-shell min-h-screen flex items-center justify-center text-slate-400">
         Načítání…
       </div>
     );
@@ -35,8 +35,8 @@ export function AdminLayout() {
 
   if (!configured) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
-        <div className="max-w-md rounded-3xl border border-white/10 bg-white/5 p-8 text-center">
+      <div className="app-shell min-h-screen flex items-center justify-center p-6">
+        <div className="max-w-md glass-card rounded-3xl p-8 text-center">
           <h1 className="text-xl font-black text-white mb-3">Admin není dostupný</h1>
           <p className="text-sm text-slate-400">
             Nastavte proměnné <code className="text-trtkat-pink">VITE_SUPABASE_URL</code> a{' '}
@@ -53,14 +53,14 @@ export function AdminLayout() {
 
   if (!isAdmin) {
     return (
-      <div className="min-h-screen bg-slate-950 flex items-center justify-center p-6">
-        <div className="max-w-md rounded-3xl border border-red-500/20 bg-red-500/5 p-8 text-center">
+      <div className="app-shell min-h-screen flex items-center justify-center p-6">
+        <div className="max-w-md glass-card rounded-3xl border-red-500/20 bg-red-500/5 p-8 text-center">
           <h1 className="text-xl font-black text-white mb-3">Přístup odepřen</h1>
           <p className="text-sm text-slate-400 mb-6">Váš účet nemá roli administrátora.</p>
           <button
             type="button"
             onClick={() => signOut()}
-            className="rounded-xl bg-white/10 px-4 py-2 text-sm font-bold text-white hover:bg-white/15"
+            className="glass-subtle rounded-xl px-4 py-2 text-sm font-bold text-white hover:bg-white/15"
           >
             Odhlásit se
           </button>
@@ -70,8 +70,8 @@ export function AdminLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex">
-      <aside className="hidden md:flex w-64 flex-col border-r border-white/5 bg-slate-950/80 p-6">
+    <div className="app-shell min-h-screen text-slate-100 flex">
+      <aside className="hidden md:flex w-64 flex-col border-r border-white/5 glass-strong p-6">
         <div className="mb-8">
           <p className="text-xs font-black uppercase tracking-[0.2em] text-trtkat-pink">Trtkat</p>
           <h1 className="text-lg font-black text-white">Admin</h1>
@@ -105,7 +105,7 @@ export function AdminLayout() {
       </aside>
 
       <div className="flex-1 flex flex-col min-w-0">
-        <header className="md:hidden border-b border-white/5 px-4 py-3 flex items-center justify-between">
+        <header className="md:hidden glass-nav px-4 py-3 flex items-center justify-between">
           <span className="font-black text-white">Trtkat Admin</span>
           <button type="button" onClick={() => signOut()} className="text-sm text-slate-400">
             Odhlásit

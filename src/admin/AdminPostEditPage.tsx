@@ -31,36 +31,36 @@ function LocaleEditor({
   }
 
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5 space-y-4">
+    <div className="glass-subtle rounded-2xl p-5 space-y-4">
       <h3 className="text-sm font-black uppercase tracking-wider text-trtkat-pink">{label}</h3>
       <input
         placeholder="Nadpis"
         value={value.title}
         onChange={(e) => onChange({ ...value, title: e.target.value })}
-        className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-2.5 text-white"
+        className="glass-input w-full rounded-xl px-4 py-2.5 text-white"
       />
       <textarea
         placeholder="Perex"
         value={value.excerpt}
         onChange={(e) => onChange({ ...value, excerpt: e.target.value })}
         rows={2}
-        className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-2.5 text-white"
+        className="glass-input w-full rounded-xl px-4 py-2.5 text-white"
       />
       <textarea
         placeholder="Meta description (SEO)"
         value={value.metaDescription}
         onChange={(e) => onChange({ ...value, metaDescription: e.target.value })}
         rows={2}
-        className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-2.5 text-white"
+        className="glass-input w-full rounded-xl px-4 py-2.5 text-white"
       />
 
       {value.sections.map((section, sIndex) => (
-        <div key={sIndex} className="rounded-xl border border-white/5 p-4 space-y-3">
+        <div key={sIndex} className="glass-subtle rounded-xl p-4 space-y-3">
           <input
             placeholder="Nadpis sekce (volitelné)"
             value={section.heading ?? ''}
             onChange={(e) => updateSection(sIndex, { heading: e.target.value || undefined })}
-            className="w-full rounded-lg border border-white/10 bg-slate-950 px-3 py-2 text-sm text-white"
+            className="glass-input w-full rounded-lg px-3 py-2 text-sm text-white"
           />
           {section.paragraphs.map((p, pIndex) => (
             <textarea
@@ -72,7 +72,7 @@ function LocaleEditor({
                 updateSection(sIndex, { paragraphs });
               }}
               rows={3}
-              className="w-full rounded-lg border border-white/10 bg-slate-950 px-3 py-2 text-sm text-white"
+              className="glass-input w-full rounded-lg px-3 py-2 text-sm text-white"
             />
           ))}
           <button
@@ -195,7 +195,7 @@ export function AdminPostEditPage() {
               value={slug}
               onChange={(e) => setSlug(e.target.value)}
               placeholder="muj-clanek"
-              className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-2.5 text-white"
+              className="glass-input w-full rounded-xl px-4 py-2.5 text-white"
             />
           </div>
           <div>
@@ -203,7 +203,7 @@ export function AdminPostEditPage() {
             <select
               value={status}
               onChange={(e) => setStatus(e.target.value as 'draft' | 'published')}
-              className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-2.5 text-white"
+              className="glass-input w-full rounded-xl px-4 py-2.5 text-white"
             >
               <option value="draft">Koncept</option>
               <option value="published">Publikováno</option>
@@ -216,7 +216,7 @@ export function AdminPostEditPage() {
               required
               value={datePublished}
               onChange={(e) => setDatePublished(e.target.value)}
-              className="w-full rounded-xl border border-white/10 bg-slate-950 px-4 py-2.5 text-white"
+              className="glass-input w-full rounded-xl px-4 py-2.5 text-white"
             />
           </div>
         </div>

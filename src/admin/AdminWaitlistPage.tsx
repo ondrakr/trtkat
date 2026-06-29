@@ -40,7 +40,7 @@ export function AdminWaitlistPage() {
           type="button"
           onClick={exportCsv}
           disabled={!rows.length}
-          className="rounded-xl border border-white/10 px-4 py-2.5 text-sm font-bold text-white hover:bg-white/5 disabled:opacity-40"
+          className="glass-subtle rounded-xl px-4 py-2.5 text-sm font-bold text-white hover:bg-white/10 disabled:opacity-40"
         >
           Export CSV
         </button>
@@ -48,7 +48,7 @@ export function AdminWaitlistPage() {
 
       {error && <p className="text-red-400 mb-4">{error}</p>}
 
-      <div className="rounded-2xl border border-white/10 overflow-x-auto">
+      <div className="glass-table rounded-2xl overflow-x-auto">
         <table className="w-full text-sm min-w-[480px]">
           <thead className="bg-white/5 text-left text-xs uppercase tracking-wider text-slate-400">
             <tr>
