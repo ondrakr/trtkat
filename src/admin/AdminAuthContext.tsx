@@ -14,6 +14,13 @@ type AdminAuthState = {
 
 const AdminAuthContext = createContext<AdminAuthState | null>(null);
 
+/** Supabase Auth používá e-mail; „trtkat“ → trtkat@trtkat.cz */
+export function normalizeAdminLogin(input: string): string {
+  const value = input.trim().toLowerCase();
+  if (!value) return value;
+  return value.includes('@') ? value : `${value}@trtkat.cz`;
+}
+
 export function AdminAuthProvider({ children }: { children: ReactNode }) {
   const [loading, setLoading] = useState(true);
   const [session, setSession] = useState<Session | null>(null);
@@ -67,7 +74,10 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
       return { error: 'Supabase není nakonfigurováno.' };
     }
     const supabase = getSupabase();
-    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    const { error } = await supabase.auth.signInWithPassword({
+      email: normalizeAdminLogin(email),
+      password,
+    });
     if (error) return { error: error.message };
     return {};
   }, []);

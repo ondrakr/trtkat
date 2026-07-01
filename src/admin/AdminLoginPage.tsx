@@ -35,13 +35,14 @@ export function AdminLoginPage() {
         <form onSubmit={onSubmit} className="space-y-4">
           <div>
             <label htmlFor="admin-email" className="block text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">
-              E-mail
+              Uživatelské jméno
             </label>
             <input
               id="admin-email"
-              type="email"
+              type="text"
               autoComplete="username"
               required
+              placeholder="trtkat"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="glass-input w-full rounded-xl px-4 py-3 text-white outline-none focus:border-trtkat-pink/50"

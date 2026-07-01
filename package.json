@@ -9,7 +9,8 @@
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
-    "db:seed": "node scripts/generate-seed.mjs"
+    "db:seed": "node scripts/generate-seed.mjs",
+    "admin:create": "node scripts/create-web-admin.mjs"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
