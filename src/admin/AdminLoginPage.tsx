@@ -1,13 +1,30 @@
-import { FormEvent, useState } from 'react';
+import { FormEvent, useEffect, useRef, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useAdminAuth } from './AdminAuthContext';
 
+const DEFAULT_LOGIN = 'trtkat';
+const DEFAULT_PASSWORD = '123456';
+
 export function AdminLoginPage() {
-  const { signIn, session, isAdmin, loading, configured } = useAdminAuth();
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const { signIn, setupFirstAdmin, session, isAdmin, loading, configured, needsSetup } = useAdminAuth();
+  const [login, setLogin] = useState(DEFAULT_LOGIN);
+  const [password, setPassword] = useState(DEFAULT_PASSWORD);
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
+  const [initializing, setInitializing] = useState(false);
+  const autoSetupDone = useRef(false);
+
+  useEffect(() => {
+    if (loading || !configured || needsSetup !== true || autoSetupDone.current) return;
+
+    autoSetupDone.current = true;
+    setInitializing(true);
+    setupFirstAdmin(DEFAULT_LOGIN, DEFAULT_PASSWORD)
+      .then((result) => {
+        if (result.error) setError(result.error);
+      })
+      .finally(() => setInitializing(false));
+  }, [loading, configured, needsSetup, setupFirstAdmin]);
 
   if (!loading && session && isAdmin) {
     return <Navigate to="/admin" replace />;
@@ -17,10 +34,17 @@ export function AdminLoginPage() {
     e.preventDefault();
     setSubmitting(true);
     setError('');
-    const result = await signIn(email.trim(), password);
+
+    const result =
+      needsSetup === true
+        ? await setupFirstAdmin(login.trim(), password)
+        : await signIn(login.trim(), password);
+
     if (result.error) setError(result.error);
     setSubmitting(false);
   }
+
+  const busy = submitting || initializing;
 
   return (
     <div className="app-shell min-h-screen flex items-center justify-center p-6">
@@ -30,6 +54,16 @@ export function AdminLoginPage() {
 
         {!configured && (
           <p className="text-sm text-amber-400 mb-4">Supabase není nakonfigurováno. Nastavte env proměnné.</p>
+        )}
+
+        {initializing && (
+          <p className="text-sm text-slate-400 mb-4">První spuštění — vytvářím admin účet…</p>
+        )}
+
+        {needsSetup === true && !initializing && (
+          <p className="text-sm text-trtkat-blue mb-4">
+            Admin ještě neexistuje. Přihlášení vytvoří účet <strong className="text-white">trtkat</strong> automaticky.
+          </p>
         )}
 
         <form onSubmit={onSubmit} className="space-y-4">
@@ -43,8 +77,8 @@ export function AdminLoginPage() {
               autoComplete="username"
               required
               placeholder="trtkat"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={login}
+              onChange={(e) => setLogin(e.target.value)}
               className="glass-input w-full rounded-xl px-4 py-3 text-white outline-none focus:border-trtkat-pink/50"
             />
           </div>
@@ -65,10 +99,10 @@ export function AdminLoginPage() {
           {error && <p className="text-sm text-red-400">{error}</p>}
           <button
             type="submit"
-            disabled={submitting || !configured}
+            disabled={busy || !configured}
             className="w-full rounded-xl bg-trtkat-gradient py-3 font-black text-white hover:opacity-90 disabled:opacity-50"
           >
-            {submitting ? 'Přihlašuji…' : 'Přihlásit se'}
+            {busy ? 'Pracuji…' : needsSetup ? 'Vytvořit admin a přihlásit' : 'Přihlásit se'}
           </button>
         </form>
       </div>
