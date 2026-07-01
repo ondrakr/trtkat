@@ -33,8 +33,8 @@ export function AdminWaitlistPage() {
     <div>
       <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl sm:text-3xl font-black text-white">Waitlist</h1>
-          <p className="text-slate-400 mt-1">E-maily ze stránky /ziskat-aplikaci.</p>
+          <h1 className="text-2xl sm:text-3xl font-black text-white">Předběžný přístup</h1>
+          <p className="text-slate-400 mt-1">E-maily ze stránky /ziskat-aplikaci (tabulka early_access_signups).</p>
         </div>
         <button
           type="button"

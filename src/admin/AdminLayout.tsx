@@ -8,7 +8,7 @@ import { cn } from '../lib/utils';
 const nav = [
   { to: '/admin', end: true, label: 'Přehled', icon: LayoutDashboard },
   { to: '/admin/clanky', label: 'Články', icon: FileText },
-  { to: '/admin/waitlist', label: 'Waitlist', icon: Mail },
+  { to: '/admin/waitlist', label: 'Předběžný přístup', icon: Mail },
   { to: '/admin/cookies', label: 'Cookies', icon: Cookie },
 ];
 

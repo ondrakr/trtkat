@@ -223,7 +223,7 @@ export async function deletePostAdmin(id: string): Promise<void> {
 export async function fetchWaitlistAdmin() {
   const supabase = getSupabase();
   const { data, error } = await supabase
-    .from('waitlist_subscribers')
+    .from('early_access_signups')
     .select('*')
     .order('created_at', { ascending: false });
   if (error) throw error;
@@ -245,7 +245,7 @@ export async function fetchAdminStats() {
   const supabase = getSupabase();
   const [posts, waitlist, consents] = await Promise.all([
     supabase.from('blog_posts').select('id', { count: 'exact', head: true }),
-    supabase.from('waitlist_subscribers').select('id', { count: 'exact', head: true }),
+    supabase.from('early_access_signups').select('id', { count: 'exact', head: true }),
     supabase.from('cookie_consents').select('id', { count: 'exact', head: true }),
   ]);
 

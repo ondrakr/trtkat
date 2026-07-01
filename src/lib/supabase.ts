@@ -2,9 +2,10 @@ import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from './database.types';
 
 const url = import.meta.env.VITE_SUPABASE_URL;
-const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const publicKey =
+  import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY ?? import.meta.env.VITE_SUPABASE_ANON_KEY;
 
-export const isSupabaseConfigured = Boolean(url && anonKey);
+export const isSupabaseConfigured = Boolean(url && publicKey);
 
 let client: SupabaseClient<Database> | null = null;
 
@@ -13,7 +14,7 @@ export function getSupabase() {
     throw new Error('Supabase is not configured');
   }
   if (!client) {
-    client = createClient<Database>(url!, anonKey!, {
+    client = createClient<Database>(url!, publicKey!, {
       auth: {
         persistSession: true,
         autoRefreshToken: true,

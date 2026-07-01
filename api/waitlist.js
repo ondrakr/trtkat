@@ -21,14 +21,18 @@ export default async function handler(req, res) {
   }
 
   const page = typeof req.body?.page === 'string' ? req.body.page : '/ziskat-aplikaci';
-  const source = typeof req.body?.source === 'string' ? req.body.source : 'waitlist';
+  const source = typeof req.body?.source === 'string' ? req.body.source : 'early_access';
+  const locale = typeof req.body?.locale === 'string' && ['cs', 'en'].includes(req.body.locale) ? req.body.locale : null;
+  const userAgent = typeof req.headers['user-agent'] === 'string' ? req.headers['user-agent'].slice(0, 512) : null;
 
   const supabase = getServiceClient();
   if (supabase) {
-    const { error } = await supabase.from('waitlist_subscribers').insert({
+    const { error } = await supabase.from('early_access_signups').insert({
       email,
       source,
       page,
+      locale,
+      user_agent: userAgent,
     });
 
     if (error) {

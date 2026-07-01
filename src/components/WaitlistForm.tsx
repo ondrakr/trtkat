@@ -4,7 +4,7 @@ import { useI18n } from '../i18n/I18nProvider';
 import { submitWaitlist } from '../lib/waitlist';
 
 export function WaitlistForm() {
-  const { t } = useI18n();
+  const { t, locale } = useI18n();
   const [email, setEmail] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [errorKey, setErrorKey] = useState<'invalid_email' | 'submit_failed' | 'network'>('submit_failed');
@@ -14,7 +14,7 @@ export function WaitlistForm() {
     if (status === 'loading') return;
 
     setStatus('loading');
-    const result = await submitWaitlist(email);
+    const result = await submitWaitlist(email, { locale, page: '/ziskat-aplikaci' });
 
     if (result.ok === false) {
       setErrorKey(result.error);

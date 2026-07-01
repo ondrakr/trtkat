@@ -25,8 +25,20 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
       return;
     }
     const supabase = getSupabase();
-    const { data } = await supabase.from('profiles').select('role').eq('id', userId).maybeSingle();
-    setIsAdmin(data != null && data.role === 'admin');
+
+    const { data: webAdmin } = await supabase
+      .from('web_admin_users')
+      .select('user_id')
+      .eq('user_id', userId)
+      .maybeSingle();
+
+    if (webAdmin) {
+      setIsAdmin(true);
+      return;
+    }
+
+    const { data, error } = await supabase.from('profiles').select('role').eq('id', userId).maybeSingle();
+    setIsAdmin(!error && data?.role === 'admin');
   }, []);
 
   useEffect(() => {

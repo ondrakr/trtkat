@@ -96,6 +96,57 @@ export type Database = {
         };
         Relationships: [];
       };
+      early_access_signups: {
+        Row: {
+          id: string;
+          email: string;
+          source: string;
+          page: string | null;
+          locale: string | null;
+          user_agent: string | null;
+          status: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          email: string;
+          source?: string;
+          page?: string | null;
+          locale?: string | null;
+          user_agent?: string | null;
+          status?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Update: {
+          id?: string;
+          email?: string;
+          source?: string;
+          page?: string | null;
+          locale?: string | null;
+          user_agent?: string | null;
+          status?: string;
+          created_at?: string;
+          updated_at?: string;
+        };
+        Relationships: [];
+      };
+      web_admin_users: {
+        Row: {
+          user_id: string;
+          created_at: string;
+        };
+        Insert: {
+          user_id: string;
+          created_at?: string;
+        };
+        Update: {
+          user_id?: string;
+          created_at?: string;
+        };
+        Relationships: [];
+      };
       account_deletion_requests: {
         Row: {
           id: string;

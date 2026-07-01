@@ -1,5 +1,8 @@
 -- Trtkat: blog, waitlist, cookie consents, admin profiles
 -- Run in Supabase SQL Editor (Dashboard → SQL → New query)
+--
+-- POZOR: Pro sdílenou APP databázi (mobilní app + web) NEspouštěj tento soubor.
+-- Místo toho spusť: supabase/migrations/003_early_access_signups.sql
 
 create extension if not exists "pgcrypto";
 

@@ -1,0 +1,13 @@
+-- =============================================================================
+-- Trtkat APP Supabase — předběžný přístup (e-maily z webu)
+-- =============================================================================
+-- Projekt: https://zfowzsmpsmsfwtfzxyjr.supabase.co
+--
+-- Spusť v SQL Editoru obsah souboru:
+--   supabase/migrations/003_early_access_signups.sql
+--
+-- NESPOUŠTĚJ complete-setup.sql na app databázi (koliduje s profiles apod.).
+--
+-- Po vytvoření admin účtu v Authentication:
+--   insert into public.web_admin_users (user_id) values ('TVE-USER-UUID');
+-- =============================================================================

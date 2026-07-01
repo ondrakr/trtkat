@@ -14,7 +14,7 @@ export function AdminDashboardPage() {
 
   const cards = [
     { label: 'Články', value: stats.posts, to: '/admin/clanky' },
-    { label: 'Waitlist e-maily', value: stats.waitlist, to: '/admin/waitlist' },
+    { label: 'Předběžný přístup', value: stats.waitlist, to: '/admin/waitlist' },
     { label: 'Cookie souhlasy', value: stats.consents, to: '/admin/cookies' },
     { label: 'Analytics povoleno', value: stats.analyticsAccepted, to: '/admin/cookies' },
   ];
