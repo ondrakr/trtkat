@@ -92,20 +92,56 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     }
 
     const email = normalizeAdminLogin(login);
-    const bootstrap = await bootstrapAdminAccount();
+    const supabase = getSupabase();
 
-    if (bootstrap.ok === false) {
-      return { error: bootstrap.error };
+    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
+
+    if (signUpError) {
+      const alreadyExists =
+        signUpError.message.toLowerCase().includes('already') ||
+        signUpError.message.toLowerCase().includes('registered');
+      if (!alreadyExists) {
+        return { error: signUpError.message };
+      }
+    }
+
+    let session = signUpData.session;
+    if (!session) {
+      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
+        email,
+        password,
+      });
+      if (signInError) {
+        const bootstrap = await bootstrapAdminAccount();
+        if (bootstrap.ok === false) {
+          return { error: signInError.message };
+        }
+        const retry = await supabase.auth.signInWithPassword({ email, password });
+        if (retry.error) {
+          return { error: retry.error.message };
+        }
+        session = retry.data.session;
+      } else {
+        session = signInData.session;
+      }
+    }
+
+    if (!session) {
+      return { error: 'Nepodařilo se vytvořit přihlášení. Zkus to znovu.' };
+    }
+
+    const { error: insertError } = await supabase
+      .from('web_admin_users')
+      .insert({ user_id: session.user.id });
+
+    if (insertError && insertError.code !== '23505') {
+      const bootstrap = await bootstrapAdminAccount();
+      if (bootstrap.ok === false) {
+        return { error: insertError.message || bootstrap.error };
+      }
     }
 
     setNeedsSetup(false);
-
-    const supabase = getSupabase();
-    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-    if (signInError) {
-      return { error: signInError.message };
-    }
-
     return {};
   }, []);
 

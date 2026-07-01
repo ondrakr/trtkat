@@ -25,7 +25,7 @@ export async function bootstrapAdminAccount(): Promise<
     if (response.status === 502 && body.error === 'database_error') {
       return {
         ok: false,
-        error: body.hint ?? 'Chybí tabulky v databázi. Spusť migraci 003 a 004 v Supabase SQL Editoru.',
+        error: body.message ?? body.hint ?? 'Chyba databáze na serveru.',
       };
     }
 

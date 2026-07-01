@@ -52,7 +52,7 @@ export async function restCount(table) {
   if (!config) return { error: { message: 'not_configured', code: 'not_configured' }, count: null };
 
   const { url, key } = config;
-  const res = await fetch(`${url}/rest/v1/${table}?select=id`, {
+  const res = await fetch(`${url}/rest/v1/${table}?select=*`, {
     method: 'GET',
     headers: serviceHeaders(key, {
       Prefer: 'count=exact',

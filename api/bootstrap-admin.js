@@ -34,9 +34,14 @@ export default async function handler(req, res) {
 
   if (countError) {
     console.error('[bootstrap-admin] count failed', countError);
+    const missingTable =
+      countError.code === '42P01' ||
+      /relation .* does not exist/i.test(countError.message ?? '');
     return res.status(502).json({
       error: 'database_error',
-      hint: 'Spusť migraci supabase/migrations/003_early_access_signups.sql',
+      hint: missingTable
+        ? 'Spusť migraci supabase/migrations/003_early_access_signups.sql'
+        : 'Zkontroluj SUPABASE_SERVICE_ROLE_KEY (legacy JWT eyJ…) ve Vercel.',
       message: countError.message,
     });
   }
