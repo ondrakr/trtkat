@@ -1,4 +1,11 @@
-import { getServiceClient } from './lib/supabase.js';
+import {
+  authAdminCreateUser,
+  authAdminListUsers,
+  authAdminUpdateUser,
+  getSupabaseConfig,
+  restCount,
+  restInsert,
+} from './lib/supabase.js';
 
 const DEFAULT_EMAIL = 'trtkat@trtkat.cz';
 const DEFAULT_PASSWORD = '123456';
@@ -16,23 +23,21 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'method_not_allowed' });
   }
 
-  const supabase = getServiceClient();
-  if (!supabase) {
+  if (!getSupabaseConfig()) {
     return res.status(503).json({
       error: 'supabase_not_configured',
       hint: 'Nastav SUPABASE_SERVICE_ROLE_KEY na legacy service_role JWT (eyJ…) ve Vercel.',
     });
   }
 
-  const { count, error: countError } = await supabase
-    .from('web_admin_users')
-    .select('*', { count: 'exact', head: true });
+  const { count, error: countError } = await restCount('web_admin_users');
 
   if (countError) {
     console.error('[bootstrap-admin] count failed', countError);
     return res.status(502).json({
       error: 'database_error',
       hint: 'Spusť migraci supabase/migrations/003_early_access_signups.sql',
+      message: countError.message,
     });
   }
 
@@ -40,38 +45,44 @@ export default async function handler(req, res) {
     return res.status(200).json({ ok: true, already_setup: true });
   }
 
-  const { data: listed } = await supabase.auth.admin.listUsers();
-  const existing = listed?.users?.find((u) => u.email?.toLowerCase() === DEFAULT_EMAIL);
+  const { users, error: listError } = await authAdminListUsers();
+  if (listError) {
+    console.error('[bootstrap-admin] list users failed', listError);
+    return res.status(502).json({
+      error: 'auth_list_failed',
+      message: listError.message,
+    });
+  }
 
+  const existing = users.find((u) => u.email?.toLowerCase() === DEFAULT_EMAIL);
   let userId = existing?.id;
 
   if (existing) {
-    const { error } = await supabase.auth.admin.updateUserById(existing.id, {
+    const { error } = await authAdminUpdateUser(existing.id, {
       password: DEFAULT_PASSWORD,
       email_confirm: true,
     });
     if (error) {
       console.error('[bootstrap-admin] update user failed', error);
-      return res.status(502).json({ error: 'auth_update_failed' });
+      return res.status(502).json({ error: 'auth_update_failed', message: error.message });
     }
   } else {
-    const { data, error } = await supabase.auth.admin.createUser({
-      email: DEFAULT_EMAIL,
-      password: DEFAULT_PASSWORD,
-      email_confirm: true,
-    });
+    const { user, error } = await authAdminCreateUser(DEFAULT_EMAIL, DEFAULT_PASSWORD);
     if (error) {
       console.error('[bootstrap-admin] create user failed', error);
       return res.status(502).json({ error: 'auth_create_failed', message: error.message });
     }
-    userId = data.user.id;
+    userId = user?.id ?? user?.user?.id;
+    if (!userId) {
+      return res.status(502).json({ error: 'auth_create_failed', message: 'Missing user id in response' });
+    }
   }
 
-  const { error: adminError } = await supabase.from('web_admin_users').insert({ user_id: userId });
+  const { error: adminError } = await restInsert('web_admin_users', { user_id: userId });
 
   if (adminError) {
     console.error('[bootstrap-admin] web_admin_users insert failed', adminError);
-    return res.status(502).json({ error: 'admin_insert_failed' });
+    return res.status(502).json({ error: 'admin_insert_failed', message: adminError.message });
   }
 
   return res.status(200).json({

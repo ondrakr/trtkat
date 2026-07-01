@@ -1,4 +1,4 @@
-import { getServiceClient } from './lib/supabase.js';
+import { getSupabaseConfig, restInsert, restSelectOne, restUpdate } from './lib/supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
@@ -22,17 +22,17 @@ export default async function handler(req, res) {
   const marketing = req.body?.marketing === true;
   const userAgent = typeof req.headers['user-agent'] === 'string' ? req.headers['user-agent'] : null;
 
-  const supabase = getServiceClient();
-  if (!supabase) {
+  if (!getSupabaseConfig()) {
     console.log('[cookie-consent]', { visitorId, analytics, marketing });
     return res.status(200).json({ ok: true });
   }
 
-  const { data: existing } = await supabase
-    .from('cookie_consents')
-    .select('id')
-    .eq('visitor_id', visitorId)
-    .maybeSingle();
+  const { data: existing, error: selectError } = await restSelectOne('cookie_consents', 'visitor_id', visitorId, 'id');
+
+  if (selectError) {
+    console.error('[cookie-consent] select failed', selectError);
+    return res.status(502).json({ error: 'save_failed' });
+  }
 
   const payload = {
     visitor_id: visitorId,
@@ -43,11 +43,11 @@ export default async function handler(req, res) {
   };
 
   const { error } = existing
-    ? await supabase.from('cookie_consents').update(payload).eq('id', existing.id)
-    : await supabase.from('cookie_consents').insert(payload);
+    ? await restUpdate('cookie_consents', payload, 'id', existing.id)
+    : await restInsert('cookie_consents', payload);
 
   if (error) {
-    console.error('[cookie-consent] supabase failed', error);
+    console.error('[cookie-consent] save failed', error);
     return res.status(502).json({ error: 'save_failed' });
   }
 

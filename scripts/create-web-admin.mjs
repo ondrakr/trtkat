@@ -4,7 +4,13 @@
  * Default: trtkat / 123456 → trtkat@trtkat.cz
  */
 import { config } from 'dotenv';
-import { createClient } from '@supabase/supabase-js';
+import {
+  authAdminCreateUser,
+  authAdminListUsers,
+  authAdminUpdateUser,
+  getSupabaseConfig,
+  restInsert,
+} from '../api/lib/supabase.js';
 
 config();
 
@@ -12,26 +18,23 @@ const username = process.argv[2] ?? 'trtkat';
 const password = process.argv[3] ?? '123456';
 const email = username.includes('@') ? username : `${username}@trtkat.cz`;
 
-const url = process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL;
-const serviceKey = process.env.SUPABASE_SERVICE_ROLE_KEY;
-
-if (!url || !serviceKey) {
+if (!getSupabaseConfig()) {
   console.error('Chybí SUPABASE_URL nebo SUPABASE_SERVICE_ROLE_KEY v .env');
   process.exit(1);
 }
 
-const supabase = createClient(url, serviceKey, {
-  auth: { persistSession: false, autoRefreshToken: false },
-});
+const { users, error: listError } = await authAdminListUsers();
+if (listError) {
+  console.error('Nepodařilo se načíst uživatele:', listError.message);
+  process.exit(1);
+}
 
-const { data: existingUsers } = await supabase.auth.admin.listUsers();
-const existing = existingUsers?.users?.find((u) => u.email?.toLowerCase() === email.toLowerCase());
-
+const existing = users.find((u) => u.email?.toLowerCase() === email.toLowerCase());
 let userId = existing?.id;
 
 if (existing) {
   console.log(`Uživatel ${email} už existuje, aktualizuji heslo…`);
-  const { error } = await supabase.auth.admin.updateUserById(existing.id, {
+  const { error } = await authAdminUpdateUser(existing.id, {
     password,
     email_confirm: true,
   });
@@ -41,27 +44,28 @@ if (existing) {
   }
 } else {
   console.log(`Vytvářím uživatele ${email}…`);
-  const { data, error } = await supabase.auth.admin.createUser({
-    email,
-    password,
-    email_confirm: true,
-  });
+  const { user, error } = await authAdminCreateUser(email, password);
   if (error) {
     console.error('Nepodařilo se vytvořit uživatele:', error.message);
     process.exit(1);
   }
-  userId = data.user.id;
+  userId = user?.id ?? user?.user?.id;
+  if (!userId) {
+    console.error('Chybí user id v odpovědi Auth API');
+    process.exit(1);
+  }
 }
 
-const { error: adminError } = await supabase.from('web_admin_users').upsert(
-  { user_id: userId },
-  { onConflict: 'user_id' },
-);
+const { error: adminError } = await restInsert('web_admin_users', { user_id: userId });
 
 if (adminError) {
-  console.error('Nepodařilo se přidat do web_admin_users:', adminError.message);
-  console.error('Spusť nejdřív migraci: supabase/migrations/003_early_access_signups.sql');
-  process.exit(1);
+  if (adminError.code === '23505') {
+    console.log('Uživatel už je v web_admin_users.');
+  } else {
+    console.error('Nepodařilo se přidat do web_admin_users:', adminError.message);
+    console.error('Spusť nejdřív migraci: supabase/migrations/003_early_access_signups.sql');
+    process.exit(1);
+  }
 }
 
 console.log('');

@@ -1,4 +1,4 @@
-import { getServiceClient } from './lib/supabase.js';
+import { getSupabaseConfig, restInsert } from './lib/supabase.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -22,9 +22,8 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'invalid_email' });
   }
 
-  const supabase = getServiceClient();
-  if (supabase) {
-    const { error } = await supabase.from('account_deletion_requests').insert({
+  if (getSupabaseConfig()) {
+    const { error } = await restInsert('account_deletion_requests', {
       email,
       note,
       source: 'web_form',
@@ -32,7 +31,7 @@ export default async function handler(req, res) {
     });
 
     if (error) {
-      console.error('[account-deletion] supabase insert failed', error);
+      console.error('[account-deletion] insert failed', error);
       return res.status(502).json({ error: 'submit_failed' });
     }
 

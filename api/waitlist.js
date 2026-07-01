@@ -1,4 +1,4 @@
-import { getServiceClient } from './lib/supabase.js';
+import { getSupabaseConfig, restInsert } from './lib/supabase.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -25,9 +25,8 @@ export default async function handler(req, res) {
   const locale = typeof req.body?.locale === 'string' && ['cs', 'en'].includes(req.body.locale) ? req.body.locale : null;
   const userAgent = typeof req.headers['user-agent'] === 'string' ? req.headers['user-agent'].slice(0, 512) : null;
 
-  const supabase = getServiceClient();
-  if (supabase) {
-    const { error } = await supabase.from('early_access_signups').insert({
+  if (getSupabaseConfig()) {
+    const { error } = await restInsert('early_access_signups', {
       email,
       source,
       page,
@@ -39,7 +38,7 @@ export default async function handler(req, res) {
       if (error.code === '23505') {
         return res.status(200).json({ ok: true, duplicate: true });
       }
-      console.error('[waitlist] supabase insert failed', error);
+      console.error('[waitlist] insert failed', error);
       return res.status(502).json({ error: 'submit_failed' });
     }
 
