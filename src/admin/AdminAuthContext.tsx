@@ -1,6 +1,7 @@
 import { createContext, useCallback, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import type { Session, User } from '@supabase/supabase-js';
 import { getSupabase, isSupabaseConfigured } from '../lib/supabase';
+import { bootstrapAdminAccount } from '../lib/bootstrapAdmin';
 
 type AdminAuthState = {
   loading: boolean;
@@ -91,50 +92,22 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
     }
 
     const email = normalizeAdminLogin(login);
-    const supabase = getSupabase();
+    const bootstrap = await bootstrapAdminAccount();
 
-    const { count } = await supabase.from('web_admin_users').select('*', { count: 'exact', head: true });
-    if ((count ?? 0) > 0) {
-      setNeedsSetup(false);
-      return {};
-    }
-
-    const { data: signUpData, error: signUpError } = await supabase.auth.signUp({ email, password });
-
-    let userId = signUpData.user?.id;
-
-    if (signUpError) {
-      const { data: signInData, error: signInError } = await supabase.auth.signInWithPassword({
-        email,
-        password,
-      });
-      if (signInError) {
-        return { error: signInError.message };
-      }
-      userId = signInData.user?.id;
-    }
-
-    if (!userId) {
-      return { error: 'Nepodařilo se vytvořit admin účet.' };
-    }
-
-    const { error: insertError } = await supabase.from('web_admin_users').insert({ user_id: userId });
-
-    if (insertError && insertError.code !== '23505') {
-      return { error: insertError.message };
-    }
-
-    if (!signUpData.session) {
-      const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
-      if (signInError) {
-        return { error: signInError.message };
-      }
+    if (bootstrap.ok === false) {
+      return { error: bootstrap.error };
     }
 
     setNeedsSetup(false);
-    await refreshAdminRole(userId);
+
+    const supabase = getSupabase();
+    const { error: signInError } = await supabase.auth.signInWithPassword({ email, password });
+    if (signInError) {
+      return { error: signInError.message };
+    }
+
     return {};
-  }, [refreshAdminRole]);
+  }, []);
 
   const signIn = useCallback(async (email: string, password: string) => {
     if (!isSupabaseConfigured) {

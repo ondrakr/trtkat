@@ -18,7 +18,10 @@ export default async function handler(req, res) {
 
   const supabase = getServiceClient();
   if (!supabase) {
-    return res.status(503).json({ error: 'supabase_not_configured' });
+    return res.status(503).json({
+      error: 'supabase_not_configured',
+      hint: 'Nastav SUPABASE_SERVICE_ROLE_KEY na legacy service_role JWT (eyJ…) ve Vercel.',
+    });
   }
 
   const { count, error: countError } = await supabase
