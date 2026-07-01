@@ -3,8 +3,10 @@
  * Avoids supabase-js URL/path issues with sb_secret_ keys and some JWT setups.
  */
 
+import { normalizeSupabaseUrl } from './normalizeSupabaseUrl.js';
+
 export function getSupabaseConfig() {
-  const url = (process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL)?.replace(/\/$/, '');
+  const url = normalizeSupabaseUrl(process.env.SUPABASE_URL || process.env.VITE_SUPABASE_URL);
   const key = process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_SECRET_KEY;
   if (!url || !key) return null;
   if (key.startsWith('sb_publishable_')) {

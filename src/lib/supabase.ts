@@ -1,7 +1,8 @@
 import { createClient, type SupabaseClient } from '@supabase/supabase-js';
 import type { Database } from './database.types';
+import { normalizeSupabaseUrl } from './normalizeSupabaseUrl';
 
-const url = import.meta.env.VITE_SUPABASE_URL?.replace(/\/$/, '');
+const url = normalizeSupabaseUrl(import.meta.env.VITE_SUPABASE_URL);
 /** Legacy anon JWT (eyJ…) je spolehlivější než sb_publishable_ pro Auth + REST. */
 const publicKey =
   import.meta.env.VITE_SUPABASE_ANON_KEY ?? import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
