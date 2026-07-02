@@ -2,8 +2,8 @@ import {
   authAdminListUsers,
   getSupabaseConfig,
   restCount,
-} from './lib/supabase.js';
-import { normalizeSupabaseUrl } from './lib/normalizeSupabaseUrl.js';
+} from '../supabase.js';
+import { normalizeSupabaseUrl } from '../normalizeSupabaseUrl.js';
 
 function keyKind(key) {
   if (!key) return 'missing';

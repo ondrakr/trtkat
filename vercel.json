@@ -1,5 +1,10 @@
 {
   "rewrites": [
+    { "source": "/api/waitlist", "destination": "/api/forms/waitlist" },
+    { "source": "/api/account-deletion", "destination": "/api/forms/account-deletion" },
+    { "source": "/api/cookie-consent", "destination": "/api/forms/cookie-consent" },
+    { "source": "/api/bootstrap-admin", "destination": "/api/admin/bootstrap" },
+    { "source": "/api/supabase-check", "destination": "/api/admin/check" },
     { "source": "/api/(.*)", "destination": "/api/$1" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]

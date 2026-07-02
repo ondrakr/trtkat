@@ -1,4 +1,4 @@
-import { getSupabaseConfig, restInsert } from './lib/supabase.js';
+import { getSupabaseConfig, restInsert } from '../supabase.js';
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 

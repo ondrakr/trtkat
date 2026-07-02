@@ -1,4 +1,4 @@
-import { getSupabaseConfig, restInsert, restSelectOne, restUpdate } from './lib/supabase.js';
+import { getSupabaseConfig, restInsert, restSelectOne, restUpdate } from '../supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

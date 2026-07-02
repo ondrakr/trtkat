@@ -1,5 +1,5 @@
-import { requireAdmin } from '../lib/adminAuth.js';
-import { restCount, restSelect } from '../lib/supabase.js';
+import { requireAdmin } from '../adminAuth.js';
+import { restCount, restSelect } from '../supabase.js';
 
 const CHILD_SAFETY_TYPES = ['minor', 'underage', 'csam', 'csea', 'child_safety'];
 

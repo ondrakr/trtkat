@@ -1,5 +1,5 @@
-import { requireAdmin } from '../lib/adminAuth.js';
-import { restSelect } from '../lib/supabase.js';
+import { requireAdmin } from '../adminAuth.js';
+import { restSelect } from '../supabase.js';
 
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

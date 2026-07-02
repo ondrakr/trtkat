@@ -1,6 +1,6 @@
-import { requireAdmin } from '../lib/adminAuth.js';
-import { logAuditEvent, logModerationAction, logSensitiveAccess } from '../lib/adminAudit.js';
-import { restInsert, restSelect, restSelectOne, restUpdate } from '../lib/supabase.js';
+import { requireAdmin } from '../adminAuth.js';
+import { logAuditEvent, logModerationAction, logSensitiveAccess } from '../adminAudit.js';
+import { restInsert, restSelect, restSelectOne, restUpdate } from '../supabase.js';
 
 const PRIORITIES = ['P0', 'P1', 'P2', 'P3'];
 const WORKFLOW_STATUSES = ['new', 'in_progress', 'resolved', 'rejected', 'escalated'];

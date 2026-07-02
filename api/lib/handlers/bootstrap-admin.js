@@ -5,7 +5,7 @@ import {
   getSupabaseConfig,
   restCount,
   restInsert,
-} from './lib/supabase.js';
+} from '../supabase.js';
 
 const DEFAULT_EMAIL = 'trtkat@trtkat.cz';
 const DEFAULT_PASSWORD = '123456';
