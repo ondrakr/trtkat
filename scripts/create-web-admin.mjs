@@ -10,7 +10,7 @@ import {
   authAdminUpdateUser,
   getSupabaseConfig,
   restInsert,
-} from '../api/lib/supabase.js';
+} from '../server/lib/supabase.js';
 
 config();
 

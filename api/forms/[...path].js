@@ -1,6 +1,6 @@
-import waitlist from '../lib/handlers/waitlist.js';
-import accountDeletion from '../lib/handlers/account-deletion.js';
-import cookieConsent from '../lib/handlers/cookie-consent.js';
+import waitlist from '../../server/lib/handlers/waitlist.js';
+import accountDeletion from '../../server/lib/handlers/account-deletion.js';
+import cookieConsent from '../../server/lib/handlers/cookie-consent.js';
 
 const routes = {
   waitlist,

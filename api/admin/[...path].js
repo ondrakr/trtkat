@@ -1,11 +1,11 @@
-import dashboard from '../lib/handlers/dashboard.js';
-import reports from '../lib/handlers/reports.js';
-import gdpr from '../lib/handlers/gdpr.js';
-import appeals from '../lib/handlers/appeals.js';
-import support from '../lib/handlers/support.js';
-import audit from '../lib/handlers/audit.js';
-import bootstrapAdmin from '../lib/handlers/bootstrap-admin.js';
-import supabaseCheck from '../lib/handlers/supabase-check.js';
+import dashboard from '../../server/lib/handlers/dashboard.js';
+import reports from '../../server/lib/handlers/reports.js';
+import gdpr from '../../server/lib/handlers/gdpr.js';
+import appeals from '../../server/lib/handlers/appeals.js';
+import support from '../../server/lib/handlers/support.js';
+import audit from '../../server/lib/handlers/audit.js';
+import bootstrapAdmin from '../../server/lib/handlers/bootstrap-admin.js';
+import supabaseCheck from '../../server/lib/handlers/supabase-check.js';
 
 const routes = {
   dashboard,
