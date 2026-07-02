@@ -239,6 +239,19 @@ Používáme technická a organizační opatření k ochraně údajů, zejména:
 
 Bezpečnostní hlášení posílejte na security@trtkat.cz.
 
+### Přístup oprávněných osob provozovatele
+
+K osobním údajům mají přístup pouze oprávněné osoby provozovatele v rozsahu nezbytném pro výkon jejich činností, zejména:
+
+- řešení reportů a stížností uživatelů,
+- bezpečnostní incidenty a child-safety případy,
+- vyřizování GDPR žádostí,
+- plnění právních povinností.
+
+Přístup není neomezený. Soukromé chaty, audio zprávy a další citlivý obsah mohou oprávněné osoby zobrazit pouze při řešení konkrétního případu a s uvedením důvodu. Každý takový přístup a významné admin akce evidujeme v auditním logu. Auditní záznamy běžní administrátoři nemohou mazat.
+
+Každý administrátor má vlastní účet; sdílené přihlašovací údaje nepoužíváme. Pro administrátorské účty doporučujeme dvoufaktorové ověření (2FA).
+
 ## 12. Děti a nezletilí
 
 Trtkat je určen pouze osobám starším 18 let. Obsah sexualizující nezletilé, vykořisťování dětí, grooming, CSAM/CSEA nebo pokusy o kontakt s nezletilými jsou zakázané.

@@ -1,12 +1,18 @@
 import { useEffect } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
-import { LogOut, LayoutDashboard, FileText, Mail, Cookie } from 'lucide-react';
+import { LogOut, LayoutDashboard, FileText, Mail, Cookie, Flag, Shield, Scale, MessageSquare, Headphones, ScrollText } from 'lucide-react';
 import { NavLink } from 'react-router-dom';
 import { useAdminAuth } from './AdminAuthContext';
 import { cn } from '../lib/utils';
 
 const nav = [
   { to: '/admin', end: true, label: 'Přehled', icon: LayoutDashboard },
+  { to: '/admin/reporty', label: 'Reporty', icon: Flag },
+  { to: '/admin/child-safety', label: 'Child safety', icon: Shield },
+  { to: '/admin/gdpr', label: 'GDPR', icon: Scale },
+  { to: '/admin/odvolani', label: 'Odvolání', icon: MessageSquare },
+  { to: '/admin/support', label: 'Support', icon: Headphones },
+  { to: '/admin/audit', label: 'Audit', icon: ScrollText },
   { to: '/admin/clanky', label: 'Články', icon: FileText },
   { to: '/admin/waitlist', label: 'Předběžný přístup', icon: Mail },
   { to: '/admin/cookies', label: 'Cookies', icon: Cookie },

@@ -194,6 +194,14 @@ We use technical and organizational measures including HTTPS/TLS, password hashi
 
 Security reports: security@trtkat.cz.
 
+### Access by authorized operator personnel
+
+Only authorized operator personnel may access personal data to the extent necessary for their duties, including handling reports, security incidents, child-safety cases, GDPR requests, and legal obligations.
+
+Access is not unrestricted. Private chats, audio messages, and other sensitive content may only be viewed when handling a specific case and after recording a legitimate reason. Each such access and significant admin action is logged in an audit trail that regular administrators cannot delete.
+
+Each administrator has their own account; shared credentials are not used. We recommend two-factor authentication (2FA) for administrator accounts.
+
 ## 12. Children and minors
 
 Trtkat is only for persons over 18. Content sexualizing minors, child exploitation, grooming, CSAM/CSEA or attempts to contact minors are prohibited.

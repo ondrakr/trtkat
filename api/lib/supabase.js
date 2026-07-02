@@ -138,7 +138,55 @@ export async function restSelectOne(table, column, value, select = 'id') {
   return { error: null, data: rows[0] ?? null };
 }
 
-export async function authAdminListUsers() {
+export async function restSelect(table, options = {}) {
+  const config = getSupabaseConfig();
+  if (!config) return { error: { message: 'not_configured', code: 'not_configured' }, data: [] };
+
+  const { url, key } = config;
+  const params = new URLSearchParams();
+  params.set('select', options.select ?? '*');
+  if (options.order) params.set('order', options.order);
+  if (options.limit) params.set('limit', String(options.limit));
+  if (options.filters) {
+    for (const [keyName, value] of Object.entries(options.filters)) {
+      params.set(keyName, `eq.${value}`);
+    }
+  }
+  if (options.filterRaw) {
+    for (const [keyName, value] of Object.entries(options.filterRaw)) {
+      params.set(keyName, value);
+    }
+  }
+
+  const res = await fetch(`${url}/rest/v1/${table}?${params}`, {
+    method: 'GET',
+    headers: serviceHeaders(key),
+  });
+
+  const parsed = await parseResponse(res);
+  if (!parsed.ok) {
+    return { error: restError(parsed), data: [] };
+  }
+
+  return { error: null, data: Array.isArray(parsed.data) ? parsed.data : [] };
+}
+
+export async function verifyUserJwt(jwt) {
+  const config = getSupabaseConfig();
+  if (!config || !jwt) return { error: { message: 'not_configured' }, user: null };
+
+  const res = await fetch(`${config.url}/auth/v1/user`, {
+    headers: serviceHeaders(config.key, { Authorization: `Bearer ${jwt}` }),
+  });
+
+  const parsed = await parseResponse(res);
+  if (!parsed.ok) {
+    return { error: restError(parsed), user: null };
+  }
+
+  return { error: null, user: parsed.data ?? null };
+}
+
   const config = getSupabaseConfig();
   if (!config) return { error: { message: 'not_configured', code: 'not_configured' }, users: [] };
 
