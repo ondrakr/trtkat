@@ -1,4 +1,5 @@
 -- Web admin: moderace, audit, role, GDPR, odvolání, support
+-- REFERENČNÍ kopie — na produkci je nasazeno: 20260702013000_web_admin_moderation.sql
 -- Spusť na sdílené APP Supabase po migracích 003–005.
 -- NEMĚNÍ existující app tabulky (reports, profiles, messages, …).
 

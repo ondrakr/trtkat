@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { fetchReports, type ReportListItem } from './lib/api';
 import { StatusBadge } from './components/AdminUi';
-import { REPORT_TYPE_LABELS } from './lib/mappers';
+import { REPORT_TYPE_LABELS, isWorkflowOpen } from './lib/mappers';
 
 export function AdminReportsPage() {
   const [items, setItems] = useState<ReportListItem[]>([]);
@@ -19,9 +19,9 @@ export function AdminReportsPage() {
 
   const filtered = useMemo(() => {
     return items.filter((item) => {
-      const status = item.workflow.workflow_status;
+      const status = item.workflow.status;
       const priority = item.workflow.priority;
-      if (filter === 'open') return !['resolved', 'rejected'].includes(status);
+      if (filter === 'open') return isWorkflowOpen(status);
       if (filter === 'urgent') return priority === 'P0' || priority === 'P1';
       return true;
     });
@@ -83,7 +83,7 @@ export function AdminReportsPage() {
                     <StatusBadge value={row.workflow.priority} />
                   </td>
                   <td className="px-4 py-3">
-                    <StatusBadge value={row.workflow.workflow_status} />
+                    <StatusBadge value={row.workflow.status} />
                   </td>
                   <td className="px-4 py-3 text-slate-400 font-mono text-xs">
                     {row.reportedUserId?.slice(0, 8) ?? '—'}…

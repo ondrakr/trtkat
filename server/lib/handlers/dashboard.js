@@ -1,16 +1,11 @@
 import { requireAdmin } from '../adminAuth.js';
 import { restCount, restSelect } from '../supabase.js';
+import { isChildSafetyReport, isWorkflowOpen, mapWorkflow, pick } from '../reportSchema.js';
 
-const CHILD_SAFETY_TYPES = ['minor', 'underage', 'csam', 'csea', 'child_safety'];
-
-function isChildSafetyReport(report) {
-  const type = String(report.report_type ?? report.type ?? report.reason ?? '').toLowerCase();
-  return CHILD_SAFETY_TYPES.some((t) => type.includes(t));
-}
-
-function isOverdue(workflow, createdAt) {
+function isOverdue(workflow) {
   if (!workflow?.sla_due_at) return false;
-  if (['resolved', 'rejected'].includes(workflow.workflow_status)) return false;
+  const status = workflow.status ?? workflow.workflow_status;
+  if (!isWorkflowOpen(status)) return false;
   return new Date(workflow.sla_due_at) < new Date();
 }
 
@@ -25,14 +20,17 @@ export default async function handler(req, res) {
   const admin = await requireAdmin(req, res, 'reports');
   if (!admin) return;
 
-  const [reportsResult, workflowsResult, gdprResult, deletionResult, appealsResult, childResult] =
+  const [reportsResult, workflowsResult, gdprResult, deletionResult, appealsResult] =
     await Promise.all([
-      restSelect('reports', { select: 'id,status,created_at,report_type,type,reason', order: 'created_at.desc', limit: 500 }),
+      restSelect('reports', {
+        select: 'id,status,created_at,report_type,reason,reported_user_id,target_id',
+        order: 'created_at.desc',
+        limit: 500,
+      }),
       restSelect('web_admin_report_workflow', { select: '*' }),
       restCount('web_admin_gdpr_requests'),
       restSelect('account_deletion_requests', { select: 'id,status' }),
       restCount('web_admin_appeals'),
-      restSelect('reports', { select: 'id,report_type,type,reason', limit: 500 }),
     ]);
 
   const reports = reportsResult.data ?? [];
@@ -41,25 +39,22 @@ export default async function handler(req, res) {
   let openReports = 0;
   let urgentReports = 0;
   let overdueCases = 0;
+  let childSafety = 0;
 
   for (const report of reports) {
-    const wf = workflows.get(report.id);
-    const status = wf?.workflow_status ?? 'new';
-    if (!['resolved', 'rejected'].includes(status)) {
+    if (isChildSafetyReport(report)) childSafety += 1;
+
+    const wf = mapWorkflow(workflows.get(report.id));
+    if (isWorkflowOpen(wf.status)) {
       openReports += 1;
-      const priority = wf?.priority ?? 'P2';
-      if (priority === 'P0' || priority === 'P1') urgentReports += 1;
-      if (isOverdue(wf, report.created_at)) overdueCases += 1;
+      if (wf.priority === 'P0' || wf.priority === 'P1') urgentReports += 1;
+      if (isOverdue(workflows.get(report.id))) overdueCases += 1;
     }
   }
-
-  const childSafety = (childResult.data ?? []).filter(isChildSafetyReport).length;
 
   const pendingGdpr =
     (gdprResult.count ?? 0) +
     ((deletionResult.data ?? []).filter((r) => r.status === 'pending').length);
-
-  const pendingAppeals = appealsResult.count ?? 0;
 
   return res.status(200).json({
     openReports,
@@ -67,7 +62,7 @@ export default async function handler(req, res) {
     childSafety,
     gdprRequests: pendingGdpr,
     overdueCases,
-    pendingAppeals,
+    pendingAppeals: appealsResult.count ?? 0,
     reportsAvailable: !reportsResult.error,
     reportsError: reportsResult.error?.message ?? null,
   });

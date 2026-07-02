@@ -9,7 +9,7 @@ import {
 } from './lib/api';
 import { SensitiveAccessGate } from './components/SensitiveAccessGate';
 import { StatusBadge } from './components/AdminUi';
-import { REPORT_TYPE_LABELS } from './lib/mappers';
+import { MODERATION_ACTIONS, REPORT_TYPE_LABELS, WORKFLOW_STATUS_LABELS } from './lib/mappers';
 
 type Detail = {
   report: {
@@ -21,19 +21,22 @@ type Detail = {
     voiceMessageId: string | null;
     workflow: {
       priority: string;
-      workflow_status: string;
+      status: string;
       decision: string | null;
       decision_reason: string | null;
     };
+    matchId: string | null;
+    hasChatSnapshot: boolean;
   };
   notes: { id: string; note: string; created_at: string }[];
   previousReportsCount: number;
   publicProfile: { displayName: string | null; bio: string | null; status: string | null } | null;
   reportedPhoto: { id: string; url: string | null } | null;
-  matchContext: { hadBlock: boolean; note: string } | null;
+  matchContext: { matchId: string | null; includeChat: boolean; hasChatSnapshot: boolean; note: string } | null;
   sensitiveContent: {
     message: { id: string; locked: boolean } | null;
     voice: { id: string; locked: boolean } | null;
+    chatSnapshot: { locked: boolean; note: string } | null;
   };
 };
 
@@ -46,6 +49,7 @@ export function AdminReportDetailPage() {
   const [decisionReason, setDecisionReason] = useState('');
   const [unlockedMessage, setUnlockedMessage] = useState<unknown>(null);
   const [unlockedVoice, setUnlockedVoice] = useState<unknown>(null);
+  const [unlockedChat, setUnlockedChat] = useState<unknown>(null);
   const [saving, setSaving] = useState(false);
 
   function load() {
@@ -125,7 +129,7 @@ export function AdminReportDetailPage() {
             {REPORT_TYPE_LABELS[report.type as keyof typeof REPORT_TYPE_LABELS] ?? report.type}
           </h1>
           <StatusBadge value={report.workflow.priority} />
-          <StatusBadge value={report.workflow.workflow_status} />
+          <StatusBadge value={report.workflow.status} />
         </div>
         <p className="text-slate-400 text-sm font-mono">ID: {report.id}</p>
         {report.description && <p className="mt-3 text-slate-300">{report.description}</p>}
@@ -172,9 +176,43 @@ export function AdminReportDetailPage() {
           <section className="glass-subtle rounded-2xl p-5">
             <h2 className="text-sm font-black uppercase text-slate-400 mb-3">Kontext vztahu (pouze tento případ)</h2>
             <p className="text-sm text-slate-300">
-              Blokace mezi stranami: {detail.matchContext.hadBlock ? 'Ano' : 'Ne'}
+              Match ID: {detail.matchContext.matchId ? `${detail.matchContext.matchId.slice(0, 8)}…` : '—'}
+            </p>
+            <p className="text-sm text-slate-300">
+              Chat snapshot v reportu: {detail.matchContext.hasChatSnapshot ? 'Ano' : 'Ne'}
+            </p>
+            <p className="text-sm text-slate-300">
+              Include chat (app): {detail.matchContext.includeChat ? 'Ano' : 'Ne'}
             </p>
             <p className="text-xs text-slate-500 mt-2">{detail.matchContext.note}</p>
+          </section>
+        )}
+
+        {detail.sensitiveContent.chatSnapshot && !unlockedChat && (
+          <SensitiveAccessGate
+            title="Kontext chatu (snapshot)"
+            description="Zobrazí chat_snapshot z reportu nebo okolní zprávy přes match_id."
+            resourceType="chat_snapshot"
+            resourceId={report.id}
+            reportId={report.id}
+            onUnlock={async (accessReason) => {
+              const res = await requestSensitiveAccess({
+                id: report.id,
+                accessReason,
+                resourceType: 'chat_snapshot',
+                resourceId: report.id,
+              });
+              setUnlockedChat(res.content);
+            }}
+          />
+        )}
+
+        {unlockedChat && (
+          <section className="glass-subtle rounded-2xl p-5">
+            <h2 className="text-sm font-black uppercase text-slate-400 mb-3">Kontext chatu</h2>
+            <pre className="text-sm text-slate-300 whitespace-pre-wrap overflow-auto max-h-96">
+              {JSON.stringify(unlockedChat, null, 2)}
+            </pre>
           </section>
         )}
 
@@ -249,10 +287,10 @@ export function AdminReportDetailPage() {
           {[
             { label: 'P0', key: 'priority', value: 'P0' },
             { label: 'P1', key: 'priority', value: 'P1' },
-            { label: 'V řešení', key: 'workflow_status', value: 'in_progress' },
-            { label: 'Vyřešeno', key: 'workflow_status', value: 'resolved' },
-            { label: 'Zamítnuto', key: 'workflow_status', value: 'rejected' },
-            { label: 'Eskalovat', key: 'workflow_status', value: 'escalated' },
+            { label: WORKFLOW_STATUS_LABELS.reviewing, key: 'status', value: 'reviewing' },
+            { label: WORKFLOW_STATUS_LABELS.waiting, key: 'status', value: 'waiting' },
+            { label: WORKFLOW_STATUS_LABELS.resolved, key: 'status', value: 'resolved' },
+            { label: WORKFLOW_STATUS_LABELS.rejected, key: 'status', value: 'rejected' },
           ].map((btn) => (
             <button
               key={btn.label}
@@ -266,14 +304,7 @@ export function AdminReportDetailPage() {
           ))}
         </div>
         <div className="flex flex-wrap gap-2">
-          {[
-            { action: 'hide_profile', label: 'Skrýt profil' },
-            { action: 'restrict_account', label: 'Omezit účet' },
-            { action: 'ban_account', label: 'Zablokovat účet' },
-            { action: 'remove_photo', label: 'Odstranit fotku' },
-            { action: 'remove_message', label: 'Odstranit zprávu' },
-            { action: 'escalate_child_safety', label: '→ Child safety' },
-          ].map((btn) => (
+          {MODERATION_ACTIONS.map((btn) => (
             <button
               key={btn.action}
               type="button"
@@ -286,7 +317,7 @@ export function AdminReportDetailPage() {
           ))}
         </div>
         <p className="text-xs text-slate-500 mt-3">
-          Akce se zapisují do audit logu. Provedení v app DB vyžaduje schválení mobilního vývojáře.
+          Akce se zapisují do web_admin_moderation_actions a audit logu. App tabulky se nemění přímo z web adminu.
         </p>
       </section>
 

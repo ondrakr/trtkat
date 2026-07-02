@@ -1,144 +1,84 @@
-# Požadavky na app tabulky pro web admin (ke schválení mobilním vývojářem)
+# Web admin — nasazené Supabase schéma
 
-Web admin **nemění** existující app tabulky. Čte je přes serverové API (`service_role`).
-Moderátorské akce se zapisují do nových tabulek `web_admin_*` a audit logu.
+**Project ref:** `zfowzsmpsmsfwtfzxyjr`  
+**Migrace na remote:** `20260702013000_web_admin_moderation.sql`
 
-Pokud sloupce neodpovídají, admin UI zobrazí prázdná pole nebo chybu — je potřeba sladit schéma.
-
----
-
-## Tabulka `reports` (povinná pro moderaci)
-
-Admin očekává minimálně tyto sloupce (názvy mohou být aliasy — viz mapování v `api/admin/reports.js`):
-
-| Účel | Očekávané sloupce (první nalezený se použije) |
-|------|-----------------------------------------------|
-| ID | `id` (uuid) |
-| Typ reportu | `report_type`, `type`, `category`, `reason` |
-| Stav v app | `status`, `report_status` |
-| Kdo nahlásil | `reporter_id`, `reporter_user_id`, `reported_by` |
-| Nahlášený uživatel | `reported_user_id`, `reported_id`, `target_user_id`, `user_id` |
-| Nahlášená zpráva | `message_id`, `reported_message_id` |
-| Nahlášená fotka | `photo_id`, `profile_photo_id`, `reported_photo_id` |
-| Audio zpráva | `voice_message_id`, `audio_message_id` |
-| Popis | `description`, `details`, `note` |
-| Čas | `created_at`, `inserted_at` |
-
-### Doporučené hodnoty `report_type` / `type`
-
-`profile`, `photo`, `message`, `audio`, `spam`, `fraud`, `harassment`, `minor`, `child_safety`, `csam`, `csea`
-
-### Co mobilní vývojář může přidat (VYŽADUJE SCHVÁLENÍ — neměnit bez domluvy)
-
-- `priority` na reportu (jinak se řídí `web_admin_report_workflow.priority`)
-- `assigned_to` (jinak `web_admin_report_workflow.assigned_to`)
-- indexy pro frontu reportů
+Web admin čte app data přes **serverové API** (`SUPABASE_SERVICE_ROLE_KEY`), ne přes anon klíč.
 
 ---
 
-## Tabulka `profiles` (veřejný profil)
+## Tabulka `reports` (app — rozšířená, neměnit z webu)
 
-Admin zobrazuje **jen veřejný rozsah** (jak vidí ostatní uživatelé):
+### Nové sloupce (trigger doplňuje z legacy)
+| Sloupec | Zdroj |
+|---------|--------|
+| `reported_user_id` | z `target_id` |
+| `report_type` | z `reason` |
+| `description` | z `details` |
+| `message_id` | app |
+| `photo_id` | app |
+| `voice_message_id` | app |
 
-| Účel | Sloupce |
-|------|---------|
-| ID | `id` |
-| Jméno | `display_name`, `name`, `username` |
-| Bio | `bio`, `about`, `description` |
-| Stav účtu | `status`, `account_status` |
+### Původní app sloupce (mobilní app dál zapisuje)
+`id`, `reporter_id`, `target_id`, `match_id`, `reason`, `details`, `include_chat`, `chat_snapshot`, `status`, `created_at`
 
-**Nezobrazovat defaultně:** citlivé preference, přesná GPS, interní flagy.
-
-### Akce moderace (vyžaduje app implementaci)
-
-Web admin zatím pouze **loguje** akce do `web_admin_moderation_actions`:
-
-- `hide_profile`, `restrict_account`, `ban_account`, `hide_from_discovery`
-
-Mobilní app / backend musí tyto akce **aplikovat** na `profiles` nebo ekvivalent.
-
----
-
-## Tabulka `profile_photos`
-
-| Účel | Sloupce |
-|------|---------|
-| ID | `id` |
-| URL | `url`, `storage_path`, `image_url` |
-| Vlastník | `user_id` / `profile_id` |
+### Admin používá
+- Profil: `reported_user_id`
+- Zpráva: `message_id`
+- Fotka: `photo_id`
+- Audio: `voice_message_id`
+- Kontext chatu: `chat_snapshot`, případně `match_id` / `message_id` (po zalogování citlivého přístupu)
 
 ---
 
-## Tabulka `messages` (pouze nahlášené)
+## `web_admin_report_workflow`
 
-Admin čte zprávu **jen** pokud `reports.message_id` odkazuje na `messages.id`.
-Okolní kontext: stejný `conversation_id` nebo `match_id` (max ~20 zpráv).
+| Sloupec | Hodnoty |
+|---------|---------|
+| `report_id` | uuid (PK) |
+| `status` | `open`, `reviewing`, `waiting`, `resolved`, `rejected` |
+| `priority` | `P0`–`P3` |
+| `assigned_to` | uuid |
+| `decision` | text |
+| `resolved_at` | timestamptz |
+| `updated_at` | timestamptz |
 
-| Účel | Sloupce |
-|------|---------|
-| ID | `id` |
-| Text | `content`, `body`, `text` |
-| Konverzace | `conversation_id` nebo `match_id` |
-| Odesílatel | `sender_id` |
-
----
-
-## Tabulka `voice_messages` (pouze nahlášené)
-
-| Účel | Sloupce |
-|------|---------|
-| ID | `id` |
-| URL | `url`, `storage_path`, `audio_url` |
+Starší sloupce (`workflow_status`, `decision_reason`, …) mohou na remote existovat — kód je toleruje.
 
 ---
 
-## Tabulka `blocks` (kontext v reportu)
+## Moderátorské akce (`web_admin_moderation_actions`)
 
-| Účel | Sloupce |
-|------|---------|
-| Kdo blokuje | `blocker_id` |
-| Koho | `blocked_id` |
+Povolené `action_type`:
+- `hide_profile`
+- `restrict_account`
+- `ban_account`
+- `hide_from_discovery`
+- `restore_profile`
+- `unrestrict_account`
+- `unban_account`
 
-**Nezobrazovat:** kompletní historii blokací mimo konkrétní report.
-
----
-
-## Co admin NIKDY nečte běžně
-
-- `swipes` — kompletní historie liků/passů
-- `matches` — kompletní historie matchů/unmatchů
-- `messages` / `voice_messages` bez vazby na report
-- Přesná GPS (žádná tabulka by ji adminu neměla servírovat)
-- Hesla, tokeny, session
+Web admin **nezapisuje přímo** do app tabulek — pouze do `web_admin_*` + audit.
 
 ---
 
-## Nové web tabulky (migrace 006)
+## Role (`web_admin_role_assignments`)
 
-Spusť `supabase/migrations/006_web_admin_moderation.sql`:
+`support` | `moderator` | `security` | `super_admin`
 
-- `web_admin_role_assignments` — role: support, moderator, security, super_admin
-- `web_admin_audit_events` — audit (append-only)
-- `web_admin_report_workflow` — priorita, stav, rozhodnutí
-- `web_admin_case_notes` — interní poznámky
-- `web_admin_gdpr_requests` — export, oprava, souhlas
-- `web_admin_appeals` — odvolání
-- `web_admin_support_tickets` — support fronta
-- `web_admin_moderation_actions` — záznam akcí
-- `web_admin_sensitive_access_log` — důvod otevření citlivého obsahu
-
-Výchozí role: admin v `web_admin_users` bez řádku v `role_assignments` = `super_admin`.
+Bez řádku v tabulce = `super_admin` (výchozí).
 
 ---
 
-## Env na Vercelu
+## Co admin nečte běžně
 
-- `SUPABASE_SERVICE_ROLE_KEY` — legacy JWT `eyJ…` (povinné pro `/api/admin/*`)
-- `VITE_SUPABASE_URL` — bez `/rest/v1` na konci
+- `swipes`, kompletní `matches` historie
+- kompletní `messages` / `voice_messages` bez reportu
+- přesná GPS
 
 ---
 
-## 2FA
+## Lokální migrace v repu
 
-Supabase Auth MFA pro admin účty zapni v Dashboard → Authentication → MFA.
-Web admin zatím MFA nevyžaduje v kódu — doporučeno zapnout ručně pro oba účty.
+`supabase/migrations/006_web_admin_moderation.sql` je referenční kopie.  
+Na produkci platí `20260702013000_web_admin_moderation.sql`.

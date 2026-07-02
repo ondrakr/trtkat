@@ -26,11 +26,11 @@ export type ReportListItem = {
   createdAt: string | null;
   workflow: {
     priority: string;
-    workflow_status: string;
+    status: string;
     assigned_to: string | null;
     decision: string | null;
     decision_reason: string | null;
-    sla_due_at: string | null;
+    resolved_at: string | null;
   };
 };
 

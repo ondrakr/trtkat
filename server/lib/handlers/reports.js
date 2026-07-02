@@ -1,39 +1,12 @@
 import { requireAdmin } from '../adminAuth.js';
 import { logAuditEvent, logModerationAction, logSensitiveAccess } from '../adminAudit.js';
 import { restInsert, restSelect, restSelectOne, restUpdate } from '../supabase.js';
-
-const PRIORITIES = ['P0', 'P1', 'P2', 'P3'];
-const WORKFLOW_STATUSES = ['new', 'in_progress', 'resolved', 'rejected', 'escalated'];
-
-function pick(row, ...keys) {
-  for (const key of keys) {
-    if (row?.[key] != null && row[key] !== '') return row[key];
-  }
-  return null;
-}
-
-function mapReport(row, workflow) {
-  return {
-    id: row.id,
-    type: pick(row, 'report_type', 'type', 'category', 'reason') ?? 'unknown',
-    appStatus: pick(row, 'status', 'report_status') ?? 'pending',
-    reporterId: pick(row, 'reporter_id', 'reporter_user_id', 'reported_by'),
-    reportedUserId: pick(row, 'reported_user_id', 'reported_id', 'target_user_id', 'user_id'),
-    messageId: pick(row, 'message_id', 'reported_message_id'),
-    photoId: pick(row, 'photo_id', 'profile_photo_id', 'reported_photo_id'),
-    voiceMessageId: pick(row, 'voice_message_id', 'audio_message_id'),
-    description: pick(row, 'description', 'details', 'note'),
-    createdAt: pick(row, 'created_at', 'inserted_at'),
-    workflow: workflow ?? {
-      priority: 'P2',
-      workflow_status: 'new',
-      assigned_to: null,
-      decision: null,
-      decision_reason: null,
-      sla_due_at: null,
-    },
-  };
-}
+import {
+  MODERATION_ACTIONS,
+  buildWorkflowDbUpdate,
+  mapReportRow,
+  pick,
+} from '../reportSchema.js';
 
 async function getWorkflowMap() {
   const { data } = await restSelect('web_admin_report_workflow', { select: '*' });
@@ -72,12 +45,11 @@ export default async function handler(req, res) {
       return res.status(502).json({
         error: 'reports_unavailable',
         message: error.message,
-        hint: 'Ověř, že tabulka reports existuje a service_role klíč je správný.',
       });
     }
 
     const workflows = await getWorkflowMap();
-    const items = (reports ?? []).map((r) => mapReport(r, workflows.get(r.id)));
+    const items = (reports ?? []).map((r) => mapReportRow(r, workflows.get(r.id)));
 
     await logAuditEvent({
       adminUserId: admin.userId,
@@ -98,43 +70,32 @@ export default async function handler(req, res) {
     }
 
     const { data: workflow } = await restSelectOne('web_admin_report_workflow', 'report_id', reportId, '*');
-    const mapped = mapReport(report, workflow);
+    const mapped = mapReportRow(report, workflow);
 
-    const [notesResult, reporterReports, reportedProfile, photo, message, voice] = await Promise.all([
+    const reportedUserId = mapped.reportedUserId;
+
+    const [notesResult, previousReports, reportedProfile, photo] = await Promise.all([
       restSelect('web_admin_case_notes', {
         select: '*',
         filterRaw: { case_type: 'eq.report', case_id: `eq.${reportId}` },
         order: 'created_at.desc',
       }),
-      mapped.reportedUserId
+      reportedUserId
         ? restSelect('reports', {
             select: 'id',
-            filterRaw: { reported_user_id: `eq.${mapped.reportedUserId}` },
+            filterRaw: { or: `(reported_user_id.eq.${reportedUserId},target_id.eq.${reportedUserId})` },
           })
         : { data: [] },
-      mapped.reportedUserId
-        ? restSelectOne('profiles', 'id', mapped.reportedUserId, '*')
-        : { data: null },
+      reportedUserId ? restSelectOne('profiles', 'id', reportedUserId, '*') : { data: null },
       mapped.photoId ? restSelectOne('profile_photos', 'id', mapped.photoId, '*') : { data: null },
-      null,
-      null,
     ]);
 
-    let matchContext = null;
-    if (mapped.reporterId && mapped.reportedUserId) {
-      const { data: blocks } = await restSelect('blocks', { select: '*', limit: 100 });
-
-      const relevantBlock = (blocks ?? []).find(
-        (b) =>
-          (b.blocker_id === mapped.reporterId && b.blocked_id === mapped.reportedUserId) ||
-          (b.blocker_id === mapped.reportedUserId && b.blocked_id === mapped.reporterId),
-      );
-
-      matchContext = {
-        hadBlock: Boolean(relevantBlock),
-        note: 'Historie liků/matchů se nezobrazuje — pouze blokace v kontextu reportu.',
-      };
-    }
+    const matchContext = {
+      matchId: mapped.matchId,
+      includeChat: mapped.includeChat,
+      hasChatSnapshot: mapped.hasChatSnapshot,
+      note: 'Historie liků/passů/matchů se nezobrazuje — pouze kontext tohoto reportu.',
+    };
 
     const publicProfile = reportedProfile.data
       ? {
@@ -157,7 +118,7 @@ export default async function handler(req, res) {
     return res.status(200).json({
       report: mapped,
       notes: notesResult.data ?? [],
-      previousReportsCount: (reporterReports.data ?? []).length,
+      previousReportsCount: (previousReports.data ?? []).length,
       publicProfile,
       reportedPhoto: photo.data
         ? { id: photo.data.id, url: pick(photo.data, 'url', 'storage_path', 'image_url') }
@@ -166,7 +127,7 @@ export default async function handler(req, res) {
       sensitiveContent: {
         message: mapped.messageId ? { id: mapped.messageId, locked: true } : null,
         voice: mapped.voiceMessageId ? { id: mapped.voiceMessageId, locked: true } : null,
-        chatContext: mapped.messageId ? { locked: true, note: 'Vyžaduje důvod otevření.' } : null,
+        chatSnapshot: mapped.hasChatSnapshot ? { locked: true, note: 'Vyžaduje důvod otevření.' } : null,
       },
     });
   }
@@ -188,7 +149,25 @@ export default async function handler(req, res) {
     if (error) return res.status(502).json({ error: 'log_failed', message: error.message });
 
     let content = null;
-    if (resourceType === 'message') {
+    const caseReportId = caseId ?? reportId;
+
+    if (resourceType === 'chat_snapshot' && caseReportId) {
+      const { data } = await restSelectOne('reports', 'id', caseReportId, 'chat_snapshot,message_id,match_id');
+      content = data?.chat_snapshot ?? null;
+      if (!content && data?.message_id) {
+        const { data: msg } = await restSelectOne('messages', 'id', data.message_id, '*');
+        content = msg ? { message: msg } : null;
+      }
+      if (!content && data?.match_id) {
+        const { data: context } = await restSelect('messages', {
+          select: 'id,content,created_at,sender_id',
+          filterRaw: { match_id: `eq.${data.match_id}` },
+          order: 'created_at.asc',
+          limit: 20,
+        });
+        content = { match_id: data.match_id, messages: context ?? [] };
+      }
+    } else if (resourceType === 'message') {
       const { data } = await restSelectOne('messages', 'id', resourceId, '*');
       content = data;
     } else if (resourceType === 'voice_message') {
@@ -200,19 +179,6 @@ export default async function handler(req, res) {
             duration: pick(data, 'duration', 'duration_seconds'),
           }
         : null;
-    } else if (resourceType === 'chat_context' && req.body.messageId) {
-      const { data: center } = await restSelectOne('messages', 'id', req.body.messageId, '*');
-      if (center?.conversation_id ?? center?.match_id) {
-        const filterKey = center.conversation_id ? 'conversation_id' : 'match_id';
-        const filterVal = center.conversation_id ?? center.match_id;
-        const { data: context } = await restSelect('messages', {
-          select: 'id,content,created_at,sender_id',
-          filterRaw: { [filterKey]: `eq.${filterVal}` },
-          order: 'created_at.asc',
-          limit: 20,
-        });
-        content = { center, context: context ?? [] };
-      }
     }
 
     return res.status(200).json({ ok: true, content });
@@ -246,6 +212,9 @@ export default async function handler(req, res) {
   if (req.method === 'POST' && req.body?.action === 'moderation') {
     const { actionType, reason, targetUserId, targetResourceType, targetResourceId } = req.body;
     if (!actionType || !reason?.trim()) return res.status(400).json({ error: 'invalid_request' });
+    if (!MODERATION_ACTIONS.includes(actionType)) {
+      return res.status(400).json({ error: 'invalid_action', allowed: MODERATION_ACTIONS });
+    }
 
     const { error } = await logModerationAction({
       adminUserId: admin.userId,
@@ -261,28 +230,19 @@ export default async function handler(req, res) {
 
     return res.status(200).json({
       ok: true,
-      hint: 'Akce zaznamenána. Provedení v app DB vyžaduje schválení mobilního vývojáře.',
+      hint: 'Akce zapsána do web_admin_moderation_actions a audit logu.',
     });
   }
 
   if (req.method === 'PATCH' && reportId) {
-    const { priority, workflow_status, assigned_to, decision, decision_reason, escalated_to } = req.body ?? {};
-    const updates = {};
-
-    if (priority && PRIORITIES.includes(priority)) updates.priority = priority;
-    if (workflow_status && WORKFLOW_STATUSES.includes(workflow_status)) updates.workflow_status = workflow_status;
-    if (assigned_to !== undefined) updates.assigned_to = assigned_to;
-    if (decision !== undefined) updates.decision = decision;
-    if (decision_reason !== undefined) updates.decision_reason = decision_reason;
-    if (escalated_to !== undefined) updates.escalated_to = escalated_to;
-
+    const updates = buildWorkflowDbUpdate(req.body ?? {});
     if (Object.keys(updates).length === 0) return res.status(400).json({ error: 'no_updates' });
 
     const { data: existing } = await restSelectOne('web_admin_report_workflow', 'report_id', reportId, 'report_id');
 
     const { error } = existing
       ? await restUpdate('web_admin_report_workflow', updates, 'report_id', reportId)
-      : await restInsert('web_admin_report_workflow', { report_id: reportId, ...updates });
+      : await restInsert('web_admin_report_workflow', { report_id: reportId, status: 'open', ...updates });
 
     if (error) return res.status(502).json({ error: 'update_failed', message: error.message });
 

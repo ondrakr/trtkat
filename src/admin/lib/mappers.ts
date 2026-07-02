@@ -1,49 +1,48 @@
-/** Flexibilní mapování sloupců app tabulek — ověřit proti skutečné DB. */
+/** Mapování reports + workflow — synchronizováno s nasazeným Supabase schématem. */
 
-export function pick(row, ...keys) {
+export function pick(row: Record<string, unknown> | null | undefined, ...keys: string[]) {
   if (!row) return null;
   for (const key of keys) {
-    if (row[key] != null && row[key] !== '') return row[key];
+    const value = row[key];
+    if (value != null && value !== '') return value as string;
   }
   return null;
 }
 
-export function mapReport(row) {
-  return {
-    id: row.id,
-    type: pick(row, 'report_type', 'type', 'category', 'reason') ?? 'unknown',
-    status: pick(row, 'status', 'report_status') ?? 'pending',
-    reporterId: pick(row, 'reporter_id', 'reporter_user_id', 'reported_by'),
-    reportedUserId: pick(row, 'reported_user_id', 'reported_id', 'target_user_id', 'user_id'),
-    messageId: pick(row, 'message_id', 'reported_message_id'),
-    photoId: pick(row, 'photo_id', 'profile_photo_id', 'reported_photo_id'),
-    voiceMessageId: pick(row, 'voice_message_id', 'audio_message_id'),
-    description: pick(row, 'description', 'details', 'note'),
-    createdAt: pick(row, 'created_at', 'inserted_at'),
-  };
+export const WORKFLOW_STATUSES = ['open', 'reviewing', 'waiting', 'resolved', 'rejected'] as const;
+
+export const CLOSED_WORKFLOW_STATUSES = ['resolved', 'rejected'];
+
+export const MODERATION_ACTIONS = [
+  { action: 'hide_profile', label: 'Skrýt profil' },
+  { action: 'hide_from_discovery', label: 'Skrýt z discovery' },
+  { action: 'restrict_account', label: 'Omezit účet' },
+  { action: 'ban_account', label: 'Zablokovat účet' },
+  { action: 'restore_profile', label: 'Obnovit profil' },
+  { action: 'unrestrict_account', label: 'Zrušit omezení' },
+  { action: 'unban_account', label: 'Zrušit ban' },
+] as const;
+
+export function normalizeWorkflowStatus(raw: string | null | undefined) {
+  const value = raw ?? 'open';
+  if (value === 'new') return 'open';
+  if (value === 'in_progress') return 'reviewing';
+  if (value === 'escalated') return 'waiting';
+  return value;
 }
 
-export function mapProfile(row) {
-  return {
-    id: row.id,
-    displayName: pick(row, 'display_name', 'name', 'username'),
-    bio: pick(row, 'bio', 'about', 'description'),
-    age: pick(row, 'age'),
-    gender: pick(row, 'gender'),
-    status: pick(row, 'status', 'account_status'),
-    isHidden: pick(row, 'is_hidden', 'hidden', 'is_discoverable') === false,
-    createdAt: pick(row, 'created_at'),
-  };
+export function isWorkflowOpen(status: string | null | undefined) {
+  return !CLOSED_WORKFLOW_STATUSES.includes(normalizeWorkflowStatus(status));
 }
 
 export const CHILD_SAFETY_TYPES = ['minor', 'underage', 'csam', 'csea', 'child_safety', 'nezletil'];
 
-export function isChildSafetyType(type) {
-  const value = String(type ?? '').toLowerCase();
+export function isChildSafetyType(type: string) {
+  const value = type.toLowerCase();
   return CHILD_SAFETY_TYPES.some((t) => value.includes(t));
 }
 
-export const REPORT_TYPE_LABELS = {
+export const REPORT_TYPE_LABELS: Record<string, string> = {
   profile: 'Profil',
   photo: 'Fotka',
   message: 'Zpráva',
@@ -66,3 +65,11 @@ export const ACCESS_REASONS = [
   { value: 'technical_diagnosis', label: 'Technická diagnostika' },
   { value: 'appeal_review', label: 'Přezkum odvolání' },
 ];
+
+export const WORKFLOW_STATUS_LABELS: Record<string, string> = {
+  open: 'Otevřený',
+  reviewing: 'V řešení',
+  waiting: 'Čeká',
+  resolved: 'Vyřešený',
+  rejected: 'Zamítnutý',
+};
