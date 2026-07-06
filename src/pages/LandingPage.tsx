@@ -200,14 +200,14 @@ export function LandingPage() {
                 </div>
                 <div className="absolute -bottom-6 sm:-bottom-8 inset-x-0 flex justify-center px-4 lg:inset-auto lg:bottom-8 lg:right-8 lg:block lg:px-0">
                   <div
-                    className="z-10 w-full max-w-sm space-y-4 rounded-3xl p-5 sm:w-auto sm:p-6 md:rounded-[2.5rem] md:p-8"
+                    className="z-10 w-full max-w-xs rounded-3xl p-5 sm:w-auto sm:p-6 md:rounded-[2.5rem] md:p-8"
                     style={frostedQuoteStyle}
                   >
-                    {t.trust.quotes.map((item, idx) => (
-                      <div key={item.author} className={idx > 0 ? 'border-t border-white/10 pt-4' : undefined}>
+                    {t.trust.quotes.map((item) => (
+                      <div key={item.author}>
                         <p className="text-base sm:text-lg font-black text-white italic">&ldquo;{item.quote}&rdquo;</p>
-                        <div className="mt-3 flex items-center gap-3">
-                          <div className={`h-10 w-10 rounded-full ${idx === 0 ? 'bg-trtkat-pink' : 'bg-trtkat-blue'}`} />
+                        <div className="mt-4 flex items-center gap-3">
+                          <div className="h-10 w-10 rounded-full bg-trtkat-pink" />
                           <span className="font-bold text-slate-400">{item.author}</span>
                         </div>
                       </div>
