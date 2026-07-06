@@ -117,8 +117,7 @@ export type SiteCopy = {
   };
   trust: {
     title: string;
-    quote: string;
-    author: string;
+    quotes: Array<{ quote: string; author: string }>;
     imageAlt: string;
     items: Array<{ title: string; bodyMobile: string; bodyDesktop: string }>;
   };

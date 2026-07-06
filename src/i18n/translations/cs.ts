@@ -2,9 +2,9 @@ import type { SiteCopy } from './types';
 
 export const cs: SiteCopy = {
   meta: {
-    title: 'Trtkat — z online do reálného života | Rande, party, akce 18+',
+    title: 'Trtkat — rande, party a akce ve městě | Aplikace 18+',
     description:
-      'Trtkat dostává mladé lidi z obrazovky ven — rande, party, akce, romantická místa, hry na večer, Bolt/Uber a rezervace hotelu. Bezpečně a zdarma pro dospělé 18+.',
+      'Trtkat ti pomůže domluvit rande, najít party a objevit hezká místa ve městě — a pak tě dovede až na místo. Mapy akcí, hry na večer a bezpečná osvěta. Zdarma pro dospělé 18+.',
   },
   nav: {
     about: 'Koncept',
@@ -24,76 +24,76 @@ export const cs: SiteCopy = {
     badge: 'Zdarma',
     titleLine1: 'Žij naplno.',
     titleLine2: 'Nejen online.',
-    body: 'Trtkat není jen swipe a chat. Pomáhá ti randit, chodit na party, objevovat akce a hezká místa — a pak tě dovede Boltem, Uberem nebo navigací až na místo. Rande, zábava a život mimo obrazovku.',
+    body: 'Trtkat ti pomůže domluvit rande, najít party a objevit hezká místa ve městě — a pak tě dovede až na místo. Míň psaní, víc zážitků.',
     imageAlt: 'Trtkat aplikace — mapa akcí, rande a navigace na telefonu',
   },
   how: {
-    title: 'Nejsme další swipe appka.',
-    subtitle: 'Jsme most z online do reality.',
+    title: 'Nejsme seznamka.',
+    subtitle: 'Jsme plán na dnešní večer.',
     steps: [
       {
         title: 'Spoj se a domluv se',
-        bodyMobile: 'Match, chat nebo hra — ale cílem je setkání venku.',
+        bodyMobile: 'Poznáte se přes match, chat nebo hru — ale nezůstanete u toho týdny.',
         bodyDesktop:
-          'Seznámíš se v aplikaci, ale cílem není týdny psát. Domluvíte rande, akci nebo party a posunete se k reálnému setkání — rychle a bez zbytečného chatu.',
+          'Poznáte se přes match, chat nebo hru — ale nezůstanete u toho týdny. Rychle si dohodnete rande, akci nebo párty.',
       },
       {
         title: 'Vyber místo nebo akci',
-        bodyMobile: 'Mapa party, podniků, romantických míst a otevřených obchodů.',
+        bodyMobile: 'Mapa ukáže párty, podniky i romantická zákoutí kolem tebe.',
         bodyDesktop:
-          'Interaktivní mapa ukáže party, akce, otevřené podniky i romantická místa v okolí. Nemusíš hodiny googlit — vyber podle nálady a máš plán.',
+          'Interaktivní mapa ukáže, co se kolem tebe děje: párty, otevřené podniky i tichá romantická zákoutí. Žádné googlení — vybereš a máš plán.',
       },
       {
         title: 'Vyraž ven',
-        bodyMobile: 'Navigace, Bolt, Uber nebo hotel — vše z jedné appky.',
+        bodyMobile: 'Navigace, odvoz nebo hotel — z jednoho místa až na rande.',
         bodyDesktop:
-          'Jedním klepnutím spustíš navigaci, objednáš Bolt nebo Uber, případně zarezervuješ hotel. Aplikace tě dovede z obrazovky až na místo setkání.',
+          'Spustíš navigaci, zařídíš odvoz nebo rezervuješ hotel. Z jednoho místa se dostaneš od zprávy až na rande.',
       },
     ],
   },
   features: {
-    title: 'Vše pro život offline',
-    subtitle: 'Mapy · akce · doprava · rande',
+    title: 'Všechno na jeden večer, v jedné aplikaci.',
+    subtitle: 'Mapy · hry · odvoz · hotel',
     introMobile:
-      'Party, romantická místa, hry na večer, Bolt/Uber, navigace a hotely — všechno v jedné aplikaci.',
+      'Mapy párty a akcí, romantická místa, hry na večer, odvoz i hotel — bez přepínání mezi aplikacemi.',
     introDesktop:
-      'Trtkat spojuje seznamování s reálným životem: mapy akcí a otevřených podniků, romantická místa, hry na odlehčení večera, objednání dopravy a rezervaci hotelu.',
+      'Mapy párty a akcí, ověřená romantická místa, hry na rozproudění večera, odvoz i rezervace hotelu. Naplánuješ celý večer, aniž bys přepínal mezi pěti aplikacemi.',
     items: [
       {
         title: 'Mapa akcí a party',
-        bodyMobile: 'Co se děje kolem tebe — party, koncerty, akce.',
+        bodyMobile: 'Party, koncerty a akce ve tvém okolí na jedné mapě.',
         bodyDesktop:
-          'Živá mapa party, koncertů a akcí v okolí. Místo scrollování feedu vyber, kam dnes vyrazit — sám nebo s někým z aplikace.',
+          'Party, koncerty a akce ve tvém okolí na jedné živé mapě. Vyber, kam dnes vyrazit — sám, nebo s někým z aplikace.',
       },
       {
         title: 'Podniky a romantická místa',
-        bodyMobile: 'Otevřené kavárny, bary, výhledy a hezká rande místa.',
+        bodyMobile: 'Kavárny, bary, vyhlídky a parky otevřené právě teď.',
         bodyDesktop:
-          'Mapa otevřených podniků a ověřených romantických míst — kavárny, bary, výhledy, parky. Vyber podle nálady a rovnou naplánuj setkání.',
+          'Ověřené kavárny, bary, vyhlídky a parky otevřené právě teď. Vyber podle nálady a rovnou naplánuj, kde se sejdete.',
       },
       {
         title: 'Hry na seznamování',
-        bodyMobile: 'Truth or Dare a další hry, co rozproudí večer.',
+        bodyMobile: 'Truth or Dare a ledoborce přímo v chatu.',
         bodyDesktop:
-          'Seznamovací a party hry přímo v chatu — Truth or Dare, odvážné otázky, ledoborec na večer. Méně trapných otevíráků, víc zábavy před i na rande.',
+          'Truth or Dare, odvážné otázky a ledoborce přímo v chatu. Rozproudí večer dřív, než se vůbec potkáte — konec trapných otevíráků.',
       },
       {
-        title: 'Bolt, Uber a navigace',
-        bodyMobile: 'Objednej dopravu nebo spusť mapy jedním klepnutím.',
+        title: 'Doprava a navigace',
+        bodyMobile: 'Navigace nebo odvoz jedním klepnutím.',
         bodyDesktop:
-          'Zvol místo setkání a jedním klepnutím objednej Bolt nebo Uber, nebo spusť navigaci v mapách. Adresu nemusíš kopírovat — aplikace tě tam dovede.',
+          'Zvolíš místo setkání a jedním klepnutím spustíš navigaci nebo objednáš odvoz. Žádné kopírování adres — aplikace tě navede.',
       },
       {
         title: 'Rezervace hotelu',
-        bodyMobile: 'Hotel na půl cesty nebo na celý večer — v aplikaci.',
+        bodyMobile: 'Hotel na půl cesty nebo na pokračování večera.',
         bodyDesktop:
-          'Jste z různých měst nebo chcete pokračovat večer jinde? Trtkat pomůže najít hotel a rezervaci vyřídíš na místě — bez dalších aplikací.',
+          'Jste každý odjinud, nebo chcete ve večeru pokračovat? Najdi hotel na půl cesty a vyřeš rezervaci rovnou v aplikaci.',
       },
       {
-        title: 'Z online do offline',
-        bodyMobile: 'Match je začátek — cílem je setkání v reálném světě.',
+        title: 'Setkání v reálném světě',
+        bodyMobile: 'Každá funkce míří k jednomu: sejít se naživo.',
         bodyDesktop:
-          'Trtkat není o nekonečném chatu. Každá funkce směřuje k tomu, abys vyrazil ven — randit, užívat party, objevovat město a žít naplno.',
+          'Každá funkce míří k jednomu: sejít se naživo. Randit, bavit se na party a objevovat město — ne donekonečna psát.',
       },
     ],
   },
@@ -416,59 +416,66 @@ export const cs: SiteCopy = {
     ],
   },
   benefits: {
-    title: 'Méně scrollování.',
-    titleAccent: 'Víc života.',
-    introMobile: 'Party, rande, akce a město — ne další večer u feedu.',
+    title: 'Telefon máš na to,',
+    titleAccent: 'abys vyrazil ven.',
+    introMobile: 'To nejlepší se děje venku — rande, akce a nová místa.',
     introDesktop:
-      'Mladí lidé tráví hodiny online, ale život se děje venku. Trtkat ti pomůže randit, chodit na akce, objevovat místa a užívat večery naplno — s respektem a bezpečně.',
+      'Mladí tráví hodiny na displeji, ale to nejlepší se děje venku. Trtkat ti pomůže domluvit rande, vyrazit na akci a objevit nová místa — bezpečně a s respektem.',
     items: [
-      { title: 'Ven z obrazovky', desc: 'Každá funkce směřuje k reálnému setkání.' },
-      { title: 'Party a akce', desc: 'Mapa toho, co se děje kolem tebe právě teď.' },
-      { title: 'Jednoduchá domluva', desc: 'Místo, doprava a hotel bez přepínání app.' },
-      { title: 'Bezpečně', desc: 'Souhlas, respekt a osvěta — online i offline.' },
+      { title: 'Ven z obrazovky', desc: 'Aplikace tě nedrží uvnitř. Drží tě jen do chvíle, než vyrazíš.' },
+      { title: 'Party a akce', desc: 'Vidíš, co se kolem tebe děje právě teď.' },
+      { title: 'Jednoduchá domluva', desc: 'Místo, odvoz i hotel bez přepínání mezi aplikacemi.' },
+      { title: 'Bezpečně', desc: 'Souhlas, respekt a jasná pravidla — online i venku.' },
     ],
   },
   trust: {
     title: 'Důvěra a bezpečí',
-    quote:
-      'Konečně appka, která mě nechá u telefonu jen do chvíle, než vyrazím na akci nebo rande. Ne další nekonečný chat.',
-    author: 'Marek, Praha',
-    imageAlt: 'Život ve městě — rande a setkání offline',
+    quotes: [
+      {
+        quote: 'Konečně appka, která mě drží u telefonu jen do chvíle, než vyrazím. Ne další nekonečný chat.',
+        author: 'Marek, Praha',
+      },
+      {
+        quote: 'Sešli jsme se do dvou dnů po matchi. Mapa akcí nám rovnou dala plán na večer.',
+        author: 'Tereza, 24, Brno',
+      },
+    ],
+    imageAlt: 'Život ve městě — rande a setkání',
     items: [
       {
         title: 'Soukromí bez zbytečného sdílení',
-        bodyMobile: 'Co řešíš v appce, zůstává soukromé.',
+        bodyMobile: 'Co řešíš v aplikaci, zůstává mezi vámi.',
         bodyDesktop:
-          'To, co řešíš v aplikaci, má zůstat soukromé. Minimum zbytečností, maximum kontroly nad tím, co sdílíš a s kým.',
+          'Co řešíš v aplikaci, zůstává mezi vámi. Sdílíš jen to, co sám chceš — a máš to pod kontrolou.',
       },
       {
         title: 'Jasná pravidla od začátku',
-        bodyMobile: 'Každý ví, proč tu je. Bez her a nejasných signálů.',
+        bodyMobile: 'Každý tu ví, proč přišel. Bez nejasných signálů.',
         bodyDesktop:
-          'Každý ví, proč tu je. Bez trapných her, bez vodění za nos a bez nejasných signálů.',
+          'Každý tu ví, proč přišel. Žádné vodění za nos ani nejasné signály.',
       },
       {
         title: 'Respekt na prvním místě',
-        bodyMobile: 'Souhlas, slušnost a lidskost jsou základ.',
+        bodyMobile: 'Nezávazně neznamená bez ohledů.',
         bodyDesktop:
-          'Nezávazně neznamená bez respektu. Naše komunita stojí na souhlasu a lidskosti.',
+          'Nezávazně neznamená bez ohledů. Naše komunita stojí na souhlasu a slušnosti.',
       },
     ],
   },
   about: {
-    title: 'Proč Trtkat existuje',
+    title: 'Proč Trtkat vznikl',
     bodyMobile:
-      'Český projekt, který chce dostat mladé lidi z online světa do reálného — rande, party, akce a život ve městě.',
+      'Nezávislý český projekt s jedním cílem: dostat mladé lidi od displeje k reálným zážitkům.',
     bodyDesktop:
-      'Trtkat vzniká jako nezávislý český projekt s jasným cílem: pomoct mladým lidem přejít z obrazovky do reálného života. Rande, party, objevování míst, bezpečná osvěta a nástroje, které tě dovedou až na místo setkání.',
+      'Trtkat je nezávislý český projekt s jedním cílem: dostat mladé lidi od displeje k reálným zážitkům. Rande, párty, nová místa a osvěta o bezpečném seznamování — postavené lidmi, kterým dává smysl žít víc naživo.',
   },
   cta: {
     title: 'Život se děje venku.',
     bodyMobile:
-      'Stáhni Trtkat — mapy akcí, rande, hry, Bolt/Uber a hotely v jedné aplikaci. Zdarma pro dospělé 18+.',
+      'Stáhni Trtkat a naplánuj dnešní večer — párty, rande, hry i cestu na místo. Zdarma pro dospělé 18+.',
     bodyDesktop:
-      'Přestaň jen scrollovat. S Trtkatem objevíš party a akce, domluvíš rande, objednáš dopravu a vyrazíš ven. Mobilní aplikace zdarma pro dospělé 18+.',
-    footnote: 'iOS a Android · Zdarma · Rande, party, offline život',
+      'Stáhni Trtkat a naplánuj dnešní večer — párty, rande, hry i cestu na místo. Zdarma pro dospělé 18+, na iOS i Android.',
+    footnote: 'iOS a Android · Zdarma · Pro dospělé 18+',
   },
   comingSoon: {
     title: 'Již brzy',
@@ -558,32 +565,32 @@ export const cs: SiteCopy = {
   },
   seoFaq: {
     title: 'Časté dotazy o Trtkat',
-    subtitle: 'Offline život, rande, party a bezpečí',
+    subtitle: 'Rande, party, akce a bezpečí',
     items: [
       {
-        question: 'Co je Trtkat a pro koho je aplikace?',
+        question: 'Co je Trtkat a pro koho je?',
         answer:
-          'Trtkat je mobilní aplikace pro dospělé 18+, která pomáhá přejít z online světa do reálného života — rande, party, akce, romantická místa a setkání ve městě. Není to jen swipe a chat, ale nástroj, jak vyrazit ven.',
+          'Mobilní aplikace pro dospělé 18+, která propojuje seznámení s reálným setkáním — rande, párty, akce a romantická místa ve městě.',
       },
       {
         question: 'Je Trtkat zdarma?',
         answer:
-          'Ano — základní používání aplikace Trtkat je zdarma. Cílem je zpřístupnit mapy akcí, rande, osvětu a nástroje pro offline život bez bariér.',
+          'Ano, základní používání je zdarma. Chceme, aby mapy akcí, rande i osvěta byly dostupné bez bariér.',
       },
       {
-        question: 'Čím se Trtkat liší od Tinderu a klasických seznamek?',
+        question: 'Čím se lišíte od Tinderu a klasických seznamek?',
         answer:
-          'Klasické seznamky končí u chatu. Trtkat pokračuje dál — mapy party a akcí, romantická místa, hry na večer, objednání Boltu/Uberu, navigace a rezervace hotelu. Cílem je reálné setkání, ne nekonečné psaní.',
+          'Většina seznamek končí u chatu. My pokračujeme dál — mapy párty a míst, hry na večer, odvoz i rezervace hotelu. Vším míříme k jednomu: aby ses opravdu sešel.',
       },
       {
         question: 'Jak fungují mapy akcí a míst?',
         answer:
-          'V aplikaci uvidíš party, akce, otevřené podniky a romantická místa v okolí. Můžeš vybrat kam jít na rande nebo s kým vyrazit na akci — a rovnou naplánovat cestu.',
+          'Uvidíš párty, akce, otevřené podniky i romantická místa kolem sebe. Vybereš, kam a s kým vyrazit — a rovnou naplánuješ cestu.',
       },
       {
         question: 'Je Trtkat bezpečný?',
         answer:
-          'Bezpečí je jádrem projektu: osvěta o souhlasu, hranicích a bezpečném chování online i offline. Aplikace podporuje ověřené profily, jasná pravidla a vzdělávací obsah.',
+          'Bezpečí je jádrem projektu: ověřené profily, jasná pravidla a osvěta o souhlasu a hranicích online i offline.',
       },
     ],
   },

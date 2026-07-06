@@ -2,9 +2,9 @@ import type { SiteCopy } from './types';
 
 export const en: SiteCopy = {
   meta: {
-    title: 'Trtkat — from online to real life | Dates, parties, events 18+',
+    title: 'Trtkat — dates, parties and events in the city | App 18+',
     description:
-      'Trtkat gets young people off the screen — dates, parties, events, romantic spots, evening games, Bolt/Uber rides, and hotel booking. Safe and free for adults 18+.',
+      'Trtkat helps you plan dates, find parties, and discover great places in the city — then gets you there. Event maps, evening games, and safe education. Free for adults 18+.',
   },
   nav: {
     about: 'Concept',
@@ -24,76 +24,76 @@ export const en: SiteCopy = {
     badge: 'Free',
     titleLine1: 'Live fully.',
     titleLine2: 'Not just online.',
-    body: 'Trtkat is not just swiping and chat. It helps you date, go to parties, discover events and great places — then gets you there with Bolt, Uber, or navigation. Dates, fun, and life beyond the screen.',
+    body: 'Trtkat helps you plan dates, find parties, and discover great places in the city — then gets you there. Less messaging, more experiences.',
     imageAlt: 'Trtkat app — events map, dates, and navigation on a phone',
   },
   how: {
-    title: 'We are not another swipe app.',
-    subtitle: 'We are a bridge from online to reality.',
+    title: 'We are not a dating app.',
+    subtitle: 'We are a plan for tonight.',
     steps: [
       {
         title: 'Connect and make a plan',
-        bodyMobile: 'Match, chat, or play — but the goal is meeting offline.',
+        bodyMobile: 'You meet through a match, chat, or game — but you will not stay at it for weeks.',
         bodyDesktop:
-          'You meet in the app, but the goal is not weeks of messaging. Plan a date, event, or party and move toward a real meetup — quickly, without pointless chat.',
+          'You meet through a match, chat, or game — but you will not stay at it for weeks. Quickly agree on a date, event, or party.',
       },
       {
         title: 'Pick a place or event',
-        bodyMobile: 'A map of parties, venues, romantic spots, and open shops.',
+        bodyMobile: 'The map shows parties, venues, and romantic spots nearby.',
         bodyDesktop:
-          'An interactive map shows parties, events, open venues, and romantic spots nearby. No hours of googling — pick by mood and you have a plan.',
+          'An interactive map shows what is happening around you: parties, open venues, and quiet romantic corners. No googling — pick and you have a plan.',
       },
       {
         title: 'Head out',
-        bodyMobile: 'Navigation, Bolt, Uber, or a hotel — all from one app.',
+        bodyMobile: 'Navigation, a ride, or a hotel — from one place to the date.',
         bodyDesktop:
-          'Launch navigation, order Bolt or Uber, or book a hotel in one tap. The app takes you from the screen to the meetup spot.',
+          'Launch navigation, arrange a ride, or book a hotel. From one place you go from a message to the date.',
       },
     ],
   },
   features: {
-    title: 'Everything for offline life',
-    subtitle: 'Maps · events · transport · dates',
+    title: 'Everything for one evening, in one app.',
+    subtitle: 'Maps · games · rides · hotels',
     introMobile:
-      'Parties, romantic spots, evening games, Bolt/Uber, navigation, and hotels — all in one app.',
+      'Party maps, romantic spots, evening games, rides, and hotels — without switching between apps.',
     introDesktop:
-      'Trtkat connects dating with real life: maps of events and open venues, romantic spots, icebreaker games, ride ordering, and hotel booking.',
+      'Party and event maps, curated romantic spots, games to spark the evening, rides, and hotel booking. Plan the whole evening without switching between five apps.',
     items: [
       {
         title: 'Events and parties map',
-        bodyMobile: 'What is happening around you — parties, concerts, events.',
+        bodyMobile: 'Parties, concerts, and events nearby on one map.',
         bodyDesktop:
-          'A live map of parties, concerts, and events nearby. Instead of scrolling your feed, pick where to go tonight — solo or with someone from the app.',
+          'Parties, concerts, and events nearby on one live map. Pick where to go tonight — solo or with someone from the app.',
       },
       {
         title: 'Venues and romantic spots',
-        bodyMobile: 'Open cafés, bars, viewpoints, and great date places.',
+        bodyMobile: 'Cafés, bars, viewpoints, and parks open right now.',
         bodyDesktop:
-          'A map of open venues and curated romantic spots — cafés, bars, viewpoints, parks. Pick by mood and plan the meetup right away.',
+          'Curated cafés, bars, viewpoints, and parks open right now. Pick by mood and plan where to meet right away.',
       },
       {
         title: 'Icebreaker games',
-        bodyMobile: 'Truth or Dare and more games to spark the evening.',
+        bodyMobile: 'Truth or Dare and icebreakers right in chat.',
         bodyDesktop:
-          'Dating and party games right in chat — Truth or Dare, bold prompts, icebreakers for the evening. Less awkward openers, more fun before and during the date.',
+          'Truth or Dare, bold prompts, and icebreakers right in chat. Spark the evening before you even meet — no more awkward openers.',
       },
       {
-        title: 'Bolt, Uber, and navigation',
-        bodyMobile: 'Order a ride or launch maps in one tap.',
+        title: 'Transport and navigation',
+        bodyMobile: 'Navigation or a ride in one tap.',
         bodyDesktop:
-          'Pick a meetup spot and order Bolt or Uber, or launch navigation in one tap. No copying addresses — the app gets you there.',
+          'Pick a meetup spot and launch navigation or order a ride in one tap. No copying addresses — the app guides you there.',
       },
       {
         title: 'Hotel booking',
-        bodyMobile: 'A hotel halfway or for the whole evening — in the app.',
+        bodyMobile: 'A hotel halfway or to continue the evening.',
         bodyDesktop:
-          'In different cities or want to continue the evening elsewhere? Trtkat helps you find a hotel and book on the spot — no extra apps.',
+          'In different cities or want to keep the evening going? Find a hotel halfway and book right in the app.',
       },
       {
-        title: 'From online to offline',
-        bodyMobile: 'A match is the start — the goal is meeting in the real world.',
+        title: 'Meeting in the real world',
+        bodyMobile: 'Every feature points to one thing: meeting in person.',
         bodyDesktop:
-          'Trtkat is not about endless chat. Every feature points toward going out — dating, parties, exploring the city, and living fully.',
+          'Every feature points to one thing: meeting in person. Date, enjoy parties, and explore the city — not endless messaging.',
       },
     ],
   },
@@ -416,59 +416,66 @@ export const en: SiteCopy = {
     ],
   },
   benefits: {
-    title: 'Less scrolling.',
-    titleAccent: 'More living.',
-    introMobile: 'Parties, dates, events, and the city — not another evening on the feed.',
+    title: 'Your phone is for',
+    titleAccent: 'getting you out the door.',
+    introMobile: 'The best stuff happens outside — dates, events, and new places.',
     introDesktop:
-      'Young people spend hours online, but life happens outside. Trtkat helps you date, go to events, discover places, and enjoy evenings fully — with respect and safety.',
+      'Young people spend hours on screens, but the best stuff happens outside. Trtkat helps you plan dates, go to events, and discover new places — safely and with respect.',
     items: [
-      { title: 'Off the screen', desc: 'Every feature points toward a real meetup.' },
-      { title: 'Parties and events', desc: 'A map of what is happening around you right now.' },
-      { title: 'Simple planning', desc: 'Venue, transport, and hotel without switching apps.' },
-      { title: 'Safely', desc: 'Consent, respect, and education — online and offline.' },
+      { title: 'Off the screen', desc: 'The app does not keep you inside. Only until you head out.' },
+      { title: 'Parties and events', desc: 'See what is happening around you right now.' },
+      { title: 'Simple planning', desc: 'Venue, ride, and hotel without switching apps.' },
+      { title: 'Safely', desc: 'Consent, respect, and clear rules — online and out.' },
     ],
   },
   trust: {
     title: 'Trust and safety',
-    quote:
-      'Finally an app that keeps me on my phone only until I head out to an event or a date. Not another endless chat.',
-    author: 'Marek, Prague',
-    imageAlt: 'City life — dates and offline meetups',
+    quotes: [
+      {
+        quote: 'Finally an app that keeps me on my phone only until I head out. Not another endless chat.',
+        author: 'Marek, Prague',
+      },
+      {
+        quote: 'We met within two days of matching. The events map gave us a plan for the evening right away.',
+        author: 'Tereza, 24, Brno',
+      },
+    ],
+    imageAlt: 'City life — dates and meetups',
     items: [
       {
         title: 'Privacy without oversharing',
-        bodyMobile: 'What you do in the app stays private.',
+        bodyMobile: 'What you handle in the app stays between you.',
         bodyDesktop:
-          'What you handle in the app should stay private. Minimum noise, maximum control over what you share and with whom.',
+          'What you handle in the app stays between you. You share only what you want — and you stay in control.',
       },
       {
         title: 'Clear rules from the start',
-        bodyMobile: 'Everyone knows why they are here. No games or mixed signals.',
+        bodyMobile: 'Everyone here knows why they came. No mixed signals.',
         bodyDesktop:
-          'Everyone knows why they are here. No awkward games, no leading people on, no unclear signals.',
+          'Everyone here knows why they came. No leading people on, no unclear signals.',
       },
       {
         title: 'Respect first',
-        bodyMobile: 'Consent, decency, and humanity are the foundation.',
+        bodyMobile: 'Casual does not mean careless.',
         bodyDesktop:
-          'Casual does not mean disrespectful. Our community is built on consent and humanity.',
+          'Casual does not mean careless. Our community is built on consent and decency.',
       },
     ],
   },
   about: {
-    title: 'Why Trtkat exists',
+    title: 'Why Trtkat was built',
     bodyMobile:
-      'A Czech project that wants to get young people from the online world into real life — dates, parties, events, and city living.',
+      'An independent Czech project with one goal: get young people from screens to real experiences.',
     bodyDesktop:
-      'Trtkat is an independent Czech project with a clear goal: help young people move from the screen into real life. Dates, parties, discovering places, safe education, and tools that get you to the meetup spot.',
+      'Trtkat is an independent Czech project with one goal: get young people from screens to real experiences. Dates, parties, new places, and education about safe dating — built by people who want to live more in person.',
   },
   cta: {
     title: 'Life happens outside.',
     bodyMobile:
-      'Download Trtkat — event maps, dates, games, Bolt/Uber, and hotels in one app. Free for adults 18+.',
+      'Download Trtkat and plan tonight — parties, dates, games, and the trip to the spot. Free for adults 18+.',
     bodyDesktop:
-      'Stop just scrolling. With Trtkat you discover parties and events, plan dates, order transport, and head out. Free mobile app for adults 18+.',
-    footnote: 'iOS and Android · Free · Dates, parties, offline life',
+      'Download Trtkat and plan tonight — parties, dates, games, and the trip to the spot. Free for adults 18+, on iOS and Android.',
+    footnote: 'iOS and Android · Free · For adults 18+',
   },
   comingSoon: {
     title: 'Coming soon',
@@ -558,32 +565,32 @@ export const en: SiteCopy = {
   },
   seoFaq: {
     title: 'Frequently asked questions about Trtkat',
-    subtitle: 'Offline life, dates, parties, and safety',
+    subtitle: 'Dates, parties, events, and safety',
     items: [
       {
-        question: 'What is Trtkat and who is the app for?',
+        question: 'What is Trtkat and who is it for?',
         answer:
-          'Trtkat is a mobile app for adults 18+ that helps you move from the online world into real life — dates, parties, events, romantic spots, and meetups in the city. It is not just swiping and chat, but a tool to get you out the door.',
+          'A mobile app for adults 18+ that connects dating with real meetups — dates, parties, events, and romantic spots in the city.',
       },
       {
         question: 'Is Trtkat free?',
         answer:
-          'Yes — core use of Trtkat is free. The goal is to make event maps, dates, education, and tools for offline life accessible without barriers.',
+          'Yes, core use is free. We want event maps, dates, and education to be accessible without barriers.',
       },
       {
-        question: 'How is Trtkat different from Tinder and classic dating apps?',
+        question: 'How are you different from Tinder and classic dating apps?',
         answer:
-          'Classic dating apps stop at chat. Trtkat goes further — maps of parties and events, romantic spots, evening games, Bolt/Uber ordering, navigation, and hotel booking. The goal is a real meetup, not endless messaging.',
+          'Most dating apps stop at chat. We go further — party and place maps, evening games, rides, and hotel booking. Everything points to one thing: actually meeting up.',
       },
       {
         question: 'How do event and place maps work?',
         answer:
-          'In the app you see parties, events, open venues, and romantic spots nearby. You can pick where to go on a date or which event to attend — and plan the trip right away.',
+          'You see parties, events, open venues, and romantic spots around you. Pick where and with whom to go — and plan the trip right away.',
       },
       {
         question: 'Is Trtkat safe?',
         answer:
-          'Safety is central: education on consent, boundaries, and responsible behaviour online and offline. The app promotes verified profiles, clear rules, and educational content.',
+          'Safety is central: verified profiles, clear rules, and education on consent and boundaries online and offline.',
       },
     ],
   },
