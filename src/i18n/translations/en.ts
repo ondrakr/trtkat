@@ -432,7 +432,7 @@ export const en: SiteCopy = {
     title: 'Trust and safety',
     quote:
       'Finally an app that keeps me on my phone only until I head out to an event or a date. Not another endless chat.',
-    author: 'Tereza, Brno',
+    author: 'Marek, Prague',
     imageAlt: 'City life — dates and offline meetups',
     items: [
       {

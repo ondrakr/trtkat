@@ -432,7 +432,7 @@ export const cs: SiteCopy = {
     title: 'Důvěra a bezpečí',
     quote:
       'Konečně appka, která mě nechá u telefonu jen do chvíle, než vyrazím na akci nebo rande. Ne další nekonečný chat.',
-    author: 'Tereza, Brno',
+    author: 'Marek, Praha',
     imageAlt: 'Život ve městě — rande a setkání offline',
     items: [
       {
