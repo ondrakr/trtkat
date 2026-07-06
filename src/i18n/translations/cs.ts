@@ -21,9 +21,9 @@ export const cs: SiteCopy = {
     googlePlayLabel: 'Stáhnout na Google Play',
   },
   hero: {
-    badge: 'Offline život',
-    titleLine1: 'Z feedu ven.',
-    titleLine2: 'Do reálného života.',
+    badge: 'Zdarma',
+    titleLine1: 'Žij naplno.',
+    titleLine2: 'Ne jen online.',
     body: 'Trtkat není jen swipe a chat. Pomáhá ti randit, chodit na party, objevovat akce a hezká místa — a pak tě dovede Boltem, Uberem nebo navigací až na místo. Rande, zábava a život mimo obrazovku.',
     imageAlt: 'Trtkat aplikace — mapa akcí, rande a navigace na telefonu',
   },

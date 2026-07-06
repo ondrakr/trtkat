@@ -21,9 +21,9 @@ export const en: SiteCopy = {
     googlePlayLabel: 'Get it on Google Play',
   },
   hero: {
-    badge: 'Offline life',
-    titleLine1: 'Off the feed.',
-    titleLine2: 'Into real life.',
+    badge: 'Free',
+    titleLine1: 'Live fully.',
+    titleLine2: 'Not just online.',
     body: 'Trtkat is not just swiping and chat. It helps you date, go to parties, discover events and great places — then gets you there with Bolt, Uber, or navigation. Dates, fun, and life beyond the screen.',
     imageAlt: 'Trtkat app — events map, dates, and navigation on a phone',
   },
