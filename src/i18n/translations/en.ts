@@ -2,86 +2,98 @@ import type { SiteCopy } from './types';
 
 export const en: SiteCopy = {
   meta: {
-    title: 'Free Dating App | Casual Meetups 18+ | Trtkat',
+    title: 'Trtkat — from online to real life | Dates, parties, events 18+',
     description:
-      'Trtkat is a free casual dating app for adults 18+. Low-pressure meetups, clear expectations, and safe dating education. Download free on iOS and Android.',
+      'Trtkat gets young people off the screen — dates, parties, events, romantic spots, evening games, Bolt/Uber rides, and hotel booking. Safe and free for adults 18+.',
   },
   nav: {
-    about: 'About',
+    about: 'Concept',
     stats: 'Statistics',
     ethics: 'Ethics',
-    features: 'Features',
+    features: 'App',
     science: 'Data',
-    benefits: 'Benefits',
+    benefits: 'Why Trtkat',
     download: 'Download',
-    references: 'References',
+    references: 'Safety',
   },
   stores: {
     appStoreLabel: 'Download on the App Store',
     googlePlayLabel: 'Get it on Google Play',
   },
   hero: {
-    badge: 'Free',
-    titleLine1: 'Save time.',
-    titleLine2: 'Enjoy the night.',
-    body: 'Not everyone wants a relationship. Trtkat helps you find someone for a pleasant evening and connection — simply, without endless messaging.',
-    imageAlt: 'Trtkat app on iPhone — profile, match, and chat',
+    badge: 'Offline life',
+    titleLine1: 'Off the feed.',
+    titleLine2: 'Into real life.',
+    body: 'Trtkat is not just swiping and chat. It helps you date, go to parties, discover events and great places — then gets you there with Bolt, Uber, or navigation. Dates, fun, and life beyond the screen.',
+    imageAlt: 'Trtkat app — events map, dates, and navigation on a phone',
   },
   how: {
-    title: 'We are not a classic dating app.',
-    subtitle: 'We are a shortcut to a clear plan.',
+    title: 'We are not another swipe app.',
+    subtitle: 'We are a bridge from online to reality.',
     steps: [
       {
-        title: 'Match without small talk',
-        bodyMobile: 'Mutual interest? Move straight to the next step.',
+        title: 'Connect and make a plan',
+        bodyMobile: 'Match, chat, or play — but the goal is meeting offline.',
         bodyDesktop:
-          'Mutual interest? Great. Trtkat skips long messaging and moves you straight to the next step. No awkward openers, no pointless waiting.',
+          'You meet in the app, but the goal is not weeks of messaging. Plan a date, event, or party and move toward a real meetup — quickly, without pointless chat.',
       },
       {
-        title: 'A meetup spot halfway',
-        bodyMobile: 'The app suggests a neutral place halfway between you.',
+        title: 'Pick a place or event',
+        bodyMobile: 'A map of parties, venues, romantic spots, and open shops.',
         bodyDesktop:
-          'The app offers a neutral halfway meeting point. Fast, simple, and without unnecessary back-and-forth.',
+          'An interactive map shows parties, events, open venues, and romantic spots nearby. No hours of googling — pick by mood and you have a plan.',
       },
       {
-        title: 'Clear expectations',
-        bodyMobile: 'Clear rules and respect for boundaries from the start.',
+        title: 'Head out',
+        bodyMobile: 'Navigation, Bolt, Uber, or a hotel — all from one app.',
         bodyDesktop:
-          'Everyone knows why they are here. No false promises, no mixed signals, no role-playing. Respect for boundaries is the foundation.',
+          'Launch navigation, order Bolt or Uber, or book a hotel in one tap. The app takes you from the screen to the meetup spot.',
       },
     ],
   },
   features: {
-    title: 'What you get in the app',
-    subtitle: 'More than swiping and chat',
+    title: 'Everything for offline life',
+    subtitle: 'Maps · events · transport · dates',
     introMobile:
-      'Hotel booking, date plans with navigation, flirty games, and a map of great spots — all inside the app.',
+      'Parties, romantic spots, evening games, Bolt/Uber, navigation, and hotels — all in one app.',
     introDesktop:
-      'Trtkat is not just a dating app. Book a hotel halfway, plan a date with navigation or Bolt/Uber, play icebreaker games, and discover great places nearby.',
+      'Trtkat connects dating with real life: maps of events and open venues, romantic spots, icebreaker games, ride ordering, and hotel booking.',
     items: [
       {
-        title: 'Halfway hotel booking',
-        bodyMobile: 'A hotel between you — book it right in the app.',
+        title: 'Events and parties map',
+        bodyMobile: 'What is happening around you — parties, concerts, events.',
         bodyDesktop:
-          'In different cities? Trtkat finds a hotel exactly halfway and you can book it on the spot — no extra apps, no back-and-forth.',
+          'A live map of parties, concerts, and events nearby. Instead of scrolling your feed, pick where to go tonight — solo or with someone from the app.',
       },
       {
-        title: 'Date plan in one tap',
-        bodyMobile: 'Venue, navigation, Bolt or Uber — all from the app.',
+        title: 'Venues and romantic spots',
+        bodyMobile: 'Open cafés, bars, viewpoints, and great date places.',
         bodyDesktop:
-          'Pick a specific date spot and launch navigation, Bolt, or Uber in one tap. No searching or copying addresses — the app gets you there.',
+          'A map of open venues and curated romantic spots — cafés, bars, viewpoints, parks. Pick by mood and plan the meetup right away.',
       },
       {
-        title: 'Flirty games',
-        bodyMobile: 'Truth or Dare and more games to spark the conversation.',
+        title: 'Icebreaker games',
+        bodyMobile: 'Truth or Dare and more games to spark the evening.',
         bodyDesktop:
-          'Icebreaker and flirty games right in chat — Truth or Dare, truth dice, bold prompts. Break the ice without awkward openers.',
+          'Dating and party games right in chat — Truth or Dare, bold prompts, icebreakers for the evening. Less awkward openers, more fun before and during the date.',
       },
       {
-        title: 'Date spots map',
-        bodyMobile: 'Curated places nearby — cafés, bars, viewpoints.',
+        title: 'Bolt, Uber, and navigation',
+        bodyMobile: 'Order a ride or launch maps in one tap.',
         bodyDesktop:
-          'An interactive map of great date spots. Pick by mood, open navigation, and you are set.',
+          'Pick a meetup spot and order Bolt or Uber, or launch navigation in one tap. No copying addresses — the app gets you there.',
+      },
+      {
+        title: 'Hotel booking',
+        bodyMobile: 'A hotel halfway or for the whole evening — in the app.',
+        bodyDesktop:
+          'In different cities or want to continue the evening elsewhere? Trtkat helps you find a hotel and book on the spot — no extra apps.',
+      },
+      {
+        title: 'From online to offline',
+        bodyMobile: 'A match is the start — the goal is meeting in the real world.',
+        bodyDesktop:
+          'Trtkat is not about endless chat. Every feature points toward going out — dating, parties, exploring the city, and living fully.',
       },
     ],
   },
@@ -193,7 +205,7 @@ export const en: SiteCopy = {
           options: ['4%', '9%', '17%', '31%'],
           correctIndex: 2,
           answer: '16.8%',
-          explanation: 'Among men 4.9%. Safety and consent are not optional — that is why Trtkat is built around them.',
+          explanation: 'Among men 4.9%. Safety and consent are the foundation — whether you meet online or offline.',
         },
       ],
     },
@@ -404,24 +416,24 @@ export const en: SiteCopy = {
     ],
   },
   benefits: {
-    title: 'Not everyone wants a relationship right now.',
-    titleAccent: 'And that is okay.',
-    introMobile: 'Not everyone wants a relationship. Sometimes a clear match, respect, and minimal fuss is enough.',
+    title: 'Less scrolling.',
+    titleAccent: 'More living.',
+    introMobile: 'Parties, dates, events, and the city — not another evening on the feed.',
     introDesktop:
-      'Sometimes you are not looking for love for life. Sometimes you just want a clear match, chemistry, and an evening without unnecessary games. No pretending, no pressure, and with respect for boundaries.',
+      'Young people spend hours online, but life happens outside. Trtkat helps you date, go to events, discover places, and enjoy evenings fully — with respect and safety.',
     items: [
-      { title: 'No games', desc: 'No beating around the bush or fake signals.' },
-      { title: 'No pressure', desc: 'Everything is based on mutual consent and respect.' },
-      { title: 'For real', desc: 'Every profile belongs to a real person.' },
-      { title: 'No expectations', desc: 'Without painful disappointment or drama.' },
+      { title: 'Off the screen', desc: 'Every feature points toward a real meetup.' },
+      { title: 'Parties and events', desc: 'A map of what is happening around you right now.' },
+      { title: 'Simple planning', desc: 'Venue, transport, and hotel without switching apps.' },
+      { title: 'Safely', desc: 'Consent, respect, and education — online and offline.' },
     ],
   },
   trust: {
     title: 'Trust and safety',
     quote:
-      'Between school and work I do not have capacity for a relationship. Here at least nobody pretends and everyone knows where they stand.',
-    author: 'Marek, Prague',
-    imageAlt: 'Intimacy',
+      'Finally an app that keeps me on my phone only until I head out to an event or a date. Not another endless chat.',
+    author: 'Tereza, Brno',
+    imageAlt: 'City life — dates and offline meetups',
     items: [
       {
         title: 'Privacy without oversharing',
@@ -444,26 +456,26 @@ export const en: SiteCopy = {
     ],
   },
   about: {
-    title: 'Who is behind Trtkat',
+    title: 'Why Trtkat exists',
     bodyMobile:
-      'An independent Czech project — a small team of developers and sexual health experts combining a practical app with education.',
+      'A Czech project that wants to get young people from the online world into real life — dates, parties, events, and city living.',
     bodyDesktop:
-      'Trtkat is an independent Czech project focused on fair casual dating. A small team of developers and sexual health experts wants to combine a practical app with education about safe dating.',
+      'Trtkat is an independent Czech project with a clear goal: help young people move from the screen into real life. Dates, parties, discovering places, safe education, and tools that get you to the meetup spot.',
   },
   cta: {
-    title: 'Less talk. More clarity.',
+    title: 'Life happens outside.',
     bodyMobile:
-      'If you are not looking for a relationship, you do not have to spend your evenings chatting. Download the Trtkat mobile app — clear plans and respect. Free.',
+      'Download Trtkat — event maps, dates, games, Bolt/Uber, and hotels in one app. Free for adults 18+.',
     bodyDesktop:
-      'If you are not looking for a relationship right now, you do not have to spend your evenings in endless chat. Trtkat is a mobile app for adults 18+ who want clear plans, respect, and minimal fuss. Download it for free.',
-    footnote: 'iOS and Android · Free · For adults 18+',
+      'Stop just scrolling. With Trtkat you discover parties and events, plan dates, order transport, and head out. Free mobile app for adults 18+.',
+    footnote: 'iOS and Android · Free · Dates, parties, offline life',
   },
   comingSoon: {
     title: 'Coming soon',
     badge: 'In development',
-    heading: 'We are working on the app',
+    heading: 'You will be heading out soon',
     body:
-      'Trtkat for iOS and Android is in the final stage of development. Leave your email and we will let you know when the app is ready.',
+      'Trtkat for iOS and Android is in the final stage. Leave your email and we will let you know when you can discover events, dates, and offline life in the app.',
     emailLabel: 'Email for early access',
     emailPlaceholder: 'you@email.com',
     submitButton: 'Get early access',
@@ -478,8 +490,8 @@ export const en: SiteCopy = {
     platforms: 'iOS · Android',
   },
   footer: {
-    offer: 'Offer',
-    howItWorks: 'How it works',
+    offer: 'App',
+    howItWorks: 'Concept',
     stats: 'Statistics',
     safety: 'Safety',
     download: 'Download the app',
@@ -535,10 +547,10 @@ export const en: SiteCopy = {
     },
   },
   blog: {
-    title: 'Dating & sexual health blog',
+    title: 'Blog about offline life and safe dating',
     metaDescription:
-      'Articles on casual dating, safe flirting, consent, and sexual education for students and adults. Education from Trtkat.',
-    subtitle: 'Education about dating, sexual education, and safe casual meetups.',
+      'Articles on dating, parties, offline life, consent, and sexual education for young adults. Education from Trtkat.',
+    subtitle: 'Dates, city life, safety, and education — not just swiping and chat.',
     readMore: 'Read article',
     backToBlog: 'Back to blog',
     backHome: 'Back to home',
@@ -546,32 +558,32 @@ export const en: SiteCopy = {
   },
   seoFaq: {
     title: 'Frequently asked questions about Trtkat',
-    subtitle: 'Casual dating, safety, and how the app works',
+    subtitle: 'Offline life, dates, parties, and safety',
     items: [
       {
-        question: 'What is Trtkat and who is the dating app for?',
+        question: 'What is Trtkat and who is the app for?',
         answer:
-          'Trtkat is a mobile dating app for adults 18+ looking for casual meetups, flirting, or a pleasant evening without relationship pressure. It suits students, singles, and busy people who want clear plans instead of endless messaging.',
+          'Trtkat is a mobile app for adults 18+ that helps you move from the online world into real life — dates, parties, events, romantic spots, and meetups in the city. It is not just swiping and chat, but a tool to get you out the door.',
       },
       {
-        question: 'Is Trtkat really free?',
+        question: 'Is Trtkat free?',
         answer:
-          'Yes — core use of Trtkat is free. The goal is to make safe dating education and casual meetups accessible without the paywalls common on many dating platforms.',
+          'Yes — core use of Trtkat is free. The goal is to make event maps, dates, education, and tools for offline life accessible without barriers.',
       },
       {
-        question: 'How is Trtkat different from Tinder and classic dating sites?',
+        question: 'How is Trtkat different from Tinder and classic dating apps?',
         answer:
-          'Unlike typical swipe apps, Trtkat focuses on clear expectations, respect for boundaries, and fast planning — including meetup spots halfway between you, navigation, and hotel booking. It is built for low-pressure casual dating, not marriage matching.',
+          'Classic dating apps stop at chat. Trtkat goes further — maps of parties and events, romantic spots, evening games, Bolt/Uber ordering, navigation, and hotel booking. The goal is a real meetup, not endless messaging.',
       },
       {
-        question: 'Is casual dating on Trtkat safe?',
+        question: 'How do event and place maps work?',
         answer:
-          'Safety is central: education on consent, boundaries, and responsible behaviour online and offline. The app promotes verified profiles, clear rules, and educational content about safe dating.',
+          'In the app you see parties, events, open venues, and romantic spots nearby. You can pick where to go on a date or which event to attend — and plan the trip right away.',
       },
       {
-        question: 'How do I download the Trtkat app?',
+        question: 'Is Trtkat safe?',
         answer:
-          'Trtkat will be available free on the App Store for iOS and Google Play for Android. Visit trtkat.cz for download links and launch updates.',
+          'Safety is central: education on consent, boundaries, and responsible behaviour online and offline. The app promotes verified profiles, clear rules, and educational content.',
       },
     ],
   },

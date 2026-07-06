@@ -36,7 +36,7 @@ export function buildMobileAppSchema(t: SiteCopy, locale: 'cs' | 'en') {
     '@context': 'https://schema.org',
     '@type': 'MobileApplication',
     name: SITE_NAME,
-    alternateName: locale === 'cs' ? ['seznamovací aplikace Trtkat', 'seznamka zdarma'] : ['Trtkat dating app', 'free dating app'],
+    alternateName: locale === 'cs' ? ['aplikace Trtkat', 'offline život'] : ['Trtkat app', 'offline life app'],
     operatingSystem: 'iOS, Android',
     applicationCategory: 'SocialNetworkingApplication',
     offers: {

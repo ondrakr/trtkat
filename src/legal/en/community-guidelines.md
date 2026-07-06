@@ -2,7 +2,7 @@
 
 Last updated: 27 June 2026
 
-Trtkat is a dating and social app for adults 18+. The goal is to enable new contacts, friendship and casual meetups safely, voluntarily and with respect.
+Trtkat is a mobile app for adults 18+. The goal is to get young people from the online world into real life — dates, parties, events, and meetups in the city — safely, voluntarily, and with respect.
 
 ## 1. Basic rule
 

@@ -21,7 +21,7 @@ Contacts:
 
 ## 2. Description of the service
 
-Trtkat is a dating and social app for adults in the EU. It allows users to create a profile, upload photos, browse other profiles, express interest, create connections, chat, manage profile visibility, and use safety features such as report, block, unmatch and account deletion.
+Trtkat is a mobile app for adults in the EU. It helps people move from the online world into real life — dates, parties, events, romantic spots, and meetups in the city. Users can create a profile, upload photos, browse other profiles, express interest, create connections, chat, discover places and events on a map, order transport (Bolt, Uber), launch navigation, book hotels, and use safety features such as report, block, unmatch, and account deletion.
 
 The current version has no payments, subscriptions, in-app purchases or advertising.
 

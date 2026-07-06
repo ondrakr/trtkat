@@ -2,7 +2,7 @@
 
 Poslední aktualizace: 27. června 2026
 
-Trtkat je seznamovací a sociální aplikace pro dospělé 18+. Cílem je umožnit nové kontakty, přátelství a nezávazné seznámení bezpečně, dobrovolně a s respektem.
+Trtkat je mobilní aplikace pro dospělé 18+. Cílem je dostat mladé lidi z online světa do reálného života — rande, party, akce a setkání ve městě — bezpečně, dobrovolně a s respektem.
 
 Tento dokument je určen pro veřejnou stránku `https://trtkat.cz/community-guidelines`.
 

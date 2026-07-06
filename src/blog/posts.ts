@@ -18,42 +18,42 @@ export const BLOG_POSTS: BlogPost[] = [
     slug: 'nezavazne-seznamovani-pro-studenty',
     datePublished: '2026-06-01',
     cs: {
-      title: 'Nezávazné seznamování pro studenty: co to znamená v praxi',
-      excerpt: 'Jak funguje nezávazné seznámení, pro koho dává smysl a jak si nastavit jasná očekávání.',
+      title: 'Z online ven: rande, party a život ve městě',
+      excerpt: 'Jak přejít z obrazovky do reálného života — rande, akce a setkání bez nekonečného chatu.',
       metaDescription:
-        'Průvodce nezávazným seznamováním pro studenty. Jasná očekávání, respekt a bezpečné seznámení bez zbytečného chatu.',
+        'Průvodce offline životem pro mladé dospělé. Rande, party, akce, respekt a bezpečné setkání mimo feed.',
       sections: [
         {
           paragraphs: [
-            'Nezávazné seznamování neznamená nezájem o druhého člověka. Znamená to, že obě strany hledají především nové kontakty, přátelství nebo společný večer — bez tlaku na vztah.',
-            'Pro studenty je typické, že chtějí poznávat lidi v novém prostředí, ale nemají vždy čas na dlouhé psaní a nejistotu z klasických seznamek.',
+            'Mladí lidé tráví hodiny online, ale život se děje venku — na rande, party, akcích a v podnicích ve městě.',
+            'Trtkat pomáhá přejít z matchu k reálnému setkání: mapy akcí, romantická místa, hry na večer a doprava na jedno klepnutí.',
           ],
         },
         {
           heading: 'Jak na to bezpečně',
           paragraphs: [
-            'Základem je jasná domluva, respekt k hranicím a otevřená komunikace. Trtkat na to staví celou aplikaci — méně zbytečného chatu, víc jasna.',
+            'Základem je jasná domluva, respekt k hranicím a otevřená komunikace. Trtkat na to staví celou aplikaci — méně scrollování, víc života venku.',
             'Pokud si nejsi jistý/á, ptej se. Souhlas a slušnost nejsou volitelné.',
           ],
         },
       ],
     },
     en: {
-      title: 'Casual dating for students: what it means in practice',
-      excerpt: 'How casual meetups work, who they suit, and how to set clear expectations.',
+      title: 'From online to real life: dates, parties, and city living',
+      excerpt: 'How to move from the screen into real life — dates, events, and meetups without endless chat.',
       metaDescription:
-        'A guide to casual dating for students. Clear expectations, respect, and safe meetups without endless chat.',
+        'A guide to offline life for young adults. Dates, parties, events, respect, and safe meetups beyond the feed.',
       sections: [
         {
           paragraphs: [
-            'Casual dating does not mean you do not care about the other person. It means both sides are mainly looking for new contacts, friendship, or a good evening — without relationship pressure.',
-            'Students often want to meet people in a new environment but do not always have time for long chats and the uncertainty of classic dating apps.',
+            'Young people spend hours online, but life happens outside — on dates, at parties, events, and venues in the city.',
+            'Trtkat helps you go from a match to a real meetup: event maps, romantic spots, evening games, and transport in one tap.',
           ],
         },
         {
           heading: 'How to do it safely',
           paragraphs: [
-            'Clear plans, respect for boundaries, and open communication are the foundation. Trtkat is built around that — less pointless chat, more clarity.',
+            'Clear plans, respect for boundaries, and open communication are the foundation. Trtkat is built around that — less scrolling, more life outside.',
             'If you are unsure, ask. Consent and decency are not optional.',
           ],
         },
@@ -72,7 +72,7 @@ export const BLOG_POSTS: BlogPost[] = [
         {
           paragraphs: [
             'Sexuální výchova není jen biologie ve škole. Je to schopnost komunikovat, respektovat hranice a chápat, co je pro tebe v pořádku.',
-            'Trtkat doplňuje tuto osvětu praktickým přístupem k seznamování — bez zbytečného stigmatu a bez zbytečných slov navíc.',
+            'Trtkat doplňuje tuto osvětu praktickým přístupem k randění a offline životu — bez zbytečného stigmatu a bez zbytečných slov navíc.',
           ],
         },
         {
@@ -111,42 +111,42 @@ export const BLOG_POSTS: BlogPost[] = [
     datePublished: '2026-06-20',
     cs: {
       title: 'Souhlas a hranice: základ bezpečného seznamování',
-      excerpt: 'Proč je souhlas klíčový a jak si ho udržet i v nezávazném seznamování.',
+      excerpt: 'Proč je souhlas klíčový — online i na rande, party a akcích ve městě.',
       metaDescription:
-        'Souhlas a hranice v nezávazném seznamování. Praktický edukační článek pro studenty od aplikace Trtkat.',
+        'Souhlas a hranice při randění a offline setkáních. Praktický edukační článek od aplikace Trtkat.',
       sections: [
         {
           paragraphs: [
-            'Bezpečné seznamování stojí na jednoduchém principu: obě strany vědí, co od setkání chtějí, a respektují limity druhého.',
-            'Nezávaznost neznamená nejasnost. Právě naopak — čím jasnější domluva, tím příjemnější zkušenost.',
+            'Bezpečné randění stojí na jednoduchém principu: obě strany vědí, co od setkání chtějí, a respektují limity druhého — ať už jste v chatu nebo venku na akci.',
+            'Čím jasnější domluva, tím příjemnější zkušenost. Trtkat tě k tomu vede od matchu až na místo setkání.',
           ],
         },
         {
           heading: 'Praktické tipy',
           paragraphs: [
             'Mluv očekávání nahlas, ne v insinuacích. Nech si čas, pokud něco nesedí. A nikdy nepokračuj tam, kde nemáš jistotu.',
-            'Trtkat pomáhá studentům seznamovat se s respektem — zdarma a bez zbytečného chatu.',
+            'Trtkat pomáhá mladým lidem randit a užívat život venku s respektem — zdarma a bez nekonečného chatu.',
           ],
         },
       ],
     },
     en: {
       title: 'Consent and boundaries: the foundation of safe dating',
-      excerpt: 'Why consent matters and how to maintain it in casual dating too.',
+      excerpt: 'Why consent matters — online and on dates, parties, and events in the city.',
       metaDescription:
-        'Consent and boundaries in casual dating. A practical educational article for students from Trtkat.',
+        'Consent and boundaries when dating and meeting offline. A practical educational article from Trtkat.',
       sections: [
         {
           paragraphs: [
-            'Safe dating is built on a simple principle: both sides know what they want from a meetup and respect each other’s limits.',
-            'Casual does not mean unclear. The clearer the plan, the better the experience.',
+            'Safe dating is built on a simple principle: both sides know what they want from a meetup and respect each other’s limits — in chat and out at an event.',
+            'The clearer the plan, the better the experience. Trtkat guides you from match to the meetup spot.',
           ],
         },
         {
           heading: 'Practical tips',
           paragraphs: [
             'Say expectations out loud, not in hints. Take your time if something feels off. And never continue when you are unsure.',
-            'Trtkat helps students date with respect — for free and without pointless chat.',
+            'Trtkat helps young people date and enjoy life outside with respect — for free and without endless chat.',
           ],
         },
       ],

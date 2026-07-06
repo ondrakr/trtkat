@@ -2,86 +2,98 @@ import type { SiteCopy } from './types';
 
 export const cs: SiteCopy = {
   meta: {
-    title: 'Seznamka zdarma | Nezávazné seznámení 18+ | Trtkat',
+    title: 'Trtkat — z online do reálného života | Rande, party, akce 18+',
     description:
-      'Trtkat je seznamovací aplikace zdarma pro nezávazné seznámení a flirt bez tlaku. Bezpečná osvěta, jasná domluva a rande na půl cesty. Pro dospělé 18+.',
+      'Trtkat dostává mladé lidi z obrazovky ven — rande, party, akce, romantická místa, hry na večer, Bolt/Uber a rezervace hotelu. Bezpečně a zdarma pro dospělé 18+.',
   },
   nav: {
-    about: 'O nás',
+    about: 'Koncept',
     stats: 'Statistiky',
     ethics: 'Etika',
-    features: 'Funkce',
+    features: 'Aplikace',
     science: 'Věda',
-    benefits: 'Benefity',
+    benefits: 'Proč Trtkat',
     download: 'Stáhnout',
-    references: 'Reference',
+    references: 'Bezpečí',
   },
   stores: {
     appStoreLabel: 'Stáhnout v App Store',
     googlePlayLabel: 'Stáhnout na Google Play',
   },
   hero: {
-    badge: 'Zdarma',
-    titleLine1: 'Ušetři čas.',
-    titleLine2: 'Užij si noc.',
-    body: 'Trtkat je moderní seznamovací aplikace pro navazování nových kontaktů, přátelství i nezávazného seznámení. Osvěta o bezpečném seznamování a sexualní výchova — zdarma.',
-    imageAlt: 'Trtkat aplikace na iPhonu — profil, shoda a chat',
+    badge: 'Offline život',
+    titleLine1: 'Z feedu ven.',
+    titleLine2: 'Do reálného života.',
+    body: 'Trtkat není jen swipe a chat. Pomáhá ti randit, chodit na party, objevovat akce a hezká místa — a pak tě dovede Boltem, Uberem nebo navigací až na místo. Rande, zábava a život mimo obrazovku.',
+    imageAlt: 'Trtkat aplikace — mapa akcí, rande a navigace na telefonu',
   },
   how: {
-    title: 'Nejsme klasická seznamka.',
-    subtitle: 'Jsme zkratka k jasné domluvě.',
+    title: 'Nejsme další swipe appka.',
+    subtitle: 'Jsme most z online do reality.',
     steps: [
       {
-        title: 'Match bez keců',
-        bodyMobile: 'Padli jste si do oka? Jdete rovnou na další krok.',
+        title: 'Spoj se a domluv se',
+        bodyMobile: 'Match, chat nebo hra — ale cílem je setkání venku.',
         bodyDesktop:
-          'Padli jste si do oka? Super. Trtkat přeskočí zdlouhavé vypisování a posune vás rovnou k dalšímu kroku. Bez trapných otevíráků a bez zbytečného čekání.',
+          'Seznámíš se v aplikaci, ale cílem není týdny psát. Domluvíte rande, akci nebo party a posunete se k reálnému setkání — rychle a bez zbytečného chatu.',
       },
       {
-        title: 'Místo na půl cesty',
-        bodyMobile: 'Aplikace navrhne neutrální místo na půl cesty.',
+        title: 'Vyber místo nebo akci',
+        bodyMobile: 'Mapa party, podniků, romantických míst a otevřených obchodů.',
         bodyDesktop:
-          'Aplikace nabídne neutrální místo na půl cesty mezi vámi. Rychlé, jednoduché a bez zbytečného domlouvání.',
+          'Interaktivní mapa ukáže party, akce, otevřené podniky i romantická místa v okolí. Nemusíš hodiny googlit — vyber podle nálady a máš plán.',
       },
       {
-        title: 'Jasná očekávání',
-        bodyMobile: 'Jasná pravidla a respekt k hranicím od začátku.',
+        title: 'Vyraž ven',
+        bodyMobile: 'Navigace, Bolt, Uber nebo hotel — vše z jedné appky.',
         bodyDesktop:
-          'Každý ví, proč tu je. Bez falešných slibů, bez matení signálů a bez hraní rolí. Respekt k hranicím je základ.',
+          'Jedním klepnutím spustíš navigaci, objednáš Bolt nebo Uber, případně zarezervuješ hotel. Aplikace tě dovede z obrazovky až na místo setkání.',
       },
     ],
   },
   features: {
-    title: 'Co v aplikaci najdeš',
-    subtitle: 'Víc než swipe a chat',
+    title: 'Vše pro život offline',
+    subtitle: 'Mapy · akce · doprava · rande',
     introMobile:
-      'Rezervace hotelu, plán rande s navigací, flirty hry a mapa ověřených míst — vše přímo v aplikaci.',
+      'Party, romantická místa, hry na večer, Bolt/Uber, navigace a hotely — všechno v jedné aplikaci.',
     introDesktop:
-      'Trtkat není jen seznamka. Rezervuj hotel na půl cesty, naplánuj rande s navigací nebo Boltem/Uberem, zahraj si seznamovací hry a objev hezká místa v okolí.',
+      'Trtkat spojuje seznamování s reálným životem: mapy akcí a otevřených podniků, romantická místa, hry na odlehčení večera, objednání dopravy a rezervaci hotelu.',
     items: [
       {
-        title: 'Rezervace hotelu na půl cesty',
-        bodyMobile: 'Hotel mezi vámi — zarezervuj ho rovnou v aplikaci.',
+        title: 'Mapa akcí a party',
+        bodyMobile: 'Co se děje kolem tebe — party, koncerty, akce.',
         bodyDesktop:
-          'Jste z různých měst? Trtkat najde hotel přesně na půl cesty a rezervaci vyřídíš na místě — bez dalších app a zbytečného domlouvání.',
+          'Živá mapa party, koncertů a akcí v okolí. Místo scrollování feedu vyber, kam dnes vyrazit — sám nebo s někým z aplikace.',
       },
       {
-        title: 'Plán rande na jedno kliknutí',
-        bodyMobile: 'Místo, navigace, Bolt nebo Uber — vše z aplikace.',
+        title: 'Podniky a romantická místa',
+        bodyMobile: 'Otevřené kavárny, bary, výhledy a hezká rande místa.',
         bodyDesktop:
-          'Zvol konkrétní místo rande a jedním klepnutím spusť navigaci, Bolt nebo Uber. Adresu nemusíš hledat ani kopírovat — aplikace tě tam dovede.',
+          'Mapa otevřených podniků a ověřených romantických míst — kavárny, bary, výhledy, parky. Vyber podle nálady a rovnou naplánuj setkání.',
       },
       {
-        title: 'Flirtovací hry',
-        bodyMobile: 'Truth or Dare a další hry, co rozproudí konverzaci.',
+        title: 'Hry na seznamování',
+        bodyMobile: 'Truth or Dare a další hry, co rozproudí večer.',
         bodyDesktop:
-          'Seznamovací a flirty hry přímo v chatu — Truth or Dare, kostka na pravdu, odvážné otázky. Rozlouskni ledy bez trapných otevíráků.',
+          'Seznamovací a party hry přímo v chatu — Truth or Dare, odvážné otázky, ledoborec na večer. Méně trapných otevíráků, víc zábavy před i na rande.',
       },
       {
-        title: 'Mapa rande míst',
-        bodyMobile: 'Ověřená místa v okolí — kavárny, bary, výhledy.',
+        title: 'Bolt, Uber a navigace',
+        bodyMobile: 'Objednej dopravu nebo spusť mapy jedním klepnutím.',
         bodyDesktop:
-          'Interaktivní mapa hezkých míst na rande. Vyber podle nálady, otevři navigaci a máš jasno, kam jít.',
+          'Zvol místo setkání a jedním klepnutím objednej Bolt nebo Uber, nebo spusť navigaci v mapách. Adresu nemusíš kopírovat — aplikace tě tam dovede.',
+      },
+      {
+        title: 'Rezervace hotelu',
+        bodyMobile: 'Hotel na půl cesty nebo na celý večer — v aplikaci.',
+        bodyDesktop:
+          'Jste z různých měst nebo chcete pokračovat večer jinde? Trtkat pomůže najít hotel a rezervaci vyřídíš na místě — bez dalších aplikací.',
+      },
+      {
+        title: 'Z online do offline',
+        bodyMobile: 'Match je začátek — cílem je setkání v reálném světě.',
+        bodyDesktop:
+          'Trtkat není o nekonečném chatu. Každá funkce směřuje k tomu, abys vyrazil ven — randit, užívat party, objevovat město a žít naplno.',
       },
     ],
   },
@@ -193,7 +205,7 @@ export const cs: SiteCopy = {
           options: ['4 %', '9 %', '17 %', '31 %'],
           correctIndex: 2,
           answer: '16,8 %',
-          explanation: 'U mužů 4,9 %. Bezpečnost a souhlas nejsou „bonus“ — proto na tom Trtkat staví celou aplikaci.',
+          explanation: 'U mužů 4,9 %. Bezpečnost a souhlas jsou základ, ať už se potkáváš online nebo offline.',
         },
       ],
     },
@@ -404,24 +416,24 @@ export const cs: SiteCopy = {
     ],
   },
   benefits: {
-    title: 'Ne každý teď chce\u00A0vztah.',
-    titleAccent: 'A to je v pořádku.',
-    introMobile: 'Ne každý chce vztah. Někdy stačí jasná shoda, respekt a minimum zbytečností.',
+    title: 'Méně scrollování.',
+    titleAccent: 'Víc života.',
+    introMobile: 'Party, rande, akce a město — ne další večer u feedu.',
     introDesktop:
-      'Někdy nehledáš lásku na celý život. Někdy chceš jen jasnou shodu, chemii a večer bez zbytečných her. Bez přetvářky, bez tlaku a s respektem k hranicím.',
+      'Mladí lidé tráví hodiny online, ale život se děje venku. Trtkat ti pomůže randit, chodit na akce, objevovat místa a užívat večery naplno — s respektem a bezpečně.',
     items: [
-      { title: 'Bez her', desc: 'Bez obcházení a falešných náznaků.' },
-      { title: 'Bez tlaku', desc: 'Všechno stojí na vzájemném souhlasu a respektu.' },
-      { title: 'Opravdově', desc: 'Každý profil patří reálnému člověku.' },
-      { title: 'Bez očekávání', desc: 'Bez bolestných zklamání a trápení.' },
+      { title: 'Ven z obrazovky', desc: 'Každá funkce směřuje k reálnému setkání.' },
+      { title: 'Party a akce', desc: 'Mapa toho, co se děje kolem tebe právě teď.' },
+      { title: 'Jednoduchá domluva', desc: 'Místo, doprava a hotel bez přepínání app.' },
+      { title: 'Bezpečně', desc: 'Souhlas, respekt a osvěta — online i offline.' },
     ],
   },
   trust: {
     title: 'Důvěra a bezpečí',
     quote:
-      'Kvůli škole a práci nemám kapacitu na vztah. Tady aspoň nikdo nic nepředstírá a všichni vědí, na čem jsou.',
-    author: 'Marek, Praha',
-    imageAlt: 'Intimita',
+      'Konečně appka, která mě nechá u telefonu jen do chvíle, než vyrazím na akci nebo rande. Ne další nekonečný chat.',
+    author: 'Tereza, Brno',
+    imageAlt: 'Život ve městě — rande a setkání offline',
     items: [
       {
         title: 'Soukromí bez zbytečného sdílení',
@@ -444,26 +456,26 @@ export const cs: SiteCopy = {
     ],
   },
   about: {
-    title: 'Kdo za Trtkat stojí',
+    title: 'Proč Trtkat existuje',
     bodyMobile:
-      'Nezávislý český projekt — malý tým vývojářů a odborníků na sexuální zdraví, kteří spojují praktickou appku s osvětou.',
+      'Český projekt, který chce dostat mladé lidi z online světa do reálného — rande, party, akce a život ve městě.',
     bodyDesktop:
-      'Trtkat vzniká jako nezávislý český projekt zaměřený na férové nezávazné seznamování. Za aplikací stojí malý tým vývojářů a odborníků na sexuální zdraví, kteří chtějí spojit praktickou appku s osvětou o bezpečném seznamování.',
+      'Trtkat vzniká jako nezávislý český projekt s jasným cílem: pomoct mladým lidem přejít z obrazovky do reálného života. Rande, party, objevování míst, bezpečná osvěta a nástroje, které tě dovedou až na místo setkání.',
   },
   cta: {
-    title: 'Méně řečí. Víc jasno.',
+    title: 'Život se děje venku.',
     bodyMobile:
-      'Když nehledáš vztah, nemusíš trávit večery chatem. Stáhni si mobilní aplikaci Trtkat — jasná domluva a respekt. Zdarma.',
+      'Stáhni Trtkat — mapy akcí, rande, hry, Bolt/Uber a hotely v jedné aplikaci. Zdarma pro dospělé 18+.',
     bodyDesktop:
-      'Když teď nehledáš vztah, nemusíš trávit večery nekonečným chatem. Trtkat je mobilní aplikace pro dospělé 18+, kteří chtějí jasnou domluvu, respekt a minimum zbytečností. Stáhni si ji zdarma.',
-    footnote: 'iOS a Android · Zdarma · Pro dospělé 18+',
+      'Přestaň jen scrollovat. S Trtkatem objevíš party a akce, domluvíš rande, objednáš dopravu a vyrazíš ven. Mobilní aplikace zdarma pro dospělé 18+.',
+    footnote: 'iOS a Android · Zdarma · Rande, party, offline život',
   },
   comingSoon: {
     title: 'Již brzy',
     badge: 'Připravujeme',
-    heading: 'Na aplikaci pracujeme',
+    heading: 'Brzy vyrazíš ven',
     body:
-      'Trtkat pro iOS a Android je ve finální fázi vývoje. Zanech e-mail a dáme ti vědět, až bude aplikace ke stažení.',
+      'Trtkat pro iOS a Android je ve finální fázi. Zanech e-mail a dáme ti vědět, až budeš moct objevovat akce, rande a offline život v aplikaci.',
     emailLabel: 'E-mail pro předběžný přístup',
     emailPlaceholder: 'tvuj@email.cz',
     submitButton: 'Chci přístup',
@@ -478,8 +490,8 @@ export const cs: SiteCopy = {
     platforms: 'iOS · Android',
   },
   footer: {
-    offer: 'Nabídka',
-    howItWorks: 'Jak to funguje',
+    offer: 'Aplikace',
+    howItWorks: 'Koncept',
     stats: 'Statistiky',
     safety: 'Bezpečí',
     download: 'Stáhnout aplikaci',
@@ -535,43 +547,43 @@ export const cs: SiteCopy = {
     },
   },
   blog: {
-    title: 'Blog o seznamování a sexualní výchově',
+    title: 'Blog o životě offline a bezpečném randění',
     metaDescription:
-      'Články o nezávazném seznamování, bezpečném flirtu, souhlasu a sexualní výchově pro studenty i dospělé. Osvěta od aplikace Trtkat.',
-    subtitle: 'Edukace o seznamování, sexualní výchově a bezpečném nezávazném seznámení.',
+      'Články o randění, party, offline životě, souhlasu a sexualní výchově pro mladé dospělé. Osvěta od aplikace Trtkat.',
+    subtitle: 'Rande, život ve městě, bezpečí a osvěta — ne jen swipe a chat.',
     readMore: 'Číst článek',
     backToBlog: 'Zpět na blog',
     backHome: 'Zpět na úvod',
     loading: 'Načítání článků…',
   },
   seoFaq: {
-    title: 'Časté dotazy o seznamování přes Trtkat',
-    subtitle: 'Nezávazné seznámení, bezpečí a jak aplikace funguje',
+    title: 'Časté dotazy o Trtkat',
+    subtitle: 'Offline život, rande, party a bezpečí',
     items: [
       {
-        question: 'Co je Trtkat a pro koho je seznamovací aplikace?',
+        question: 'Co je Trtkat a pro koho je aplikace?',
         answer:
-          'Trtkat je mobilní seznamovací aplikace pro dospělé 18+, kteří hledají nezávazné seznámení, flirt nebo příjemný večer bez tlaku na vztah. Hodí se pro studenty, singlíky i lidi s nabitým programem, kteří chtějí jasnou domluvu místo nekonečného chatu.',
+          'Trtkat je mobilní aplikace pro dospělé 18+, která pomáhá přejít z online světa do reálného života — rande, party, akce, romantická místa a setkání ve městě. Není to jen swipe a chat, ale nástroj, jak vyrazit ven.',
       },
       {
-        question: 'Je Trtkat opravdu zdarma?',
+        question: 'Je Trtkat zdarma?',
         answer:
-          'Ano — základní používání aplikace Trtkat je zdarma. Cílem je zpřístupnit bezpečnou osvětu o seznamování a nezávazné seznámení bez bariér, které běžné placené seznamky často nastavují.',
+          'Ano — základní používání aplikace Trtkat je zdarma. Cílem je zpřístupnit mapy akcí, rande, osvětu a nástroje pro offline život bez bariér.',
       },
       {
         question: 'Čím se Trtkat liší od Tinderu a klasických seznamek?',
         answer:
-          'Na rozdíl od klasického swipe modelu Trtkat klade důraz na jasná očekávání, respekt k hranicím a rychlou domluvu — včetně návrhu místa na půl cesty, navigace a rezervace hotelu. Není to seznamka pro manželství, ale zkratka k férovému nezávaznému rande.',
+          'Klasické seznamky končí u chatu. Trtkat pokračuje dál — mapy party a akcí, romantická místa, hry na večer, objednání Boltu/Uberu, navigace a rezervace hotelu. Cílem je reálné setkání, ne nekonečné psaní.',
       },
       {
-        question: 'Je nezávazné seznamování na Trtkat bezpečné?',
+        question: 'Jak fungují mapy akcí a míst?',
         answer:
-          'Bezpečí je jádrem projektu: osvěta o souhlasu, hranicích a bezpečném chování online i offline. Aplikace podporuje ověřené profily, jasná pravidla a vzdělávací obsah o zodpovědném seznamování.',
+          'V aplikaci uvidíš party, akce, otevřené podniky a romantická místa v okolí. Můžeš vybrat kam jít na rande nebo s kým vyrazit na akci — a rovnou naplánovat cestu.',
       },
       {
-        question: 'Jak stáhnu aplikaci Trtkat?',
+        question: 'Je Trtkat bezpečný?',
         answer:
-          'Trtkat bude dostupný zdarma v App Store pro iOS a na Google Play pro Android. Na webu trtkat.cz najdeš odkazy ke stažení a novinky o spuštění.',
+          'Bezpečí je jádrem projektu: osvěta o souhlasu, hranicích a bezpečném chování online i offline. Aplikace podporuje ověřené profily, jasná pravidla a vzdělávací obsah.',
       },
     ],
   },

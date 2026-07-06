@@ -7,23 +7,26 @@ export const SITE_NAME = 'Trtkat';
 
 /** Intent clusters — long-tail fráze pro obsah a metadata (ne keyword stuffing). */
 export const SEO_KEYWORDS_CS = [
-  'seznamovací aplikace zdarma',
-  'nezávazné seznamování',
-  'seznamka pro studenty',
-  'flirt bez závazků',
-  'bezpečné seznámení',
+  'aplikace pro rande a party',
+  'offline život',
+  'mapa akcí a party',
+  'romantická místa',
+  'Bolt Uber navigace',
+  'rezervace hotelu',
+  'seznamování 18+',
   'alternativa tinderu',
   'sexuální výchova',
   'osvěta seznamování',
-  'casual dating česko',
 ] as const;
 
 export const SEO_KEYWORDS_EN = [
-  'free dating app',
-  'casual dating app',
-  'low pressure dating',
-  'student dating app',
-  'safe dating app',
+  'offline life app',
+  'dates parties events',
+  'event map app',
+  'romantic spots',
+  'Bolt Uber navigation',
+  'hotel booking',
+  'dating app 18+',
   'tinder alternative',
   'sexual education',
   'meetup app',

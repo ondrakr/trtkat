@@ -25,7 +25,7 @@ Kontakty:
 
 ## 2. Popis služby
 
-Trtkat je seznamovací a sociální aplikace pro dospělé uživatele v EU. Umožňuje vytvořit profil, nahrát fotografie, procházet profily ostatních uživatelů, vyjádřit zájem, vytvářet spojení, komunikovat v chatu, nastavovat viditelnost profilu a používat bezpečnostní funkce jako report, blokace, unmatch a smazání účtu.
+Trtkat je mobilní aplikace pro dospělé uživatele v EU. Pomáhá přejít z online světa do reálného života — rande, party, akce, romantická místa a setkání ve městě. Umožňuje vytvořit profil, nahrát fotografie, procházet profily ostatních uživatelů, vyjádřit zájem, vytvářet spojení, komunikovat v chatu, objevovat místa a akce na mapě, objednat dopravu (Bolt, Uber), spustit navigaci, rezervovat hotel a používat bezpečnostní funkce jako report, blokace, unmatch a smazání účtu.
 
 Aktuální verze aplikace neobsahuje platby, předplatné, in-app purchases ani reklamy.
 

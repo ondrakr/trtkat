@@ -3,13 +3,13 @@ import {
   MessageCircle,
   Lock,
   Sparkles,
-  Smile,
-  Moon,
-  Zap,
+  Sun,
+  CalendarDays,
+  Route,
   Hotel,
-  Navigation,
+  Car,
   Dices,
-  Map,
+  Heart,
 } from 'lucide-react';
 import { useI18n } from '../i18n/I18nProvider';
 import { StoreBadges } from '../components/StoreBadges';
@@ -21,13 +21,15 @@ import { buildLandingSchemas } from '../lib/schema';
 import { sectionWrap, sectionWrapNarrow, sectionY, heroPhoneSrc } from '../lib/navigation';
 import { frostedQuoteStyle } from '../lib/frostedGlass';
 
-const benefitIcons = [Smile, Moon, Zap, Sparkles];
-const featureIcons = [Hotel, Navigation, Dices, Map];
+const benefitIcons = [Sun, CalendarDays, Route, ShieldCheck];
+const featureIcons = [CalendarDays, Heart, Dices, Car, Hotel, Sparkles];
 const featureColors = [
   'text-trtkat-pink bg-trtkat-pink/15 border-trtkat-pink/20',
   'text-trtkat-blue bg-trtkat-blue/15 border-trtkat-blue/20',
   'text-yellow-400 bg-yellow-400/15 border-yellow-400/20',
   'text-purple-400 bg-purple-400/15 border-purple-400/20',
+  'text-emerald-400 bg-emerald-400/15 border-emerald-400/20',
+  'text-orange-400 bg-orange-400/15 border-orange-400/20',
 ];
 const vibeImageSrc = '/images/IMG_3760.jpeg';
 
@@ -129,7 +131,7 @@ export function LandingPage() {
                 <span className="hidden md:inline">{t.features.introDesktop}</span>
               </p>
             </div>
-            <div className="grid sm:grid-cols-2 gap-4 sm:gap-6 md:gap-8">
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
               {t.features.items.map((feature, idx) => {
                 const Icon = featureIcons[idx];
                 return (
@@ -151,8 +153,6 @@ export function LandingPage() {
             </div>
           </div>
         </RevealSection>
-
-        <StatsSection />
 
         <RevealSection id="benefity" className={`${sectionY} relative overflow-hidden`}>
           <div className={sectionWrap}>
@@ -238,6 +238,8 @@ export function LandingPage() {
             </div>
           </div>
         </RevealSection>
+
+        <StatsSection />
 
         <RevealSection id="o-nas" className={`${sectionY} relative overflow-hidden`}>
           <div className={sectionWrap}>
