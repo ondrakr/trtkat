@@ -63,7 +63,7 @@ export function LandingPage() {
                   </span>
                 </div>
 
-                <h1 className="text-[3.35rem] leading-[1.08] sm:text-6xl sm:leading-[1.06] md:text-8xl md:leading-[1.04] lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
+                <h1 className="text-[1.65rem] leading-[1.08] sm:text-5xl sm:leading-[1.06] md:text-7xl md:leading-[1.04] lg:text-8xl xl:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6 whitespace-nowrap">
                   <span>{t.hero.titleLine1}</span>{' '}
                   <span className="text-gradient">{t.hero.titleLine2}</span>
                 </h1>
