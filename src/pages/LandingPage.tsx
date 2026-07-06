@@ -64,8 +64,8 @@ export function LandingPage() {
                 </div>
 
                 <h1 className="text-[3.35rem] leading-[1.08] sm:text-6xl sm:leading-[1.06] md:text-8xl md:leading-[1.04] lg:text-9xl font-black tracking-tighter text-white mb-5 sm:mb-6">
-                  <span className="block whitespace-nowrap">{t.hero.titleLine1}</span>
-                  <span className="text-gradient block">{t.hero.titleLine2}</span>
+                  <span>{t.hero.titleLine1}</span>{' '}
+                  <span className="text-gradient">{t.hero.titleLine2}</span>
                 </h1>
 
                 <p className="font-book mx-auto max-w-xl text-base leading-relaxed text-slate-300 sm:text-lg md:mx-0 md:max-w-2xl md:text-2xl">
