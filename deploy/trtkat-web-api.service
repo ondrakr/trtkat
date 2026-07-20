@@ -1,0 +1,16 @@
+[Unit]
+Description=Trtkat web API (Express)
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/opt/trtkat-web
+EnvironmentFile=/opt/trtkat-web/.env
+ExecStart=/usr/bin/node server/http-server.mjs
+Restart=on-failure
+RestartSec=3
+# Bind only localhost via HOST/PORT in env / defaults in server
+
+[Install]
+WantedBy=multi-user.target

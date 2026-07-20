@@ -187,6 +187,7 @@ export async function verifyUserJwt(jwt) {
   return { error: null, user: parsed.data ?? null };
 }
 
+export async function authAdminListUsers() {
   const config = getSupabaseConfig();
   if (!config) return { error: { message: 'not_configured', code: 'not_configured' }, users: [] };
 

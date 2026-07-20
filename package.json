@@ -7,10 +7,12 @@
     "dev": "vite --port=3000",
     "build": "vite build",
     "preview": "vite preview",
+    "start:api": "node server/http-server.mjs",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit",
     "db:seed": "node scripts/generate-seed.mjs",
-    "admin:create": "node scripts/create-web-admin.mjs"
+    "admin:create": "node scripts/create-web-admin.mjs",
+    "deploy:hetzner": "bash deploy/deploy-to-hetzner.sh"
   },
   "dependencies": {
     "@google/genai": "^1.29.0",
