@@ -1,0 +1,67 @@
+name: Deploy Hetzner web
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "src/**"
+      - "public/**"
+      - "server/**"
+      - "api/**"
+      - "index.html"
+      - "package.json"
+      - "package-lock.json"
+      - "vite.config.ts"
+      - "deploy/**"
+      - ".github/workflows/deploy-hetzner-web.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hetzner-web
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    name: Build + restart on Hetzner
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          printf '%s\n' "${{ secrets.HETZNER_SSH_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H "${{ secrets.HETZNER_HOST }}" >> ~/.ssh/known_hosts
+
+      - name: Rsync to server (keep .env)
+        env:
+          HOST: ${{ secrets.HETZNER_HOST }}
+          USER: ${{ secrets.HETZNER_USER }}
+        run: |
+          set -euo pipefail
+          rsync -az --delete \
+            --exclude .git \
+            --exclude node_modules \
+            --exclude dist \
+            --exclude .env \
+            --exclude .DS_Store \
+            -e "ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes" \
+            ./ "${USER}@${HOST}:/opt/trtkat-web/"
+
+      - name: Build and restart
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.HETZNER_HOST }}
+          username: ${{ secrets.HETZNER_USER }}
+          key: ${{ secrets.HETZNER_SSH_KEY }}
+          port: 22
+          script_stop: true
+          command_timeout: 15m
+          script: |
+            set -euo pipefail
+            chmod +x /opt/trtkat-web/deploy/*.sh
+            test -f /opt/trtkat-web/.env
+            /opt/trtkat-web/deploy/ci-deploy-on-server.sh

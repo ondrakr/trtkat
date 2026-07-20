@@ -9,7 +9,16 @@ scp -i ~/.ssh/id_ed25519_trtkat deploy/bootstrap-server.sh root@167.233.32.187:/
 ssh -i ~/.ssh/id_ed25519_trtkat root@167.233.32.187 bash /tmp/bootstrap-server.sh
 ```
 
-## Deploy
+## Auto-deploy (GitHub Actions)
+
+Push do `main` → Actions nahraje kód na `/opt/trtkat-web`, `npm ci && build`, restart API + Nginx.
+
+Secrets v `ondrakr/trtkat`: `HETZNER_HOST`, `HETZNER_USER`, `HETZNER_SSH_KEY`  
+(stejný CI SSH klíč jako u app repa `hlavaam/trtkat`).
+
+Ručně: Actions → **Deploy Hetzner web** → Run workflow.
+
+## Deploy z Macu
 
 ```bash
 ./deploy/deploy-to-hetzner.sh
