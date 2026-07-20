@@ -96,7 +96,18 @@ export function buildWorkflowDbUpdate(body) {
     const status = normalizeWorkflowStatus(rawStatus);
     if (WORKFLOW_STATUSES.includes(status) || ['new', 'in_progress', 'escalated'].includes(rawStatus)) {
       updates.status = status;
-      if (status === 'resolved') {
+      // Keep legacy text column in sync (CHECK: new/in_progress/resolved/rejected/escalated).
+      updates.workflow_status =
+        status === 'resolved' || status === 'rejected'
+          ? status === 'rejected'
+            ? 'rejected'
+            : 'resolved'
+          : status === 'reviewing'
+            ? 'in_progress'
+            : status === 'waiting'
+              ? 'escalated'
+              : 'new';
+      if (status === 'resolved' || status === 'rejected') {
         updates.resolved_at = new Date().toISOString();
       }
     }

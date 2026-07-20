@@ -48,8 +48,13 @@ export function AdminAuthProvider({ children }: { children: ReactNode }) {
       return;
     }
 
-    const { data, error } = await supabase.from('profiles').select('role').eq('id', userId).maybeSingle();
-    setIsAdmin(!error && data?.role === 'admin');
+    // App profiles na Hetzneru nemají sloupec role — fallback přes is_moderator.
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('is_moderator')
+      .eq('id', userId)
+      .maybeSingle();
+    setIsAdmin(!error && data?.is_moderator === true);
   }, []);
 
   useEffect(() => {

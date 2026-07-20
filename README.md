@@ -1,20 +1,15 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Tento repozitář je ukončen
 
-# Run and deploy your AI Studio app
+Web Trtkat (`trtkat.cz` + admin) byl sloučen do monorepa:
 
-This contains everything you need to run your app locally.
+**→ https://github.com/hlavaam/trtkat** (složka `web/`)
 
-View your app in AI Studio: https://ai.studio/apps/ccef39a8-3005-4474-bf80-d5b02825254b
+Pracuj jen tam. Tento repo (`ondrakr/trtkat`) už nenasazuj — CI na Hetzner běží z `hlavaam/trtkat`.
 
-## Run Locally
-
-**Prerequisites:**  Node.js
-
-
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+```text
+hlavaam/trtkat/
+  ios/        iOS app
+  web/        marketing + admin (dříve tento repo)
+  supabase/   společná DB
+  hetzner/    API stack
+```
